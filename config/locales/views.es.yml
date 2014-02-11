@@ -25,6 +25,25 @@ es:
     logout: 'Salir'
     show: 'Ver'
 
+  accounts:
+    create:
+      notice: 'Cuenta creada correctamente'
+    destroy:
+      notice: 'Cuenta eliminada'
+    edit:
+      title: 'Editar cuenta'
+    index:
+      new: 'Nueva cuenta'
+      title: 'Listado de cuentas'
+      empty_html: 'No hay cuentas, puede crear una con el botón <span class="label label-info">Nueva cuenta</span>'
+    new:
+      title: 'Crear cuenta'
+    show:
+      title: 'Ver cuenta'
+    update:
+      notice: 'Cuenta actualizada correctamente'
+      stale: 'No se pudo actualizar la cuenta, revise los datos e inténtelo nuevamente'
+
   sessions:
     new:
       title: 'Ingreso'

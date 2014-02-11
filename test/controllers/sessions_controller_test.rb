@@ -13,12 +13,21 @@ class SessionsControllerTest < ActionController::TestCase
   test 'should create a new session' do
     post :create, { email: @user.email, password: '123' }
 
-    assert_redirected_to users_url
+    assert_redirected_to users_url(subdomain: @user.account_subdomain)
     assert_equal @user.id, current_user.id
   end
 
-  test 'should not create a new session' do
+  test 'should not create a new session with wrong password' do
     post :create, { email: @user.email, password: 'wrong' }
+
+    assert_response :success
+    assert_nil current_user
+  end
+
+  test 'should not create a new session with wrong account' do
+    @request.host = "#{accounts(:iso).subdomain}.lvh.me"
+
+    post :create, { email: @user.email, password: '123' }
 
     assert_response :success
     assert_nil current_user
@@ -31,7 +40,7 @@ class SessionsControllerTest < ActionController::TestCase
 
     delete :destroy
 
-    assert_redirected_to root_url
+    assert_redirected_to root_url(subdomain: 'www')
     assert_nil current_user
   end
 

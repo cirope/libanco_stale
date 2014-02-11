@@ -6,13 +6,13 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    user = User.find_by email: params[:email]
+    user = scope.find_by email: params[:email]
 
     if user
       user.prepare_password_reset
       UserMailer.password_reset(user).deliver
 
-      redirect_to root_url, notice: t('.success')
+      redirect_to root_url, notice: t('.notice')
     else
       flash.now[:alert] = t '.not_found'
       render 'new'
@@ -26,7 +26,7 @@ class PasswordResetsController < ApplicationController
     if @user.password_expired?
       redirect_to new_password_reset_path, alert: t('.expired')
     elsif @user.update(user_params)
-      redirect_to root_url, notice: t('.success')
+      redirect_to root_url, notice: t('.notice')
     else
       render 'edit'
     end
@@ -34,8 +34,12 @@ class PasswordResetsController < ApplicationController
 
   private
 
+    def scope
+      User.unscoped
+    end
+
     def set_user
-      @user = User.find_by! password_reset_token: params[:id]
+      @user = scope.find_by! password_reset_token: params[:id]
     end
 
     def user_params

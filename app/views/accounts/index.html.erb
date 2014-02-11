@@ -1,0 +1,27 @@
+<% if @accounts.empty? %>
+  <%= render 'shared/empty_index', message: t('.empty_html') %>
+<% else %>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th><%= Account.human_attribute_name 'name' %></th>
+        <th><%= Account.human_attribute_name 'subdomain' %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @accounts.each do |account| %>
+        <tr>
+          <td><%= account.name %></td>
+          <td><%= account.subdomain %></td>
+          <td><%= link_to_show account %></td>
+          <td><%= link_to_edit edit_account_path(account) %></td>
+          <td><%= link_to_destroy account %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= link_to_new new_account_path, class: 'btn btn-primary' %>

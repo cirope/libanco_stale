@@ -1,7 +1,14 @@
-User.create!(
-  name: 'Admin',
-  lastname: 'Istrator',
-  email: 'admin@finance.com',
-  password: '123',
-  password_confirmation: '123'
-)
+Account.transaction do
+  account = Account.create!(
+    name: 'Default',
+    subdomain: 'default'
+  )
+
+  account.users.create!(
+    name: 'Admin',
+    lastname: 'Istrator',
+    email: 'admin@finance.com',
+    password: '123',
+    password_confirmation: '123'
+  )
+end

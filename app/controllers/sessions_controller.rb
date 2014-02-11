@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by email: params[:email]
+    user = scope.find_by email: params[:email]
 
     if user && user.authenticate(params[:password])
       store_auth_token user
@@ -18,21 +18,27 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    cookies.delete :auth_token
-    redirect_to root_url, notice: t('.logged_out')
+    cookies.delete :auth_token, domain: COOKIES_DOMAIN
+    redirect_to root_url(subdomain: 'www'), notice: t('.logged_out')
   end
 
   private
 
+    def scope
+      current_account ? User : User.unscoped
+    end
+
     def default_url
-      users_url
+      users_url subdomain: current_user.account_subdomain
     end
 
     def store_auth_token user
+      cookie = { value: user.auth_token, domain: COOKIES_DOMAIN }
+
       if params[:remember_me]
-        cookies.permanent.encrypted[:auth_token] = user.auth_token
+        cookies.permanent.encrypted[:auth_token] = cookie
       else
-        cookies.encrypted[:auth_token] = user.auth_token
+        cookies.encrypted[:auth_token] = cookie
       end
     end
 end

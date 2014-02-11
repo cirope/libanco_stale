@@ -17,4 +17,5 @@
 //= require bootstrap
 //= require password_resets
 //= require profiles
+//= require accounts
 //= require users

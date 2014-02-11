@@ -9,6 +9,7 @@ Finance::Application.routes.draw do
   patch 'profile', to: 'profiles#update'
 
   # Resources
+  resources :accounts
   resources :users
   resources :password_resets, only: [:new, :create, :edit, :update]
 

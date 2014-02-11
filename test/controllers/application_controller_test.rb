@@ -28,6 +28,23 @@ class ApplicationControllerTest < ActionController::TestCase
     assert_not_nil current_user
   end
 
+  test 'should current account be nil' do
+    assert_nil current_account
+  end
+
+  test 'should load current account when subdomain is present' do
+    cirope = accounts(:cirope)
+    @request.host = "#{cirope.subdomain}.lvh.me"
+
+    assert_equal cirope, current_account
+  end
+
+  test 'should not found current account when subdomain is wrong' do
+    @request.host = 'wrong.lvh.me'
+
+    assert_raises(ActiveRecord::RecordNotFound) { current_account }
+  end
+
   test 'should redirect when there is no current user' do
     authorize
 
@@ -49,6 +66,10 @@ class ApplicationControllerTest < ActionController::TestCase
 
   def current_user
     @controller.send :current_user
+  end
+
+  def current_account
+    @controller.send :current_account
   end
 
   def authorize

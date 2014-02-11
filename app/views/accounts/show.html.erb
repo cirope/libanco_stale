@@ -1,0 +1,13 @@
+<h2><%= @account %></h2>
+
+<p>
+  <strong><%= Account.human_attribute_name 'name' %></strong>:
+  <%= @account.name %>
+</p>
+<p>
+  <strong><%= Account.human_attribute_name 'subdomain' %></strong>:
+  <%= @account.subdomain %>
+</p>
+
+<%= link_to_edit edit_account_path(@account) %> |
+<%= link_to_index accounts_path %>
