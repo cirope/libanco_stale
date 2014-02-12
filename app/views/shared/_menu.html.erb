@@ -15,7 +15,11 @@
     <% if current_user %>
       <nav class="collapse navbar-collapse" role="navigation">
         <ul class="nav navbar-nav">
-          <%= menu_item_for User, users_path %>
+          <% if admin_subdomain? %>
+            <%= menu_item_for Account, accounts_path %>
+          <% else %>
+            <%= render 'shared/submenu/admin' %>
+          <% end %>
         </ul>
 
         <%= render 'shared/user_actions' %>

@@ -1,0 +1,8 @@
+<% unless collection.empty? %>
+  <h4 class="text-muted"><%= title %></h4>
+  <ul>
+    <% collection.each do |item| %>
+      <li><%= item %></li>
+    <% end %>
+  </ul>
+<% end %>

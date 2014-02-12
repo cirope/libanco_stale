@@ -1,6 +1,9 @@
 es:
   app_name: 'Finanzas'
 
+  menu:
+    admin: 'Administración'
+
   flash:
     actions:
       create:
@@ -18,6 +21,7 @@ es:
     not_authorized: 'Debe ingresar para ver el contenido'
 
   navigation:
+    close: 'Cerrar'
     destroy: 'Eliminar'
     edit: 'Editar'
     index: 'Listado'
@@ -57,6 +61,26 @@ es:
       logged_in: 'Bienvenido'
     destroy:
       logged_out: 'Hasta la próxima'
+
+  states:
+    create:
+      notice: 'Provincia creada correctamente'
+    destroy:
+      notice: 'Provincia eliminada'
+    edit:
+      title: 'Editar provincia'
+    index:
+      new: 'Nueva provincia'
+      title: 'Listado de provincias'
+      empty_html: 'No hay provincias, puede crear una con el botón <span class="label label-info">Nueva provincia</span>'
+    new:
+      title: 'Crear provincia'
+      state: 'Agregar nueva provincia'
+    show:
+      title: 'Ver provincia'
+    update:
+      notice: 'Provincia actualizada correctamente'
+      stale: 'No se pudo actualizar la provincia, revise los datos e inténtelo nuevamente'
 
   password_resets:
     edit:

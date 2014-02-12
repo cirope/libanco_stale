@@ -4,14 +4,21 @@ Finance::Application.routes.draw do
   post 'sessions', to: 'sessions#create', as: 'sessions'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
 
-  # Profiles
-  get 'profile', to: 'profiles#edit', as: 'profile'
-  patch 'profile', to: 'profiles#update'
-
-  # Resources
-  resources :accounts
-  resources :users
   resources :password_resets, only: [:new, :create, :edit, :update]
+
+  constraints AdminSubdomain do
+    resources :accounts
+  end
+
+  constraints AccountSubdomain do
+    # Profiles
+    get 'profile', to: 'profiles#edit', as: 'profile'
+    patch 'profile', to: 'profiles#update'
+
+    # Resorces
+    resources :states
+    resources :users
+  end
 
   root 'sessions#new'
 end

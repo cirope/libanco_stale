@@ -8,6 +8,9 @@ es:
       account:
         one: 'Cuenta'
         other: 'Cuentas'
+      state:
+        one: 'Provincia'
+        other: 'Provincias'
       user:
         one: 'Usuario'
         other: 'Usuarios'
@@ -16,6 +19,8 @@ es:
       account:
         name: 'Nombre'
         subdomain: 'Subdominio'
+      state:
+        name: 'Nombre'
       user:
         name: 'Nombre'
         lastname: 'Apellido'
