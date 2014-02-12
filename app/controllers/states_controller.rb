@@ -41,7 +41,7 @@ class StatesController < ApplicationController
     respond_with @state
 
   rescue ActiveRecord::StaleObjectError
-    redirect_to [:edit, @state], alert: t('.stale')
+    redirect_to [:edit, @state], alert: t('.stale', scope: :flash)
   end
 
   # DELETE /states/1

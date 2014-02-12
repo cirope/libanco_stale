@@ -41,7 +41,7 @@ class CitiesController < ApplicationController
     respond_with @city
 
   rescue ActiveRecord::StaleObjectError
-    redirect_to [:edit, @city], alert: t('.stale')
+    redirect_to [:edit, @city], alert: t('.stale', scope: :flash)
   end
 
   # DELETE /cities/1

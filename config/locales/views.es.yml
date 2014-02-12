@@ -18,10 +18,6 @@ es:
     show: 'Ver'
 
   accounts:
-    create:
-      notice: 'Cuenta creada correctamente'
-    destroy:
-      notice: 'Cuenta eliminada'
     edit:
       title: 'Editar cuenta'
     index:
@@ -32,15 +28,8 @@ es:
       title: 'Crear cuenta'
     show:
       title: 'Ver cuenta'
-    update:
-      notice: 'Cuenta actualizada correctamente'
-      stale: 'No se pudo actualizar la cuenta, revise los datos e inténtelo nuevamente'
 
   cities:
-    create:
-      notice: 'Ciudad creada correctamente'
-    destroy:
-      notice: 'Ciudad eliminada'
     edit:
       title: 'Editar ciudad'
     index:
@@ -52,9 +41,6 @@ es:
       state: 'Agregar nueva provincia'
     show:
       title: 'Ver ciudad'
-    update:
-      notice: 'Ciudad actualizada correctamente'
-      stale: 'No se pudo actualizar la ciudad, revise los datos e inténtelo nuevamente'
 
   sessions:
     new:
@@ -66,10 +52,6 @@ es:
       forgot_password: '¿Olvidaste tu contraseña?'
 
   states:
-    create:
-      notice: 'Provincia creada correctamente'
-    destroy:
-      notice: 'Provincia eliminada'
     edit:
       title: 'Editar provincia'
     index:
@@ -81,9 +63,6 @@ es:
       state: 'Agregar nueva provincia'
     show:
       title: 'Ver provincia'
-    update:
-      notice: 'Provincia actualizada correctamente'
-      stale: 'No se pudo actualizar la provincia, revise los datos e inténtelo nuevamente'
 
   password_resets:
     edit:
