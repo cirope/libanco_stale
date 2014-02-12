@@ -1,0 +1,17 @@
+<% if @city.persisted? %>
+  if ($('#modal form').length == 1) { // If is the only form (called from new entities for example
+    $('#modal').on('hidden.bs.modal', function(e) {
+      $('#modal').remove();
+    }).modal('hide');
+  } else {
+    $('#modal form.new_city').remove();
+    $('#modal .modal-title').text('<%= j t('customers.new.title') %>');
+    $('#modal form').show().find('[autofocus]').focus();
+  }
+
+  $('select[data-update-after-city-change]').html(
+    '<%= j option_groups_from_collection_for_select(states, :cities, :name, :id, :name, @city.id) %>'
+  );
+<% else %>
+  <%= render template: 'cities/new' %>
+<% end %>

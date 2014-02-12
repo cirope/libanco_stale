@@ -48,6 +48,26 @@ es:
       notice: 'Cuenta actualizada correctamente'
       stale: 'No se pudo actualizar la cuenta, revise los datos e inténtelo nuevamente'
 
+  cities:
+    create:
+      notice: 'Ciudad creada correctamente'
+    destroy:
+      notice: 'Ciudad eliminada'
+    edit:
+      title: 'Editar ciudad'
+    index:
+      new: 'Nueva ciudad'
+      title: 'Listado de ciudades'
+      empty_html: 'No hay ciudades, puede crear una con el botón <span class="label label-info">Nueva ciudad</span>'
+    new:
+      title: 'Crear ciudad'
+      state: 'Agregar nueva provincia'
+    show:
+      title: 'Ver ciudad'
+    update:
+      notice: 'Ciudad actualizada correctamente'
+      stale: 'No se pudo actualizar la ciudad, revise los datos e inténtelo nuevamente'
+
   sessions:
     new:
       title: 'Ingreso'

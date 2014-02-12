@@ -1,0 +1,13 @@
+<h2><%= @city %></h2>
+
+<p>
+  <strong><%= City.human_attribute_name 'zip_code' %></strong>:
+  <%= @city.zip_code %>
+</p>
+<p>
+  <strong><%= City.human_attribute_name 'state' %></strong>:
+  <%= @city.state %>
+</p>
+
+<%= link_to_edit [:edit, @city] %> |
+<%= link_to_index cities_path %>

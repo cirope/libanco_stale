@@ -18,4 +18,6 @@
 //= require password_resets
 //= require profiles
 //= require accounts
+//= require cities
+//= require states
 //= require users

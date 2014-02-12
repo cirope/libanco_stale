@@ -28,3 +28,8 @@ end
 group :doc do
   gem 'sdoc', require: false
 end
+
+group :test do
+  gem 'capybara'
+  gem 'poltergeist'
+end

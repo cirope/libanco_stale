@@ -1,0 +1,14 @@
+<%= simple_form_for(@city, data: ({ remote: true } if request.xhr?)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, input_html: { autofocus: true } %>
+    <%= f.input :zip_code %>
+    <%= f.association :state, collection: states, label: state_label, prompt: true %>
+    <%= f.input :lock_version, as: :hidden %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn-primary' %>
+  </div>
+<% end %>

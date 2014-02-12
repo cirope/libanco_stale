@@ -27,3 +27,6 @@ class ActionController::TestCase
     cookies.encrypted[:auth_token] = user.auth_token
   end
 end
+
+# Custom extensions
+require_relative 'support/integration_test'

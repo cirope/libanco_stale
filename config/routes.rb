@@ -16,6 +16,7 @@ Finance::Application.routes.draw do
     patch 'profile', to: 'profiles#update'
 
     # Resorces
+    resources :cities
     resources :states
     resources :users
   end

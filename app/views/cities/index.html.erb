@@ -1,0 +1,29 @@
+<% if @cities.empty? %>
+  <%= render 'shared/empty_index', message: t('.empty_html') %>
+<% else %>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th><%= City.human_attribute_name 'name' %></th>
+        <th><%= City.human_attribute_name 'zip_code' %></th>
+        <th><%= City.human_attribute_name 'state' %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @cities.each do |city| %>
+        <tr>
+          <td><%= city.name %></td>
+          <td><%= city.zip_code %></td>
+          <td><%= city.state %></td>
+          <td><%= link_to_show city %></td>
+          <td><%= link_to_edit [:edit, city] %></td>
+          <td><%= link_to_destroy city %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= link_to_new new_city_path, class: 'btn btn-primary' %>

@@ -7,6 +7,8 @@ class State < ActiveRecord::Base
 
   strip_fields :name
 
+  has_many :cities, -> { order('name') }, dependent: :destroy
+
   def to_s
     name
   end
