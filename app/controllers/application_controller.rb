@@ -1,14 +1,11 @@
 class ApplicationController < ActionController::Base
   include ActionTitle
+  include CurrentUser
+  include UpdateResource
 
   protect_from_forgery with: :exception
 
   before_action :scope_current_account
-
-  def current_user
-    @current_user ||= user_by_auth_token if cookies[:auth_token]
-  end
-  helper_method :current_user
 
   def current_account
     @current_account ||= Account.by_subdomain request.subdomains.first
@@ -26,10 +23,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-    def user_by_auth_token
-      User.by_auth_token cookies.encrypted[:auth_token]
-    end
 
     def plug_mini_profiler
       Rack::MiniProfiler.authorize_request if current_user.try :is_admin?
