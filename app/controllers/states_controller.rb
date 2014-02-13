@@ -37,11 +37,8 @@ class StatesController < ApplicationController
 
   # PUT/PATCH /states/1
   def update
-    @state.update state_params
+    update_resource @state, state_params
     respond_with @state
-
-  rescue ActiveRecord::StaleObjectError
-    redirect_to [:edit, @state], alert: t('.stale', scope: :flash)
   end
 
   # DELETE /states/1

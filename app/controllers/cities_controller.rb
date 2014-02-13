@@ -37,11 +37,8 @@ class CitiesController < ApplicationController
 
   # PUT/PATCH /cities/1
   def update
-    @city.update city_params
+    update_resource @city, city_params
     respond_with @city
-
-  rescue ActiveRecord::StaleObjectError
-    redirect_to [:edit, @city], alert: t('.stale', scope: :flash)
   end
 
   # DELETE /cities/1
