@@ -34,11 +34,4 @@ class CityTest < ActiveSupport::TestCase
     assert_error @city, :name, :too_long, count: 255
     assert_error @city, :zip_code, :too_long, count: 255
   end
-
-  test 'attributes titleize' do
-    @city.name = 'nEw cItY'
-
-    assert @city.valid?
-    assert_equal @city.name, 'New City'
-  end
 end
