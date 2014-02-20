@@ -27,4 +27,11 @@ class StateTest < ActiveSupport::TestCase
     assert @state.invalid?
     assert_error @state, :name, :too_long, count: 255
   end
+
+  test 'attributes titleize' do
+    @state.name = 'nEw sTatE'
+
+    assert @state.valid?
+    assert_equal @state.name, 'New State'
+  end
 end
