@@ -6,25 +6,23 @@
       <div class="col-md-6">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">
-              <%= Customer.model_name.human count: 1 %>
-            </h3>
+            <%= Customer.model_name.human count: 1 %>
           </div>
           <div class="panel-body">
-            <%= f.input :name %>
-            <%= f.input :lastname %>
-            <%= f.input :identification %>
-            <%= f.input :address %>
-            <%= f.association :city, prompt: t('helpers.select.prompt') %>
+            <%= f.input :name, as: :slim, input_html: {
+              autofocus: true
+            } %>
+            <%= f.input :lastname, as: :slim %>
+            <%= f.input :identification, as: :slim %>
+            <%= f.input :address, as: :slim %>
+            <%= f.association :city, label: false, prompt: true %>
           </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">
-              <%= Phone.model_name.human count: 0 %>
-            </h3>
+            <%= Phone.model_name.human count: 0 %>
           </div>
           <div class="panel-body">
             <%= f.simple_fields_for :phones, customer_phones do |ff| %>
@@ -39,7 +37,10 @@
     <%= f.input :lock_version, as: :hidden %>
   </div>
 
+  <hr />
+
   <div class="form-actions">
+    <div class="pull-right"><%= yield :form_actions %></div>
     <%= f.button :submit, class: 'btn-primary' %>
   </div>
 <% end %>

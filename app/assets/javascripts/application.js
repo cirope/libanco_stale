@@ -18,6 +18,7 @@
 //= require password_resets
 //= require effect_helper
 //= require dynamic_form
+//= require common
 //= require profiles
 //= require accounts
 //= require cities

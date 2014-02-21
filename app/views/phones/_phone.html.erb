@@ -1,9 +1,9 @@
 <fieldset class="row phone">
   <%= f.input :id, as: :hidden %>
-  <div class="col-md-10">
-    <%= f.input :phone, label: false, input_html: { placeholder: Phone.human_attribute_name('phone') } %>
+  <div class="col-xs-10">
+    <%= f.input :phone, as: :slim %>
   </div>
-  <div class="col-md-2">
+  <div class="col-xs-2">
     <div class="row-controls">
       <%= link_to_remove_nested_item f %>
     </div>

@@ -1,4 +1,6 @@
-<h2><%= @customer %></h2>
+<div class="page-header">
+  <h2><%= @customer %></h2>
+</div>
 
 <p>
   <strong><%= Customer.human_attribute_name 'name' %></strong>:
@@ -30,6 +32,8 @@
     <li><%= phone %></li>
   <% end %>
 </ul>
+
+<hr />
 
 <%= link_to_edit edit_customer_path(@customer) %> |
 <%= link_to_index customers_path %>
