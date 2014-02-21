@@ -21,5 +21,15 @@
   <%= @customer.city %>
 </p>
 
+<p>
+  <strong><%= Phone.model_name.human count: 0 %></strong>:
+</p>
+
+<ul>
+  <% @customer.phones.each do |phone| %>
+    <li><%= phone %></li>
+  <% end %>
+</ul>
+
 <%= link_to_edit edit_customer_path(@customer) %> |
 <%= link_to_index customers_path %>

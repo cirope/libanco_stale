@@ -16,6 +16,8 @@
 //= require turbolinks_events
 //= require bootstrap
 //= require password_resets
+//= require effect_helper
+//= require dynamic_form
 //= require profiles
 //= require accounts
 //= require cities

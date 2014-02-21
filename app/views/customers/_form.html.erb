@@ -2,11 +2,41 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :lastname %>
-    <%= f.input :identification %>
-    <%= f.input :address %>
-    <%= f.association :city %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <%= Customer.model_name.human count: 1 %>
+            </h3>
+          </div>
+          <div class="panel-body">
+            <%= f.input :name %>
+            <%= f.input :lastname %>
+            <%= f.input :identification %>
+            <%= f.input :address %>
+            <%= f.association :city, prompt: t('helpers.select.prompt') %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <%= Phone.model_name.human count: 0 %>
+            </h3>
+          </div>
+          <div class="panel-body">
+            <%= f.simple_fields_for :phones, customer_phones do |ff| %>
+              <%= render 'phones/phone', f: ff %>
+            <% end %>
+
+            <%= link_to_add_fields t('customers.new.phone'), f, :phones %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= f.input :lock_version, as: :hidden %>
   </div>
 
   <div class="form-actions">

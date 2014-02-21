@@ -52,6 +52,7 @@ es:
     new:
       title: 'Crear cliente'
       customer: 'Agregar nuevo cliente'
+      phone: 'Agregar teléfono'
     show:
       title: 'Ver cliente'
 
