@@ -11,6 +11,9 @@ es:
       city:
         one: 'Ciudad'
         other: 'Ciudades'
+      customer:
+        one: 'Cliente'
+        other: 'Clientes'
       state:
         one: 'Provincia'
         other: 'Provincias'
@@ -26,6 +29,12 @@ es:
         name: 'Nombre'
         zip_code: 'Código postal'
         state: 'Provincia'
+      customer:
+        name: 'Nombre'
+        lastname: 'Apellido'
+        identification: 'DNI'
+        address: 'Dirección'
+        city: 'Ciudad'
       state:
         name: 'Nombre'
       user:

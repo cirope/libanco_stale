@@ -1,0 +1,25 @@
+<h2><%= @customer %></h2>
+
+<p>
+  <strong><%= Customer.human_attribute_name 'name' %></strong>:
+  <%= @customer.name %>
+</p>
+<p>
+  <strong><%= Customer.human_attribute_name 'lastname' %></strong>:
+  <%= @customer.lastname %>
+</p>
+<p>
+  <strong><%= Customer.human_attribute_name 'identification' %></strong>:
+  <%= @customer.identification %>
+</p>
+<p>
+  <strong><%= Customer.human_attribute_name 'address' %></strong>:
+  <%= @customer.address %>
+</p>
+<p>
+  <strong><%= Customer.human_attribute_name 'city' %></strong>:
+  <%= @customer.city %>
+</p>
+
+<%= link_to_edit edit_customer_path(@customer) %> |
+<%= link_to_index customers_path %>

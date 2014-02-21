@@ -1,0 +1,15 @@
+paul:
+  name: Paul
+  lastname: Smith
+  identification: 33216329
+  address: HUARPES 3072. B. LEDONE
+  city: rivadavia
+  account: cirope
+
+simon:
+  name: Simon
+  lastname: Williams
+  identification: 34655498
+  address: B TAMARINDO III MANZ C CASA 14
+  city: godoy_cruz
+  account: cirope
