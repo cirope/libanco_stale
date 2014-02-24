@@ -15,7 +15,18 @@
             <%= f.input :lastname, as: :slim %>
             <%= f.input :identification, as: :slim %>
             <%= f.input :address, as: :slim %>
-            <%= f.association :city, label: false, prompt: true %>
+            <div class="row">
+              <div class="col-xs-10">
+                <%= f.association :city, label: false, prompt: t('cities.select'),
+                  input_html: { data: { update_after_city_change: true } }
+                %>
+              </div>
+              <div class="col-xs-2">
+                <%= link_to new_city_path, title: t('customers.new.city'), data: { remote: true } do %>
+                  <%= content_tag :span, nil, class: 'glyphicon glyphicon-plus-sign' %>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
