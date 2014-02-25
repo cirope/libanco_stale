@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140221010301) do
+ActiveRecord::Schema.define(version: 20140223140511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,10 +55,26 @@ ActiveRecord::Schema.define(version: 20140221010301) do
   add_index "customers", ["lastname"], name: "index_customers_on_lastname", using: :btree
   add_index "customers", ["name"], name: "index_customers_on_name", using: :btree
 
+  create_table "loans", force: true do |t|
+    t.decimal  "amount",         precision: 15, scale: 2,             null: false
+    t.decimal  "payment",        precision: 15, scale: 2
+    t.integer  "payments_count",                                      null: false
+    t.date     "expired_at"
+    t.integer  "customer_id",                                         null: false
+    t.integer  "user_id",                                             null: false
+    t.integer  "account_id",                                          null: false
+    t.integer  "lock_version",                            default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "loans", ["account_id"], name: "index_loans_on_account_id", using: :btree
+  add_index "loans", ["customer_id"], name: "index_loans_on_customer_id", using: :btree
+  add_index "loans", ["user_id"], name: "index_loans_on_user_id", using: :btree
+
   create_table "phones", force: true do |t|
-    t.string   "phone",                    null: false
-    t.integer  "customer_id",              null: false
-    t.integer  "lock_version", default: 0, null: false
+    t.string   "phone",       null: false
+    t.integer  "customer_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

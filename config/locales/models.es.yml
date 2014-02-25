@@ -14,6 +14,9 @@ es:
       customer:
         one: 'Cliente'
         other: 'Clientes'
+      loan:
+        one: 'Préstamo'
+        other: 'Préstamos'
       phone:
         one: 'Teléfono'
         other: 'Teléfonos'
@@ -38,6 +41,16 @@ es:
         identification: 'DNI'
         address: 'Dirección'
         city: 'Ciudad'
+      loan:
+        amount: 'Monto'
+        payment: 'Cuota'
+        debt: 'Deuda'
+        payments_count: 'Cuotas'
+        expired_payments_count: 'Cuotas vencidas'
+        payments_to_expire_count: 'Cuotas a vencer'
+        expired_at: 'Vencimiento'
+        customer: 'Cliente'
+        user: 'Asesor'
       phone:
         phone: 'Teléfono'
       state:

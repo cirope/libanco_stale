@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  respond_to :html, :json
+  respond_to :html, :json, :js
 
   before_action :authorize
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
@@ -7,7 +7,8 @@ class CustomersController < ApplicationController
 
   # GET /customers
   def index
-    @customers = Customer.all
+    @customers = Customer.search query: params[:q], limit: request.xhr?
+
     respond_with @customers
   end
 
@@ -28,7 +29,7 @@ class CustomersController < ApplicationController
 
   # POST /customers
   def create
-    @customer = Customer.new(customer_params)
+    @customer = Customer.new customer_params
 
     @customer.save
     respond_with @customer

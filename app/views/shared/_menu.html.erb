@@ -18,8 +18,9 @@
           <% if admin_subdomain? %>
             <%= menu_item_for Account, accounts_path %>
           <% else %>
-            <%= render 'shared/submenu/admin' %>
+            <%= menu_item_for Loan, loans_path %>
             <%= menu_item_for Customer, customers_path %>
+            <%= render 'shared/submenu/admin' %>
           <% end %>
         </ul>
 

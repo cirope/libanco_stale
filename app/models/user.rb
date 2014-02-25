@@ -13,4 +13,6 @@ class User < ActiveRecord::Base
 
   strip_fields :name, :lastname, :email
   downcase_fields :email
+
+  has_many :loans
 end

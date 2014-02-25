@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h2><%= @loan.customer %></h2>
+</div>
+
+<p>
+  <strong><%= Loan.human_attribute_name 'amount' %></strong>:
+  <%= number_to_currency @loan.amount %>
+</p>
+<p>
+  <strong><%= Loan.human_attribute_name 'payments_count' %></strong>:
+  <%= @loan.payments_count %>
+</p>
+<p>
+  <strong><%= Loan.human_attribute_name 'payment' %></strong>:
+  <%= @loan.payment %>
+</p>
+<p>
+  <strong><%= Loan.human_attribute_name 'expired_at' %></strong>:
+  <%= @loan.expired_at %>
+</p>
+<p>
+  <strong><%= Loan.human_attribute_name 'user' %></strong>:
+  <%= @loan.user %>
+</p>
+
+<hr />
+
+<%= link_to_edit edit_loan_path(@loan) %> |
+<%= link_to_index loans_path %>

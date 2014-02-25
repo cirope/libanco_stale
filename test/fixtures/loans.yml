@@ -1,0 +1,8 @@
+first_loan:
+  amount: 10000
+  payment: 1210
+  payments_count: 12
+  expired_at: 2015-02-23
+  customer: paul
+  user: franco
+  account: cirope

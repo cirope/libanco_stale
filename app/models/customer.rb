@@ -3,6 +3,7 @@ class Customer < ActiveRecord::Base
   include Auditable
   include Attributes::Strip
   include Customers::Validation
+  include Customers::Searchable
 
   strip_fields :name, :lastname, :identification, :address
 

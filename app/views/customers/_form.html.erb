@@ -1,4 +1,4 @@
-<%= simple_form_for(@customer) do |f| %>
+<%= simple_form_for(@customer, data: ({ remote: true } if request.xhr?)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -9,24 +9,13 @@
             <%= Customer.model_name.human count: 1 %>
           </div>
           <div class="panel-body">
-            <%= f.input :name, as: :slim, input_html: {
-              autofocus: true
-            } %>
-            <%= f.input :lastname, as: :slim %>
-            <%= f.input :identification, as: :slim %>
-            <%= f.input :address, as: :slim %>
-            <div class="row">
-              <div class="col-xs-10">
-                <%= f.association :city, label: false, prompt: t('cities.select'),
-                  input_html: { data: { update_after_city_change: true } }
-                %>
-              </div>
-              <div class="col-xs-2">
-                <%= link_to new_city_path, title: t('customers.new.city'), data: { remote: true } do %>
-                  <%= content_tag :span, nil, class: 'glyphicon glyphicon-plus-sign' %>
-                <% end %>
-              </div>
-            </div>
+            <%= f.input :name, input_html: { autofocus: true } %>
+            <%= f.input :lastname %>
+            <%= f.input :identification %>
+            <%= f.input :address %>
+            <%= f.association :city, label: city_label, prompt: true,
+              input_html: { data: { update_after_city_change: true } }
+            %>
           </div>
         </div>
       </div>

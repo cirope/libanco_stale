@@ -1,4 +1,6 @@
 Finance::Application.routes.draw do
+  resources :loans
+
   resources :customers
 
   # Sessions

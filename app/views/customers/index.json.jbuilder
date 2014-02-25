@@ -1,4 +1,5 @@
 json.array!(@customers) do |customer|
-  json.extract! customer, :id, :name, :lastname, :identification, :address, :city_id
-  json.url customer_url(customer, format: :json)
+  json.id customer.id
+  json.name customer.to_s
+  json.informal customer.identification
 end
