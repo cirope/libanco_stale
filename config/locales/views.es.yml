@@ -16,6 +16,7 @@ es:
     loading: 'Cargando...'
     logout: 'Salir'
     show: 'Ver'
+    payments: 'Ver cuotas'
 
   accounts:
     edit:
@@ -68,6 +69,8 @@ es:
       customer: 'Agregar nuevo cliente'
     show:
       title: 'Ver préstamo'
+    payments:
+      title: 'Listado de cuotas'
 
   sessions:
     new:

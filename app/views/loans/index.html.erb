@@ -10,7 +10,7 @@
         <th><%= Loan.human_attribute_name 'payment' %></th>
         <th><%= Loan.human_attribute_name 'expired_at' %></th>
         <th><%= Loan.human_attribute_name 'user' %></th>
-        <th colspan="3"></th>
+        <th colspan="4"></th>
       </tr>
     </thead>
 
@@ -18,11 +18,12 @@
       <% @loans.each do |loan| %>
         <tr>
           <td><%= loan.customer %></td>
-          <td><%= loan.amount %></td>
+          <td><%= number_to_currency loan.amount %></td>
           <td><%= loan.payments_count %></td>
-          <td><%= loan.payment %></td>
-          <td><%= loan.expired_at %></td>
+          <td><%= number_to_currency loan.payment %></td>
+          <td><%= l loan.expired_at %></td>
           <td><%= loan.user %></td>
+          <td><%= link_to_show_payments loan_payments_path(loan) %></td>
           <td><%= link_to_show loan %></td>
           <td><%= link_to_edit edit_loan_path(loan) %></td>
           <td><%= link_to_destroy loan %></td>

@@ -12,11 +12,11 @@
 </p>
 <p>
   <strong><%= Loan.human_attribute_name 'payment' %></strong>:
-  <%= @loan.payment %>
+  <%= number_to_currency @loan.payment %>
 </p>
 <p>
   <strong><%= Loan.human_attribute_name 'expired_at' %></strong>:
-  <%= @loan.expired_at %>
+  <%= l @loan.expired_at %>
 </p>
 <p>
   <strong><%= Loan.human_attribute_name 'user' %></strong>:

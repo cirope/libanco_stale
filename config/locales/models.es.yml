@@ -17,6 +17,9 @@ es:
       loan:
         one: 'Préstamo'
         other: 'Préstamos'
+      payment:
+        one: 'Cuota'
+        other: 'Cuotas'
       phone:
         one: 'Teléfono'
         other: 'Teléfonos'
@@ -51,6 +54,10 @@ es:
         expired_at: 'Vencimiento'
         customer: 'Cliente'
         user: 'Asesor'
+      payment:
+        number: 'Número'
+        expired_at: 'Vencimiento'
+        paid_at: 'Fecha de pago'
       phone:
         phone: 'Teléfono'
       state:

@@ -1,0 +1,5 @@
+first_payment:
+  number: 1
+  expired_at: 2014-02-25
+  paid_at: 2014-02-25 09:53:59
+  loan: first_loan

@@ -3,6 +3,7 @@ class Loan < ActiveRecord::Base
   include Auditable
   include Attributes::Round
   include Loans::Validation
+  include Loans::Payments
 
   round_fields :amount
 

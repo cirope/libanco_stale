@@ -1,5 +1,7 @@
 Finance::Application.routes.draw do
-  resources :loans
+  resources :loans do
+    get 'payments', to: 'loans#payments', as: 'payments'
+  end
 
   resources :customers
 
