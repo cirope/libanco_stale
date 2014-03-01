@@ -28,7 +28,7 @@ module Loans::Payments
     end
 
     def calculate_payment_amount
-      interest_rate = PAYMENTS_COUNT[payments_count]
+      interest_rate = PAYMENTS_DATA[payments_count]
 
       (amount * interest_rate) / payments_count
     end

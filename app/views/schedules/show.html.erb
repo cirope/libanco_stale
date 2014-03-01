@@ -1,0 +1,21 @@
+<h2><%= @schedule %></h2>
+
+<p>
+  <strong><%= Schedule.human_attribute_name 'description' %></strong>:
+  <%= @schedule.description %>
+</p>
+<p>
+  <strong><%= Schedule.human_attribute_name 'scheduled_at' %></strong>:
+  <%= @schedule.scheduled_at %>
+</p>
+<p>
+  <strong><%= Schedule.human_attribute_name 'done' %></strong>:
+  <%= @schedule.done %>
+</p>
+<p>
+  <strong><%= Schedule.human_attribute_name 'user' %></strong>:
+  <%= @schedule.user %>
+</p>
+
+<%= link_to_edit edit_schedule_path(@schedule) %> |
+<%= link_to_index schedules_path %>

@@ -11,10 +11,10 @@
  *= require_self
  *= require bootstrap
  *= require bootstrap-theme
- *= require jquery-ui
- *= require jquery-ui-theme
+ *= require jquery-ui-autocomplete
+ *= require jquery-ui-datepicker
+ *= require jquery-ui-timepicker
  *= require main
- *= require autocomplete
  *= require icons
  *= require forms
  *= require password_resets

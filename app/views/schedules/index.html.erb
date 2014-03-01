@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-lg-3">
+    <div data-calendar="true"></div>
+    <br />
+  </div>
+  <div class="col-lg-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= l Date.today, format: :minimal %>
+      </div>
+      <div class="panel-body">
+        <% if @schedules.empty? %>
+          <%= render 'empty_index' %>
+        <% else %>
+          <%= render 'schedules' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -72,6 +72,20 @@ es:
     payments:
       title: 'Listado de cuotas'
 
+  schedules:
+    edit:
+      title: 'Editar evento'
+    index:
+      new: 'Nuevo evento'
+      title: 'Listado de eventos'
+    new:
+      title: 'Crear evento'
+    show:
+      title: 'Ver evento'
+    empty_index:
+      new: 'Nuevo evento'
+      empty_html: 'No hay eventos programados'
+
   sessions:
     new:
       title: 'Ingreso'

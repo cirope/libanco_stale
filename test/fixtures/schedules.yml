@@ -1,0 +1,7 @@
+first_schedule:
+  description: Visit on Monday and offer a loan
+  scheduled_at: <%= 1.day.from_now %>
+  done: false
+  user: franco
+  schedulable: first_loan
+  account: cirope

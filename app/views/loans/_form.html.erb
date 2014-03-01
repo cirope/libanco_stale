@@ -8,8 +8,8 @@
           <%= Loan.model_name.human count: 1 %>
         </div>
         <div class="panel-body">
-          <%= f.input :amount, as: :string %>
-          <%= f.input :payments_count, collection: PAYMENTS_COUNT.keys,
+          <%= f.input :amount, as: :string, input_html: { autofocus: true } %>
+          <%= f.input :payments_count, collection: PAYMENTS_DATA.keys,
             prompt: true %>
           <%= f.input :customer, as: :autocomplete, label: customer_label,
             url: customers_path, input_html: {

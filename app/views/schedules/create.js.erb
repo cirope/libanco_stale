@@ -1,0 +1,6 @@
+<% if @schedule.persisted? %>
+<% else %>
+  $('#new_schedule').replaceWith('<%= j render 'form' %>');
+
+  <%= render 'calendar_setup' %>
+<% end %>

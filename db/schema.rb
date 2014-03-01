@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140225125359) do
+ActiveRecord::Schema.define(version: 20140226124229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,24 @@ ActiveRecord::Schema.define(version: 20140225125359) do
   end
 
   add_index "phones", ["customer_id"], name: "index_phones_on_customer_id", using: :btree
+
+  create_table "schedules", force: true do |t|
+    t.text     "description",                      null: false
+    t.datetime "scheduled_at",                     null: false
+    t.boolean  "done",             default: false, null: false
+    t.integer  "user_id",                          null: false
+    t.integer  "schedulable_id"
+    t.string   "schedulable_type"
+    t.integer  "account_id",                       null: false
+    t.integer  "lock_version",     default: 0,     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "schedules", ["account_id"], name: "index_schedules_on_account_id", using: :btree
+  add_index "schedules", ["schedulable_id", "schedulable_type"], name: "index_schedules_on_schedulable_id_and_schedulable_type", using: :btree
+  add_index "schedules", ["scheduled_at"], name: "index_schedules_on_scheduled_at", using: :btree
+  add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
 
   create_table "states", force: true do |t|
     t.string   "name",                     null: false

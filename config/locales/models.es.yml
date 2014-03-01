@@ -23,6 +23,9 @@ es:
       phone:
         one: 'Teléfono'
         other: 'Teléfonos'
+      schedule:
+        one: 'Agenda'
+        other: 'Agenda'
       state:
         one: 'Provincia'
         other: 'Provincias'
@@ -60,6 +63,9 @@ es:
         paid_at: 'Fecha de pago'
       phone:
         phone: 'Teléfono'
+      schedule:
+        description: 'Descripción'
+        scheduled_at: 'Fecha del evento'
       state:
         name: 'Nombre'
       user:

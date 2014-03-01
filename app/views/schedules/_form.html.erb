@@ -1,0 +1,25 @@
+<%= simple_form_for(@schedule, data: ({ remote: true } if request.xhr?)) do |f| %>
+
+  <div class="form-inputs">
+    <div class="row">
+      <div class="col-md-4">
+        <div data-calendar="true"></div>
+        <%= f.input :scheduled_at, as: :hidden, input_html: {
+          data: { scheduled_at: true }
+        } %>
+        <br />
+      </div>
+      <div class="col-md-8">
+        <%= f.input :description, input_html: { autofocus: true, rows: 5 } %>
+      </div>
+    </div>
+    <%= f.input :lock_version, as: :hidden %>
+  </div>
+
+  <hr />
+
+  <div class="form-actions">
+    <div class="pull-right"><%= yield :form_actions %></div>
+    <%= f.button :submit, class: 'btn-primary' %>
+  </div>
+<% end %>

@@ -1,0 +1,18 @@
+<h2>
+  <strong><%= t('.empty_html') %></strong>
+</h2>
+
+<p class="lead">
+  Para crear uno podés hacer clic sobre el enlace
+  <span class="text-primary icon glyphicon glyphicon-time"></span>
+  en los listados de clientes
+</p>
+
+<hr />
+
+<p>
+  También podés crear un evento sin asociarlo a un préstamo desde
+  <%= link_to_new new_schedule_path,
+    class: 'btn btn-primary', data: { remote: true }
+  %>
+</p>

@@ -15,4 +15,5 @@ class User < ActiveRecord::Base
   downcase_fields :email
 
   has_many :loans
+  has_many :schedules, dependent: :destroy
 end
