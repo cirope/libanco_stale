@@ -1,7 +1,11 @@
 $('[data-calendar]').datetimepicker({
+  controlType: 'select',
   altField: '#schedule_scheduled_at',
   showButtonPanel: false,
   altFieldTimeOnly: false,
-  defaultDate: '<%= l (@schedule.scheduled_at.try(:to_date) || @current_date) %>',
-  minDateTime: new Date()
+  showTime: false,
+  defaultDate: '<%= l @schedule.scheduled_at.to_date %>',
+  hour: <%= @schedule.scheduled_at.hour %>,
+  minute: <%= @schedule.scheduled_at.min %>,
+  minDateTime: new Date('<%= l Schedule.min_datetime, format: :datetime %>')
 });

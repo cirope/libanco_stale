@@ -7,6 +7,12 @@ class Schedule < ActiveRecord::Base
 
   strip_fields :description
 
+  after_initialize :set_default_datetime
+
   belongs_to :user
   belongs_to :schedulable, polymorphic: true
+
+  def set_default_datetime
+    self.scheduled_at ||= Schedule.min_datetime
+  end
 end
