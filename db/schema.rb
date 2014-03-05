@@ -86,8 +86,9 @@ ActiveRecord::Schema.define(version: 20140226124229) do
   add_index "payments", ["number"], name: "index_payments_on_number", using: :btree
 
   create_table "phones", force: true do |t|
-    t.string   "phone",       null: false
-    t.integer  "customer_id", null: false
+    t.string   "phone",                    null: false
+    t.integer  "customer_id",              null: false
+    t.integer  "lock_version", default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
