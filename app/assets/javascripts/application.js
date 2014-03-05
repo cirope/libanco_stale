@@ -25,11 +25,9 @@
 //= require effect_helper
 //= require dynamic_form
 //= require autocomplete
-//= require date_pickers
 //= require common
 //= require profiles
 //= require accounts
 //= require cities
 //= require states
 //= require users
-//= require schedules
