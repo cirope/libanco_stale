@@ -1,0 +1,10 @@
+<div>
+  <span class="text-muted">
+    <%= l schedule.scheduled_at, format: :time %> |
+  </span>
+  <%= schedule.description %>
+  <span class="text-muted">|</span>
+  <%= link_to_edit(
+    edit_polymorphic_path([schedule.schedulable, schedule]), remote: true
+  ) %>
+</div>

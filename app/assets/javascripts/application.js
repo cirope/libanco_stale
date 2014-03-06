@@ -25,6 +25,8 @@
 //= require effect_helper
 //= require dynamic_form
 //= require autocomplete
+//= require calendar-setup
+//= require calendar-time-setup
 //= require common
 //= require profiles
 //= require accounts

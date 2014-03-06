@@ -1,20 +1,21 @@
 <div class="row">
   <div class="col-lg-3">
-    <div data-calendar="true"></div>
+    <%= content_tag :div, nil, data: {
+      calendar: render(partial: 'calendar_data', formats: [:json])
+    } %>
     <br />
   </div>
   <div class="col-lg-9">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <%= l Date.today, format: :minimal %>
-      </div>
-      <div class="panel-body">
-        <% if @schedules.empty? %>
-          <%= render 'empty_index' %>
-        <% else %>
-          <%= render 'schedules' %>
-        <% end %>
-      </div>
-    </div>
+    <h4>
+      <%= l @current_date, format: :minimal %>
+    </h4>
+
+    <hr />
+
+    <% if @schedules.empty? %>
+      <%= render 'empty_index' %>
+    <% else %>
+      <%= render @schedules, as: :schedule %>
+    <% end %>
   </div>
 </div>
