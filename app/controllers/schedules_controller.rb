@@ -9,8 +9,12 @@ class SchedulesController < ApplicationController
 
   # GET /schedules
   def index
-    @schedules = Schedule.find_by_day(@current_date)
-    respond_with @schedules
+    if params[:date].present?
+      @schedules = Schedule.find_by_day(@current_date)
+      respond_with @schedules
+    else
+      redirect_to schedules_url(date: l(Date.today, format: :calendar))
+    end
   end
 
   # GET /schedules/1
@@ -33,14 +37,20 @@ class SchedulesController < ApplicationController
   def create
     @schedule = current_user.schedules.new schedule_params
 
-    @schedule.save
-    respond_with_new_form
+    if @schedule.save
+      redirect_via_turbolinks_to :back
+    else
+      respond_with_new_form
+    end
   end
 
   # PATCH/PUT /schedules/1
   def update
-    update_resource @schedule, schedule_params
-    respond_with_edit_form
+    if update_resource(@schedule, schedule_params)
+      redirect_via_turbolinks_to :back
+    else
+      respond_with_edit_form
+    end
   end
 
   # DELETE /schedules/1
@@ -70,20 +80,13 @@ class SchedulesController < ApplicationController
 
     def respond_with_new_form
       respond_to do |format|
-        if @schedule.new_record?
-          format.html
-          format.js { render 'new_form' }
-        else
-          redirect_to :back
-        end
+        format.js { render 'new_form' }
       end
     end
 
     def respond_with_edit_form
       respond_to do |format|
-        if @schedule.new_record?
-          format.js { render 'edit_form' }
-        end
+        format.js { render 'edit_form' }
       end
     end
 end

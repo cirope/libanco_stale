@@ -1,5 +1,5 @@
 if ($('#modal').length) {
-  $('#modal form.new_schedule').remove();
+  $('#modal form.edit_schedule').remove();
   $('#modal form').hide();
   $('#modal .modal-title').text('<%= j @title %>');
   $('#modal .modal-body').append('<%= j render('form') %>');
@@ -11,4 +11,4 @@ $('#modal').on('shown.bs.modal', function(e) {
   $(this).find('[autofocus]').focus();
 }).modal('show');
 
-<%= render 'calendar_time_setup' %>
+$('[data-calendar-time]').trigger('calendar-time-setup');
