@@ -62,7 +62,7 @@ class SchedulesController < ApplicationController
   private
 
     def set_schedule
-      @schedule = Schedule.find(params[:id])
+      @schedule = current_user.schedules.find(params[:id])
     end
 
     def set_current_date
