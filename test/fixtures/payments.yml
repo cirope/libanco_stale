@@ -1,5 +1,5 @@
 first_payment:
   number: 1
-  expired_at: 2014-02-25
-  paid_at: 2014-02-25 09:53:59
+  expired_at: <%= 1.month.from_now.to_s(:db) %>
+  paid_at: <%= 1.month.from_now.to_s(:db) %>
   loan: first_loan

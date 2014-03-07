@@ -1,0 +1,11 @@
+<% if @payment.errors.any? %>
+  $('form.edit_payment').replaceWith('<%= j render 'form' %>');
+  $('#modal').find('[autofocus]').focus();
+<% else %>
+  $('[data-payment-id=\"<%= @payment.id %>\"]').replaceWith(
+    '<%= j render @payment %>'
+  );
+
+  $('#modal').modal('hide');
+  $('#modal').remove();
+<% end %>

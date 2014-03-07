@@ -30,11 +30,6 @@ class LoansController < ApplicationController
     respond_with @loan
   end
 
-  # GET /loans/1/payments
-  def payments
-    @loan = Loan.find(params[:loan_id])
-  end
-
   private
 
     def set_loan

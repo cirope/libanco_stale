@@ -17,6 +17,7 @@ es:
     logout: 'Salir'
     show: 'Ver'
     payments: 'Ver cuotas'
+    processing: 'Procesando...'
 
   accounts:
     edit:
@@ -69,7 +70,11 @@ es:
       customer: 'Agregar nuevo cliente'
     show:
       title: 'Ver préstamo'
-    payments:
+
+  payments:
+    edit:
+      title: 'Editar cuota'
+    index:
       title: 'Listado de cuotas'
 
   schedules:

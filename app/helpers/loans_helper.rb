@@ -4,7 +4,7 @@ module LoansHelper
   end
 
   def link_to_show_payments(*args)
-    link_with_icon({ action: 'payments', icon: 'glyphicon-th' }, *args)
+    link_with_icon({ action: 'payments', icon: 'glyphicon glyphicon-calendar' }, *args)
   end
 
   private

@@ -27,6 +27,7 @@
 //= require autocomplete
 //= require calendar-setup
 //= require calendar-time-setup
+//= require date_picker
 //= require common
 //= require profiles
 //= require accounts

@@ -25,31 +25,33 @@ class SchedulesController < ApplicationController
   # GET /schedules/new
   def new
     @schedule = Schedule.new
-    respond_with_new_form
   end
 
   # GET /schedules/1/edit
   def edit
-    respond_with_edit_form
   end
 
   # POST /schedules
   def create
     @schedule = current_user.schedules.new schedule_params
 
-    if @schedule.save
-      redirect_via_turbolinks_to :back
-    else
-      respond_with_new_form
+    respond_to do |format|
+      if @schedule.save
+        format.js { redirect_via_turbolinks_to :back }
+      else
+        format.js { render 'new' }
+      end
     end
   end
 
   # PATCH/PUT /schedules/1
   def update
-    if update_resource(@schedule, schedule_params)
-      redirect_via_turbolinks_to :back
-    else
-      respond_with_edit_form
+    respond_to do |format|
+      if update_resource(@schedule, schedule_params)
+        format.js { redirect_via_turbolinks_to :back }
+      else
+        format.js { render 'edit' }
+      end
     end
   end
 
@@ -62,7 +64,7 @@ class SchedulesController < ApplicationController
   private
 
     def set_schedule
-      @schedule = current_user.schedules.find(params[:id])
+      @schedule = Schedule.find(params[:id])
     end
 
     def set_current_date
@@ -76,17 +78,5 @@ class SchedulesController < ApplicationController
 
     def schedule_params
       params.require(:schedule).permit :description, :scheduled_at, :lock_version
-    end
-
-    def respond_with_new_form
-      respond_to do |format|
-        format.js { render 'new_form' }
-      end
-    end
-
-    def respond_with_edit_form
-      respond_to do |format|
-        format.js { render 'edit_form' }
-      end
     end
 end

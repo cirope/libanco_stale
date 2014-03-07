@@ -5,7 +5,7 @@ Finance::Application.routes.draw do
   resources :schedules, only: [:show, :create, :edit, :update, :destroy]
 
   resources :loans, only: [:index, :show, :new, :create, :payments] do
-    get 'payments', to: 'loans#payments', as: 'payments'
+    resources :payments, only: [:index, :edit, :update]
   end
 
   resources :customers

@@ -5,9 +5,7 @@
         <%= content_tag :div, nil, data: {
           calendar_time: render(partial: 'calendar_time_data', formats: [:json])
         } %>
-        <%= f.input :scheduled_at, as: :hidden, input_html: {
-          data: { scheduled_at: true }
-        } %>
+        <%= f.input :scheduled_at, as: :hidden %>
         <br />
       </div>
       <div class="col-md-8">
@@ -21,6 +19,7 @@
 
   <div class="form-actions">
     <div class="pull-right"><%= yield :form_actions %></div>
-    <%= f.button :submit, class: 'btn-primary' %>
+    <%= f.button :submit, class: 'btn-primary',
+      data: { disable_with: t('navigation.processing') } %>
   </div>
 <% end %>
