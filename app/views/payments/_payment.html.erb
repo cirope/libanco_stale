@@ -1,6 +1,10 @@
 <tr data-payment-id="<%= payment.id %>">
   <td><span class="badge"><%= payment.number %></span></td>
-  <td><%= l payment.expired_at %></td>
+  <td>
+    <span <%== 'class="text-danger"' if payment.expired? %>>
+      <%= l payment.expired_at %>
+    </span>
+  </td>
   <td><%= l payment.paid_at.to_date if payment.paid_at %></td>
   <td><%= link_to_paid edit_loan_payment_path(@loan, payment), data: { remote: true } %></td>
 </tr>
