@@ -32,6 +32,7 @@ module Loans::Payments
     end
 
     def assign_loan_attributes
+      self.expired_at = payments.last.expired_at
       self.payment = payment_amount
     end
 

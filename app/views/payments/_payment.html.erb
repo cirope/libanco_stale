@@ -1,7 +1,12 @@
+<% expired = payment.expired? %>
 <tr data-payment-id="<%= payment.id %>">
-  <td><span class="badge"><%= payment.number %></span></td>
   <td>
-    <span <%== 'class="text-danger"' if payment.expired? %>>
+    <span class="label <%= expired ? 'label-danger' : 'label-default' %>">
+      <%= payment.number %>
+    </span>
+  </td>
+  <td>
+    <span <%== 'class="text-danger"' if expired %>>
       <%= l payment.expired_at %>
     </span>
   </td>

@@ -1,5 +1,5 @@
 <p>
-  <strong><%= Loan.human_attribute_name 'customer' %>:</strong>
+  <strong><%= Loan.human_attribute_name 'customer' %></strong>:
   <%= @loan.customer %>
 </p>
 <p>
@@ -11,6 +11,10 @@
   <%= number_to_currency @loan.payment %>
 </p>
 <%= render 'payments/total_debt' %>
+<p>
+  <strong><%= Loan.human_attribute_name 'expired_at' %></strong>:
+  <%= l @loan.expired_at %>
+</p>
 <p>
   <strong><%= Loan.human_attribute_name 'user' %></strong>:
   <%= @loan.user %>

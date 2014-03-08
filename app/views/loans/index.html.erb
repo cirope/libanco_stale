@@ -8,6 +8,7 @@
         <th><%= Loan.human_attribute_name 'amount' %></th>
         <th><%= Loan.human_attribute_name 'payments_count' %></th>
         <th><%= Loan.human_attribute_name 'payment' %></th>
+        <th><%= Loan.human_attribute_name 'expired_at' %></th>
         <th><%= Loan.human_attribute_name 'user' %></th>
         <th colspan="4"></th>
       </tr>
@@ -20,6 +21,7 @@
           <td><%= number_to_currency loan.amount %></td>
           <td><%= loan.payments_count %></td>
           <td><%= number_to_currency loan.payment %></td>
+          <td><%= l loan.expired_at %></td>
           <td><%= loan.user %></td>
           <td><%= link_to_loan_info loan_payments_path(loan) %></td>
           <td><%= link_to_show loan %></td>

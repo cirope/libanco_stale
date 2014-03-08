@@ -12,6 +12,10 @@
 </p>
 <%= render 'total_debt' %>
 <p>
+  <strong><%= Loan.human_attribute_name 'expired_at' %></strong>:
+  <%= l @loan.expired_at %>
+</p>
+<p>
   <strong><%= Loan.human_attribute_name 'user' %></strong>:
   <%= @loan.user %>
 </p>

@@ -50,6 +50,7 @@ es:
       loan:
         amount: 'Monto'
         debt: 'Deuda'
+        expired_at: 'Vencimiento'
         payment: 'Cuota'
         payments_count: 'Cuotas'
         customer: 'Cliente'
