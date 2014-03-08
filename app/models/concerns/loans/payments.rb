@@ -4,36 +4,40 @@ module Loans::Payments
   included do
     has_many :payments, dependent: :destroy
 
-    after_create :create_payments, :update_values
+    before_create :create_payments, :assign_loan_attributes
+  end
+
+  def total_debt
+    unpaid_payments_count * payment
+  end
+
+  def expired_payments_count
+    payments.where('paid_at IS NULL AND expired_at < ?', Date.today).count
+  end
+
+  def unpaid_payments_count
+    payments.where(paid_at: nil).count
   end
 
   private
 
     def create_payments
-      start_date = Date.today
+      expired_at = Date.today
 
       (1..payments_count).each do |number|
-        payments.create!(
-          number: number,
-          expired_at: payment_expired_at(start_date, number)
-        )
+        expired_at = expired_at.next_month
+
+        payments.build(number: number, expired_at: expired_at)
       end
     end
 
-    def update_values
-      update(
-        payment: calculate_payment_amount,
-        expired_at: payment_expired_at(Date.today, payments_count)
-      )
+    def assign_loan_attributes
+      self.payment = payment_amount
     end
 
-    def calculate_payment_amount
+    def payment_amount
       interest_rate = PAYMENTS_DATA[payments_count]
 
       (amount * interest_rate) / payments_count
-    end
-
-    def payment_expired_at(start_date, number)
-      start_date + number.months
     end
 end

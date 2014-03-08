@@ -3,8 +3,8 @@ module LoansHelper
     raw customer_text_label << ' ' << add_customer_link
   end
 
-  def link_to_show_payments(*args)
-    link_with_icon({ action: 'payments', icon: 'glyphicon glyphicon-calendar' }, *args)
+  def link_to_loan_info(*args)
+    link_with_icon({ action: 'payments', icon: 'glyphicon glyphicon-info-sign' }, *args)
   end
 
   private

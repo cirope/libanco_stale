@@ -49,12 +49,9 @@ es:
         city: 'Ciudad'
       loan:
         amount: 'Monto'
-        payment: 'Cuota'
         debt: 'Deuda'
+        payment: 'Cuota'
         payments_count: 'Cuotas'
-        expired_payments_count: 'Cuotas vencidas'
-        payments_to_expire_count: 'Cuotas a vencer'
-        expired_at: 'Vencimiento'
         customer: 'Cliente'
         user: 'Asesor'
       payment:

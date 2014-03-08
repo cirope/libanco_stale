@@ -1,10 +1,6 @@
-<div class="page-header">
-  <h2><%= @loan.customer %></h2>
-</div>
-
 <p>
-  <strong><%= Loan.human_attribute_name 'amount' %></strong>:
-  <%= number_to_currency @loan.amount %>
+  <strong><%= Loan.human_attribute_name 'customer' %>:</strong>
+  <%= @loan.customer %>
 </p>
 <p>
   <strong><%= Loan.human_attribute_name 'payments_count' %></strong>:
@@ -14,10 +10,7 @@
   <strong><%= Loan.human_attribute_name 'payment' %></strong>:
   <%= number_to_currency @loan.payment %>
 </p>
-<p>
-  <strong><%= Loan.human_attribute_name 'expired_at' %></strong>:
-  <%= l @loan.expired_at %>
-</p>
+<%= render 'payments/total_debt' %>
 <p>
   <strong><%= Loan.human_attribute_name 'user' %></strong>:
   <%= @loan.user %>

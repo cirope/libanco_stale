@@ -4,6 +4,7 @@ class Loan < ActiveRecord::Base
   include Attributes::Round
   include Loans::Validation
   include Loans::Payments
+  include Loans::Filters
 
   round_fields :amount
 

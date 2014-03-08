@@ -1,0 +1,11 @@
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <%= t 'menu.loans.title' %> <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+    <%= menu_item_for Loan, loans_path %>
+    <li><%= link_to t('menu.loans.expired'), loans_path(filter: 'expired') %></li>
+    <li><%= link_to t('menu.loans.close_to_expire'), loans_path(filter: 'close_to_expire') %></li>
+    <li><%= link_to t('menu.loans.not_renewed'), loans_path(filter: 'not_renewed') %></li>
+  </ul>
+</li>

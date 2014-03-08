@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 20140226124229) do
     t.decimal  "amount",         precision: 15, scale: 2,             null: false
     t.decimal  "payment",        precision: 15, scale: 2
     t.integer  "payments_count",                                      null: false
-    t.date     "expired_at"
     t.integer  "customer_id",                                         null: false
     t.integer  "user_id",                                             null: false
     t.integer  "account_id",                                          null: false
@@ -84,11 +83,11 @@ ActiveRecord::Schema.define(version: 20140226124229) do
   add_index "payments", ["expired_at"], name: "index_payments_on_expired_at", using: :btree
   add_index "payments", ["loan_id"], name: "index_payments_on_loan_id", using: :btree
   add_index "payments", ["number"], name: "index_payments_on_number", using: :btree
+  add_index "payments", ["paid_at"], name: "index_payments_on_paid_at", using: :btree
 
   create_table "phones", force: true do |t|
-    t.string   "phone",                    null: false
-    t.integer  "customer_id",              null: false
-    t.integer  "lock_version", default: 0, null: false
+    t.string   "phone",       null: false
+    t.integer  "customer_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

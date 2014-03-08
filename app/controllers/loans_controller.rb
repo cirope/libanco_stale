@@ -1,4 +1,6 @@
 class LoansController < ApplicationController
+  include Loans::ActionFilters
+
   respond_to :html, :json
 
   before_action :authorize
@@ -7,19 +9,15 @@ class LoansController < ApplicationController
 
   # GET /loans
   def index
-    @loans = Loan.all
-    respond_with @loans
   end
 
   # GET /loans/1
   def show
-    respond_with @loan
   end
 
   # GET /loans/new
   def new
     @loan = Loan.new
-    respond_with @loan
   end
 
   # POST /loans

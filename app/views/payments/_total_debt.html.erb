@@ -1,0 +1,4 @@
+<p data-total-debt="true">
+  <strong><%= Loan.human_attribute_name 'debt' %></strong>:
+  <%= number_to_currency @loan.total_debt %>
+</p>

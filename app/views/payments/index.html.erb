@@ -3,13 +3,20 @@
   <%= @loan.customer %>
 </p>
 <p>
-  <strong><%= Loan.human_attribute_name 'payment' %>:</strong>
+  <strong><%= Loan.human_attribute_name 'payments_count' %></strong>:
+  <%= @loan.payments_count %>
+</p>
+<p>
+  <strong><%= Loan.human_attribute_name 'payment' %></strong>:
   <%= number_to_currency @loan.payment %>
 </p>
+<%= render 'total_debt' %>
 <p>
   <strong><%= Loan.human_attribute_name 'user' %></strong>:
   <%= @loan.user %>
 </p>
+
+<hr />
 
 <table class="table table-hover table-condensed">
   <thead>
