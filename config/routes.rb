@@ -13,6 +13,7 @@ Finance::Application.routes.draw do
 
     resources :loans, only: [:show, :new, :create, :payments] do
       resources :payments, only: [:index, :edit, :update]
+      resources :schedules, only: [:new, :create, :edit, :update]
     end
 
     resources :customers

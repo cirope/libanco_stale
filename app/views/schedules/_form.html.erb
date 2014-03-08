@@ -1,4 +1,4 @@
-<%= simple_form_for(@schedule, data: ({ remote: true } if request.xhr?)) do |f| %>
+<%= simple_form_for([@schedulable, @schedule], data: ({ remote: true } if request.xhr?)) do |f| %>
   <div class="form-inputs">
     <div class="row">
       <div class="col-md-4">

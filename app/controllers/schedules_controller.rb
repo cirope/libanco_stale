@@ -2,6 +2,7 @@ class SchedulesController < ApplicationController
   respond_to :html, :json, :js
 
   before_action :authorize
+  before_action :set_schedulable, only: [:new, :create, :edit, :update]
   before_action :set_current_date, only: [:index, :new, :create]
   before_action :set_scheduled_month, only: [:index]
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
@@ -34,6 +35,7 @@ class SchedulesController < ApplicationController
   # POST /schedules
   def create
     @schedule = current_user.schedules.new schedule_params
+    @schedule.schedulable = @schedulable
 
     respond_to do |format|
       if @schedule.save
@@ -74,6 +76,10 @@ class SchedulesController < ApplicationController
 
     def set_scheduled_month
       @scheduled_month = Schedule.find_by_month(@current_date)
+    end
+
+    def set_schedulable
+      @schedulable = Loan.find(params[:loan_id]) if params[:loan_id].present?
     end
 
     def schedule_params

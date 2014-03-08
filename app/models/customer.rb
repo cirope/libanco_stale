@@ -16,4 +16,5 @@ class Customer < ActiveRecord::Base
   def to_s
     [lastname, name].join(', ')
   end
+  alias_method :label, :to_s
 end

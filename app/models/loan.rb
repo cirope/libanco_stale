@@ -5,9 +5,11 @@ class Loan < ActiveRecord::Base
   include Loans::Validation
   include Loans::Payments
   include Loans::Filters
+  include Loans::Customer
 
   round_fields :amount
 
   belongs_to :customer
   belongs_to :user
+  has_many :schedules, as: :schedulable, dependent: :destroy
 end

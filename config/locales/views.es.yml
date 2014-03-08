@@ -4,7 +4,7 @@ es:
   menu:
     admin: 'Administración'
     loans:
-      title: 'Préstamos'
+      title: 'Todos'
       expired: 'Atrasados'
       close_to_expire: 'A vencer'
       not_renewed: 'No renovados'

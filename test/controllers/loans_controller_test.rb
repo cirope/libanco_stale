@@ -14,6 +14,11 @@ class LoansControllerTest < ActionController::TestCase
     assert_not_nil assigns(:loans)
   end
 
+  test 'should get index with filter' do
+    assert_generates loans_path(filter: 'expired'),
+      { controller: 'loans', action: 'index', filter: 'expired' }
+  end
+
   test 'should get new' do
     get :new
     assert_response :success
