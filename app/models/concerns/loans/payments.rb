@@ -11,10 +11,6 @@ module Loans::Payments
     unpaid_payments_count * payment
   end
 
-  def expired_payments_count
-    payments.where('paid_at IS NULL AND expired_at < ?', Date.today).count
-  end
-
   def unpaid_payments_count
     payments.where(paid_at: nil).count
   end
