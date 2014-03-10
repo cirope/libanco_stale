@@ -9,12 +9,6 @@ class PaymentsControllerTest < ActionController::TestCase
     login
   end
 
-  test 'should get index' do
-    get :index, loan_id: @loan.id
-    assert_response :success
-    assert_not_nil assigns(:payments)
-  end
-
   test 'should get edit' do
     xhr :get, :edit, id: @payment, loan_id: @loan.id
     assert_response :success

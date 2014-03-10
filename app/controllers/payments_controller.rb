@@ -6,11 +6,6 @@ class PaymentsController < ApplicationController
   before_action :set_payment, only: [:edit, :update]
   before_action :set_title
 
-  # GET /payments
-  def index
-    @payments = @loan.payments
-  end
-
   # GET /payments/1/edit
   def edit
   end

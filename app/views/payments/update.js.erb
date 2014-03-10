@@ -9,7 +9,7 @@
     '<%= j render @payment %>'
   );
 
-  total_debt = $('[data-total-debt]');
-  total_debt.replaceWith('<%= j render 'total_debt' %>');
+  total_debt = $('[data-loan-updateable-info]');
+  total_debt.replaceWith('<%= j render(partial: 'loans/updateable_info') %>');
   total_debt.effect('highlight', 'slow');
 <% end %>

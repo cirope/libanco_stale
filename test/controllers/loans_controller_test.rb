@@ -37,7 +37,7 @@ class LoansControllerTest < ActionController::TestCase
   end
 
   test 'should show loan' do
-    get :show, id: @loan
+    xhr :get, :show, id: @loan
     assert_response :success
   end
 end

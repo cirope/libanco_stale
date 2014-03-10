@@ -4,31 +4,28 @@
   </div>
   <div class="col-md-9">
     <% if @loans.empty? %>
-      <%= render 'shared/empty_index', message: t('.empty_html') %>
+      <%= render 'shared/empty_index',
+        message: t("loans.empty.#{(params[:filter] || action_name)}_html") %>
     <% else %>
       <table class="table table-striped table-hover table-condensed">
         <thead>
           <tr>
             <th><%= Loan.human_attribute_name 'customer' %></th>
             <th><%= Loan.human_attribute_name 'amount' %></th>
-            <th><%= Loan.human_attribute_name 'payments_count' %></th>
-            <th><%= Loan.human_attribute_name 'payment' %></th>
-            <th><%= Loan.human_attribute_name 'expired_at' %></th>
-            <th><%= Loan.human_attribute_name 'user' %></th>
+            <th class="visible-lg"><%= Loan.human_attribute_name 'payments_count' %></th>
+            <th class="visible-lg"><%= Loan.human_attribute_name 'expired_at' %></th>
             <th colspan="4"></th>
           </tr>
         </thead>
 
         <tbody>
           <% @loans.each do |loan| %>
-            <tr>
+            <tr data-object-info="<%= loan.id %>">
               <td><%= loan.customer %></td>
               <td><%= number_to_currency loan.amount %></td>
-              <td><%= loan.payments_count %></td>
-              <td><%= number_to_currency loan.payment %></td>
-              <td><%= l loan.expired_at %></td>
-              <td><%= loan.user %></td>
-              <td><%= link_to_loan_info loan_payments_path(loan) %></td>
+              <td class="visible-lg"><%= loan.payments_count %></td>
+              <td class="visible-lg"><%= l loan.expired_at %></td>
+              <td><%= link_to_loan_info loan_path(loan), data: { remote: true } %></td>
               <td><%= link_to_new_loan_schedule loan %></td>
             </tr>
           <% end %>

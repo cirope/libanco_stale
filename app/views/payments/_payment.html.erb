@@ -7,6 +7,11 @@
   </td>
   <td>
     <span <%== 'class="text-danger"' if expired %>>
+      <%= number_to_currency payment.payment %>
+    </span>
+  </td>
+  <td>
+    <span <%== 'class="text-danger"' if expired %>>
       <%= l payment.expired_at %>
     </span>
   </td>

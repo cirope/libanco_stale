@@ -56,14 +56,14 @@ ActiveRecord::Schema.define(version: 20140226124229) do
   add_index "customers", ["name"], name: "index_customers_on_name", using: :btree
 
   create_table "loans", force: true do |t|
-    t.decimal  "amount",         precision: 15, scale: 2,             null: false
-    t.decimal  "payment",        precision: 15, scale: 2
-    t.integer  "payments_count",                                      null: false
-    t.date     "expired_at",                                          null: false
-    t.integer  "customer_id",                                         null: false
-    t.integer  "user_id",                                             null: false
-    t.integer  "account_id",                                          null: false
-    t.integer  "lock_version",                            default: 0, null: false
+    t.decimal  "amount",                 precision: 15, scale: 2,             null: false
+    t.integer  "payments_count",                                              null: false
+    t.date     "next_payment_expire_at",                                      null: false
+    t.date     "expired_at",                                                  null: false
+    t.integer  "customer_id",                                                 null: false
+    t.integer  "user_id",                                                     null: false
+    t.integer  "account_id",                                                  null: false
+    t.integer  "lock_version",                                    default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -71,13 +71,15 @@ ActiveRecord::Schema.define(version: 20140226124229) do
   add_index "loans", ["account_id"], name: "index_loans_on_account_id", using: :btree
   add_index "loans", ["customer_id"], name: "index_loans_on_customer_id", using: :btree
   add_index "loans", ["expired_at"], name: "index_loans_on_expired_at", using: :btree
+  add_index "loans", ["next_payment_expire_at"], name: "index_loans_on_next_payment_expire_at", using: :btree
   add_index "loans", ["user_id"], name: "index_loans_on_user_id", using: :btree
 
   create_table "payments", force: true do |t|
-    t.integer  "number",     null: false
-    t.date     "expired_at", null: false
+    t.integer  "number",                              null: false
+    t.decimal  "payment",    precision: 15, scale: 2, null: false
+    t.date     "expired_at",                          null: false
     t.datetime "paid_at"
-    t.integer  "loan_id",    null: false
+    t.integer  "loan_id",                             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4.0.3'
 
 gem 'pg'
+gem 'sass', '~> 3.2.0'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'

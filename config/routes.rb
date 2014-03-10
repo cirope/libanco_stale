@@ -11,8 +11,8 @@ Finance::Application.routes.draw do
     get '/loans(/:filter)', to: 'loans#index', as: 'loans',
       constraints: { filter: 'expired|close_to_expire|not_renewed' }
 
-    resources :loans, only: [:show, :new, :create, :payments] do
-      resources :payments, only: [:index, :edit, :update]
+    resources :loans, only: [:show, :new, :create] do
+      resources :payments, only: [:edit, :update]
       resources :schedules, only: [:new, :create, :edit, :update]
     end
 

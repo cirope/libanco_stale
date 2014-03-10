@@ -22,6 +22,21 @@ module LoansHelper
     )
   end
 
+  def loan_progress_info(loan)
+    progress = loan.progress
+
+    progress_class = case progress
+      when 0..50   then 'progress-bar-success'
+      when 51..74  then 'progress-bar-info'
+      when 75..89  then 'progress-bar-warning'
+      when 90..100 then 'progress-bar-danger'
+    end
+
+    content_tag(:div, class: 'progress') do
+      content_tag(:div, "#{progress}%", class: "progress-bar #{progress_class}", style: "width: #{progress}%;")
+    end
+  end
+
   private
 
     def customer_text_label

@@ -9,11 +9,11 @@ module Loans::Filters
     end
 
     def close_to_expire
-      all
+      joins(:payments).where.not("#{Payment.table_name}.paid_at IS NULL").uniq
     end
 
     def not_renewed
-      all
+      joins(:payments).where.not("#{Payment.table_name}.paid_at IS NULL").uniq
     end
   end
 end

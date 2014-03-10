@@ -51,12 +51,14 @@ es:
         amount: 'Monto'
         debt: 'Deuda'
         expired_at: 'Vencimiento'
-        payment: 'Cuota'
+        next_payment_expire_at: 'Próximo vencimiento'
         payments_count: 'Cuotas'
+        progress: 'Avance'
         customer: 'Cliente'
         user: 'Asesor'
       payment:
         number: 'Número'
+        payment: 'Cuota'
         expired_at: 'Vencimiento'
         paid_at: 'Fecha de pago'
       phone:

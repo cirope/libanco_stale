@@ -69,7 +69,11 @@ es:
     index:
       new: 'Nuevo préstamo'
       title: 'Listado de préstamos'
-      empty_html: 'No hay préstamos, puede crear uno con el botón <span class="label label-info">Nuevo préstamo</span>'
+    empty:
+      index_html: 'No hay préstamos, puede crear uno con el botón <span class="label label-info">Nuevo préstamo</span>'
+      expired_html: 'No hay préstamos atrasados.'
+      close_to_expire_html: 'No hay préstamos a vencer.'
+      not_renewed_html: 'No hay préstamos para renovar.'
     new:
       title: 'Crear préstamo'
       customer: 'Agregar nuevo cliente'

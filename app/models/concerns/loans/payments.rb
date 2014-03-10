@@ -8,11 +8,15 @@ module Loans::Payments
   end
 
   def total_debt
-    unpaid_payments_count * payment
+    payments.where(paid_at: nil).sum('payment')
   end
 
-  def unpaid_payments_count
-    payments.where(paid_at: nil).count
+  def progress
+    ((paid_payments_count * 100) / payments_count.to_f).round
+  end
+
+  def paid_payments_count
+    payments.where.not(paid_at: nil).count
   end
 
   private
@@ -23,13 +27,17 @@ module Loans::Payments
       (1..payments_count).each do |number|
         expired_at = expired_at.next_month
 
-        payments.build(number: number, expired_at: expired_at)
+        payments.build(
+          number: number,
+          payment: payment_amount,
+          expired_at: expired_at
+        )
       end
     end
 
     def assign_loan_attributes
       self.expired_at = payments.last.expired_at
-      self.payment = payment_amount
+      self.next_payment_expire_at = payments.first.expired_at
     end
 
     def payment_amount
