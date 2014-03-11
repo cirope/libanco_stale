@@ -83,4 +83,7 @@ after_fork do |server, worker|
   # and Redis.  TokyoCabinet file handles are safe to reuse
   # between any number of forked children (assuming your kernel
   # correctly implements pread()/pwrite() system calls)
+  Sidekiq.configure_client do |config|
+    config.redis = { url: 'redis://localhost:6379/10', size: 1, namespace: 'libanco' }
+  end
 end
