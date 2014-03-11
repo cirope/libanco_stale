@@ -17,6 +17,8 @@ gem 'irreverent'
 gem 'paper_trail'
 gem 'rack-mini-profiler'
 gem 'validates_timeliness'
+gem 'sidekiq'
+gem 'whenever', require: false
 
 gem 'unicorn'
 

@@ -16,4 +16,13 @@ module SchedulesHelper
       content_tag(:span, nil, class: 'icon glyphicon glyphicon-ok')
     end
   end
+
+  def remind_me_field(form)
+    @schedule.remind_me = @schedule.remind_me_default_value
+
+    form.input(
+      :remind_me, as: :boolean, label: false, inline_label: true,
+      input_html: { disabled: !@schedule.allow_remind_me? }
+    )
+  end
 end

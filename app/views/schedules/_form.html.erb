@@ -10,6 +10,7 @@
         <%= f.input :description, input_html: { autofocus: true, rows: 5 } %>
       </div>
     </div>
+    <%= remind_me_field(f) %>
     <%= f.input :lock_version, as: :hidden %>
   </div>
 

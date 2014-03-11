@@ -42,7 +42,7 @@ module Schedules::Reminders
 
     def update_reminder
       reminders.each do |reminder|
-        reminder.update_attributes(
+        reminder.update(
           remind_at: (scheduled_at - delay), scheduled: false, notified: false
         ) if scheduled_at_changed?
       end
