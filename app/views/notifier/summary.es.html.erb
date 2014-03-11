@@ -1,0 +1,30 @@
+<h2>Hola <%= @user %>,<h2>
+<h3>Éstos son los eventos para mañana <%= l(Date.tomorrow, format: :mini_long) %>,</h3>
+
+<% @schedules.each do |schedule| %>
+  <p>
+    <strong><%= l(schedule.scheduled_at, format: :mini) %></strong> | <%= schedule.description %>
+    <% if schedule.schedulable %>
+      <br />
+      <div style="margin-left: 40px;">
+        <div>
+          <strong><%= Client.model_name.human(count: 1) %>:</strong>
+          <span><%= schedule.label %></span>
+        </div>
+        <div>
+          <strong><%= Schedule.human_attribute_name :phone %>:</strong>
+          <span><%= schedule.phones.first %></span>
+        </div>
+        <div>
+          <strong><%= Schedule.human_attribute_name :address %>:</strong>
+          <span><%= schedule.address %></span>
+        </div>
+      </div>
+    <% end %>
+  </p>
+<% end %>
+
+<hr />
+<p>
+  Podés <strong>organizar</strong> tus eventos en Libreunir desde <%= link_to 'acá', schedules_url(date: Date.tomorrow.to_s(:db)) %>
+</p>

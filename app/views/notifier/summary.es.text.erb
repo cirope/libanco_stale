@@ -1,0 +1,14 @@
+Hola <%= @user %>,
+Éstos son los eventos para mañana <%= l(Date.tomorrow, format: :mini_long) %>,
+================================================================================
+
+<% @schedules.each do |schedule| %>
+  <%= l(schedule.scheduled_at, format: :mini) %> | <%= schedule.description %>
+  <% if schedule.schedulable %>
+    <%= Client.model_name.human(count: 1) %>: <%= schedule.label %>
+    <%= Schedule.human_attribute_name :phone %>: <%= schedule.phones.first %>
+    <%= Schedule.human_attribute_name :address %>: <%= schedule.address %>
+  <% end %>
+<% end %>
+
+Podés organizar tus eventos en Libreunir desde: <%= schedules_url(date: Date.tomorrow.to_s(:db)) %>
