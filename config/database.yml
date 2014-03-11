@@ -2,21 +2,21 @@ common: &common
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: <%= ENV['TRAVIS'] ? 'postgres' : 'finance' %>
-  password: <%= ENV['TRAVIS'] ? '' : 'finance' %>
+  username: <%= ENV['TRAVIS'] ? 'postgres' : 'libanco' %>
+  password: <%= ENV['TRAVIS'] ? '' : 'libanco' %>
 
 development:
-  database: finance_development
+  database: libanco_development
   <<: *common
 
 test:
-  database: finance_test
+  database: libanco_test
   <<: *common
 
 production:
-  database: finance_production
+  database: libanco_production
   <<: *common
 
 sandbox:
-  database: finance_production
+  database: libanco_production
   <<: *common
