@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226124229) do
+ActiveRecord::Schema.define(version: 20140311033344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,19 @@ ActiveRecord::Schema.define(version: 20140226124229) do
   end
 
   add_index "phones", ["customer_id"], name: "index_phones_on_customer_id", using: :btree
+
+  create_table "reminders", force: true do |t|
+    t.datetime "remind_at",                    null: false
+    t.string   "kind",                         null: false
+    t.boolean  "notified",     default: false, null: false
+    t.boolean  "scheduled",    default: false, null: false
+    t.integer  "schedule_id",                  null: false
+    t.integer  "lock_version", default: 0,     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reminders", ["schedule_id"], name: "index_reminders_on_schedule_id", using: :btree
 
   create_table "schedules", force: true do |t|
     t.text     "description",                      null: false

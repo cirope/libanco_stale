@@ -6,6 +6,10 @@ label {
   font-size: 13px;
 }
 
+.footer {
+  margin-bottom: 20px;
+}
+
 .loading-caption {
   position: fixed;
   top: 0%;
@@ -16,4 +20,8 @@ label {
   text-align: center;
   line-height: 40px;
   z-index: 1100;
+}
+
+.panel-loan-info {
+  margin: 10px 0;
 }

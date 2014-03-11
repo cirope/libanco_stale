@@ -25,7 +25,7 @@ class SchedulesController < ApplicationController
 
   # GET /schedules/new
   def new
-    @schedule = Schedule.new
+    @schedule = Schedule.new(scheduled_at: @current_date)
   end
 
   # GET /schedules/1/edit

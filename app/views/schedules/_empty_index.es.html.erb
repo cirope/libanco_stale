@@ -12,7 +12,7 @@
 
 <p>
   También podés crear un evento sin asociarlo a un préstamo desde
-  <%= link_to_new new_schedule_path,
+  <%= link_to_new new_schedule_path(date: @current_date),
     class: 'btn btn-primary', data: { remote: true }
   %>
 </p>
