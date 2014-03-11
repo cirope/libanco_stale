@@ -35,7 +35,7 @@ class SchedulesControllerTest < ActionController::TestCase
         description: @schedule.description,
         scheduled_at: 1.day.from_now,
         lock_version: 0
-      }
+      }, format: :js
     end
 
     assert_response :success

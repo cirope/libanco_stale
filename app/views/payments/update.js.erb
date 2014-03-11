@@ -2,11 +2,14 @@
   $('form.edit_payment').replaceWith('<%= j render 'form' %>');
   $('#modal').find('[autofocus]').focus();
 <% else %>
+  $('#modal').modal('hide');
+  $('#modal').remove();
+
   $('[data-payment=\"<%= @payment.id %>\"]').replaceWith(
     '<%= j render @payment %>'
   );
 
-  total_debt = $('[data-loan-updateable-info]');
-  total_debt.replaceWith('<%= j render(partial: 'loans/updateable_info') %>');
-  total_debt.effect('highlight', 'slow');
+  selector = $('[data-loan-updateable-info]');
+  selector.replaceWith('<%= j render(partial: 'loans/updateable_info') %>');
+  selector.effect('highlight', 'slow');
 <% end %>

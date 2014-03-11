@@ -11,14 +11,6 @@ module Loans::Payments
     payments.where(paid_at: nil).sum('payment')
   end
 
-  def progress
-    ((paid_payments_count * 100) / payments_count.to_f).round
-  end
-
-  def paid_payments_count
-    payments.where.not(paid_at: nil).count
-  end
-
   private
 
     def create_payments

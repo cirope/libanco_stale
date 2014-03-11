@@ -2,9 +2,7 @@
   <div class="form-inputs">
     <div class="row">
       <div class="col-md-4">
-        <%= content_tag :div, nil, data: {
-          calendar_time: render(partial: 'calendar_time_data', formats: [:json])
-        } %>
+        <%= calendar_time_data %>
         <%= f.input :scheduled_at, as: :hidden %>
         <br />
       </div>

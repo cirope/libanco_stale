@@ -5,6 +5,12 @@ module SchedulesHelper
     }
   end
 
+  def calendar_time_data
+    content_tag :div, nil, data: {
+      calendar_time: render(partial: 'calendar_time_data', formats: [:json])
+    }
+  end
+
   def mark_schedule_as_done(schedule)
     link_to mark_as_done_schedule_path(schedule), data: { remote: true, method: :patch } do
       content_tag(:span, nil, class: 'icon glyphicon glyphicon-ok')

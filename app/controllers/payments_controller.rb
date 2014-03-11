@@ -13,6 +13,9 @@ class PaymentsController < ApplicationController
   # PATCH/PUT /payments/1
   def update
     update_resource @payment, payment_params
+
+    # TODO fix
+    @loan.reload
   end
 
   private

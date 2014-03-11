@@ -3,17 +3,25 @@ module Loans::Filters
 
   module ClassMethods
     def expired
-      joins(:payments).where(
+      current.joins(:payments).where(
         "#{Payment.table_name}.paid_at IS NULL AND #{Payment.table_name}.expired_at < ?", Date.today
       ).uniq
     end
 
     def close_to_expire
-      joins(:payments).where.not("#{Payment.table_name}.paid_at IS NULL").uniq
+      current.order('progress DESC')
     end
 
     def not_renewed
-      joins(:payments).where.not("#{Payment.table_name}.paid_at IS NULL").uniq
+      canceled.order('canceled_at DESC')
+    end
+
+    def current
+      where(status: 'current')
+    end
+
+    def canceled
+      where(status: 'canceled')
     end
   end
 end

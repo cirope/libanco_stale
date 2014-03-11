@@ -4,8 +4,10 @@ class CreateLoans < ActiveRecord::Migration
       t.string :status, null: false, default: 'current'
       t.decimal :amount, null: false, precision: 15, scale: 2
       t.integer :payments_count, null: false
+      t.integer :progress, null: false, default: 0
       t.date :next_payment_expire_at, null: false
       t.date :expired_at, null: false
+      t.date :canceled_at
       t.references :customer, null: false, index: true
       t.references :user, null: false, index: true
       t.references :account, null: false, index: true
@@ -14,7 +16,10 @@ class CreateLoans < ActiveRecord::Migration
       t.timestamps
     end
 
+    add_index :loans, :status
+    add_index :loans, :progress
     add_index :loans, :expired_at
+    add_index :loans, :canceled_at
     add_index :loans, :next_payment_expire_at
   end
 end

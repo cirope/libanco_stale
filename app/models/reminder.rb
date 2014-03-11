@@ -4,8 +4,6 @@ class Reminder < ActiveRecord::Base
   include Reminders::Delivery
   include Reminders::DestroyConstraints
 
-  KINDS = ['email']
-
   delegate :email, to: :user, prefix: true
   delegate :scheduled_at, :description, to: :schedule
 

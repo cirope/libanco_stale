@@ -59,8 +59,10 @@ ActiveRecord::Schema.define(version: 20140311033344) do
     t.string   "status",                                          default: "current", null: false
     t.decimal  "amount",                 precision: 15, scale: 2,                     null: false
     t.integer  "payments_count",                                                      null: false
+    t.integer  "progress",                                        default: 0,         null: false
     t.date     "next_payment_expire_at",                                              null: false
     t.date     "expired_at",                                                          null: false
+    t.date     "canceled_at"
     t.integer  "customer_id",                                                         null: false
     t.integer  "user_id",                                                             null: false
     t.integer  "account_id",                                                          null: false
@@ -70,9 +72,12 @@ ActiveRecord::Schema.define(version: 20140311033344) do
   end
 
   add_index "loans", ["account_id"], name: "index_loans_on_account_id", using: :btree
+  add_index "loans", ["canceled_at"], name: "index_loans_on_canceled_at", using: :btree
   add_index "loans", ["customer_id"], name: "index_loans_on_customer_id", using: :btree
   add_index "loans", ["expired_at"], name: "index_loans_on_expired_at", using: :btree
   add_index "loans", ["next_payment_expire_at"], name: "index_loans_on_next_payment_expire_at", using: :btree
+  add_index "loans", ["progress"], name: "index_loans_on_progress", using: :btree
+  add_index "loans", ["status"], name: "index_loans_on_status", using: :btree
   add_index "loans", ["user_id"], name: "index_loans_on_user_id", using: :btree
 
   create_table "payments", force: true do |t|
