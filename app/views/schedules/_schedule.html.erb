@@ -12,10 +12,14 @@
     <span class="text-muted">|</span>
     <%= schedule.description %>
   </span>
-  <span class="text-muted">|</span>
-  <%= link_to_edit(
-    edit_polymorphic_path([schedule.schedulable, schedule]), data: { remote: true }
-  ) %>
-  <span class="text-muted">|</span>
-  <%= mark_schedule_as_done(schedule) %>
+  <% if schedule.editable? %>
+    <span class="text-muted">|</span>
+    <%= link_to_edit(
+      edit_polymorphic_path([schedule.schedulable, schedule]), data: { remote: true }
+    ) %>
+  <% end %>
+  <% if schedule.doable? %>
+    <span class="text-muted">|</span>
+    <%= mark_schedule_as_done(schedule) %>
+  <% end %>
 </div>

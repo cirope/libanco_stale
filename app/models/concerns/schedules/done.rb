@@ -2,7 +2,7 @@ module Schedules::Done
   extend ActiveSupport::Concern
 
   def mark_as_done!
-    update_attribute(:done, true) if doable?
+    update_attribute(:done, !done) if doable?
   end
 
   def doable?
@@ -11,5 +11,9 @@ module Schedules::Done
 
   def editable?
     !done
+  end
+
+  def past?
+    scheduled_at < Time.zone.now
   end
 end
