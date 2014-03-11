@@ -6,7 +6,9 @@ Finance::Application.routes.draw do
   constraints AccountSubdomain do
     get '/schedules(/:date)', to: 'schedules#index', as: 'schedules', constraints: { date: /\d{4}\/\d{2}\/\d{2}/ }
     get '/schedules/new(/:date)', to: 'schedules#new', as: 'new_schedule', constraints: { date: /\d{4}-\d{2}-\d{2}/ }
-    resources :schedules, only: [:show, :create, :edit, :update, :destroy]
+    resources :schedules, only: [:show, :create, :edit, :update, :destroy] do
+      patch 'mark_as_done', to: 'schedules#mark_as_done', as: 'mark_as_done', on: :member
+    end
 
     get '/loans(/:filter)', to: 'loans#index', as: 'loans',
       constraints: { filter: 'expired|close_to_expire|not_renewed' }

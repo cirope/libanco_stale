@@ -1,6 +1,7 @@
 class CreateLoans < ActiveRecord::Migration
   def change
     create_table :loans do |t|
+      t.string :status, null: false, default: 'current'
       t.decimal :amount, null: false, precision: 15, scale: 2
       t.integer :payments_count, null: false
       t.date :next_payment_expire_at, null: false

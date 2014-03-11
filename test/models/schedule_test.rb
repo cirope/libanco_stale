@@ -22,4 +22,9 @@ class ScheduleTest < ActiveSupport::TestCase
     assert_error @schedule, :scheduled_at, :on_or_after,
       restriction: I18n.l(Time.zone.now, format: :minimal)
   end
+
+  test 'mark as done' do
+    assert !@schedule.done
+    assert @schedule.mark_as_done!
+  end
 end

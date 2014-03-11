@@ -5,6 +5,7 @@ class Schedule < ActiveRecord::Base
   include Schedules::Validation
   include Schedules::Scopes
   include Schedules::Schedulable
+  include Schedules::Done
 
   strip_fields :description
 

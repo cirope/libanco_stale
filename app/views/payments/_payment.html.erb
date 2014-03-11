@@ -1,5 +1,5 @@
 <% expired = payment.expired? %>
-<tr data-payment-id="<%= payment.id %>">
+<tr data-payment="<%= payment.to_param %>">
   <td>
     <span class="label <%= expired ? 'label-danger' : 'label-default' %>">
       <%= payment.number %>
@@ -15,6 +15,8 @@
       <%= l payment.expired_at %>
     </span>
   </td>
-  <td><%= l payment.paid_at.to_date if payment.paid_at %></td>
-  <td><%= link_to_paid edit_loan_payment_path(@loan, payment), data: { remote: true } %></td>
+  <%= render 'payments/paid_at', payment: payment %>
+  <td>
+    <%= link_to_edit edit_loan_payment_path(@loan, payment), data: { remote: true } %>
+  </td>
 </tr>

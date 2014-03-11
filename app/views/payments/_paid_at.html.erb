@@ -1,0 +1,7 @@
+<td data-payment-paid-at="<%= payment.to_param %>">
+  <% if payment.paid_at %>
+    <%= l payment.paid_at.to_date %>
+    <%= hidden_field_tag :paid_at, value: (l(payment.paid_at.to_date)) %>
+  <% else %>
+  <% end %>
+</td>

@@ -9,6 +9,8 @@ class Loan < ActiveRecord::Base
 
   round_fields :amount
 
+  STATUS = ['current', 'canceled', 'history']
+
   belongs_to :customer
   belongs_to :user
   has_many :schedules, as: :schedulable, dependent: :destroy

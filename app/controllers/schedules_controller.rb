@@ -5,7 +5,7 @@ class SchedulesController < ApplicationController
   before_action :set_schedulable, only: [:new, :create, :edit, :update]
   before_action :set_current_date, only: [:index, :new, :create]
   before_action :set_scheduled_month, only: [:index]
-  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :set_schedule, only: [:show, :edit, :update, :destroy, :mark_as_done]
   before_action :set_title, except: [:destroy]
 
   # GET /schedules
@@ -60,6 +60,12 @@ class SchedulesController < ApplicationController
   # DELETE /schedules/1
   def destroy
     @schedule.destroy
+    respond_with @schedule
+  end
+
+  # PUT /schedules/1/mark_as_done
+  def mark_as_done
+    @schedule.mark_as_done!
     respond_with @schedule
   end
 

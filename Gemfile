@@ -16,7 +16,7 @@ gem 'simple_form'
 gem 'irreverent'
 gem 'paper_trail'
 gem 'rack-mini-profiler'
-gem 'validates_timeliness', github: 'adzap/validates_timeliness', branch: 'rails4'
+gem 'validates_timeliness'
 
 gem 'unicorn'
 

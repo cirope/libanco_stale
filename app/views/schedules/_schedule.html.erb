@@ -1,15 +1,21 @@
-<div>
-  <span class="text-muted">
-    <%= l schedule.scheduled_at, format: :time %>
-  </span>
-  <% if schedule.schedulable %>
+<div data-schedule="<%= schedule.to_param %>" data-object-info="<%= schedule.schedulable.to_param %>">
+  <span <%== 'class="text-muted strike"' if schedule.done? %>>
+    <span class="text-muted">
+      <%= l schedule.scheduled_at, format: :time %>
+    </span>
+    <% if schedule.schedulable %>
+      <span class="text-muted">|</span>
+      <%= link_to(
+        schedule.label, schedule, data: { remote: true }
+      ) %>
+    <% end %>
     <span class="text-muted">|</span>
-    <%= link_to(schedule.label, schedule, data: { remote: true }) %>
-  <% end %>
-  <span class="text-muted">|</span>
-  <%= schedule.description %>
+    <%= schedule.description %>
+  </span>
   <span class="text-muted">|</span>
   <%= link_to_edit(
     edit_polymorphic_path([schedule.schedulable, schedule]), data: { remote: true }
   ) %>
+  <span class="text-muted">|</span>
+  <%= mark_schedule_as_done(schedule) %>
 </div>

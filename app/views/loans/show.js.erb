@@ -1,4 +1,4 @@
-$('[data-loan-info]').remove();
+$('[data-removeable]').remove();
 
 $('[data-object-info=\"<%= @loan.to_param %>\"]').after(
   '<%= j render('place_holder', content: render(@loan)) %>'

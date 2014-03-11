@@ -1,12 +1,4 @@
-if ($('#modal').length) {
-  $('#modal form.edit_payment').remove();
-  $('#modal form').hide();
-  $('#modal .modal-title').text('<%= j @title %>');
-  $('#modal .modal-body').append('<%= j render('form') %>');
-} else {
-  $('body').append('<%= j render('shared/modal', title: @title, body: render('form')) %>');
-}
+selector = $('[data-payment-paid-at]')
+selector.html();
 
-$('#modal').on('shown.bs.modal', function(e) {
-  $(this).find('[autofocus]').focus();
-}).modal('show');
+selector.find('[autofocus]').focus();

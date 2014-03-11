@@ -25,6 +25,12 @@ module LinksHelper
     link_with_icon({ action: 'show', icon: 'glyphicon-search' }, *args)
   end
 
+  def link_to_remove_target(target)
+    link_to '#', data: { remove_target: target } do
+      content_tag(:span, nil, class: 'icon glyphicon glyphicon-remove text-muted')
+    end
+  end
+
   private
 
   def link_with_icon(options = {}, *args)

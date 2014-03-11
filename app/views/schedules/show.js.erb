@@ -1,0 +1,5 @@
+$('[data-removeable]').remove();
+
+$('[data-object-info=\"<%= @schedule.schedulable.to_param %>\"]').after(
+  '<%= j render('place_holder', content: render(@schedule.schedulable, :'@loan' => @schedule.schedulable)) %>'
+);
