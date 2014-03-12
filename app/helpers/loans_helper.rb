@@ -32,8 +32,39 @@ module LoansHelper
       when 90..100 then 'progress-bar-danger'
     end
 
-    content_tag(:div, class: 'progress') do
-      content_tag(:div, "#{progress}%", class: "progress-bar #{progress_class}", style: "width: #{progress}%;")
+    render(
+      partial: 'loans/progress',
+      locals: { loan: loan, progress: progress, progress_class: progress_class },
+      formats: [:html]
+    )
+  end
+
+  def loan_delayed_at_info(loan)
+    t(
+      'datetime.distance_in_words.x_days',
+      count: (Date.today - loan.next_payment_expire_at).to_i
+    )
+  end
+
+  def show_filter_column
+    case params[:filter]
+      when 'expired'
+        content_tag(:th, Loan.human_attribute_name(:delayed_at))
+      when 'close_to_expire'
+        content_tag(:th, Loan.human_attribute_name(:progress))
+      when 'not_renewed'
+        content_tag(:th, Loan.human_attribute_name(:canceled_at))
+    end
+  end
+
+  def show_filter_row(loan)
+    case params[:filter]
+      when 'expired'
+        content_tag(:td, loan_delayed_at_info(loan))
+      when 'close_to_expire'
+        content_tag(:td, loan_progress_info(loan))
+      when 'not_renewed'
+        content_tag(:td, l(loan.canceled_at))
     end
   end
 

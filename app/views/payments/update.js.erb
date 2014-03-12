@@ -9,7 +9,8 @@
     '<%= j render @payment %>'
   );
 
-  selector = $('[data-loan-updateable-info]');
-  selector.replaceWith('<%= j render(partial: 'loans/updateable_info') %>');
-  selector.effect('highlight', 'slow');
+  $('[data-progress=\"<%= @loan.to_param %>\"]').replaceWith('<%= j loan_progress_info(@loan) %>');
+  $('[data-debt=\"<%= @loan.to_param %>\"]').replaceWith(
+    '<%= j render(partial: 'loans/debt', locals: { loan: @loan } ) %>'
+  );
 <% end %>

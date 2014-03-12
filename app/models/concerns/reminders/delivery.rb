@@ -18,7 +18,7 @@ module Reminders::Delivery
       unscoped.upcoming.find_each do |reminder|
         Schedule.unscoped do
           unless reminder.schedule.done
-            reminder.update_attributes! scheduled: true
+            reminder.update_column :scheduled, true
 
             ReminderWorker.perform_at(reminder.remind_at, reminder.id)
           end

@@ -5,7 +5,7 @@ class CreateLoans < ActiveRecord::Migration
       t.decimal :amount, null: false, precision: 15, scale: 2
       t.integer :payments_count, null: false
       t.integer :progress, null: false, default: 0
-      t.date :next_payment_expire_at, null: false
+      t.date :next_payment_expire_at
       t.date :expired_at, null: false
       t.date :canceled_at
       t.references :customer, null: false, index: true

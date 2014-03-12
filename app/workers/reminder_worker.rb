@@ -7,7 +7,7 @@ class ReminderWorker
         reminder = Reminder.find reminder_id
 
         Reminder.transaction do
-          reminder.update_attribute :notified, true
+          reminder.update_column :notified, true
           Notifier.remind(reminder).deliver
         end
       end

@@ -2,15 +2,15 @@ module Payments::LoanUpdate
   extend ActiveSupport::Concern
 
   included do
-    before_save :update_loan_status, if: ->(payment) { payment.persisted? }
+    before_save :update_loan_status, if: :persisted?
   end
 
   private
     def update_loan_status
       loan.progress = percentage_progress
-      loan.next_payment_expire_at = next_payment_expiration
-      loan.canceled_at = payments_dates.max if canceled?
-      loan.status = 'canceled' if canceled?
+      loan.next_payment_expire_at = !canceled? ? next_payment_expiration : nil
+      loan.canceled_at = canceled? ? payments_dates.max : nil
+      loan.status = canceled? ? 'canceled' : 'current'
     end
 
     def self_and_siblings

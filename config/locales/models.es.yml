@@ -52,7 +52,9 @@ es:
         city: 'Ciudad'
       loan:
         amount: 'Monto'
+        canceled_at: 'Cancelación'
         debt: 'Deuda'
+        delayed_at: 'Atraso'
         expired_at: 'Vencimiento'
         next_payment_expire_at: 'Próximo vencimiento'
         payments_count: 'Cuotas'

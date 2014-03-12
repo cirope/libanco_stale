@@ -1,9 +1,0 @@
-<div data-loan-updateable-info="true">
-  <p>
-    <strong><%= Loan.human_attribute_name 'debt' %></strong>:
-    <%= number_to_currency @loan.total_debt %>
-  </p>
-  <p>
-    <%= loan_progress_info(@loan) %>
-  </p>
-</div>

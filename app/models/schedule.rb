@@ -15,7 +15,7 @@ class Schedule < ActiveRecord::Base
 
   def move(date)
     update(
-      :scheduled_at, scheduled_at.change(
+      scheduled_at: scheduled_at.change(
         year: date.year, month: date.month, day: date.day
       )
     )

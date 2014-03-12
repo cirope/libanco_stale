@@ -1,7 +1,8 @@
 require 'test_helper'
-include ActionMailer::TestHelper
 
 class ScheduleTest < ActiveSupport::TestCase
+  include ActionMailer::TestHelper
+
   def setup
     @schedule = schedules(:first_schedule)
   end
@@ -64,8 +65,14 @@ class ScheduleTest < ActiveSupport::TestCase
   end
 
   test 'remind me' do
+    @schedule = Schedule.create!(
+      user: users(:john), scheduled_at: 1.hour.from_now, description: 'description'
+    )
+
     assert_difference '@schedule.reminders.count' do
-      assert @schedule.update_attribute(:remind_me, true)
+      @schedule.remind_me = true
+      assert @schedule.save
+      assert_equal @schedule.reminders.count, 1
     end
 
     assert_difference '@schedule.reminders.count', -1 do
@@ -87,7 +94,10 @@ class ScheduleTest < ActiveSupport::TestCase
   test 'allow remind me' do
     assert @schedule.allow_remind_me?
 
-    Reminder.create schedule_id: @schedule.id, scheduled: true
+    Reminder.create!(
+      schedule_id: @schedule.id, scheduled: true,
+      remind_at: @schedule.scheduled_at, kind: Reminder::KINDS.sample
+    )
 
     assert !@schedule.reload.allow_remind_me?
 
@@ -100,12 +110,19 @@ class ScheduleTest < ActiveSupport::TestCase
     assert @schedule.allow_remind_me?
   end
 
-  test 'delivery' do
-    user = @schedule.user
-    2.times { Schedule.create user_id: @schedule.user_id }
-    3.times { Schedule.create user_id: user.id }
+  test 'delivery summaries' do
+    user = users(:john)
+    attributes = { description: 'description' }
 
-    assert_emails 2 do
+    3.times {
+      Schedule.create!(
+        user_id: user.id, scheduled_at: 1.hour.from_now, description: 'description'
+      )
+    }
+
+    Account.current_id = nil
+
+    assert_emails 1 do
       Reminder.send_summaries
     end
   end

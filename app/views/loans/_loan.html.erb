@@ -13,7 +13,13 @@
           <strong><%= Loan.human_attribute_name :amount %></strong>:
           <%= number_to_currency @loan.amount %>
         </p>
-        <%= render 'loans/updateable_info' %>
+        <p>
+          <%= loan_progress_info(@loan) %>
+        </p>
+        <p>
+          <strong><%= Loan.human_attribute_name 'debt' %></strong>:
+          <%= render partial: 'loans/debt', locals: { loan: @loan } %>
+        </p>
         <p>
           <strong><%= Loan.human_attribute_name 'user' %></strong>:
           <%= @loan.user %>

@@ -1,7 +1,8 @@
 require 'test_helper'
-include ActionMailer::TestHelper
 
 class PasswordResetsControllerTest < ActionController::TestCase
+  include ActionMailer::TestHelper
+
   setup do
     @user = users :franco
   end

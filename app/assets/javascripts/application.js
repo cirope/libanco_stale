@@ -18,7 +18,6 @@
 //= require jquery.ui.datepicker-es
 //= require jquery-ui-timepicker
 //= require jquery-ui-timepicker-es
-//= require jquery.ui.effect-highlight
 //= require turbolinks
 //= require turbolinks_events
 //= require bootstrap

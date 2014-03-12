@@ -14,6 +14,7 @@
             <th><%= Loan.human_attribute_name 'amount' %></th>
             <th class="visible-lg"><%= Loan.human_attribute_name 'payments_count' %></th>
             <th class="visible-lg"><%= Loan.human_attribute_name 'expired_at' %></th>
+            <%= show_filter_column %>
             <th colspan="2"></th>
           </tr>
         </thead>
@@ -25,6 +26,7 @@
               <td><%= number_to_currency loan.amount %></td>
               <td class="visible-lg"><%= loan.payments_count %></td>
               <td class="visible-lg"><%= l loan.expired_at %></td>
+              <%= show_filter_row(loan) %>
               <td><%= link_to_loan_info loan_path(loan), data: { remote: true } %></td>
               <td><%= link_to_new_loan_schedule loan %></td>
             </tr>
