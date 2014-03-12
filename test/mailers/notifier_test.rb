@@ -15,9 +15,9 @@ class NotifierTest < ActionMailer::TestCase
     assert_match @reminder.description, mail.text_part.body.decoded
     assert_match @reminder.description, mail.html_part.body.decoded
 
-    mail.deliver
-
-    assert_emails 1
+    assert_emails 1 do
+      mail.deliver
+    end
   end
 
   test 'summary' do

@@ -19,6 +19,15 @@ Finance::Application.routes.draw do
     end
 
     resources :customers
+
+    # Profiles
+    get 'profile', to: 'profiles#edit', as: 'profile'
+    patch 'profile', to: 'profiles#update'
+
+    # Resorces
+    resources :cities
+    resources :states
+    resources :users
   end
 
   # Sessions
@@ -27,15 +36,6 @@ Finance::Application.routes.draw do
   delete 'logout', to: 'sessions#destroy', as: 'logout'
 
   resources :password_resets, only: [:new, :create, :edit, :update]
-
-  # Profiles
-  get 'profile', to: 'profiles#edit', as: 'profile'
-  patch 'profile', to: 'profiles#update'
-
-  # Resorces
-  resources :cities
-  resources :states
-  resources :users
 
   root 'sessions#new'
 end
