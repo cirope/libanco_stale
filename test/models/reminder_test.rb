@@ -42,12 +42,18 @@ class ReminderTest < ActiveSupport::TestCase
   end
 
   test 'delivery' do
-    r1, r2, r3, r4 = @reminder.dup, @reminder.dup, @reminder.dup, @reminder.dup
-
-    r1.remind_at = 1.hour.from_now # Too far away
-    r2.remind_at = 1.minute.from_now; r2.notified = true # Already notified
-    r3.remind_at = 1.minute.from_now # This must be sended
-    r4.remind_at = 1.minute.ago # This also must be sended
+    r1 = Reminder.create(
+      schedule_id: @reminder.schedule_id, remind_at: 1.hour.from_now
+    ) # Too far away
+    r2 = Reminder.create(
+      schedule_id: @reminder.schedule_id, remind_at: 1.minute.from_now, notified: true
+    ) # Already notified
+    r3 = Reminder.create(
+      schedule_id: @reminder.schedule_id, remind_at: 1.minute.from_now
+    ) # This must be sended
+    r4 = Reminder.create(
+      schedule_id: @reminder.schedule_id, remind_at: 1.minute.ago
+    ) # This also must be sended
 
     assert_difference 'ActionMailer::Base.deliveries.size', 2 do
       Reminder.send_reminders

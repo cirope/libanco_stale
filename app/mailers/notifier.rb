@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default from: 'Libanco <soporte@libanco.com>'
+  default from: "'#{I18n.t('app_name')}' <#{APPLICATION['email']}>"
 
   def remind(reminder)
     @reminder = reminder

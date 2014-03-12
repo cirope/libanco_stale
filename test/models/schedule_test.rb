@@ -61,4 +61,51 @@ class ScheduleTest < ActiveSupport::TestCase
     @schedule.scheduled_at = 1.minute.ago
     assert !@schedule.editable?
   end
+
+  test 'remind me' do
+    assert_difference '@schedule.reminders.count' do
+      assert @schedule.update_attribute(:remind_me, true)
+    end
+
+    assert_difference '@schedule.reminders.count', -1 do
+      @schedule.remind_me = false
+      assert @schedule.save
+    end
+
+    @schedule.remind_me = true
+    @schedule.save
+
+    assert_no_difference '@schedule.reminders.count' do
+      @schedule.move(5.days.from_now)
+      assert @schedule.reminders.reload.all? do |s|
+        s.remind_at == (@schedule.scheduled_at - @schedule.delay)
+      end
+    end
+  end
+
+  test 'allow remind me' do
+    assert @schedule.allow_remind_me?
+
+    Reminder.create schedule_id: @schedule.id, scheduled: true
+
+    assert !@schedule.reload.allow_remind_me?
+
+    @schedule.reminders.clear
+    @schedule.scheduled_at = 1.minute.ago
+
+    assert !@schedule.allow_remind_me?
+
+    @schedule.scheduled_at = 1.minute.from_now
+    assert @schedule.allow_remind_me?
+  end
+
+  test 'delivery' do
+    user = @schedule.user
+    2.times { Schedule.create user_id: @schedule.user_id }
+    3.times { Schedule.create user_id: user.id }
+
+    assert_difference 'ActionMailer::Base.deliveries.size', 2 do
+      Reminder.send_summaries
+    end
+  end
 end

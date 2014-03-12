@@ -2,11 +2,15 @@ class ReminderWorker
   include Sidekiq::Worker
 
   def perform(reminder_id)
-    reminder = Reminder.find reminder_id
+    Schedule.unscoped do
+      User.unscoped do
+        reminder = Reminder.find reminder_id
 
-    Reminder.transaction do
-      reminder.update_attributes! notified: true
-      Notifier.remind(reminder).deliver
+        Reminder.transaction do
+          reminder.update_attribute :notified, true
+          Notifier.remind(reminder).deliver
+        end
+      end
     end
   end
 end

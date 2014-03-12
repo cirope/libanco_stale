@@ -16,7 +16,7 @@ module Reminders::Delivery
 
   module ClassMethods
     def send_reminders
-      unscoped.upcoming.find_each do |reminder|
+      upcoming.unscoped.find_each do |reminder|
         reminder.update_attributes! scheduled: true
 
         ReminderWorker.perform_at(reminder.remind_at, reminder.id)
@@ -24,8 +24,10 @@ module Reminders::Delivery
     end
 
     def send_summaries
-      User.find_each do |user|
-        Notifier.delay.summary(user) if user.schedules.for_tomorrow.count > 0
+      Schedule.unscoped do
+        User.unscoped.find_each do |user|
+          SummaryWorker.perform_at(user.name, user.id) if user.schedules.for_tomorrow.count > 0
+        end
       end
     end
   end

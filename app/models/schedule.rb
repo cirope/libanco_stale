@@ -12,4 +12,12 @@ class Schedule < ActiveRecord::Base
 
   belongs_to :user
   has_many :reminders, dependent: :destroy
+
+  def move(date)
+    update(
+      :scheduled_at, scheduled_at.change(
+        year: date.year, month: date.month, day: date.day
+      )
+    )
+  end
 end

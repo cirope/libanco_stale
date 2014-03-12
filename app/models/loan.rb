@@ -11,7 +11,6 @@ class Loan < ActiveRecord::Base
 
   STATUS = ['current', 'canceled', 'history']
 
-  belongs_to :customer
   belongs_to :user
   has_many :schedules, as: :schedulable, dependent: :destroy
 end
