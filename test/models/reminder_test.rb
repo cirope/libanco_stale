@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class ReminderTest < ActiveSupport::TestCase
+  include ActionMailer::TestHelper
+
   def setup
     @reminder = reminders(:reminder)
   end
@@ -42,17 +44,17 @@ class ReminderTest < ActiveSupport::TestCase
   end
 
   test 'delivery' do
-    r1 = Reminder.create(
-      schedule_id: @reminder.schedule_id, remind_at: 1.hour.from_now
+    r1 = Reminder.create!(
+      schedule_id: @reminder.schedule_id, remind_at: 1.hour.from_now, kind: @reminder.kind
     ) # Too far away
-    r2 = Reminder.create(
-      schedule_id: @reminder.schedule_id, remind_at: 1.minute.from_now, notified: true
+    r2 = Reminder.create!(
+      schedule_id: @reminder.schedule_id, remind_at: 1.minute.from_now, scheduled: true, notified: true, kind: @reminder.kind
     ) # Already notified
-    r3 = Reminder.create(
-      schedule_id: @reminder.schedule_id, remind_at: 1.minute.from_now
+    r3 = Reminder.create!(
+      schedule_id: @reminder.schedule_id, remind_at: 1.minute.from_now, kind: @reminder.kind
     ) # This must be sended
-    r4 = Reminder.create(
-      schedule_id: @reminder.schedule_id, remind_at: 1.minute.ago
+    r4 = Reminder.create!(
+      schedule_id: @reminder.schedule_id, remind_at: 1.minute.ago, kind: @reminder.kind
     ) # This also must be sended
 
     assert_emails 2 do
