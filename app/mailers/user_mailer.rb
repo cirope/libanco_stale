@@ -1,4 +1,6 @@
 class UserMailer < ActionMailer::Base
+  include MandrillHeaders
+
   default from: "'#{I18n.t('app_name')}' <#{APPLICATION['email']}>"
 
   def password_reset(user)

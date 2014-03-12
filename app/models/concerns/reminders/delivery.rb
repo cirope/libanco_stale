@@ -3,23 +3,26 @@ module Reminders::Delivery
 
   included do
     scope :upcoming, -> {
-      includes(:schedule).where(
+      where(
         [
           "#{table_name}.remind_at <= :date",
-          "#{table_name}.scheduled  = :false",
-          "#{Schedule.table_name}.done = :false"
+          "#{table_name}.scheduled = :false",
         ].join(' AND '),
         { date: 5.minutes.from_now, false: false }
-      ).references(:schedule)
+      )
     }
   end
 
   module ClassMethods
     def send_reminders
-      upcoming.unscoped.find_each do |reminder|
-        reminder.update_attributes! scheduled: true
+      unscoped.upcoming.find_each do |reminder|
+        Schedule.unscoped do
+          unless reminder.schedule.done
+            reminder.update_attributes! scheduled: true
 
-        ReminderWorker.perform_at(reminder.remind_at, reminder.id)
+            ReminderWorker.perform_at(reminder.remind_at, reminder.id)
+          end
+        end
       end
     end
 

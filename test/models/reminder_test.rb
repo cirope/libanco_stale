@@ -55,7 +55,7 @@ class ReminderTest < ActiveSupport::TestCase
       schedule_id: @reminder.schedule_id, remind_at: 1.minute.ago
     ) # This also must be sended
 
-    assert_difference 'ActionMailer::Base.deliveries.size', 2 do
+    assert_emails 2 do
       Reminder.send_reminders
     end
 

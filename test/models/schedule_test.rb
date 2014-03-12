@@ -1,4 +1,5 @@
 require 'test_helper'
+include ActionMailer::TestHelper
 
 class ScheduleTest < ActiveSupport::TestCase
   def setup
@@ -104,7 +105,7 @@ class ScheduleTest < ActiveSupport::TestCase
     2.times { Schedule.create user_id: @schedule.user_id }
     3.times { Schedule.create user_id: user.id }
 
-    assert_difference 'ActionMailer::Base.deliveries.size', 2 do
+    assert_emails 2 do
       Reminder.send_summaries
     end
   end
