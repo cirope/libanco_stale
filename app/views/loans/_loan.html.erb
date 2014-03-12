@@ -1,14 +1,27 @@
 <div class="panel panel-default panel-loan-info">
   <div class="panel-body">
-    <div class="pull-right">
+    <div class="text-right">
       <%= link_to_remove_target("[data-removeable=\"#{@loan.to_param}\"]") %>
     </div>
-    <p>
-      <strong><%= Loan.human_attribute_name 'user' %></strong>:
-      <%= @loan.user %>
-    </p>
 
-    <%= render 'loans/updateable_info' %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= render 'loans/customer_info' %>
+      </div>
+      <div class="col-md-6">
+        <p>
+          <strong><%= Loan.human_attribute_name :amount %></strong>:
+          <%= number_to_currency @loan.amount %>
+        </p>
+        <%= render 'loans/updateable_info' %>
+        <p>
+          <strong><%= Loan.human_attribute_name 'user' %></strong>:
+          <%= @loan.user %>
+        </p>
+      </div>
+    </div>
+
+    <hr />
 
     <table class="table table-condensed">
       <thead>

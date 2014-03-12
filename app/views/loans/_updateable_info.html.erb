@@ -4,7 +4,6 @@
     <%= number_to_currency @loan.total_debt %>
   </p>
   <p>
-    <strong><%= Loan.human_attribute_name 'progress' %></strong>:
     <%= loan_progress_info(@loan) %>
   </p>
 </div>
