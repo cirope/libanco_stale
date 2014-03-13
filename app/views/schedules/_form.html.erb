@@ -7,18 +7,14 @@
         <br />
       </div>
       <div class="col-md-8">
-        <%= f.input :description, input_html: { autofocus: true, rows: 5 } %>
+        <%= f.input :description, input_html: { autofocus: true, rows: 10 } %>
+        <%= remind_me_field f %>
+        <div class="form-actions">
+          <%= f.button :submit, t('schedules.save'), class: 'btn-primary',
+            data: { disable_with: t('navigation.processing') } %>
+        </div>
       </div>
     </div>
-    <%= remind_me_field(f) %>
     <%= f.input :lock_version, as: :hidden %>
-  </div>
-
-  <hr />
-
-  <div class="form-actions">
-    <div class="pull-right"><%= yield :form_actions %></div>
-    <%= f.button :submit, class: 'btn-primary',
-      data: { disable_with: t('navigation.processing') } %>
   </div>
 <% end %>
