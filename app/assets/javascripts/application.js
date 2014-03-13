@@ -25,6 +25,7 @@
 //= require effect_helper
 //= require dynamic_form
 //= require autocomplete
+//= require ajax
 //= require calendar-setup
 //= require calendar-time-setup
 //= require date_picker
