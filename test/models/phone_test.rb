@@ -10,6 +10,5 @@ class PhoneTest < ActiveSupport::TestCase
 
     assert @phone.invalid?
     assert_error @phone, :phone, :blank
-    assert_error @phone, :customer_id, :blank
   end
 end

@@ -6,6 +6,7 @@ module Customers::Validation
     validates :name, :lastname, :address, length: { maximum: 255 }
     validates :identification,
       uniqueness: { case_sensitive: false },
+      length: { maximum: 255 },
       presence: true
   end
 end
