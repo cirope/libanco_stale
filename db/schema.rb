@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20140311033344) do
     t.decimal  "amount",                 precision: 15, scale: 2,                     null: false
     t.integer  "payments_count",                                                      null: false
     t.integer  "progress",                                        default: 0,         null: false
-    t.date     "next_payment_expire_at",                                              null: false
+    t.date     "next_payment_expire_at"
     t.date     "expired_at",                                                          null: false
     t.date     "canceled_at"
     t.integer  "customer_id",                                                         null: false

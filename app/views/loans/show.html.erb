@@ -1,4 +1,29 @@
-<%= render @loan %>
+<div class="row">
+  <div class="col-md-6">
+    <%= render 'loans/customer_info' %>
+  </div>
+  <div class="col-md-6">
+    <p>
+      <strong><%= Loan.human_attribute_name :amount %></strong>:
+      <%= number_to_currency @loan.amount %>
+    </p>
+    <p>
+      <%= loan_progress_info(@loan) %>
+    </p>
+    <p>
+      <strong><%= Loan.human_attribute_name 'debt' %></strong>:
+      <%= render partial: 'loans/debt', locals: { loan: @loan } %>
+    </p>
+    <p>
+      <strong><%= Loan.human_attribute_name 'user' %></strong>:
+      <%= @loan.user %>
+    </p>
+  </div>
+</div>
+
+<hr />
+
+<%= render template: 'payments/index' %>
 
 <hr />
 

@@ -9,7 +9,9 @@
         <th><%= Customer.human_attribute_name 'identification' %></th>
         <th><%= Customer.human_attribute_name 'address' %></th>
         <th><%= Customer.human_attribute_name 'city' %></th>
-        <th colspan="3"></th>
+        <th colspan="3">
+          <%= link_to_new new_customer_path, class: 'btn btn-default btn-xs pull-right' %>
+        </th>
       </tr>
     </thead>
 

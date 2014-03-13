@@ -3,9 +3,9 @@ module Loans::Filters
 
   module ClassMethods
     def expired
-      current.joins(:payments).where(
-        "#{Payment.table_name}.paid_at IS NULL AND #{Payment.table_name}.expired_at < ?", Date.today
-      ).uniq
+      current.where(
+        'next_payment_expire_at < ?', Date.today
+      ).order('next_payment_expire_at DESC')
     end
 
     def close_to_expire

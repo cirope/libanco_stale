@@ -15,14 +15,16 @@
             <th class="visible-lg"><%= Loan.human_attribute_name 'payments_count' %></th>
             <th class="visible-lg"><%= Loan.human_attribute_name 'expired_at' %></th>
             <%= show_filter_column %>
-            <th colspan="2"></th>
+            <th colspan="2">
+              <%= link_to_new new_loan_path, class: 'btn btn-default btn-xs pull-right' %>
+            </th>
           </tr>
         </thead>
 
         <tbody>
           <% @loans.each do |loan| %>
             <tr data-object-info="<%= loan.id %>">
-              <td><%= loan.customer %></td>
+              <td><%= link_to loan.customer, customer_path(loan.customer) %></td>
               <td><%= number_to_currency loan.amount %></td>
               <td class="visible-lg"><%= loan.payments_count %></td>
               <td class="visible-lg"><%= l loan.expired_at %></td>

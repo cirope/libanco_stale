@@ -1,0 +1,15 @@
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th><%= Payment.human_attribute_name 'number' %></th>
+      <th><%= Payment.human_attribute_name 'payment' %></th>
+      <th><%= Payment.human_attribute_name 'expired_at' %></th>
+      <th><%= Payment.human_attribute_name 'paid_at' %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @loan.payments %>
+  </tbody>
+</table>
