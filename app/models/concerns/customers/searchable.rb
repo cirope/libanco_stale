@@ -3,6 +3,8 @@ module Customers::Searchable
 
   included do
     scope :ordered, -> { order("#{table_name}.name") }
+
+    has_magick_columns name: :string, lastname: :string, identification: :string
   end
 
   module ClassMethods
@@ -10,7 +12,7 @@ module Customers::Searchable
       result = ordered
 
       if query.present?
-        result = result.where "#{table_name}.name ILIKE ?", "%#{query.strip}%"
+        result = magick_search(query)
       end
 
       limit ? result.limit(10) : result
