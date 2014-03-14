@@ -1,0 +1,9 @@
+first_tax:
+  name: Social Payment
+  value: 40
+  payment: first_payment
+
+second_tax:
+  name: Insurance
+  value: 18
+  payment: first_payment

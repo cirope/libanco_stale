@@ -1,0 +1,13 @@
+<p>
+  <strong><%= TaxSetting.human_attribute_name 'name' %></strong>:
+  <%= @tax_setting.name %>
+</p>
+<p>
+  <strong><%= TaxSetting.human_attribute_name 'value' %></strong>:
+  <%= number_to_currency @tax_setting.value %>
+</p>
+
+<hr />
+
+<%= link_to_edit edit_tax_setting_path(@tax_setting) %> |
+<%= link_to_index tax_settings_path %>

@@ -32,6 +32,9 @@ es:
       state:
         one: 'Provincia'
         other: 'Provincias'
+      tax_setting:
+        one: 'Adicional'
+        other: 'Adicionales'
       user:
         one: 'Usuario'
         other: 'Usuarios'
@@ -78,6 +81,9 @@ es:
         remind_me: 'Recordarme por correo 15 minutos antes'
       state:
         name: 'Nombre'
+      tax_setting:
+        name: 'Nombre'
+        value: 'Valor'
       user:
         name: 'Nombre'
         lastname: 'Apellido'

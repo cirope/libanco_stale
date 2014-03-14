@@ -1,0 +1,29 @@
+<% if @tax_settings.empty? %>
+  <%= render 'shared/empty_index', message: t('.empty_html') %>
+<% else %>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th><%= TaxSetting.human_attribute_name 'name' %></th>
+        <th><%= TaxSetting.human_attribute_name 'value' %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tax_settings.each do |tax_setting| %>
+        <tr>
+          <td><%= tax_setting.name %></td>
+          <td><%= tax_setting.value %></td>
+          <td><%= link_to_show tax_setting %></td>
+          <td><%= link_to_edit edit_tax_setting_path(tax_setting) %></td>
+          <td><%= link_to_destroy tax_setting %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<hr />
+
+<%= link_to_new new_tax_setting_path, class: 'btn btn-primary' %>

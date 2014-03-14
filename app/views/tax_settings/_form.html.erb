@@ -1,0 +1,20 @@
+<%= simple_form_for(@tax_setting) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-inputs">
+        <%= f.input :name, input_html: { autofocus: true } %>
+        <%= f.input :value, as: :string %>
+        <%= f.input :lock_version, as: :hidden %>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="form-actions">
+    <div class="pull-right"><%= yield :form_actions %></div>
+    <%= f.button :submit, class: 'btn-primary' %>
+  </div>
+<% end %>

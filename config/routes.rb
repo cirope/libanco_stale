@@ -1,4 +1,6 @@
 Finance::Application.routes.draw do
+  resources :tax_settings
+
   constraints AdminSubdomain do
     resources :accounts
   end

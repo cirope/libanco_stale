@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
   strip_fields :name, :lastname, :email
   downcase_fields :email
 
-  has_many :loans
+  has_many :loans, dependent: :destroy
   has_many :schedules, dependent: :destroy
 end

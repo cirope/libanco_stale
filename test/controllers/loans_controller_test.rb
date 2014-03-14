@@ -25,12 +25,16 @@ class LoansControllerTest < ActionController::TestCase
   end
 
   test 'should create loan' do
+    payments_count = 12
+
     assert_difference('Loan.count') do
-      post :create, loan: {
-        amount: 10000,
-        payments_count: 18,
-        customer_id: customers(:paul).id
-      }
+      assert_difference('Payment.count', payments_count) do
+        post :create, loan: {
+          amount: 10000,
+          payments_count: payments_count,
+          customer_id: customers(:paul).id
+        }
+      end
     end
 
     assert_redirected_to loan_url(assigns(:loan))

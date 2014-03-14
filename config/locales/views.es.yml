@@ -139,6 +139,19 @@ es:
       title: 'Mis datos'
       submit: 'Actualizar mis datos'
 
+  tax_settings:
+    edit:
+      title: 'Editar adicional'
+    index:
+      new: 'Nuevo adicional'
+      title: 'Listado de adicionales'
+      empty_html: 'No hay un adicional, puede crear una con el botón <span class="label label-info">Nuevo adicional</span>'
+    new:
+      title: 'Crear adicional'
+      state: 'Agregar nuevo adicional'
+    show:
+      title: 'Ver adicional'
+
   users:
     edit:
       title: 'Editar usuario'
