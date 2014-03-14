@@ -1,0 +1,11 @@
+{
+  "app/inputs/*_input.rb": {
+    "command": "input",
+    "template": "class %SInput < SimpleForm::Inputs::Base\nend",
+    "test": "test/inputs/%s_input_test.rb"
+  },
+  "app/workers/*_worker.rb": {
+    "command": "worker",
+    "template": "class %SWorker\n  include Sidekiq::Worker\nend"
+  }
+}
