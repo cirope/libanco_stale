@@ -17,7 +17,7 @@
     </thead>
 
     <tbody>
-      <%= render @customers %>
+      <%= render partial: 'tbody', collection: @customers, as: :customer %>
     </tbody>
   </table>
 

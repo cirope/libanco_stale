@@ -7,7 +7,7 @@
       <%= render 'shared/empty_index',
         message: t("loans.empty.#{(params[:filter] || action_name)}_html") %>
     <% else %>
-      <table class="table table-striped table-condensed">
+      <table class="table table-striped table-hover table-condensed" data-endless-container="true">
         <thead>
           <tr>
             <th><%= Loan.human_attribute_name 'customer' %></th>
@@ -22,19 +22,13 @@
         </thead>
 
         <tbody>
-          <% @loans.each do |loan| %>
-            <tr data-object-info="<%= loan.id %>">
-              <td><%= link_to loan.customer, customer_path(loan.customer) %></td>
-              <td><%= number_to_currency loan.amount %></td>
-              <td class="visible-lg"><%= loan.payments_count %></td>
-              <td class="visible-lg"><%= l loan.expired_at %></td>
-              <%= show_filter_row(loan) %>
-              <td><%= link_to_loan_info loan_path(loan), data: { remote: true } %></td>
-              <td><%= link_to_new_loan_schedule loan %></td>
-            </tr>
-          <% end %>
+          <%= render partial: 'tbody', collection: @loans, as: :loan %>
         </tbody>
       </table>
+
+      <div class="pagination-container">
+        <%= will_paginate @loans %>
+      </div>
     <% end %>
   </div>
 </div>

@@ -1,0 +1,9 @@
+<tr data-object-info="<%= loan.id %>">
+  <td><%= link_to loan.customer, customer_path(loan.customer) %></td>
+  <td><%= number_to_currency loan.amount %></td>
+  <td class="visible-lg"><%= loan.payments_count %></td>
+  <td class="visible-lg"><%= l loan.expired_at %></td>
+  <%= show_filter_row(loan) %>
+  <td><%= link_to_loan_info loan_path(loan), data: { remote: true } %></td>
+  <td><%= link_to_new_loan_schedule loan %></td>
+</tr>
