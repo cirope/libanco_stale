@@ -17,11 +17,11 @@ module Loans::Filters
     end
 
     def current
-      where(status: 'current')
+      includes(:customer).where(status: 'current')
     end
 
     def canceled
-      where(status: 'canceled')
+      includes(:customer).where(status: 'canceled')
     end
   end
 end

@@ -2,12 +2,14 @@
   <strong><%= Customer.model_name.human(count: 1) %></strong>:
   <%= link_to @loan.label, customer_path(@loan.customer) %>
 </p>
-<ul class="list-unstyled">
+<p>
   <strong><%= Phone.model_name.human(count: 0) %></strong>:
-  <% @loan.phones.each do |phone| %>
-    <li><%= phone.phone %></li>
-  <% end %>
-</ul>
+  <ul>
+    <% @loan.phones.each do |phone| %>
+      <li><%= phone.phone %></li>
+    <% end %>
+  </ul>
+</p>
 <p>
   <strong><%= Customer.human_attribute_name :address %></strong>:
   <%= @loan.address %>

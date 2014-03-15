@@ -2,14 +2,14 @@ module Customers::Searchable
   extend ActiveSupport::Concern
 
   included do
-    scope :ordered, -> { order("#{table_name}.name") }
+    scope :ordered, -> { order("#{table_name}.lastname") }
 
     has_magick_columns name: :string, lastname: :string, identification: :string
   end
 
   module ClassMethods
     def search query: nil, limit: false
-      result = ordered
+      result = includes(:company, :city).ordered
 
       if query.present?
         result = magick_search(query)

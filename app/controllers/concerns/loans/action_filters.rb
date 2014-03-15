@@ -16,7 +16,7 @@ module Loans::ActionFilters
         when 'not_renewed'
           Loan.not_renewed
         else
-          Loan.all
+          Loan.current
         end
     end
 end
