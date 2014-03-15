@@ -20,6 +20,7 @@ gem 'validates_timeliness'
 gem 'sidekiq'
 gem 'newrelic_rpm'
 gem 'whenever', require: false
+gem 'will_paginate'
 
 gem 'unicorn'
 

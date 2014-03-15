@@ -1,0 +1,6 @@
+$('table tbody').append('<%= j render(@customers) %>');
+<% if @customers.next_page %>
+  $('.pagination-container').html('<%= j will_paginate(@customers) %>');
+<% else %>
+  $('.pagination-container').remove();
+<% end %>

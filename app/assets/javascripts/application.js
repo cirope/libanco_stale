@@ -29,6 +29,7 @@
 //= require calendar-setup
 //= require calendar-time-setup
 //= require date_picker
+//= require endless_pagination
 //= require common
 //= require profiles
 //= require accounts
