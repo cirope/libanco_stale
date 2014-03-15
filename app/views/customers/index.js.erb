@@ -1,4 +1,6 @@
-$('table tbody').append('<%= j render partial: 'tbody', collection: @customers, as: :customer %>');
+$('[data-endless-container] > tbody').append(
+  '<%= j render partial: 'tbody', collection: @customers, as: :customer %>'
+);
 <% if @customers.next_page %>
   $('.pagination-container').html('<%= j will_paginate(@customers) %>');
 <% else %>

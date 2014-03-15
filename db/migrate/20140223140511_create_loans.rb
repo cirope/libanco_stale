@@ -6,7 +6,7 @@ class CreateLoans < ActiveRecord::Migration
       t.integer :payments_count, null: false
       t.integer :progress, null: false, default: 0
       t.date :next_payment_expire_at
-      t.date :expired_at, null: false
+      t.date :expire_at, null: false
       t.date :canceled_at
       t.references :customer, null: false, index: true
       t.references :user, null: false, index: true
@@ -18,7 +18,7 @@ class CreateLoans < ActiveRecord::Migration
 
     add_index :loans, :status
     add_index :loans, :progress
-    add_index :loans, :expired_at
+    add_index :loans, :expire_at
     add_index :loans, :canceled_at
     add_index :loans, :next_payment_expire_at
   end

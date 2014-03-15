@@ -14,22 +14,22 @@ module Loans::Payments
   private
 
     def create_payments
-      expired_at = Date.today
+      expiration = (expire_at || Date.today)
 
       (1..payments_count).each do |number|
-        expired_at = expired_at.next_month
+        expiration = expiration.next_month
 
         payments.build(
           number: number,
           payment: payment_amount,
-          expired_at: expired_at
+          expire_at: expiration
         )
       end
     end
 
     def assign_loan_attributes
-      self.expired_at = payments.last.expired_at
-      self.next_payment_expire_at = payments.first.expired_at
+      self.expire_at = payments.map(&:expire_at).max
+      self.next_payment_expire_at = payments.map(&:expire_at).min
     end
 
     def payment_amount

@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20140314222207) do
     t.integer  "payments_count",                                                      null: false
     t.integer  "progress",                                        default: 0,         null: false
     t.date     "next_payment_expire_at"
-    t.date     "expired_at",                                                          null: false
+    t.date     "expire_at",                                                           null: false
     t.date     "canceled_at"
     t.integer  "customer_id",                                                         null: false
     t.integer  "user_id",                                                             null: false
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20140314222207) do
   add_index "loans", ["account_id"], name: "index_loans_on_account_id", using: :btree
   add_index "loans", ["canceled_at"], name: "index_loans_on_canceled_at", using: :btree
   add_index "loans", ["customer_id"], name: "index_loans_on_customer_id", using: :btree
-  add_index "loans", ["expired_at"], name: "index_loans_on_expired_at", using: :btree
+  add_index "loans", ["expire_at"], name: "index_loans_on_expire_at", using: :btree
   add_index "loans", ["next_payment_expire_at"], name: "index_loans_on_next_payment_expire_at", using: :btree
   add_index "loans", ["progress"], name: "index_loans_on_progress", using: :btree
   add_index "loans", ["status"], name: "index_loans_on_status", using: :btree
@@ -96,14 +96,14 @@ ActiveRecord::Schema.define(version: 20140314222207) do
   create_table "payments", force: true do |t|
     t.integer  "number",                              null: false
     t.decimal  "payment",    precision: 15, scale: 2, null: false
-    t.date     "expired_at",                          null: false
+    t.date     "expire_at",                           null: false
     t.datetime "paid_at"
     t.integer  "loan_id",                             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "payments", ["expired_at"], name: "index_payments_on_expired_at", using: :btree
+  add_index "payments", ["expire_at"], name: "index_payments_on_expire_at", using: :btree
   add_index "payments", ["loan_id"], name: "index_payments_on_loan_id", using: :btree
   add_index "payments", ["number"], name: "index_payments_on_number", using: :btree
   add_index "payments", ["paid_at"], name: "index_payments_on_paid_at", using: :btree

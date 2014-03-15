@@ -34,6 +34,6 @@ module Payments::LoanUpdate
     end
 
     def next_payment_expiration
-      self_and_siblings.detect { |payment| payment.paid_at.nil? }.expired_at
+      self_and_siblings.detect { |payment| payment.paid_at.nil? }.expire_at
     end
 end
