@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140314222207) do
   end
 
   add_index "companies", ["account_id"], name: "index_companies_on_account_id", using: :btree
-  add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
+  add_index "companies", ["name"], name: "index_companies_on_name", using: :btree
 
   create_table "customers", force: true do |t|
     t.string   "name",                       null: false
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20140314222207) do
   add_index "customers", ["account_id"], name: "index_customers_on_account_id", using: :btree
   add_index "customers", ["city_id"], name: "index_customers_on_city_id", using: :btree
   add_index "customers", ["company_id"], name: "index_customers_on_company_id", using: :btree
-  add_index "customers", ["identification"], name: "index_customers_on_identification", unique: true, using: :btree
+  add_index "customers", ["identification"], name: "index_customers_on_identification", using: :btree
   add_index "customers", ["lastname"], name: "index_customers_on_lastname", using: :btree
   add_index "customers", ["name"], name: "index_customers_on_name", using: :btree
 
