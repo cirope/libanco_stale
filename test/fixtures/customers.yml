@@ -3,6 +3,7 @@ paul:
   lastname: Smith
   identification: 33216329
   address: HUARPES 3072. B. LEDONE
+  company: skanska
   city: rivadavia
   account: cirope
 
@@ -10,6 +11,7 @@ simon:
   name: Simon
   lastname: Williams
   identification: 34655498
-  address: B TAMARINDO III MANZ C CASA 14
+  address: B Tamarindo III Manz C Casa 14
+  company: skanska
   city: godoy_cruz
   account: cirope

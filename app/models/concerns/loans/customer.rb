@@ -2,7 +2,7 @@ module Loans::Customer
   extend ActiveSupport::Concern
 
   included do
-    delegate :address, to: :customer, prefix: true
+    delegate :address, :company, to: :customer, prefix: true
 
     belongs_to :customer
     has_many :phones, through: :customer
@@ -14,5 +14,9 @@ module Loans::Customer
 
   def address
     customer_address
+  end
+
+  def company
+    customer_company
   end
 end

@@ -50,6 +50,18 @@ es:
     show:
       title: 'Ver ciudad'
 
+  companies:
+    edit:
+      title: 'Editar empresa'
+    index:
+      new: 'Nueva empresa'
+      title: 'Listado de empresas'
+      empty_html: 'No hay empresas, puede crear una con el botón <span class="label label-info">Nueva empresa</span>'
+    new:
+      title: 'Crear empresa'
+    show:
+      title: 'Ver empresa'
+
   customers:
     edit:
       title: 'Editar cliente'
@@ -59,6 +71,7 @@ es:
       empty_html: 'No hay clientes, puede crear uno con el botón <span class="label label-info">Nuevo cliente</span>'
     new:
       title: 'Crear cliente'
+      company: 'Agregar nueva empresa'
       phone: 'Agregar teléfono'
       city: 'Agregar nueva ciudad'
     show:

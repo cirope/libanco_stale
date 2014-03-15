@@ -1,6 +1,4 @@
 Finance::Application.routes.draw do
-  resources :tax_settings
-
   constraints AdminSubdomain do
     resources :accounts
   end
@@ -20,8 +18,6 @@ Finance::Application.routes.draw do
       resources :schedules, only: [:new, :create, :edit, :update]
     end
 
-    resources :customers
-
     # Profiles
     get 'profile', to: 'profiles#edit', as: 'profile'
     patch 'profile', to: 'profiles#update'
@@ -30,6 +26,9 @@ Finance::Application.routes.draw do
     resources :cities
     resources :states
     resources :users
+    resources :companies
+    resources :tax_settings
+    resources :customers
   end
 
   # Sessions

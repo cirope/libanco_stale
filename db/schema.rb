@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140314135025) do
+ActiveRecord::Schema.define(version: 20140314222207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,11 +37,23 @@ ActiveRecord::Schema.define(version: 20140314135025) do
   add_index "cities", ["account_id"], name: "index_cities_on_account_id", using: :btree
   add_index "cities", ["state_id"], name: "index_cities_on_state_id", using: :btree
 
+  create_table "companies", force: true do |t|
+    t.string   "name",                     null: false
+    t.integer  "account_id",               null: false
+    t.integer  "lock_version", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "companies", ["account_id"], name: "index_companies_on_account_id", using: :btree
+  add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
+
   create_table "customers", force: true do |t|
     t.string   "name",                       null: false
     t.string   "lastname",                   null: false
     t.string   "identification",             null: false
     t.string   "address",                    null: false
+    t.integer  "company_id"
     t.integer  "city_id",                    null: false
     t.integer  "account_id",                 null: false
     t.integer  "lock_version",   default: 0, null: false
@@ -51,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140314135025) do
 
   add_index "customers", ["account_id"], name: "index_customers_on_account_id", using: :btree
   add_index "customers", ["city_id"], name: "index_customers_on_city_id", using: :btree
+  add_index "customers", ["company_id"], name: "index_customers_on_company_id", using: :btree
   add_index "customers", ["identification"], name: "index_customers_on_identification", unique: true, using: :btree
   add_index "customers", ["lastname"], name: "index_customers_on_lastname", using: :btree
   add_index "customers", ["name"], name: "index_customers_on_name", using: :btree

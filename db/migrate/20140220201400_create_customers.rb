@@ -5,6 +5,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.string :lastname, null: false
       t.string :identification, null: false
       t.string :address, null: false
+      t.references :company, index: true
       t.references :city, null: false, index: true
       t.references :account, null: false, index: true
       t.integer :lock_version, null: false, default: 0
@@ -14,6 +15,6 @@ class CreateCustomers < ActiveRecord::Migration
 
     add_index :customers, :name
     add_index :customers, :lastname
-    add_index :customers, :identification, unique: true
+    add_index :customers, :identification
   end
 end

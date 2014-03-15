@@ -9,10 +9,24 @@ module CustomersHelper
     raw city_text_label << ' ' << add_city_link
   end
 
+  def company_label
+    raw company_text_label << ' ' << add_company_link
+  end
+
   private
+
+    def company_text_label
+      Customer.human_attribute_name 'company'
+    end
 
     def city_text_label
       Customer.human_attribute_name 'city'
+    end
+
+    def add_company_link
+      link_to new_company_path, title: t('customers.new.company'), data: { remote: true } do
+        content_tag :span, nil, class: 'glyphicon glyphicon-plus-sign'
+      end
     end
 
     def add_city_link

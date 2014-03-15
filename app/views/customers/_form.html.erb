@@ -13,6 +13,8 @@
             <%= f.input :lastname %>
             <%= f.input :identification %>
             <%= f.input :address %>
+            <%= f.association :company, label: company_label, prompt: true,
+              input_html: { data: { update_after_company_change: true } } %>
             <%= f.association :city, label: city_label, prompt: true,
               input_html: { data: { update_after_city_change: true } }
             %>

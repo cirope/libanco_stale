@@ -8,6 +8,7 @@ class Customer < ActiveRecord::Base
   strip_fields :name, :lastname, :identification, :address
 
   belongs_to :city
+  belongs_to :company
   has_many :phones, dependent: :destroy
 
   accepts_nested_attributes_for :phones,

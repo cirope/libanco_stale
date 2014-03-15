@@ -8,6 +8,7 @@
         <th><%= Customer.human_attribute_name 'lastname' %></th>
         <th><%= Customer.human_attribute_name 'identification' %></th>
         <th><%= Customer.human_attribute_name 'address' %></th>
+        <th><%= Customer.human_attribute_name 'company' %></th>
         <th><%= Customer.human_attribute_name 'city' %></th>
         <th colspan="3">
           <%= link_to_new new_customer_path, class: 'btn btn-default btn-xs pull-right' %>
@@ -22,6 +23,7 @@
           <td><%= customer.lastname %></td>
           <td><%= customer.identification %></td>
           <td><%= customer.address %></td>
+          <td><%= customer.company %></td>
           <td><%= customer.city %></td>
           <td><%= link_to_show customer %></td>
           <td><%= link_to_edit edit_customer_path(customer) %></td>

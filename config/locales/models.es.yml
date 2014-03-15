@@ -11,6 +11,9 @@ es:
       city:
         one: 'Ciudad'
         other: 'Ciudades'
+      company:
+        one: 'Empresa'
+        other: 'Empresas'
       customer:
         one: 'Cliente'
         other: 'Clientes'
@@ -47,11 +50,14 @@ es:
         name: 'Nombre'
         zip_code: 'Código postal'
         state: 'Provincia'
+      company:
+        name: 'Nombre'
       customer:
         name: 'Nombre'
         lastname: 'Apellido'
         identification: 'DNI'
         address: 'Dirección'
+        company: 'Empresa'
         city: 'Ciudad'
       loan:
         amount: 'Monto'
