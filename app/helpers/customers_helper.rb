@@ -5,32 +5,18 @@ module CustomersHelper
     @customer.phones
   end
 
-  def city_label
-    raw city_text_label << ' ' << add_city_link
-  end
-
-  def company_label
-    raw company_text_label << ' ' << add_company_link
+  def add_label(model)
+    raw text_label(model) << ' ' << add_link(model)
   end
 
   private
 
-    def company_text_label
-      Customer.human_attribute_name 'company'
+    def text_label(model)
+      Customer.human_attribute_name model
     end
 
-    def city_text_label
-      Customer.human_attribute_name 'city'
-    end
-
-    def add_company_link
-      link_to new_company_path, title: t('customers.new.company'), data: { remote: true } do
-        content_tag :span, nil, class: 'glyphicon glyphicon-plus-sign'
-      end
-    end
-
-    def add_city_link
-      link_to new_city_path, title: t('customers.new.city'), data: { remote: true } do
+    def add_link(model)
+      link_to [:new, model], title: t("customers.new.#{model}"), data: { remote: true } do
         content_tag :span, nil, class: 'glyphicon glyphicon-plus-sign'
       end
     end
