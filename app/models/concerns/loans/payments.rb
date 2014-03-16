@@ -2,7 +2,7 @@ module Loans::Payments
   extend ActiveSupport::Concern
 
   included do
-    has_many :payments, dependent: :destroy
+    has_many :payments, dependent: :destroy, counter_cache: ''
 
     before_create :create_payments, :assign_loan_attributes
   end
