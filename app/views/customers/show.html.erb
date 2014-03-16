@@ -3,14 +3,6 @@
 </div>
 
 <p>
-  <strong><%= Customer.human_attribute_name 'name' %></strong>:
-  <%= @customer.name %>
-</p>
-<p>
-  <strong><%= Customer.human_attribute_name 'lastname' %></strong>:
-  <%= @customer.lastname %>
-</p>
-<p>
   <strong><%= Customer.human_attribute_name 'identification' %></strong>:
   <%= @customer.identification %>
 </p>
@@ -21,6 +13,10 @@
 <p>
   <strong><%= Customer.human_attribute_name 'city' %></strong>:
   <%= @customer.city %>
+</p>
+<p>
+  <strong><%= Customer.human_attribute_name 'company' %></strong>:
+  <%= @customer.company %>
 </p>
 
 <p>

@@ -33,8 +33,7 @@ class SchedulesControllerTest < ActionController::TestCase
     assert_difference('Schedule.count') do
       xhr :post, :create, schedule: {
         description: @schedule.description,
-        scheduled_at: 1.day.from_now,
-        lock_version: 0
+        scheduled_at: 1.day.from_now
       }, format: :js
     end
 

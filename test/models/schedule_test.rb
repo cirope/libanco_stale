@@ -126,4 +126,11 @@ class ScheduleTest < ActiveSupport::TestCase
       Reminder.send_summaries
     end
   end
+
+  test 'move schedules' do
+    date = 5.days.from_now
+    @schedule.move(date)
+
+    assert_equal date.to_date, @schedule.reload.scheduled_at.to_date
+  end
 end
