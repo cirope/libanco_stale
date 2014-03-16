@@ -3,6 +3,8 @@
     <tr>
       <th><%= Payment.human_attribute_name 'number' %></th>
       <th><%= Payment.human_attribute_name 'payment' %></th>
+      <th><%= Payment.human_attribute_name 'taxes' %></th>
+      <th><%= Payment.human_attribute_name 'total' %></th>
       <th><%= Payment.human_attribute_name 'expire_at' %></th>
       <th><%= Payment.human_attribute_name 'paid_at' %></th>
       <th></th>
@@ -10,6 +12,6 @@
   </thead>
 
   <tbody>
-    <%= render @loan.payments %>
+    <%= render @loan.payments.includes(:taxes) %>
   </tbody>
 </table>

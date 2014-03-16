@@ -1,0 +1,6 @@
+<% payment.taxes.each do |tax| %>
+  <p>
+    <strong><%= tax.name %></strong>:
+    <%= number_to_currency tax.value %>
+  </p>
+<% end %>

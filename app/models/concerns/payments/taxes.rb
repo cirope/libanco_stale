@@ -4,14 +4,16 @@ module Payments::Taxes
   included do
     has_many :taxes, dependent: :destroy
 
-    scope :yesterday, -> { where(expire_at: Date.yesterday..Date.today) }
+    scope :yesterday, -> { where(expire_at: Time.zone.now.yesterday.midnight..Time.zone.now.midnight) }
   end
 
   module ClassMethods
-    def assign_current_taxes
-      yesterday.each do |payment|
-        TaxSetting.all.each do |tax|
-          taxes.create!(name: tax.name, value: tax.value)
+    def assign_taxes(account)
+      Account.current_id = account.id
+
+      account.tax_settings.each do |tax|
+        account.payments.yesterday.each do |payment|
+          payment.taxes.create!(name: tax.name, value: tax.value)
         end
       end
     end

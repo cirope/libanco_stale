@@ -35,6 +35,9 @@ es:
       state:
         one: 'Provincia'
         other: 'Provincias'
+      tax:
+        one: 'Adicional'
+        other: 'Adicionales'
       tax_setting:
         one: 'Adicional'
         other: 'Adicionales'
@@ -75,6 +78,8 @@ es:
         payment: 'Cuota'
         expire_at: 'Vencimiento'
         paid_at: 'Fecha de pago'
+        taxes: 'Adicionales'
+        total: 'Total'
       phone:
         phone: 'Teléfono'
       reminder:
