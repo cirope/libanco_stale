@@ -9,5 +9,5 @@ every 1.day, at: '18:00' do
 end
 
 every 1.day, at: '00:01' do
-  rake 'payments:assign_current_taxes'
+  rake 'payments:assign_taxes'
 end
