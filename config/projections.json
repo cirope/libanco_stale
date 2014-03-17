@@ -1,4 +1,12 @@
 {
+  "app/controllers/concerns/*.rb": {
+    "command": "concern",
+    "template": "module %S\n  extend ActiveSupport::Concern\nend"
+  },
+  "app/models/concerns/*.rb": {
+    "command": "concern",
+    "template": "module %S\n  extend ActiveSupport::Concern\nend"
+  },
   "app/inputs/*_input.rb": {
     "command": "input",
     "template": "class %SInput < SimpleForm::Inputs::Base\nend",
