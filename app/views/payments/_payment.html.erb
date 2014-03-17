@@ -11,7 +11,9 @@
     </span>
   </td>
   <td>
-    <%= link_to_show_taxes(payment) %>
+    <span <%== 'class="text-danger"' if expired %>>
+      <%= link_to_show_taxes(payment) if payment.taxes.size > 0 %>
+    </span>
   </td>
   <td>
     <span <%== 'class="text-danger"' if expired %>>
