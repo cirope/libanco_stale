@@ -1,5 +1,5 @@
 <div class="progress" data-progress="<%= loan.to_param %>">
   <div class="progress-bar <%= progress_class %>" style="width: <%= progress %>%;">
-    <%= progress %>
+    <%= number_to_percentage progress, precision: 0 %>
   </div>
 </div>
