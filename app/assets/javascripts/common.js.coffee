@@ -1,6 +1,10 @@
+@Main =
+  load: ->
+    $('[autofocus]:first').focus()
+    $('[data-toggle="popover"]').popover()
+
 jQuery ($) ->
-  $('[data-toggle="tooltip"]').tooltip()
-  $('[autofocus]:first').focus()
+  Main.load()
 
   $(document).on 'click keypress', '[data-remove-target]', ->
     $($(this).data('removeTarget')).remove()

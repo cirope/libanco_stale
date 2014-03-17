@@ -13,8 +13,4 @@
   $('[data-debt=\"<%= @loan.to_param %>\"]').replaceWith(
     '<%= j render(partial: 'loans/debt', locals: { loan: @loan } ) %>'
   );
-
-  $(document).ready(function() {
-    $('[data-toggle="popover"]').popover( { trigger: 'hover' } );
-  });
 <% end %>

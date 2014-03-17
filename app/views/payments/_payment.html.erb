@@ -11,7 +11,7 @@
     </span>
   </td>
   <td>
-    <%= render template: 'taxes/index', locals: { payment: payment } %>
+    <%= link_to_show_taxes(payment) %>
   </td>
   <td>
     <span <%== 'class="text-danger"' if expired %>>

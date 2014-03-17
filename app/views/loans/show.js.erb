@@ -3,7 +3,3 @@ $('[data-removeable]').remove();
 $('[data-object-info=\"<%= @loan.to_param %>\"]').after(
   '<%= j render('place_holder', content: render(@loan)) %>'
 );
-
-$(document).ready(function() {
-  $('[data-toggle="popover"]').popover( { trigger: 'hover' } );
-});

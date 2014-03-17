@@ -4,7 +4,7 @@ module Payments::Taxes
   included do
     has_many :taxes, dependent: :destroy
 
-    scope :yesterday, -> { where(expire_at: Time.zone.now.yesterday.midnight..Time.zone.now.midnight) }
+    scope :yesterday, -> { where("#{table_name}.expire_at = ?", Date.yesterday) }
   end
 
   module ClassMethods
