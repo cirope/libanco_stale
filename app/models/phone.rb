@@ -5,7 +5,7 @@ class Phone < ActiveRecord::Base
 
   strip_fields :phone
 
-  belongs_to :customer
+  belongs_to :phonable, polymorphic: true
 
   def to_s
     phone

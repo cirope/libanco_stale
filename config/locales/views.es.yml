@@ -72,7 +72,6 @@ es:
     new:
       title: 'Crear cliente'
       company: 'Agregar nueva empresa'
-      phone: 'Agregar teléfono'
       city: 'Agregar nueva ciudad'
     show:
       title: 'Ver cliente'
@@ -99,6 +98,9 @@ es:
       title: 'Editar cuota'
     index:
       title: 'Listado de cuotas'
+
+  phones:
+    new: 'Agregar teléfono'
 
   schedules:
     edit:

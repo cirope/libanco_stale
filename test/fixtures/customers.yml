@@ -2,6 +2,8 @@ paul:
   name: Paul
   lastname: Smith
   identification: 33216329
+  tax_id: 20-33216329-3
+  email: paul@skanska.com
   address: HUARPES 3072. B. LEDONE
   company: skanska
   city: rivadavia
@@ -11,6 +13,8 @@ simon:
   name: Simon
   lastname: Williams
   identification: 34655498
+  tax_id: 20-34655498-3
+  email: simon@skanska.com
   address: B Tamarindo III Manz C Casa 14
   company: skanska
   city: godoy_cruz

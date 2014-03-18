@@ -55,6 +55,8 @@ es:
         state: 'Provincia'
       company:
         name: 'Nombre'
+        tax_id: 'CUIT'
+        address: 'Dirección'
       customer:
         name: 'Nombre'
         lastname: 'Apellido'

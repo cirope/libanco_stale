@@ -18,6 +18,7 @@
             <%= f.association :city, label: add_label('city'), prompt: true,
               input_html: { data: { update_after_city_change: true } }
             %>
+            <%= f.input :lock_version, as: :hidden %>
           </div>
         </div>
       </div>
@@ -31,12 +32,11 @@
               <%= render 'phones/phone', f: ff %>
             <% end %>
 
-            <%= link_to_add_fields t('customers.new.phone'), f, :phones %>
+            <%= link_to_add_fields t('phones.new'), f, :phones %>
           </div>
         </div>
       </div>
     </div>
-    <%= f.input :lock_version, as: :hidden %>
   </div>
 
   <hr />

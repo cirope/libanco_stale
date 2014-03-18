@@ -1,6 +1,7 @@
 class Company < ActiveRecord::Base
   include Accounts::Scoped
   include Auditable
+  include Phonable
   include Attributes::Strip
 
   strip_fields :name

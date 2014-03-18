@@ -2,11 +2,41 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name, input_html: { autofocus: true } %>
-    <%= f.input :lock_version, as: :hidden %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <%= Company.model_name.human count: 1 %>
+          </div>
+          <div class="panel-body">
+            <%= f.input :name, input_html: { autofocus: true } %>
+            <%= f.input :tax_id %>
+            <%= f.input :address %>
+            <%= f.input :lock_version, as: :hidden %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <%= Phone.model_name.human count: 0 %>
+          </div>
+          <div class="panel-body">
+            <%= f.simple_fields_for :phones, company_phones do |ff| %>
+              <%= render 'phones/phone', f: ff %>
+            <% end %>
+
+            <%= link_to_add_fields t('phones.new'), f, :phones %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="form-actions">
+  <hr />
+
+  <div class="footer form-actions">
+    <div class="pull-right"><%= yield :form_actions %></div>
     <%= f.button :submit, class: 'btn-primary',
       data: { disable_with: t('navigation.processing') } %>
   </div>

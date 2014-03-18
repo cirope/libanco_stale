@@ -1,3 +1,7 @@
-phone:
+customer_phone:
   phone: 261-3005467
-  customer: paul
+  phonable: paul
+
+company_phone:
+  phone: 54-261-3556654
+  phonable: skanska

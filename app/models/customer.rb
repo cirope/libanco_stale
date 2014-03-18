@@ -1,6 +1,7 @@
 class Customer < ActiveRecord::Base
   include Accounts::Scoped
   include Auditable
+  include Phonable
   include Attributes::Strip
   include Customers::Validation
   include Customers::Searchable
@@ -9,10 +10,6 @@ class Customer < ActiveRecord::Base
 
   belongs_to :city
   belongs_to :company
-  has_many :phones, dependent: :destroy
-
-  accepts_nested_attributes_for :phones,
-    allow_destroy: true, reject_if: :all_blank
 
   def to_s
     [lastname, name].join(', ')

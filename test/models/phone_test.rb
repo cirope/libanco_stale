@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PhoneTest < ActiveSupport::TestCase
   def setup
-    @phone = phones(:phone)
+    @phone = phones(:customer_phone)
   end
 
   test 'blank attributes' do

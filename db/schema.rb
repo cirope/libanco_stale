@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20140314222207) do
 
   create_table "companies", force: true do |t|
     t.string   "name",                     null: false
+    t.string   "tax_id"
+    t.string   "address"
     t.integer  "account_id",               null: false
     t.integer  "lock_version", default: 0, null: false
     t.datetime "created_at"
@@ -47,11 +49,14 @@ ActiveRecord::Schema.define(version: 20140314222207) do
 
   add_index "companies", ["account_id"], name: "index_companies_on_account_id", using: :btree
   add_index "companies", ["name"], name: "index_companies_on_name", using: :btree
+  add_index "companies", ["tax_id"], name: "index_companies_on_tax_id", using: :btree
 
   create_table "customers", force: true do |t|
     t.string   "name",                       null: false
     t.string   "lastname",                   null: false
     t.string   "identification",             null: false
+    t.string   "tax_id"
+    t.string   "email"
     t.string   "address",                    null: false
     t.integer  "company_id"
     t.integer  "city_id",                    null: false
@@ -67,6 +72,7 @@ ActiveRecord::Schema.define(version: 20140314222207) do
   add_index "customers", ["identification"], name: "index_customers_on_identification", using: :btree
   add_index "customers", ["lastname"], name: "index_customers_on_lastname", using: :btree
   add_index "customers", ["name"], name: "index_customers_on_name", using: :btree
+  add_index "customers", ["tax_id"], name: "index_customers_on_tax_id", using: :btree
 
   create_table "loans", force: true do |t|
     t.string   "status",                                          default: "current", null: false
@@ -109,13 +115,14 @@ ActiveRecord::Schema.define(version: 20140314222207) do
   add_index "payments", ["paid_at"], name: "index_payments_on_paid_at", using: :btree
 
   create_table "phones", force: true do |t|
-    t.string   "phone",       null: false
-    t.integer  "customer_id", null: false
+    t.string   "phone",         null: false
+    t.integer  "phonable_id"
+    t.string   "phonable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "phones", ["customer_id"], name: "index_phones_on_customer_id", using: :btree
+  add_index "phones", ["phonable_id", "phonable_type"], name: "index_phones_on_phonable_id_and_phonable_type", using: :btree
 
   create_table "reminders", force: true do |t|
     t.datetime "remind_at",                    null: false
