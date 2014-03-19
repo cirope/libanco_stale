@@ -14,16 +14,30 @@ module Loans::Payments
   private
 
     def create_payments
-      expiration = (expire_at || Date.today)
+      expiration = first_expiration
 
       (1..payments_count).each do |number|
-        expiration = expiration.next_month
-
         payments.build(
           number: number,
           payment: payment_amount,
-          expire_at: expiration
+          expire_at: expiration_corrector(expiration)
         )
+        expiration = expiration.next_month
+      end
+    end
+
+    def first_expiration
+      today = Date.today
+      months = [1..14].include?(today.mday) ? 1 : 2
+
+      Date.new(today.year, today.mon, 10).next_month(months)
+    end
+
+    def expiration_corrector(expiration)
+      case expiration.wday
+        when 6 then expiration.next_day(2) # Saturday
+        when 0 then expiration.next_day    # Sunday
+        else expiration
       end
     end
 
