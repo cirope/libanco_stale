@@ -3,21 +3,13 @@
 
   <div class="form-inputs row">
     <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <%= Loan.model_name.human count: 1 %>
-        </div>
-        <div class="panel-body">
-          <%= f.input :amount, as: :string, input_html: { autofocus: true } %>
-          <%= f.input :payments_count, collection: PAYMENTS_DATA.keys,
-            prompt: true %>
-          <%= f.input :customer, as: :autocomplete, label: customer_label,
-            url: customers_path, input_html: {
-            autofocus: true, data: { autocomplete_update_after: true }
-          } %>
-          <%= f.input :lock_version, as: :hidden %>
-        </div>
-      </div>
+      <%= render('shared/panel',
+        title: Loan.model_name.human(count: 1),
+        body: render('form_fields', f: f)
+      ) %>
+    </div>
+    <div class="col-md-6">
+      <%= render 'shared/calculator' %>
     </div>
   </div>
 

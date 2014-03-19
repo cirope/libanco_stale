@@ -4,31 +4,16 @@
   <div class="form-inputs">
     <div class="row">
       <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <%= Company.model_name.human count: 1 %>
-          </div>
-          <div class="panel-body">
-            <%= f.input :name, input_html: { autofocus: true } %>
-            <%= f.input :tax_id %>
-            <%= f.input :address %>
-            <%= f.input :lock_version, as: :hidden %>
-          </div>
-        </div>
+        <%= render('shared/panel',
+          title: Company.model_name.human(count: 1),
+          body: render('form_fields', f: f)
+        ) %>
       </div>
       <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <%= Phone.model_name.human count: 0 %>
-          </div>
-          <div class="panel-body">
-            <%= f.simple_fields_for :phones, company_phones do |ff| %>
-              <%= render 'phones/phone', f: ff %>
-            <% end %>
-
-            <%= link_to_add_fields t('phones.new'), f, :phones %>
-          </div>
-        </div>
+        <%= render('shared/panel',
+          title: Phone.model_name.human(count: 0),
+          body: render('phones/form', f: f)
+        ) %>
       </div>
     </div>
   </div>

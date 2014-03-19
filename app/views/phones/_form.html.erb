@@ -1,0 +1,5 @@
+<%= f.simple_fields_for :phones, phones(f.object) do |ff| %>
+  <%= render 'phones/phone', f: ff %>
+<% end %>
+
+<%= link_to_add_fields t('phones.new'), f, :phones %>

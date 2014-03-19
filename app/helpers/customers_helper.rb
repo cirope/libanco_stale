@@ -1,10 +1,4 @@
 module CustomersHelper
-  def customer_phones
-    @customer.phones.new if @customer.phones.empty?
-
-    @customer.phones
-  end
-
   def add_label(model)
     raw text_label(model) << ' ' << add_link(model)
   end

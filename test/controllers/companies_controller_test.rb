@@ -21,7 +21,14 @@ class CompaniesControllerTest < ActionController::TestCase
 
   test 'should create company' do
     assert_difference('Company.count') do
-      post :create, company: { name: 'empresa' }
+      post :create, company: {
+        name: 'empresa',
+        address: 'direccion',
+        tax_id: '20-275643345-3',
+        company_phones_attributes: [
+          { phone: '261-4286544' }
+        ]
+      }
     end
 
     assert_redirected_to company_url(assigns(:company))

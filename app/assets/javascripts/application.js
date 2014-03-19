@@ -30,6 +30,7 @@
 //= require calendar-time-setup
 //= require date_picker
 //= require endless_pagination
+//= require calculator
 //= require common
 //= require profiles
 //= require accounts

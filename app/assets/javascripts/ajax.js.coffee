@@ -3,4 +3,3 @@ $(document)
     $('.loading-caption').removeClass 'hidden'
   .ajaxStop ->
     $('.loading-caption').addClass 'hidden'
-    Main.load()
