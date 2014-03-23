@@ -3,10 +3,6 @@ module LoansHelper
     raw customer_text_label << ' ' << add_customer_link
   end
 
-  def link_to_loan_info(*args)
-    link_with_icon({ action: 'payments', icon: 'glyphicon glyphicon-info-sign' }, *args)
-  end
-
   def menu_filter_for(filter = nil)
     options = params[:filter] == filter ? { class: 'active' } : ''
 

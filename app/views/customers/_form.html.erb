@@ -1,28 +1,6 @@
-<%= simple_form_for(@customer, data: ({ remote: true } if request.xhr?)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <div class="row">
-      <div class="col-md-6">
-        <%= render('shared/panel',
-          title: Customer.model_name.human(count: 1),
-          body: render('form_fields', f: f)
-        ) %>
-      </div>
-      <div class="col-md-6">
-        <%= render('shared/panel',
-          title: Phone.model_name.human(count: 0),
-          body: render('phones/form', f: f)
-        ) %>
-      </div>
-    </div>
-  </div>
-
-  <hr />
-
-  <div class="footer form-actions">
-    <div class="pull-right"><%= yield :form_actions %></div>
-    <%= f.button :submit, class: 'btn-primary',
-      data: { disable_with: t('navigation.processing') } %>
-  </div>
-<% end %>
+<%= f.input :name, input_html: { autofocus: true } %>
+<%= f.input :lastname %>
+<%= f.input :identification %>
+<%= f.input :tax_id %>
+<%= f.input :email %>
+<%= f.input :address %>

@@ -1,4 +1,5 @@
 <%= content_for :form_actions do %>
+  <%= link_to_show customer_path(@private_customer.customer) %> |
   <%= link_to_index customers_path %>
 <% end %>
 

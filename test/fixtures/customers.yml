@@ -5,8 +5,8 @@ paul:
   tax_id: 20-33216329-3
   email: paul@skanska.com
   address: HUARPES 3072. B. LEDONE
-  company: skanska
   city: rivadavia
+  profile: private_customer (PrivateCustomer)
   account: cirope
 
 simon:
@@ -16,6 +16,6 @@ simon:
   tax_id: 20-34655498-3
   email: simon@skanska.com
   address: B Tamarindo III Manz C Casa 14
-  company: skanska
   city: godoy_cruz
+  profile: public_customer (PublicCustomer)
   account: cirope

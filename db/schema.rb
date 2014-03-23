@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140314222207) do
+ActiveRecord::Schema.define(version: 20140320154206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,7 +58,8 @@ ActiveRecord::Schema.define(version: 20140314222207) do
     t.string   "tax_id"
     t.string   "email"
     t.string   "address",                    null: false
-    t.integer  "company_id"
+    t.integer  "profile_id",                 null: false
+    t.string   "profile_type",               null: false
     t.integer  "city_id",                    null: false
     t.integer  "account_id",                 null: false
     t.integer  "lock_version",   default: 0, null: false
@@ -68,10 +69,10 @@ ActiveRecord::Schema.define(version: 20140314222207) do
 
   add_index "customers", ["account_id"], name: "index_customers_on_account_id", using: :btree
   add_index "customers", ["city_id"], name: "index_customers_on_city_id", using: :btree
-  add_index "customers", ["company_id"], name: "index_customers_on_company_id", using: :btree
   add_index "customers", ["identification"], name: "index_customers_on_identification", using: :btree
   add_index "customers", ["lastname"], name: "index_customers_on_lastname", using: :btree
   add_index "customers", ["name"], name: "index_customers_on_name", using: :btree
+  add_index "customers", ["profile_id", "profile_type"], name: "index_customers_on_profile_id_and_profile_type", using: :btree
   add_index "customers", ["tax_id"], name: "index_customers_on_tax_id", using: :btree
 
   create_table "loans", force: true do |t|
@@ -123,6 +124,21 @@ ActiveRecord::Schema.define(version: 20140314222207) do
   end
 
   add_index "phones", ["phonable_id", "phonable_type"], name: "index_phones_on_phonable_id_and_phonable_type", using: :btree
+
+  create_table "private_customers", force: true do |t|
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "private_customers", ["company_id"], name: "index_private_customers_on_company_id", using: :btree
+
+  create_table "public_customers", force: true do |t|
+    t.string   "department"
+    t.string   "division"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "reminders", force: true do |t|
     t.datetime "remind_at",                    null: false

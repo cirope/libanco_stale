@@ -1,4 +1,11 @@
 module CustomersHelper
+  def customer_profile(form)
+    profile = form.object
+    profile.build_customer  if profile.customer.blank?
+
+    profile.customer
+  end
+
   def add_label(model)
     raw text_label(model) << ' ' << add_link(model)
   end

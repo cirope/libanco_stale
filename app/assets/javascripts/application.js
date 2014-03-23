@@ -32,6 +32,7 @@
 //= require endless_pagination
 //= require calculator
 //= require common
+//= require lazy_tabs
 //= require profiles
 //= require accounts
 //= require cities

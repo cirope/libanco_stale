@@ -1,0 +1,28 @@
+<ul class="nav nav-tabs" data-lazy-tabs="true">
+  <li class="active">
+    <%= link_to(
+      PrivateCustomer.model_name.human(count: 1),
+      '#private_customer', data: { toggle: 'tab', loaded: true }
+    ) %>
+  </li>
+  <li>
+    <%= link_to(
+      PublicCustomer.model_name.human(count: 1), '#public_customer',
+      data: {
+        toggle: 'tab', remote_url: new_public_customer_path
+      }
+    ) %>
+  </li>
+</ul>
+
+<br />
+<div class="tab-content">
+  <div class="tab-pane active" id="private_customer">
+    <%= render 'form' %>
+  </div>
+  <div class="tab-pane" id="public_customer">
+    <div class="alert alert-warning">
+      <strong><%= t 'navigation.loading' %></strong>
+    </div>
+  </div>
+</div>

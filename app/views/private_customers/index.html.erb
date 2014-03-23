@@ -1,0 +1,25 @@
+<% if @private_customers.empty? %>
+  <%= render 'shared/empty_index', message: t('.empty_html') %>
+<% else %>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th><%= PrivateCustomer.human_attribute_name 'company' %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @private_customers.each do |private_customer| %>
+        <tr>
+          <td><%= private_customer.company %></td>
+          <td><%= link_to_show private_customer %></td>
+          <td><%= link_to_edit edit_private_customer_path(private_customer) %></td>
+          <td><%= link_to_destroy private_customer %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= link_to_new new_private_customer_path, class: 'btn btn-primary' %>

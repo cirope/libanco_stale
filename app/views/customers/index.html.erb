@@ -1,33 +1,31 @@
+<%= render 'search' %>
+
+<br />
 <% if @customers.empty? %>
   <%= render 'shared/empty_index', message: t('.empty_html') %>
+  <%= render 'footer' %>
+<% elsif @customers.size == 1 %>
+  <%= render template: 'customers/show', locals: { :@customer => @customers.first } %>
 <% else %>
-  <table class="table table-striped table-hover table-condensed" data-endless-container="true">
+  <table class="table table-condensed table-striped">
     <thead>
       <tr>
-        <th><%= Customer.human_attribute_name 'lastname' %></th>
         <th><%= Customer.human_attribute_name 'name' %></th>
         <th><%= Customer.human_attribute_name 'identification' %></th>
-        <th><%= Customer.human_attribute_name 'address' %></th>
-        <th><%= Customer.human_attribute_name 'company' %></th>
-        <th><%= Customer.human_attribute_name 'city' %></th>
-        <th colspan="3">
-          <%= link_to_new new_customer_path, class: 'btn btn-default btn-xs pull-right' %>
-        </th>
+        <th><%= Customer.human_attribute_name 'email' %></th>
       </tr>
     </thead>
 
     <tbody>
-      <%= render partial: 'tbody', collection: @customers, as: :customer %>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= link_to customer, customer_path(customer) %></td>
+          <td><%= customer.identification %></td>
+          <td><%= mail_to customer.email, customer.email %></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 
-  <div class="pagination-container">
-    <%= will_paginate @customers %>
-  </div>
+  <%= render 'footer' %>
 <% end %>
-
-<hr />
-
-<div class="footer">
-  <%= link_to_new new_customer_path, class: 'btn btn-primary' %>
-</div>

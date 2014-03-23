@@ -19,8 +19,8 @@
             <%= menu_item_for Account, accounts_path %>
           <% else %>
             <%= menu_item_for Schedule, schedules_path %>
-            <%= menu_item_for Loan, loans_path %>
             <%= menu_item_for Customer, customers_path %>
+            <%= menu_item_for Loan, loans_path %>
             <%= render 'shared/submenu/admin' %>
           <% end %>
         </ul>

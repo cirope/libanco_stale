@@ -17,6 +17,12 @@ es:
       customer:
         one: 'Cliente'
         other: 'Clientes'
+      private_customer:
+        one: 'Cliente privado'
+        other: 'Clientes privados'
+      public_customer:
+        one: 'Cliente público'
+        other: 'Clientes públicos'
       loan:
         one: 'Préstamo'
         other: 'Préstamos'
@@ -58,12 +64,23 @@ es:
         tax_id: 'CUIT'
         address: 'Dirección'
       customer:
-        name: 'Nombre'
-        lastname: 'Apellido'
-        identification: 'DNI'
         address: 'Dirección'
-        company: 'Empresa'
+        email: 'Correo electrónico'
+        identification: 'DNI'
+        lastname: 'Apellido'
+        name: 'Nombre'
+        tax_id: 'CUIL/CUIT'
         city: 'Ciudad'
+        company: 'Empresa'
+      customer/profile:
+        title: 'Perfil'
+        private: 'Privado'
+        public: 'Público'
+      private_customer:
+        company: 'Empresa'
+      public_customer:
+        department: 'Ministerio o Secretaría'
+        division: 'Repartición'
       loan:
         amount: 'Monto'
         canceled_at: 'Cancelación'

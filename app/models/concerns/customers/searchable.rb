@@ -9,11 +9,7 @@ module Customers::Searchable
 
   module ClassMethods
     def search query: nil, limit: false
-      result = includes(:company, :city).ordered
-
-      if query.present?
-        result = magick_search(query)
-      end
+      result = magick_search(query)
 
       limit ? result.limit(10) : result
     end

@@ -22,13 +22,17 @@ Finance::Application.routes.draw do
     get 'profile', to: 'profiles#edit', as: 'profile'
     patch 'profile', to: 'profiles#update'
 
-    # Resorces
+    # Resources
     resources :cities
     resources :states
     resources :users
     resources :companies
     resources :tax_settings
-    resources :customers
+    resources :customers, only: [:index, :show] do
+      resources :loans, only: [:new, :create]
+    end
+    resources :public_customers, except: [:show, :destroy]
+    resources :private_customers, except: [:show, :destroy]
   end
 
   # Sessions

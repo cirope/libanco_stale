@@ -1,15 +1,15 @@
 class Customer < ActiveRecord::Base
   include Accounts::Scoped
   include Auditable
-  include Phonable
   include Attributes::Strip
   include Customers::Validation
   include Customers::Searchable
+  include Phonable
 
   strip_fields :name, :lastname, :identification, :address
 
   belongs_to :city
-  belongs_to :company
+  belongs_to :profile, polymorphic: true
 
   def to_s
     [lastname, name].join(', ')

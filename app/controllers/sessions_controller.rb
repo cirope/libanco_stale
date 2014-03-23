@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
     end
 
     def default_url
-      users_url subdomain: current_user.account_subdomain
+      customers_url subdomain: current_user.account_subdomain
     end
 
     def store_auth_token user

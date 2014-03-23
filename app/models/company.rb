@@ -13,7 +13,7 @@ class Company < ActiveRecord::Base
     length: { maximum: 255 },
     uniqueness: { case_sensitive: false, scope: :account_id }
 
-  has_many :customers
+  has_many :private_customers
 
   def to_s
     name

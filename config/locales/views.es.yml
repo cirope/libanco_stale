@@ -24,6 +24,7 @@ es:
     show: 'Ver'
     payments: 'Ver cuotas'
     processing: 'Procesando...'
+    search: 'Buscar'
 
   accounts:
     edit:
@@ -68,10 +69,37 @@ es:
     index:
       new: 'Nuevo cliente'
       title: 'Listado de clientes'
-      empty_html: 'No hay clientes, puede crear uno con el botón <span class="label label-info">Nuevo cliente</span>'
+      empty_html: 'No se encontraron clientes, puede buscar o crear uno con el botón <span class="label label-info">Nuevo cliente</span>'
     new:
       title: 'Crear cliente'
       company: 'Agregar nueva empresa'
+      city: 'Agregar nueva ciudad'
+    show:
+      title: 'Ver cliente'
+
+  private_customers:
+    edit:
+      title: 'Editar cliente'
+    index:
+      new: 'Nuevo cliente privado'
+      title: 'Listado de clientes'
+      empty_html: 'No hay clientes privados, puede crear uno con el botón <span class="label label-info">Nuevo cliente privado</span>'
+    new:
+      title: 'Crear cliente privado'
+      company: 'Agregar nueva empresa'
+      city: 'Agregar nueva ciudad'
+    show:
+      title: 'Ver cliente'
+
+  public_customers:
+    edit:
+      title: 'Editar cliente'
+    index:
+      new: 'Nuevo cliente publico'
+      title: 'Listado de clientes'
+      empty_html: 'No hay clientes públicos, puede crear uno con el botón <span class="label label-info">Nuevo cliente públicos</span>'
+    new:
+      title: 'Crear cliente público'
       city: 'Agregar nueva ciudad'
     show:
       title: 'Ver cliente'

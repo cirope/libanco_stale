@@ -1,0 +1,2 @@
+module PublicCustomersHelper
+end

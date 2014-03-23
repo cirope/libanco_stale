@@ -15,9 +15,7 @@
             <th class="visible-lg"><%= Loan.human_attribute_name 'payments_count' %></th>
             <th class="visible-lg"><%= Loan.human_attribute_name 'expire_at' %></th>
             <%= show_filter_column %>
-            <th colspan="2">
-              <%= link_to_new new_loan_path, class: 'btn btn-default btn-xs pull-right' %>
-            </th>
+            <th colspan="2"></th>
           </tr>
         </thead>
 
@@ -31,10 +29,4 @@
       </div>
     <% end %>
   </div>
-</div>
-
-<hr />
-
-<div class="footer">
-  <%= link_to_new new_loan_path, class: 'btn btn-primary' %>
 </div>

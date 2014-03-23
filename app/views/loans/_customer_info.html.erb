@@ -6,15 +6,11 @@
   <strong><%= Phone.model_name.human(count: 0) %></strong>:
   <ul>
     <% @loan.phones.each do |phone| %>
-      <li><%= phone.phone %></li>
+      <li><%= phone %></li>
     <% end %>
   </ul>
 </p>
 <p>
-  <strong><%= Customer.human_attribute_name :address %></strong>:
+  <strong><%= Customer.human_attribute_name 'address' %></strong>:
   <%= @loan.address %>
-</p>
-<p>
-  <strong><%= Customer.human_attribute_name :company %></strong>:
-  <%= @loan.company %>
 </p>

@@ -1,4 +1,4 @@
-<%= simple_form_for(@loan) do |f| %>
+<%= simple_form_for([@customer, @loan], data: ({ remote: true } if request.xhr?)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs row">

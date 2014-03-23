@@ -1,36 +1,60 @@
+<% profile = @customer.profile %>
+
 <div class="page-header">
   <h2><%= @customer %></h2>
 </div>
 
-<p>
-  <strong><%= Customer.human_attribute_name 'identification' %></strong>:
-  <%= @customer.identification %>
-</p>
-<p>
-  <strong><%= Customer.human_attribute_name 'address' %></strong>:
-  <%= @customer.address %>
-</p>
-<p>
-  <strong><%= Customer.human_attribute_name 'city' %></strong>:
-  <%= @customer.city %>
-</p>
-<p>
-  <strong><%= Customer.human_attribute_name 'company' %></strong>:
-  <%= @customer.company %>
-</p>
-
-<p>
-  <strong><%= Phone.model_name.human count: 0 %></strong>:
-</p>
-
-<ul>
-  <% @customer.phones.each do |phone| %>
-    <li><%= phone %></li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <strong><%= Customer.human_attribute_name 'profile.title' %></strong>:
+      <%= profile %>
+    </p>
+    <p>
+      <strong><%= Customer.human_attribute_name 'identification' %></strong>:
+      <%= @customer.identification %>
+    </p>
+    <p>
+      <strong><%= Phone.model_name.human(count: 0) %></strong>:
+      <ul>
+        <% @customer.phones.each do |phone| %>
+          <li><%= phone %></li>
+        <% end %>
+      </ul>
+    </p>
+    <p>
+      <strong><%= Customer.human_attribute_name 'tax_id' %></strong>:
+      <%= @customer.tax_id %>
+    </p>
+  </div>
+  <div class="col-md-6">
+    <p>
+      <strong><%= Customer.human_attribute_name 'email' %></strong>:
+      <%= mail_to @customer.email, @customer.email %>
+    </p>
+    <p>
+      <strong><%= Customer.human_attribute_name 'address' %></strong>:
+      <%= @customer.address %>
+    </p>
+    <p>
+      <strong><%= Customer.human_attribute_name 'city' %></strong>:
+      <%= @customer.city %>
+    </p>
+    <%= render(
+      template: "#{profile.class.model_name.plural}/show", locals: { :@customer => profile }
+    ) %>
+  </div>
+</div>
 
 <hr />
 
-<%= link_to_edit edit_customer_path(@customer) %> |
-<%= link_to_index customers_path %> |
-<%= link_to t('navigation.back'), :back %>
+<div class="footer">
+  <div class="pull-right">
+    <%= link_to_edit edit_polymorphic_path(profile) %> |
+    <%= link_to_index customers_path %>
+  </div>
+  <%= link_to(
+    t('loans.new.title'), new_customer_loan_path(@customer),
+    class: 'btn btn-primary', data: { remote: true }
+  ) %>
+</div>

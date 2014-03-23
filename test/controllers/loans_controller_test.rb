@@ -20,7 +20,7 @@ class LoansControllerTest < ActionController::TestCase
   end
 
   test 'should get new' do
-    get :new
+    get :new, customer_id: customers(:paul).id
     assert_response :success
   end
 
@@ -29,15 +29,13 @@ class LoansControllerTest < ActionController::TestCase
 
     assert_difference('Loan.count') do
       assert_difference('Payment.count', payments_count) do
-        post :create, loan: {
-          amount: 10000,
-          payments_count: payments_count,
-          customer_id: customers(:paul).id
+        xhr :post, :create, customer_id: customers(:paul).id, loan: {
+          amount: 10000, payments_count: payments_count
         }
       end
     end
 
-    assert_redirected_to loan_url(assigns(:loan))
+    assert_response :success
   end
 
   test 'should show loan' do

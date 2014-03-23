@@ -2,8 +2,4 @@
   input_html: { autofocus: true, data: { calculator_amount: true } } %>
 <%= f.input :payments_count, collection: PAYMENTS_DATA.keys,
   prompt: true %>
-<%= f.input :customer, as: :autocomplete, label: customer_label,
-  url: customers_path, input_html: {
-  autofocus: true, data: { autocomplete_update_after: true }
-} %>
 <%= f.input :lock_version, as: :hidden %>
