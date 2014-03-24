@@ -1,0 +1,29 @@
+<h3><%= Loan.model_name.human count: 0 %></h3>
+
+<% if loans.blank? %>
+  <%= render 'shared/empty_index', message: t('customers.loans.empty_html') %>
+<% else %>
+  <table class="table table-condensed table-striped table-hover">
+    <thead>
+      <tr>
+        <th><%= Loan.human_attribute_name 'amount' %></th>
+        <th><%= Loan.human_attribute_name 'payments_count' %></th>
+        <th><%= Loan.human_attribute_name 'created_at' %></th>
+        <th><%= Loan.human_attribute_name 'expire_at' %></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% loans.ordered.each do |loan| %>
+        <tr data-object-info="<%= loan.to_param %>">
+          <td><%= number_to_currency loan.amount %></td>
+          <td><%= show_payments_count(loan) %></td>
+          <td><%= l loan.created_at.to_date %></td>
+          <td><%= l loan.expire_at %></td>
+          <td><%= link_to_show loan_path(loan), data: { remote: true } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

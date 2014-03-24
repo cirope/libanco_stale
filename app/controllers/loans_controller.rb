@@ -4,7 +4,7 @@ class LoansController < ApplicationController
   respond_to :html, :json, :js
 
   before_action :authorize
-  before_action :set_customer, only: [:new, :create]
+  before_action :set_customer, only: [:new, :create, :show]
   before_action :set_loan, only: [:show]
   before_action :set_title
 
@@ -30,7 +30,7 @@ class LoansController < ApplicationController
 
     respond_to do |format|
       if @loan.save
-        format.js { redirect_via_turbolinks_to @loan }
+        format.js { redirect_via_turbolinks_to [@customer, @loan] }
       else
         format.js { render 'new' }
       end
@@ -44,7 +44,7 @@ class LoansController < ApplicationController
     end
 
     def set_customer
-      @customer = Customer.find(params[:customer_id])
+      @customer = Customer.find_by(id: params[:customer_id])
     end
 
     def loan_params

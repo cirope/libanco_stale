@@ -76,6 +76,8 @@ es:
       city: 'Agregar nueva ciudad'
     show:
       title: 'Ver cliente'
+    loans:
+      empty_html: 'El cliente no posee préstamos, puede crear uno con el botón <span class="label label-info">Crear préstamo</span>'
 
   private_customers:
     edit:

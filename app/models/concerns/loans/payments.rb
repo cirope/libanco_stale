@@ -7,6 +7,10 @@ module Loans::Payments
     before_create :create_payments, :assign_loan_attributes
   end
 
+  def paid_payments_count
+    payments.where.not(paid_at: nil).count
+  end
+
   def total_debt
     payments.where(paid_at: nil).sum('payment')
   end

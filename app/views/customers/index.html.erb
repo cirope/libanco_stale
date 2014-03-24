@@ -3,9 +3,6 @@
 <br />
 <% if @customers.empty? %>
   <%= render 'shared/empty_index', message: t('.empty_html') %>
-  <%= render 'footer' %>
-<% elsif @customers.size == 1 %>
-  <%= render template: 'customers/show', locals: { :@customer => @customers.first } %>
 <% else %>
   <table class="table table-condensed table-striped">
     <thead>
@@ -19,13 +16,29 @@
     <tbody>
       <% @customers.each do |customer| %>
         <tr>
-          <td><%= link_to customer, customer_path(customer) %></td>
+          <td><%= link_to customer, customer %></td>
           <td><%= customer.identification %></td>
           <td><%= mail_to customer.email, customer.email %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-
-  <%= render 'footer' %>
 <% end %>
+
+<hr />
+
+<div class="footer">
+  <div class="btn-group">
+    <%= link_to '#', class: 'btn btn-primary dropdown-toggle', data: { toggle: 'dropdown'} do %>
+      <%= t('customers.new.title') %> <span class="caret"></span>
+    <% end %>
+    <ul class="dropdown-menu" role="menu">
+      <li>
+        <%= link_to PrivateCustomer.model_name.human(count: 1), new_private_customer_path %>
+      </li>
+      <li>
+        <%= link_to PublicCustomer.model_name.human(count: 1), new_public_customer_path %>
+      </li>
+    </ul>
+  </div>
+</div>

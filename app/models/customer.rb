@@ -10,6 +10,7 @@ class Customer < ActiveRecord::Base
 
   belongs_to :city
   belongs_to :profile, polymorphic: true
+  has_many :loans, dependent: :destroy
 
   def to_s
     [lastname, name].join(', ')

@@ -29,7 +29,7 @@ Finance::Application.routes.draw do
     resources :companies
     resources :tax_settings
     resources :customers, only: [:index, :show] do
-      resources :loans, only: [:new, :create]
+      resources :loans, only: [:new, :create, :show]
     end
     resources :public_customers, except: [:show, :destroy]
     resources :private_customers, except: [:show, :destroy]

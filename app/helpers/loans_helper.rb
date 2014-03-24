@@ -42,6 +42,10 @@ module LoansHelper
     )
   end
 
+  def show_payments_count(loan)
+    "#{loan.paid_payments_count}/#{loan.payments_count}"
+  end
+
   def show_filter_column
     case params[:filter]
       when 'expired'

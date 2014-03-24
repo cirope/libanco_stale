@@ -11,7 +11,7 @@ class CustomersController < ApplicationController
       query: params[:q], limit: request.xhr?
     ).page(params[:page]) : []
 
-    respond_with @customers
+    redirect_to customer_url(@customers.first) if @customers.size == 1
   end
 
   # GET /customers/1
