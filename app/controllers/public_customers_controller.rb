@@ -1,4 +1,6 @@
 class PublicCustomersController < ApplicationController
+  include Customer::Params
+
   respond_to :html, :json, :js
 
   before_action :authorize
@@ -42,12 +44,6 @@ class PublicCustomersController < ApplicationController
     end
 
     def public_customer_params
-      params.require(:public_customer).permit :department, :division,
-        customer_attributes: [
-          :id, :name, :lastname, :identification, :tax_id, :email, :address, :city_id, :lock_version,
-          phones_attributes: [
-            :id, :phone, :_destroy
-          ]
-        ]
+      params.require(:public_customer).permit :department, :division, customer_params
     end
 end
