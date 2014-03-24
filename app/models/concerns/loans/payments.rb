@@ -31,8 +31,8 @@ module Loans::Payments
     end
 
     def first_expiration
-      today = Date.today
-      months = [1..14].include?(today.mday) ? 1 : 2
+      today = (expire_at || Date.today)
+      months = (1..14).to_a.include?(today.mday) ? 1 : 2
 
       Date.new(today.year, today.mon, 10).next_month(months)
     end
