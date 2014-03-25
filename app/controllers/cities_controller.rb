@@ -7,8 +7,7 @@ class CitiesController < ApplicationController
 
   # GET /cities
   def index
-    @cities = City.all
-
+    @cities = City.ordered
     respond_with @cities
   end
 

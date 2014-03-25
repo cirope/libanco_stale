@@ -1,7 +1,7 @@
 <tr data-object-info="<%= loan.to_param %>">
   <td><%= link_to loan.customer, loan_path(loan), data: { remote: true } %></td>
   <td><%= number_to_currency loan.amount %></td>
-  <td class="visible-lg"><%= loan.payments_count %></td>
+  <td class="visible-lg"><%= show_payments_count(loan) %></td>
   <td class="visible-lg"><%= l loan.expire_at %></td>
   <%= show_filter_row(loan) %>
   <td><%= link_to_new_loan_schedule loan %></td>

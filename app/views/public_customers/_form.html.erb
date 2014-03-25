@@ -7,7 +7,7 @@
         <%= render 'customers/form', f: fc %>
 
         <%= content_for :customer_fields do %>
-          <%= fc.association :city, label: add_label('city'), prompt: true,
+          <%= fc.association :city, collection: City.ordered, label: add_label('city'), prompt: true,
             input_html: { data: { update_after_city_change: true } }
           %>
           <%= f.input :department %>

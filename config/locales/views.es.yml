@@ -122,6 +122,10 @@ es:
       customer: 'Agregar nuevo cliente'
     show:
       title: 'Ver préstamo'
+    status:
+      title: 'Estado'
+      current: 'Vigente'
+      canceled: 'Cancelado'
 
   payments:
     edit:

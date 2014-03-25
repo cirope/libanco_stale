@@ -7,5 +7,7 @@ module Accounts::Scoped
     belongs_to :account
 
     default_scope -> { where account_id: Account.current_id }
+
+    scope :ordered, -> { order("#{table_name}.name") }
   end
 end
