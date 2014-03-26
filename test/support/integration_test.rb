@@ -29,6 +29,6 @@ class ActionDispatch::IntegrationTest
 
     click_button I18n.t('sessions.new.log_in')
 
-    assert_equal customers_path, current_path
+    assert page.has_css?('.alert.alert-info')
   end
 end
