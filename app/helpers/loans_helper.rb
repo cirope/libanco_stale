@@ -46,6 +46,12 @@ module LoansHelper
     "#{loan.paid_payments_count}/#{loan.payments_count}"
   end
 
+  def show_loan_status(loan)
+    status = loan.status == 'current' ? 'label-success' : 'label-danger'
+
+    content_tag(:span, t("loans.status.#{loan.status}"), class: "label #{status}")
+  end
+
   def show_filter_column
     case params[:filter]
       when 'expired'

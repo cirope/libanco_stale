@@ -28,4 +28,19 @@ class LoanTest < ActiveSupport::TestCase
     assert @loan.invalid?
     assert_error @loan, :payments_count, :inclusion
   end
+
+  test 'should update status' do
+    Account.current_id = accounts(:cirope).id
+
+    customer = @loan.customer
+    assert @loan.update_column(:status, 'canceled')
+
+    assert_equal 0, customer.loans.history.count
+
+    assert customer.loans.create(
+      amount: 10000, payments_count: 12, user_id: @loan.user_id
+    )
+
+    assert_equal 1, customer.loans.reload.history.count
+  end
 end

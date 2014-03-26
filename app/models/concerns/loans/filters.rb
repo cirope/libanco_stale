@@ -27,5 +27,9 @@ module Loans::Filters
     def canceled
       includes(:customer).where(status: 'canceled')
     end
+
+    def history
+      includes(:customer).where(status: 'history')
+    end
   end
 end

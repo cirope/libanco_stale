@@ -83,7 +83,7 @@ es:
         division: 'Repartición'
       loan:
         amount: 'Monto'
-        canceled_at: 'Cancelación'
+        canceled_at: 'Fecha de cancelación'
         debt: 'Deuda'
         delayed_at: 'Atraso'
         expire_at: 'Vencimiento'
@@ -92,6 +92,7 @@ es:
         progress: 'Avance'
         customer: 'Cliente'
         user: 'Asesor'
+        status: 'Estado'
       payment:
         number: 'Número'
         payment: 'Cuota'
