@@ -6,8 +6,6 @@ class CitiesTest < ActionDispatch::IntegrationTest
 
     visit new_city_path
 
-    assert page.has_css?("a[href='#{new_state_path}']")
-
     find("a[href='#{new_state_path}']").click
 
     within '#modal form' do

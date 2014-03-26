@@ -28,5 +28,7 @@ class ActionDispatch::IntegrationTest
     fill_in 'password', with: '123'
 
     click_button I18n.t('sessions.new.log_in')
+
+    assert_equal customers_path, current_path
   end
 end
