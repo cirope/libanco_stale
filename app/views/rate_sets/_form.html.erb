@@ -1,0 +1,15 @@
+<%= simple_form_for(@rate_set) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :lock_version, as: :hidden %>
+  </div>
+
+  <hr />
+
+  <div class="footer form-actions">
+    <div class="pull-right"><%= yield :form_actions %></div>
+    <%= f.button :submit, class: 'btn-primary' %>
+  </div>
+<% end %>

@@ -33,6 +33,7 @@ Finance::Application.routes.draw do
     end
     resources :public_customers, except: [:show, :destroy]
     resources :private_customers, except: [:show, :destroy]
+    resources :rate_sets
   end
 
   # Sessions

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320154206) do
+ActiveRecord::Schema.define(version: 20140327121756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -139,6 +139,16 @@ ActiveRecord::Schema.define(version: 20140320154206) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "rate_sets", force: true do |t|
+    t.string   "name",                     null: false
+    t.integer  "account_id",               null: false
+    t.integer  "lock_version", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rate_sets", ["account_id"], name: "index_rate_sets_on_account_id", using: :btree
 
   create_table "reminders", force: true do |t|
     t.datetime "remind_at",                    null: false

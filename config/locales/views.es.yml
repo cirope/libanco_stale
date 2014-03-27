@@ -137,6 +137,18 @@ es:
   phones:
     new: 'Agregar teléfono'
 
+  rate_sets:
+    edit:
+      title: 'Editar tasa'
+    index:
+      new: 'Nueva tasa'
+      title: 'Listado de tasas'
+      empty_html: 'No hay tasas, puede crear una con el botón <span class="label label-info">Nueva tasa</span>'
+    new:
+      title: 'Crear tasa'
+    show:
+      title: 'Ver tasa'
+
   schedules:
     edit:
       title: 'Editar evento'

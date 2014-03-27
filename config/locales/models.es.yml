@@ -32,6 +32,9 @@ es:
       phone:
         one: 'Teléfono'
         other: 'Teléfonos'
+      rate_set:
+        one: 'Tasa'
+        other: 'Tasas'
       reminder:
         one: 'Recordatorio'
         other: 'Recordatorios'
@@ -102,6 +105,8 @@ es:
         total: 'Total'
       phone:
         phone: 'Teléfono'
+      rate_set:
+        name: 'Nombre'
       reminder:
         remind_at: 'Fecha'
         kind: 'Tipo'
