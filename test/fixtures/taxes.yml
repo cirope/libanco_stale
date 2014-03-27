@@ -5,5 +5,5 @@ first_tax:
 
 second_tax:
   name: Insurance
-  value: 18
+  value: 28
   payment: first_payment

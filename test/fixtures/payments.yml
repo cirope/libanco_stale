@@ -10,3 +10,9 @@ second_payment:
   payment: 1210
   expire_at: <%= 2.months.from_now.to_s(:db) %>
   loan: first_loan
+
+third_payment:
+  number: 3
+  payment: 1210
+  expire_at: <%= 3.months.from_now.to_s(:db) %>
+  loan: first_loan

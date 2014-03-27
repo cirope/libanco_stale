@@ -29,7 +29,7 @@ class LoanTest < ActiveSupport::TestCase
     assert_error @loan, :payments_count, :inclusion
   end
 
-  test 'should update status' do
+  test 'should move loan to history status when create a new' do
     Account.current_id = accounts(:cirope).id
 
     customer = @loan.customer

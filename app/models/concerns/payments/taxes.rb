@@ -4,6 +4,8 @@ module Payments::Taxes
   included do
     has_many :taxes, dependent: :destroy
 
+    after_update :update_taxes
+
     scope :yesterday, -> { where("#{table_name}.expire_at = ?", Date.yesterday) }
   end
 
@@ -11,11 +13,23 @@ module Payments::Taxes
     def assign_taxes(account)
       Account.current_id = account.id
 
-      account.tax_settings.each do |tax|
-        account.payments.yesterday.each do |payment|
-          payment.taxes.create!(name: tax.name, value: tax.value)
-        end
-      end
+      account.payments.yesterday.each { |payment| payment.update_taxes }
     end
   end
+
+  def update_taxes
+    if paid_at && taxes.blank?
+      assign_taxes
+    elsif paid_at.nil? && expire_at.future?
+      taxes.clear
+    end
+  end
+
+  private
+
+    def assign_taxes
+      TaxSetting.all.each do |tax|
+        taxes.create!(name: tax.name, value: tax.value)
+      end
+    end
 end
