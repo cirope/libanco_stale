@@ -1,0 +1,10 @@
+$('[data-simulator-place-holder]').html(
+  '<%= j render(template: 'rate_sets/simulator', formats: [:html]) %>'
+);
+
+$('select[data-update-payments-count]').html(
+  '<%= j options_for_select(
+    rates_collection.unshift([t('helpers.select.prompt'), ''])
+  ) %>'
+);
+$('[data-calculator-amount]').trigger('keyup');

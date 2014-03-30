@@ -11,7 +11,6 @@ class PaymentTest < ActiveSupport::TestCase
     assert payment.invalid?
     assert_error payment, :number, :blank
     assert_error payment, :expire_at, :blank
-    assert_error payment, :loan, :blank
   end
 
   test 'payment expired' do

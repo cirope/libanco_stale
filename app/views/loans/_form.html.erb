@@ -1,22 +1,17 @@
 <%= simple_form_for([@customer, @loan], data: ({ remote: true } if request.xhr?)) do |f| %>
-  <%= f.error_notification %>
-
   <div class="form-inputs row">
     <div class="col-md-6">
       <%= render('shared/panel',
         title: Loan.model_name.human(count: 1),
         body: render('form_fields', f: f)
       ) %>
+      <%= f.button :submit, class: 'btn-primary' %>
     </div>
     <div class="col-md-6">
-      <%= render 'shared/calculator' %>
+      <div data-simulator-place-holder="true">
+        <%= render template: 'rate_sets/simulator', formats: [:html],
+          locals: { :@rate_set => @rate_set } %>
+      </div>
     </div>
-  </div>
-
-  <hr />
-
-  <div class="form-actions">
-    <div class="pull-right"><%= yield :form_actions %></div>
-    <%= f.button :submit, class: 'btn-primary' %>
   </div>
 <% end %>

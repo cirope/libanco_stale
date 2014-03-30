@@ -1,9 +1,26 @@
-<h2><%= @rate_set %></h2>
+<div class="page-header">
+  <h2><%= @rate_set %></h2>
+</div>
 
-<p>
-  <strong><%= RateSet.human_attribute_name 'name' %></strong>:
-  <%= @rate_set.name %>
-</p>
+<table class="table table-condensed table-striped table-hover">
+  <thead>
+    <tr>
+      <th><%= Payment.model_name.human count: 0 %></th>
+      <th><%= Rate.human_attribute_name 'rate' %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rate_set.rates.each do |rate| %>
+      <tr>
+        <td><%= rate.payments_count %></td>
+        <td><%= rate.rate %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr />
 
 <%= link_to_edit edit_rate_set_path(@rate_set) %> |
 <%= link_to_index rate_sets_path %>

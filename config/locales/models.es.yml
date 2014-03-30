@@ -32,6 +32,9 @@ es:
       phone:
         one: 'Teléfono'
         other: 'Teléfonos'
+      rate:
+        one: 'Tasa'
+        other: 'Tasas'
       rate_set:
         one: 'Tasa'
         other: 'Tasas'
@@ -96,6 +99,8 @@ es:
         customer: 'Cliente'
         user: 'Asesor'
         status: 'Estado'
+        rate_set_id: 'Tasa'
+        rate_id: 'Cuotas'
       payment:
         number: 'Número'
         payment: 'Cuota'
@@ -105,6 +110,9 @@ es:
         total: 'Total'
       phone:
         phone: 'Teléfono'
+      rate:
+        payments_count: 'Cuotas'
+        rate: 'Tasa'
       rate_set:
         name: 'Nombre'
       reminder:

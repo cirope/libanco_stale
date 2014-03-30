@@ -38,3 +38,4 @@
 //= require cities
 //= require states
 //= require users
+//= require loans

@@ -1,12 +1,11 @@
 if ($('#modal').length) {
-  $('#modal form.new_loan').remove();
-  $('#modal form').hide();
-  $('#modal .modal-title').text('<%= j @title %>');
-  $('#modal .modal-body').append('<%= j render('form') %>');
+  $('#modal .modal-body').html('<%= j render('form') %>').trigger('shown.bs.modal');
 } else {
   $('body').append('<%= j render('shared/modal', title: @title, body: render('form')) %>');
 }
 
-$('#modal').on('shown.bs.modal', function(e) {
+$('#modal').on('shown.bs.modal', function() {
   $(this).find('[autofocus]').focus();
+  $(this).find('[data-calculator-amount]').keyup();
 }).modal('show');
+

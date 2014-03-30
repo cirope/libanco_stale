@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-3">
+    <strong><%= Rate.human_attribute_name 'payments_count' %></strong>
+  </div>
+  <div class="col-xs-7">
+    <strong><%= Rate.human_attribute_name 'rate' %></strong>
+  </div>
+</div>
+
+<%= f.simple_fields_for :rates, rates(f.object) do |fr| %>
+  <%= render 'rates/rate', f: fr %>
+<% end %>
+
+<%= link_to_add_fields t('rate_sets.new.rate'), f, :rates %>

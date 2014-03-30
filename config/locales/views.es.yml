@@ -146,8 +146,10 @@ es:
       empty_html: 'No hay tasas, puede crear una con el botón <span class="label label-info">Nueva tasa</span>'
     new:
       title: 'Crear tasa'
+      rate: 'Agregar tasa'
     show:
       title: 'Ver tasa'
+    simulator: 'Para habilitar el simulador, primero seleccione una tasa.'
 
   schedules:
     edit:

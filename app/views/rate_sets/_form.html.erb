@@ -1,9 +1,14 @@
 <%= simple_form_for(@rate_set) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :lock_version, as: :hidden %>
+  <div class="form-inputs row">
+    <div class="col-md-6">
+      <%= f.input :name, input_html: { autofocus: true } %>
+
+      <br />
+      <%= render 'rates/form', f: f %>
+      <%= f.input :lock_version, as: :hidden %>
+    </div>
   </div>
 
   <hr />

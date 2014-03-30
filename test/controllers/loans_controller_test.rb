@@ -25,12 +25,10 @@ class LoansControllerTest < ActionController::TestCase
   end
 
   test 'should create loan' do
-    payments_count = 12
-
     assert_difference('Loan.count') do
-      assert_difference('Payment.count', payments_count) do
+      assert_difference('Payment.count', 12) do
         xhr :post, :create, customer_id: customers(:paul).id, loan: {
-          amount: 10000, payments_count: payments_count
+          amount: 10000, rate_id: rates(:rate_1).id
         }
       end
     end

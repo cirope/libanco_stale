@@ -3,6 +3,9 @@ class RateSet < ActiveRecord::Base
   include Auditable
   include Attributes::Strip
   include RateSets::Validation
+  include RateSets::Rates
+
+  scope :ordered, -> { order('name ASC') }
 
   strip_fields :name
 

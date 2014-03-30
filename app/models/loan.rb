@@ -7,8 +7,9 @@ class Loan < ActiveRecord::Base
   include Loans::Filters
   include Loans::Customer
   include Loans::Status
+  include Loans::Rates
 
-  round_fields :amount
+  round_fields 2, :amount
 
   belongs_to :user
   has_many :schedules, as: :schedulable, dependent: :destroy

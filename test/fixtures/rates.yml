@@ -1,0 +1,9 @@
+rate_1:
+  payments_count: 12
+  rate: 12.1
+  rate_set: private_rate_set
+
+rate_2:
+  payments_count: 18
+  rate: 9.8
+  rate_set: private_rate_set

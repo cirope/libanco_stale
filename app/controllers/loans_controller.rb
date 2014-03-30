@@ -6,6 +6,7 @@ class LoansController < ApplicationController
   before_action :authorize
   before_action :set_customer, only: [:new, :create, :show]
   before_action :set_loan, only: [:show]
+  before_action :set_rate_set, only: [:create]
   before_action :set_title
 
   # GET /loans
@@ -19,14 +20,14 @@ class LoansController < ApplicationController
 
   # GET /loans/new
   def new
-    @loan = Loan.new
-    @loan.customer = @customer
+    @loan = Loan.new(customer: @customer)
   end
 
   # POST /loans
   def create
-    @loan = current_user.loans.new(loan_params)
-    @loan.customer = @customer
+    @loan = current_user.loans.new(
+      loan_params.merge({ customer: @customer })
+    )
 
     respond_to do |format|
       if @loan.save
@@ -47,7 +48,11 @@ class LoansController < ApplicationController
       @customer = Customer.find_by(id: params[:customer_id])
     end
 
+    def set_rate_set
+      @rate_set = RateSet.find_by(id: loan_params[:rate_set_id])
+    end
+
     def loan_params
-      params.require(:loan).permit :amount, :payments_count, :customer_id, :lock_version
+      params.require(:loan).permit :amount, :rate_id, :rate_set_id, :lock_version
     end
 end

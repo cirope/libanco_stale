@@ -4,7 +4,7 @@ module Loans::Payments
   included do
     has_many :payments, dependent: :destroy, counter_cache: ''
 
-    before_create :create_payments, :assign_loan_attributes
+    before_create :build_payments, :assign_loan_attributes
   end
 
   def paid_payments_count
@@ -17,7 +17,7 @@ module Loans::Payments
 
   private
 
-    def create_payments
+    def build_payments
       expiration = first_expiration
 
       (1..payments_count).each do |number|
@@ -51,8 +51,6 @@ module Loans::Payments
     end
 
     def payment_amount
-      interest_rate = PAYMENTS_DATA[payments_count]
-
-      (amount * interest_rate) / payments_count
+      (amount * rate.coefficient) / payments_count
     end
 end

@@ -1,5 +1,14 @@
+<%= f.input :rate_set_id, collection: RateSet.ordered, prompt: true,
+  input_html: {
+    autofocus: true,
+    data: { rate_set_url: simulator_rate_set_path(:rate_set_id) }
+  } %>
 <%= f.input :amount, as: :string,
-  input_html: { autofocus: true, data: { calculator_amount: true } } %>
-<%= f.input :payments_count, collection: PAYMENTS_DATA.keys,
-  prompt: true %>
+  input_html: {
+    data: { calculator_amount: true }
+  } %>
+<%= f.input :rate_id, collection: rates_collection, prompt: true,
+  input_html: {
+    data: { update_payments_count: true }
+  } %>
 <%= f.input :lock_version, as: :hidden %>

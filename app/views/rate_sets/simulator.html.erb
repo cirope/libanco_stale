@@ -1,0 +1,24 @@
+<% unless @rate_set %>
+  <%= render 'shared/empty_index', message: t('rate_sets.simulator') %>
+<% else %>
+  <table class="table table-condensed table-hover table-bordered table-striped payments-data"
+    data-payments-data="<%= render_rates_as_json %>">
+    <thead>
+      <tr>
+        <th><%= Payment.model_name.human(count: 0) %></th>
+        <th><%= Loan.human_attribute_name :amount %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @rate_set.rates.each do |rate|  %>
+        <tr>
+          <td><%= rate.payments_count %></td>
+          <td data-calculator-<%= rate.payments_count %>="true">
+            <%= number_to_currency 0 %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

@@ -1,8 +1,8 @@
 class RateSetsController < ApplicationController
-  respond_to :html, :json
+  respond_to :html, :json, :js
 
   before_action :authorize
-  before_action :set_rate_set, only: [:show, :edit, :update, :destroy]
+  before_action :set_rate_set, only: [:show, :edit, :update, :destroy, :simulator]
   before_action :set_title, except: [:destroy]
 
   # GET /rate_sets
@@ -46,6 +46,11 @@ class RateSetsController < ApplicationController
     respond_with @rate_set
   end
 
+  # GET /rate_sets/1/simulator
+  def simulator
+    respond_with @rate_set
+  end
+
   private
 
     def set_rate_set
@@ -53,6 +58,7 @@ class RateSetsController < ApplicationController
     end
 
     def rate_set_params
-      params.require(:rate_set).permit :name
+      params.require(:rate_set).permit :name, :lock_version,
+        rates_attributes: [:id, :payments_count, :rate, :_destroy]
     end
 end

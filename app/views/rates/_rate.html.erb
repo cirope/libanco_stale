@@ -1,0 +1,13 @@
+<fieldset class="row rate">
+  <div class="col-xs-3">
+    <%= f.input :payments_count, as: :string, label: false %>
+  </div>
+  <div class="col-xs-7">
+    <%= f.input :rate, as: :string, label: false %>
+  </div>
+  <div class="col-xs-2">
+    <div class="row-controls">
+      <%= link_to_remove_nested_item f %>
+    </div>
+  </div>
+</fieldset>

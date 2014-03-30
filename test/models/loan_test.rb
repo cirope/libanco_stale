@@ -22,13 +22,6 @@ class LoanTest < ActiveSupport::TestCase
     assert_error @loan, :amount, :greater_than, count: 0
   end
 
-  test 'attributes inclusion' do
-    @loan.payments_count = 36
-
-    assert @loan.invalid?
-    assert_error @loan, :payments_count, :inclusion
-  end
-
   test 'should move loan to history status when create a new' do
     Account.current_id = accounts(:cirope).id
 
@@ -37,8 +30,8 @@ class LoanTest < ActiveSupport::TestCase
 
     assert_equal 0, customer.loans.history.count
 
-    assert customer.loans.create(
-      amount: 10000, payments_count: 12, user_id: @loan.user_id
+    assert customer.loans.create!(
+      amount: 10000, rate_id: rates(:rate_1).id, user_id: @loan.user_id
     )
 
     assert_equal 1, customer.loans.reload.history.count
