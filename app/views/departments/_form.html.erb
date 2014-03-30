@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-xs-10">
+    <strong><%= Department.model_name.human(count: 0) %></strong>
+  </div>
+</div>
+
+<%= f.simple_fields_for :departments, departments(f.object) do |fd| %>
+  <%= render 'departments/department', f: fd %>
+<% end %>
+
+<%= link_to_add_fields t('organizations.new.department'), f, :departments %>

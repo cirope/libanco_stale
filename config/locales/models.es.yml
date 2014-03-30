@@ -17,6 +17,9 @@ es:
       customer:
         one: 'Cliente'
         other: 'Clientes'
+      department:
+        one: 'Repartición'
+        other: 'Reparticiones'
       private_customer:
         one: 'Cliente privado'
         other: 'Clientes privados'
@@ -26,6 +29,9 @@ es:
       loan:
         one: 'Préstamo'
         other: 'Préstamos'
+      organization:
+        one: 'Ministerio o Secretaría'
+        other: 'Ministerios o Secretarías'
       payment:
         one: 'Cuota'
         other: 'Cuotas'
@@ -82,11 +88,13 @@ es:
         title: 'Perfil'
         private: 'Privado'
         public: 'Público'
+      department:
+        name: 'Repartición'
       private_customer:
         company: 'Empresa'
       public_customer:
-        department: 'Ministerio o Secretaría'
-        division: 'Repartición'
+        organization: 'Ministerio o Secretaría'
+        department: 'Repartición'
       loan:
         amount: 'Monto'
         canceled_at: 'Fecha de cancelación'
@@ -101,6 +109,8 @@ es:
         status: 'Estado'
         rate_set_id: 'Tasa'
         rate_id: 'Cuotas'
+      organization:
+        name: 'Ministerio o Secretaría'
       payment:
         number: 'Número'
         payment: 'Cuota'

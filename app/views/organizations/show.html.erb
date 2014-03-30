@@ -1,0 +1,16 @@
+<div class="page-header">
+  <h2><%= @organization %></h2>
+</div>
+
+<h4><%= Department.model_name.human(count: 0) %></h4>
+
+<ul>
+  <% @organization.departments.each do |department| %>
+    <li><%= department %></li>
+  <% end %>
+</ul>
+
+<hr />
+
+<%= link_to_edit edit_organization_path(@organization) %> |
+<%= link_to_index organizations_path %>

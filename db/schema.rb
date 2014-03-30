@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327130906) do
+ActiveRecord::Schema.define(version: 20140330193844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,16 @@ ActiveRecord::Schema.define(version: 20140327130906) do
   add_index "customers", ["profile_id", "profile_type"], name: "index_customers_on_profile_id_and_profile_type", using: :btree
   add_index "customers", ["tax_id"], name: "index_customers_on_tax_id", using: :btree
 
+  create_table "departments", force: true do |t|
+    t.string   "name",            null: false
+    t.integer  "organization_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "departments", ["name"], name: "index_departments_on_name", using: :btree
+  add_index "departments", ["organization_id"], name: "index_departments_on_organization_id", using: :btree
+
   create_table "loans", force: true do |t|
     t.string   "status",                                          default: "current", null: false
     t.decimal  "amount",                 precision: 15, scale: 2,                     null: false
@@ -99,6 +109,17 @@ ActiveRecord::Schema.define(version: 20140327130906) do
   add_index "loans", ["progress"], name: "index_loans_on_progress", using: :btree
   add_index "loans", ["status"], name: "index_loans_on_status", using: :btree
   add_index "loans", ["user_id"], name: "index_loans_on_user_id", using: :btree
+
+  create_table "organizations", force: true do |t|
+    t.string   "name",                     null: false
+    t.integer  "account_id",               null: false
+    t.integer  "lock_version", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "organizations", ["account_id"], name: "index_organizations_on_account_id", using: :btree
+  add_index "organizations", ["name"], name: "index_organizations_on_name", using: :btree
 
   create_table "payments", force: true do |t|
     t.integer  "number",                              null: false

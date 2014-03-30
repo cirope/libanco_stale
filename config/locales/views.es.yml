@@ -128,6 +128,19 @@ es:
       canceled: 'Cancelado'
       history: 'Cancelado'
 
+  organizations:
+    edit:
+      title: 'Editar ministerio'
+    index:
+      new: 'Nuevo ministerio'
+      title: 'Listado de ministerios'
+      empty_html: 'No hay ministerios, puede crear uno con el botón <span class="label label-info">Nuevo ministerio</span>'
+    new:
+      title: 'Crear ministerio'
+      department: 'Agregar repartición'
+    show:
+      title: 'Ver ministerio'
+
   payments:
     edit:
       title: 'Editar cuota'

@@ -1,0 +1,7 @@
+police:
+  name: Police
+  organization: social_security
+
+health:
+  name: Health
+  organization: social_security

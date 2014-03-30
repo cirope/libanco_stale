@@ -36,6 +36,7 @@ Finance::Application.routes.draw do
     resources :rate_sets do
       get 'simulator', on: :member
     end
+    resources :organizations
   end
 
   # Sessions
