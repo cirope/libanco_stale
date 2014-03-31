@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+jQuery ($) ->
+  $(document).on 'change', '[data-rate-set-url]', ->
+    if (rateSetId = $(this).val())
+      url = $(this).data('rateSetUrl').replace('rate_set_id', rateSetId)
+      $.getScript url
+    else
+      $('[data-update-payments-count] option:not(:first)').remove()
+      $('[data-simulator-place-holder]').html('')

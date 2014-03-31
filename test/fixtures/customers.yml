@@ -6,7 +6,6 @@ paul:
   email: paul@skanska.com
   address: HUARPES 3072. B. LEDONE
   city: rivadavia
-  profile: private_customer (PrivateCustomer)
   account: cirope
 
 simon:
@@ -17,5 +16,14 @@ simon:
   email: simon@skanska.com
   address: B Tamarindo III Manz C Casa 14
   city: godoy_cruz
-  profile: public_customer (PublicCustomer)
+  account: cirope
+
+john:
+  name: John
+  lastname: Morgan
+  identification: 27789654
+  tax_id: 20-27789654-7
+  email: john@morgan.com
+  address: Cnel Moldes 200
+  city: godoy_cruz
   account: cirope

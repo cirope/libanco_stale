@@ -8,7 +8,7 @@ class CreateLoans < ActiveRecord::Migration
       t.date :next_payment_expire_at
       t.date :expire_at, null: false
       t.date :canceled_at
-      t.references :customer, null: false, index: true
+      t.references :job, null: false, index: true
       t.references :user, null: false, index: true
       t.references :account, null: false, index: true
       t.integer :lock_version, null: false, default: 0

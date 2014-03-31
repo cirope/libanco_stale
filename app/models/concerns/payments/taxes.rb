@@ -28,8 +28,8 @@ module Payments::Taxes
   private
 
     def assign_taxes
-      TaxSetting.all.each do |tax|
-        taxes.create!(name: tax.name, value: tax.value)
+      TaxSetting.all.each do |tax_setting|
+        taxes.create!(value: tax_setting.value, tax_setting_id: tax_setting.id)
       end
     end
 end

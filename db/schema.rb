@@ -147,16 +147,11 @@ ActiveRecord::Schema.define(version: 20140330193844) do
   add_index "phones", ["phonable_id", "phonable_type"], name: "index_phones_on_phonable_id_and_phonable_type", using: :btree
 
   create_table "private_customers", force: true do |t|
-    t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "private_customers", ["company_id"], name: "index_private_customers_on_company_id", using: :btree
-
   create_table "public_customers", force: true do |t|
-    t.string   "department"
-    t.string   "division"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -235,14 +230,15 @@ ActiveRecord::Schema.define(version: 20140330193844) do
   add_index "tax_settings", ["name"], name: "index_tax_settings_on_name", using: :btree
 
   create_table "taxes", force: true do |t|
-    t.string   "name",                                null: false
-    t.decimal  "value",      precision: 15, scale: 2, null: false
-    t.integer  "payment_id",                          null: false
+    t.decimal  "value",          precision: 15, scale: 2, null: false
+    t.integer  "tax_setting_id",                          null: false
+    t.integer  "payment_id",                              null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "taxes", ["payment_id"], name: "index_taxes_on_payment_id", using: :btree
+  add_index "taxes", ["tax_setting_id"], name: "index_taxes_on_tax_setting_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name",                               null: false

@@ -1,0 +1,16 @@
+private:
+  kind: private
+  joining_at: <%= 1.year.ago %>
+  customer: paul
+  place: skanska (Company)
+
+public:
+  kind: public
+  joining_at: <%= 1.year.ago %>
+  customer: simon
+  place: social_security (Organization)
+
+retired:
+  kind: retired
+  joining_at: <%= 1.year.ago %>
+  customer: john

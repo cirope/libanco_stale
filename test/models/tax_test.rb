@@ -6,19 +6,12 @@ class TaxTest < ActiveSupport::TestCase
   end
 
   test 'blank attributes' do
-    @tax = Tax.new(name: '', value: nil)
+    @tax = Tax.new(value: nil)
 
     assert @tax.invalid?
-    assert_error @tax, :name, :blank
     assert_error @tax, :value, :blank
+    assert_error @tax, :tax_setting, :blank
     assert_error @tax, :payment, :blank
-  end
-
-  test 'length attributes' do
-    @tax.name = 'abcde' * 52
-
-    assert @tax.invalid?
-    assert_error @tax, :name, :too_long, count: 255
   end
 
   test 'attributes boundaries' do
