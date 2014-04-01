@@ -74,6 +74,10 @@ es:
       title: 'Crear cliente'
       company: 'Agregar nueva empresa'
       city: 'Agregar nueva ciudad'
+    profile:
+      title: 'Perfil'
+      private: 'Privado'
+      public: 'Público'
     show:
       title: 'Ver cliente'
     loans:

@@ -7,7 +7,6 @@ class CreateCustomers < ActiveRecord::Migration
       t.string :tax_id
       t.string :email
       t.string :address, null: false
-      t.references :profile, polymorphic: true, null: false, index: true
       t.references :city, null: false, index: true
       t.references :account, null: false, index: true
       t.integer :lock_version, null: false, default: 0

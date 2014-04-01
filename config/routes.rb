@@ -27,16 +27,16 @@ Finance::Application.routes.draw do
     resources :states
     resources :users
     resources :companies
+    resources :organizations
     resources :tax_settings
-    resources :customers, only: [:index, :show] do
+
+    get '/customers/:kind/new', to: 'customers#new', as: 'new_customer', constraints: { kind: 'private|public' }
+    resources :customers, except: [:new, :destroy] do
       resources :loans, only: [:new, :create, :show]
     end
-    resources :public_customers, except: [:show, :destroy]
-    resources :private_customers, except: [:show, :destroy]
     resources :rate_sets do
       get 'simulator', on: :member
     end
-    resources :organizations
   end
 
   # Sessions

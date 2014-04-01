@@ -11,7 +11,7 @@ class LoanTest < ActiveSupport::TestCase
     assert @loan.invalid?
     assert_error @loan, :amount, :blank
     assert_error @loan, :payments_count, :blank
-    assert_error @loan, :customer, :blank
+    assert_error @loan, :job, :blank
     assert_error @loan, :user, :blank
   end
 

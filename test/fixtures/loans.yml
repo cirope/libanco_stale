@@ -3,6 +3,6 @@ first_loan:
   payments_count: 12
   next_payment_expire_at: <%= 1.month.from_now.to_s(:db) %>
   expire_at: <%= 1.year.from_now %>
-  customer: paul
+  job: private
   user: franco
   account: cirope

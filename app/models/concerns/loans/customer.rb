@@ -4,7 +4,8 @@ module Loans::Customer
   included do
     delegate :address, :company, to: :customer, prefix: true
 
-    belongs_to :customer
+    belongs_to :job
+    has_one :customer, through: :job
     has_many :phones, through: :customer
   end
 

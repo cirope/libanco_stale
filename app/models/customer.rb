@@ -6,11 +6,13 @@ class Customer < ActiveRecord::Base
   include Customers::Searchable
   include Phonable
 
+  attr_accessor :current_place_id, :kind
+
   strip_fields :name, :lastname, :identification, :address
 
   belongs_to :city
-  belongs_to :profile, polymorphic: true
-  has_many :loans, dependent: :destroy
+  has_many :jobs, as: :place, dependent: :destroy
+  has_many :loans, through: :jobs
 
   def to_s
     [lastname, name].join(', ')

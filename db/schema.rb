@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140330193844) do
+ActiveRecord::Schema.define(version: 20140331205737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,8 +58,6 @@ ActiveRecord::Schema.define(version: 20140330193844) do
     t.string   "tax_id"
     t.string   "email"
     t.string   "address",                    null: false
-    t.integer  "profile_id",                 null: false
-    t.string   "profile_type",               null: false
     t.integer  "city_id",                    null: false
     t.integer  "account_id",                 null: false
     t.integer  "lock_version",   default: 0, null: false
@@ -72,7 +70,6 @@ ActiveRecord::Schema.define(version: 20140330193844) do
   add_index "customers", ["identification"], name: "index_customers_on_identification", using: :btree
   add_index "customers", ["lastname"], name: "index_customers_on_lastname", using: :btree
   add_index "customers", ["name"], name: "index_customers_on_name", using: :btree
-  add_index "customers", ["profile_id", "profile_type"], name: "index_customers_on_profile_id_and_profile_type", using: :btree
   add_index "customers", ["tax_id"], name: "index_customers_on_tax_id", using: :btree
 
   create_table "departments", force: true do |t|
@@ -85,6 +82,21 @@ ActiveRecord::Schema.define(version: 20140330193844) do
   add_index "departments", ["name"], name: "index_departments_on_name", using: :btree
   add_index "departments", ["organization_id"], name: "index_departments_on_organization_id", using: :btree
 
+  create_table "jobs", force: true do |t|
+    t.string   "kind",        null: false
+    t.date     "joining_at"
+    t.integer  "customer_id", null: false
+    t.integer  "place_id"
+    t.string   "place_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "jobs", ["customer_id"], name: "index_jobs_on_customer_id", using: :btree
+  add_index "jobs", ["joining_at"], name: "index_jobs_on_joining_at", using: :btree
+  add_index "jobs", ["kind"], name: "index_jobs_on_kind", using: :btree
+  add_index "jobs", ["place_id", "place_type"], name: "index_jobs_on_place_id_and_place_type", using: :btree
+
   create_table "loans", force: true do |t|
     t.string   "status",                                          default: "current", null: false
     t.decimal  "amount",                 precision: 15, scale: 2,                     null: false
@@ -93,7 +105,7 @@ ActiveRecord::Schema.define(version: 20140330193844) do
     t.date     "next_payment_expire_at"
     t.date     "expire_at",                                                           null: false
     t.date     "canceled_at"
-    t.integer  "customer_id",                                                         null: false
+    t.integer  "job_id",                                                              null: false
     t.integer  "user_id",                                                             null: false
     t.integer  "account_id",                                                          null: false
     t.integer  "lock_version",                                    default: 0,         null: false
@@ -103,8 +115,8 @@ ActiveRecord::Schema.define(version: 20140330193844) do
 
   add_index "loans", ["account_id"], name: "index_loans_on_account_id", using: :btree
   add_index "loans", ["canceled_at"], name: "index_loans_on_canceled_at", using: :btree
-  add_index "loans", ["customer_id"], name: "index_loans_on_customer_id", using: :btree
   add_index "loans", ["expire_at"], name: "index_loans_on_expire_at", using: :btree
+  add_index "loans", ["job_id"], name: "index_loans_on_job_id", using: :btree
   add_index "loans", ["next_payment_expire_at"], name: "index_loans_on_next_payment_expire_at", using: :btree
   add_index "loans", ["progress"], name: "index_loans_on_progress", using: :btree
   add_index "loans", ["status"], name: "index_loans_on_status", using: :btree
@@ -145,16 +157,6 @@ ActiveRecord::Schema.define(version: 20140330193844) do
   end
 
   add_index "phones", ["phonable_id", "phonable_type"], name: "index_phones_on_phonable_id_and_phonable_type", using: :btree
-
-  create_table "private_customers", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "public_customers", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "rate_sets", force: true do |t|
     t.string   "name",                     null: false

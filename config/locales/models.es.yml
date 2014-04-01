@@ -20,12 +20,9 @@ es:
       department:
         one: 'Repartición'
         other: 'Reparticiones'
-      private_customer:
-        one: 'Cliente privado'
-        other: 'Clientes privados'
-      public_customer:
-        one: 'Cliente público'
-        other: 'Clientes públicos'
+      job:
+        one: 'Lugar de trabajo'
+        other: 'Lugares de trabajo'
       loan:
         one: 'Préstamo'
         other: 'Préstamos'
@@ -83,28 +80,23 @@ es:
         name: 'Nombre'
         tax_id: 'CUIL/CUIT'
         city: 'Ciudad'
-        company: 'Empresa'
-      customer/profile:
-        title: 'Perfil'
-        private: 'Privado'
-        public: 'Público'
       department:
         name: 'Repartición'
-      private_customer:
-        company: 'Empresa'
-      public_customer:
-        organization: 'Ministerio o Secretaría'
-        department: 'Repartición'
+      job:
+        kind: 'Perfil'
+        customer: 'Cliente'
+        joining_at: 'Fecha de ingreso'
+        place: 'Lugar de trabajo'
       loan:
         amount: 'Monto'
         canceled_at: 'Fecha de cancelación'
         debt: 'Deuda'
         delayed_at: 'Atraso'
         expire_at: 'Vencimiento'
+        job: 'Lugar de trabajo'
         next_payment_expire_at: 'Próximo vencimiento'
         payments_count: 'Cuotas'
         progress: 'Avance'
-        customer: 'Cliente'
         user: 'Asesor'
         status: 'Estado'
         rate_set_id: 'Tasa'

@@ -2,20 +2,21 @@ require 'test_helper'
 
 class JobTest < ActiveSupport::TestCase
   def setup
-    @job = jobs(:one)
+    @job = jobs(:private)
   end
 
   test 'blank attributes' do
-    @job.attr = ''
+    @job = Job.new(kind: '')
 
     assert @job.invalid?
-    assert_error @job, :attr, :blank
+    assert_error @job, :kind, :blank
+    assert_error @job, :customer, :blank
   end
 
-  test 'unique attributes' do
-    @job.attr = jobs(:two).attr
+  test 'attributes inclusion' do
+    @job.kind = 'kind'
 
     assert @job.invalid?
-    assert_error @job, :attr, :taken
+    assert_error @job, :kind, :inclusion
   end
 end

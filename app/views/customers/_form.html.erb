@@ -1,6 +1,35 @@
-<%= f.input :name, input_html: { autofocus: true } %>
-<%= f.input :lastname %>
-<%= f.input :identification %>
-<%= f.input :tax_id %>
-<%= f.input :email %>
-<%= f.input :address %>
+<%= simple_form_for @customer do |f| %>
+  <div class="form-inputs row">
+    <div class="col-md-6">
+      <%= f.input :name, input_html: { autofocus: true } %>
+      <%= f.input :lastname %>
+      <%= f.input :identification %>
+      <%= f.input :tax_id %>
+      <%= f.input :email %>
+      <%= f.input :address %>
+      <%= f.input :kind, as: :hidden %>
+    </div>
+    <div class="col-md-6">
+      <%= f.association :city, collection: City.ordered, label: add_label('city'), prompt: true,
+        input_html: { data: { update_after_city_change: true } }
+      %>
+      <% if @customer.kind == 'private' %>
+        <%= f.input :current_place_id, collection: Company.ordered, label: add_label('company'), prompt: true,
+          input_html: { data: { update_after_company_change: true } } %>
+      <% end %>
+      <h6>
+        <strong><%= Phone.model_name.human(count: 0) %></strong>
+      </h6>
+      <%= render('phones/form', f: f) %>
+      <%= f.input :lock_version, as: :hidden %>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="footer form-actions">
+    <div class="pull-right"><%= yield :form_actions %></div>
+    <%= f.button :submit, class: 'btn-primary',
+      data: { disable_with: t('navigation.processing') } %>
+  </div>
+<% end %>

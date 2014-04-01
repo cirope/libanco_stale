@@ -1,7 +1,5 @@
 <%= render 'search' %>
 
-<% profile = @customer.profile %>
-
 <div class="page-header">
   <h2><%= @customer %></h2>
 </div>
@@ -10,7 +8,7 @@
   <div class="col-md-6">
     <p>
       <strong><%= Customer.human_attribute_name 'profile.title' %></strong>:
-      <%= profile %>
+      <%= @customer.kind %>
     </p>
     <p>
       <strong><%= Customer.human_attribute_name 'identification' %></strong>:
@@ -40,9 +38,6 @@
       <strong><%= Customer.human_attribute_name 'city' %></strong>:
       <%= @customer.city %>
     </p>
-    <%= render(
-      template: "#{profile.class.model_name.plural}/show", locals: { customer: profile }
-    ) %>
   </div>
 </div>
 
@@ -54,7 +49,7 @@
 
 <div class="footer">
   <div class="pull-right">
-    <%= link_to_edit edit_polymorphic_path(profile) %> |
+    <%= link_to_edit edit_customer_path(@customer) %> |
     <%= link_to_index customers_path %>
   </div>
   <%= link_to(
