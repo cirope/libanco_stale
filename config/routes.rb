@@ -29,9 +29,7 @@ Finance::Application.routes.draw do
     resources :companies
     resources :organizations
     resources :tax_settings
-
-    get '/customers/:kind/new', to: 'customers#new', as: 'new_customer', constraints: { kind: 'private|public' }
-    resources :customers, except: [:new, :destroy] do
+    resources :customers, except: [:destroy] do
       resources :loans, only: [:new, :create, :show]
     end
     resources :rate_sets do

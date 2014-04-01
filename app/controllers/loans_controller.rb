@@ -26,7 +26,7 @@ class LoansController < ApplicationController
   # POST /loans
   def create
     @loan = current_user.loans.new(
-      loan_params.merge({ customer: @customer })
+      loan_params.merge(customer: @customer)
     )
 
     respond_to do |format|

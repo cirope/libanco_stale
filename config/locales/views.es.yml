@@ -74,10 +74,11 @@ es:
       title: 'Crear cliente'
       company: 'Agregar nueva empresa'
       city: 'Agregar nueva ciudad'
-    profile:
-      title: 'Perfil'
+    jobs:
+      title: 'Lugar de trabajo'
       private: 'Privado'
       public: 'Público'
+      retired: 'Jubilado'
     show:
       title: 'Ver cliente'
     loans:

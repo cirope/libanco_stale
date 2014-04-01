@@ -30,8 +30,8 @@ class LoanTest < ActiveSupport::TestCase
 
     assert_equal 0, customer.loans.history.count
 
-    assert customer.loans.create!(
-      amount: 10000, rate_id: rates(:rate_1).id, user_id: @loan.user_id
+    assert Loan.create!(
+      amount: 10000, rate_id: rates(:rate_1).id, customer: customer, user_id: @loan.user_id
     )
 
     assert_equal 1, customer.loans.reload.history.count

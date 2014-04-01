@@ -1,6 +1,4 @@
 <%= simple_form_for(@company, data: ({ remote: true } if request.xhr?)) do |f| %>
-  <%= f.error_notification %>
-
   <div class="form-inputs">
     <div class="row">
       <div class="col-md-6">

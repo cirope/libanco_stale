@@ -8,6 +8,7 @@
       <tr>
         <th><%= Loan.human_attribute_name 'amount' %></th>
         <th><%= Loan.human_attribute_name 'payments_count' %></th>
+        <th class="hidden-xs"><%= Loan.human_attribute_name 'created_at' %></th>
         <th class="hidden-xs"><%= Loan.human_attribute_name 'expire_at' %></th>
         <th class="hidden-xs"><%= Loan.human_attribute_name 'canceled_at' %></th>
         <th><%= Loan.human_attribute_name 'status' %></th>
@@ -20,6 +21,7 @@
         <tr data-object-info="<%= loan.to_param %>">
           <td><%= number_to_currency loan.amount %></td>
           <td><%= show_payments_count(loan) %></td>
+          <td class="hidden-xs"><%= l loan.created_at.to_date %></td>
           <td class="hidden-xs"><%= l loan.expire_at %></td>
           <td class="hidden-xs"><%= l loan.canceled_at if loan.canceled_at %></td>
           <td><%= show_loan_status(loan) %></td>

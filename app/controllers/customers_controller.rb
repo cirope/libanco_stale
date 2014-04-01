@@ -3,7 +3,6 @@ class CustomersController < ApplicationController
 
   before_action :authorize
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_place, only: [:create]
   before_action :set_title
 
   # GET /customers
@@ -22,7 +21,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/new
   def new
-    @customer = Customer.new(kind: params[:kind])
+    @customer = Customer.new
     respond_with @customer
   end
 
@@ -50,13 +49,10 @@ class CustomersController < ApplicationController
       @customer = Customer.find(params[:id])
     end
 
-    def set_current_place
-      @current_place = Job.find_by(id: customer_params[:current_place_id])
-    end
-
     def customer_params
       params.require(:customer).permit :name, :lastname, :identification, :tax_id,
-        :email, :address, :city_id, :current_place_id, :kind, :lock_version,
-        phones_attributes: [:id, :phone, :_destroy]
+        :email, :address, :city_id, :lock_version,
+        phones_attributes: [:id, :phone, :_destroy],
+        jobs_attributes: [:id, :joining_at, :place_id, :place_type, :kind, :_destroy]
     end
 end

@@ -10,7 +10,6 @@ class JobTest < ActiveSupport::TestCase
 
     assert @job.invalid?
     assert_error @job, :kind, :blank
-    assert_error @job, :customer, :blank
   end
 
   test 'attributes inclusion' do

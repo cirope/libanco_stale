@@ -7,15 +7,13 @@
       <%= f.input :tax_id %>
       <%= f.input :email %>
       <%= f.input :address %>
-      <%= f.input :kind, as: :hidden %>
     </div>
     <div class="col-md-6">
-      <%= f.association :city, collection: City.ordered, label: add_label('city'), prompt: true,
-        input_html: { data: { update_after_city_change: true } }
+      <%= f.association :city, collection: City.ordered, label: add_label('city'),
+        prompt: true, input_html: { data: { update_after_city_change: true } }
       %>
-      <% if @customer.kind == 'private' %>
-        <%= f.input :current_place_id, collection: Company.ordered, label: add_label('company'), prompt: true,
-          input_html: { data: { update_after_company_change: true } } %>
+      <%= f.simple_fields_for :jobs, jobs(f.object) do |fj| %>
+        <%= show_job_options fj %>
       <% end %>
       <h6>
         <strong><%= Phone.model_name.human(count: 0) %></strong>

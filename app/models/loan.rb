@@ -8,6 +8,7 @@ class Loan < ActiveRecord::Base
   include Loans::Customer
   include Loans::Status
   include Loans::Rates
+  include Loans::Jobs
 
   round_fields 2, :amount
 

@@ -25,7 +25,7 @@ class CustomersControllerTest < ActionController::TestCase
   end
 
   test 'should get new private' do
-    get :new, kind: 'private'
+    get :new
     assert_response :success
   end
 

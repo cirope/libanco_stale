@@ -80,16 +80,18 @@ es:
         name: 'Nombre'
         tax_id: 'CUIL/CUIT'
         city: 'Ciudad'
+        company: 'Empresa'
       department:
         name: 'Repartición'
       job:
-        kind: 'Perfil'
+        kind: 'Tipo de trabajo'
         customer: 'Cliente'
         joining_at: 'Fecha de ingreso'
         place: 'Lugar de trabajo'
       loan:
         amount: 'Monto'
-        canceled_at: 'Fecha de cancelación'
+        canceled_at: 'Cancelación'
+        created_at: 'Emisión'
         debt: 'Deuda'
         delayed_at: 'Atraso'
         expire_at: 'Vencimiento'
