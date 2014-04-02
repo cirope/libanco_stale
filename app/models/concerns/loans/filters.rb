@@ -2,7 +2,7 @@ module Loans::Filters
   extend ActiveSupport::Concern
 
   included do
-    scope :ordered, -> { order('created_at DESC') }
+    scope :order_by_expiration, -> { order('expire_at DESC') }
   end
 
   module ClassMethods
@@ -30,6 +30,22 @@ module Loans::Filters
 
     def history
       includes(:customer).where(status: 'history')
+    end
+
+    def not_current
+      includes(:customer).where.not(status: 'current')
+    end
+
+    def private
+      joins(:job).where("#{Job.table_name}.kind = ?", 'private')
+    end
+
+    def retired
+      joins(:job).where("#{Job.table_name}.kind = ?", 'retired')
+    end
+
+    def public
+      joins(:job).where("#{Job.table_name}.kind = ?", 'public')
     end
   end
 end

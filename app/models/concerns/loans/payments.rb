@@ -3,6 +3,7 @@ module Loans::Payments
 
   included do
     has_many :payments, dependent: :destroy, counter_cache: ''
+    has_many :taxes, through: :payments
 
     before_create :build_payments, :assign_loan_attributes
   end

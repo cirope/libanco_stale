@@ -17,7 +17,7 @@
     </thead>
 
     <tbody>
-      <% loans.ordered.each do |loan| %>
+      <% loans.each do |loan| %>
         <tr data-object-info="<%= loan.to_param %>">
           <td><%= number_to_currency loan.amount %></td>
           <td><%= show_payments_count(loan) %></td>

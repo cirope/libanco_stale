@@ -39,7 +39,7 @@
 
 <hr />
 
-<%= render 'loans', loans: @customer.loans %>
+<%= render 'loans', loans: @customer.loans.order_by_expiration %>
 
 <hr />
 
