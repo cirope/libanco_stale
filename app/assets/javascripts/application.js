@@ -39,3 +39,4 @@
 //= require states
 //= require users
 //= require loans
+//= require customers

@@ -1,0 +1,6 @@
+$('[data-place-type]').attr('value', 'Company');
+$('select[data-place-id]').html(
+  '<%= j options_for_select(
+    companies_collection.unshift([t('helpers.select.prompt'), ''])
+  ) %>'
+).attr('disabled', false);

@@ -5,7 +5,9 @@ module Customers::Jobs
     has_many :jobs, dependent: :destroy
 
     accepts_nested_attributes_for :jobs,
-      allow_destroy: true, reject_if: :all_blank
+      allow_destroy: false, reject_if: :all_blank
+
+    delegate :name, :kind, :phones, to: :current_job, prefix: true, allow_nil: true
   end
 
   def current_job

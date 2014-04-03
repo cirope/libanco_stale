@@ -20,6 +20,10 @@
       <strong><%= Customer.human_attribute_name 'tax_id' %></strong>:
       <%= @customer.tax_id %>
     </p>
+    <p>
+      <strong><%= Customer.human_attribute_name 'address' %></strong>:
+      <%= @customer.address %>
+    </p>
   </div>
   <div class="col-md-6">
     <p>
@@ -27,13 +31,23 @@
       <%= mail_to @customer.email, @customer.email %>
     </p>
     <p>
-      <strong><%= Customer.human_attribute_name 'address' %></strong>:
-      <%= @customer.address %>
-    </p>
-    <p>
       <strong><%= Customer.human_attribute_name 'city' %></strong>:
       <%= @customer.city %>
     </p>
+    <p>
+      <strong><%= Customer.human_attribute_name 'kind' %></strong>:
+      <%= t "customers.jobs.#{@customer.current_job_kind}" %>
+    </p>
+    <p>
+      <strong><%= Customer.human_attribute_name 'job' %></strong>:
+      <%= @customer.current_job_name %>
+    </p>
+    <strong><%= Phone.model_name.human(count: 0) %></strong>:
+    <ul>
+      <% (@customer.current_job_phones || []).each do |phone| %>
+        <li><%= phone %></li>
+      <% end %>
+    </ul>
   </div>
 </div>
 

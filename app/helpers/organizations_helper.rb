@@ -4,4 +4,8 @@ module OrganizationsHelper
 
     model.departments
   end
+
+  def organizations_collection
+    @organizations.ordered.map { |c| [c.name, c.id] }
+  end
 end

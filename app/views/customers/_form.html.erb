@@ -12,8 +12,21 @@
       <%= f.association :city, collection: City.ordered, label: add_label('city'),
         prompt: true, input_html: { data: { update_after_city_change: true } }
       %>
-      <%= f.simple_fields_for :jobs, jobs(f.object) do |fj| %>
+      <%= f.simple_fields_for :jobs, current_job do |fj| %>
         <%= show_job_options fj %>
+        <% if fj.object.new_record? || fj.object.place_id.nil? %>
+          <%= fj.input :place_type, as: :hidden, input_html: {
+            value: customer_kind(fj), data: { place_type: 'true' }
+          } %>
+          <%= customer_place_field fj %>
+        <% else %>
+          <div class="form-group">
+            <h6>
+              <strong><%= Job.human_attribute_name 'place' %></strong>
+            </h6>
+            <p><%= fj.object.place %></p>
+          </div>
+        <% end %>
       <% end %>
       <h6>
         <strong><%= Phone.model_name.human(count: 0) %></strong>

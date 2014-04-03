@@ -76,15 +76,16 @@ es:
         address: 'Dirección'
         email: 'Correo electrónico'
         identification: 'DNI'
+        kind: 'Perfil'
         lastname: 'Apellido'
         name: 'Nombre'
         tax_id: 'CUIL/CUIT'
         city: 'Ciudad'
-        company: 'Empresa'
+        job: 'Lugar de trabajo'
       department:
         name: 'Repartición'
       job:
-        kind: 'Tipo de trabajo'
+        kind: 'Perfil'
         customer: 'Cliente'
         joining_at: 'Fecha de ingreso'
         place: 'Lugar de trabajo'

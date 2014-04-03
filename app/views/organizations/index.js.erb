@@ -1,0 +1,8 @@
+$('[data-place-type]').attr('value', 'Organization');
+$('select[data-place-id]').html(
+  '<%= j options_for_select([[t('helpers.select.prompt'), '']]).concat(
+      option_groups_from_collection_for_select(
+        @organizations.ordered, :departments, :name, :id, :name
+    )
+  ) %>'
+).attr('disabled', false);
