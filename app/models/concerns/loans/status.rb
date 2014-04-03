@@ -2,7 +2,7 @@ module Loans::Status
   extend ActiveSupport::Concern
 
   included do
-    STATUS = ['current', 'canceled', 'history']
+    STATUS = ['current', 'canceled', 'history', 'expired', 'judicial']
 
     after_create :update_status
   end

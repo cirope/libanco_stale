@@ -132,6 +132,8 @@ es:
       current: 'Activo'
       canceled: 'Cancelado'
       history: 'Cancelado'
+      expired: 'Atrasado'
+      judicial: 'A. judicial'
 
   organizations:
     edit:

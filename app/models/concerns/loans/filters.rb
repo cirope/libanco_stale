@@ -7,9 +7,8 @@ module Loans::Filters
 
   module ClassMethods
     def expired
-      current.where(
-        'next_payment_expire_at < ?', Date.today
-      ).order('next_payment_expire_at DESC')
+      includes(:customer).where(status: 'expired')
+        .order('next_payment_expire_at DESC')
     end
 
     def close_to_expire

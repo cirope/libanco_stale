@@ -22,7 +22,7 @@ class LoanTest < ActiveSupport::TestCase
     assert_error @loan, :amount, :greater_than, count: 0
   end
 
-  test 'should move loan to history status when create a new' do
+  test 'should set history status to loan when create a new' do
     Account.current_id = accounts(:cirope).id
 
     customer = @loan.customer
@@ -35,5 +35,14 @@ class LoanTest < ActiveSupport::TestCase
     )
 
     assert_equal 1, customer.loans.reload.history.count
+  end
+
+  test 'should set expired status to loan' do
+    Account.current_id = accounts(:cirope).id
+
+    assert_equal 'current', @loan.status
+    assert @loan.payments.first.update!(expire_at: 1.month.ago, paid_at: nil)
+
+    assert_equal 'expired', @loan.reload.status
   end
 end

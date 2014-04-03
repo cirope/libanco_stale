@@ -6,7 +6,10 @@
         body: render('form_fields', f: f)
       ) %>
       <%= f.button :submit, class: 'btn-primary',
-        data: { disable_with: t('navigation.processing') } %>
+        data: {
+          disable_with: t('navigation.processing'),
+          confirm: t('messages.confirmation')
+      } %>
     </div>
     <div class="col-md-6">
       <div data-simulator-place-holder="true">

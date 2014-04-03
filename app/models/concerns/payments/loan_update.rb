@@ -10,7 +10,7 @@ module Payments::LoanUpdate
       loan.progress = percentage_progress
       loan.next_payment_expire_at = !canceled? ? next_payment_expiration : nil
       loan.canceled_at = canceled? ? payments_dates.max : nil
-      loan.status = canceled? ? 'canceled' : 'current'
+      loan.status = canceled? ? 'canceled' : loan_expired? ? 'expired' : 'current'
     end
 
     def self_and_siblings
@@ -31,6 +31,10 @@ module Payments::LoanUpdate
 
     def canceled?
       @_canceled ||= (paid_payments_count == loan.payments_count)
+    end
+
+    def loan_expired?
+      self_and_siblings.any? { |p| p.expired? }
     end
 
     def next_payment_expiration

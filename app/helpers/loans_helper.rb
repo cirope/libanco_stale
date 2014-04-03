@@ -22,10 +22,10 @@ module LoansHelper
     progress = loan.progress
 
     progress_class = case progress
-      when 0..50   then 'progress-bar-success'
-      when 51..74  then 'progress-bar-info'
-      when 75..89  then 'progress-bar-warning'
-      when 90..100 then 'progress-bar-danger'
+      when 0..50   then 'progress-bar-danger'
+      when 51..74  then 'progress-bar-warning'
+      when 75..89  then 'progress-bar-info'
+      when 90..100 then 'progress-bar-success'
     end
 
     render(
@@ -47,7 +47,12 @@ module LoansHelper
   end
 
   def show_loan_status(loan)
-    status = loan.status == 'current' ? 'label-success' : 'label-danger'
+    status = case loan.status
+      when 'current' then 'label-success'
+      when 'canceled', 'history' then 'label-info'
+      when 'expired' then 'label-warning'
+      when 'judicial' then 'label-danger'
+    end
 
     content_tag(:span, t("loans.status.#{loan.status}"), class: "label #{status}")
   end
