@@ -4,6 +4,6 @@ module Jobs::Validation
   included do
     KINDS = ['private', 'public', 'retired']
 
-    validates :kind, inclusion: { in: KINDS }, presence: true
+    validates :kind, presence: true, inclusion: { in: KINDS }
   end
 end
