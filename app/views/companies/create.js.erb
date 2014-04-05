@@ -1,16 +1,14 @@
 <% if @company.persisted? %>
-  if ($('#modal form').length == 1) { // If is the only form (called from new entities for example
-    $('#modal').on('hidden.bs.modal', function(e) {
-      $('#modal').remove();
-    }).modal('hide');
+  if ($('#modal form').length == 1) {
+    $('#modal').modal('hide');
   } else {
     $('#modal form.new_company').remove();
     $('#modal .modal-title').text('<%= j t('companies.new.title') %>');
     $('#modal form').show().find('[autofocus]').focus();
   }
 
-  $('select[data-update-after-company-change]').html(
-    '<%= j options_from_collection_for_select(companies, :id, :name, @company.id) %>'
+  $('select[data-update-after-place-change]').html(
+    '<%= j options_from_collection_for_select(Company.ordered, :id, :name, @company.id) %>'
   );
 <% else %>
   <%= render template: 'companies/new' %>

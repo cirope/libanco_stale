@@ -3,9 +3,10 @@ module CustomersHelper
     @customer.current_job || @customer.jobs.build
   end
 
-  def show_job_options(form)
+  def customer_kind_field(form)
     options = Job::KINDS.map do |kind|
-      [t("customers.jobs.#{kind}"), kind, data: { customer_place_url: customer_place_url(kind) }]
+      [t("customers.jobs.#{kind}"), kind,
+       data: { customer_place_url: customer_place_url(kind) }]
     end
 
     form.input :kind, collection: options, as: :radio_buttons
@@ -13,43 +14,37 @@ module CustomersHelper
 
   def customer_place_field(form)
     collection = case form.object.kind
-      when 'private', 'retired'
-        customer_place_select(form, Company.ordered)
+      when 'private'
+        customer_place_select(form, add_label('company', 'job'), Company.ordered)
       when 'public'
-        customer_place_group_select(form, Organization.ordered)
+        customer_place_select(form, Job.human_attribute_name('place'), Organization.ordered,
+          { as: :grouped_select, group_method: :departments }
+        )
       else
-        customer_place_select(form, [])
+        customer_place_select(form, Job.human_attribute_name('place'), [])
     end
   end
 
-  def add_label(model)
-    raw text_label(model) << ' ' << add_link(model)
-  end
-
-  def customer_kind(form)
-    case form.object.kind
-      when 'private', 'retired' then Company
-      when 'public' then Department
-    end
+  def add_label(model, custom_label = nil)
+    raw text_label(custom_label || model) << ' ' << add_link(model)
   end
 
   private
 
-    def customer_place_select(form, collection)
-      form.association :place, collection: collection, prompt: true,
-        disabled: collection.empty?, input_html: { data: { place_id: true } }
-    end
-
-    def customer_place_group_select(form, collection)
-      form.association :place, collection: collection, as: :grouped_select,
-        group_method: :departments, prompt: true,
-        disabled: collection.empty?, input_html: { data: { place_id: true } }
+    def customer_place_select(form, label_place, collection = [], options = {})
+      form.association :place, {
+        label: label_place, collection: collection, prompt: true,
+        disabled: collection.empty?, input_html: {
+          data: { update_after_place_change: true, place_id: true }
+        }
+      }.merge(options)
     end
 
     def customer_place_url(kind)
       case kind
-        when 'private', 'retired' then companies_path
-        when 'public' then organizations_path
+        when 'private' then companies_path
+        when 'public'  then organizations_path
+        else false
       end
     end
 

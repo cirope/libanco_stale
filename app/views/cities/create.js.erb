@@ -1,8 +1,6 @@
 <% if @city.persisted? %>
-  if ($('#modal form').length == 1) { // If is the only form (called from new entities for example
-    $('#modal').on('hidden.bs.modal', function(e) {
-      $('#modal').remove();
-    }).modal('hide');
+  if ($('#modal form').length == 1) {
+    $('#modal').modal('hide');
   } else {
     $('#modal form.new_city').remove();
     $('#modal .modal-title').text('<%= j t('customers.new.title') %>');

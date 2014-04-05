@@ -6,7 +6,4 @@ if ($('#modal').length) {
 } else {
   $('body').append('<%= j render('shared/modal', title: @title, body: render('form')) %>');
 }
-
-$('#modal').on('shown.bs.modal', function(e) {
-  $(this).find('[autofocus]').focus();
-}).modal('show');
+$('#modal').modal('show');

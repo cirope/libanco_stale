@@ -4,3 +4,6 @@ $('select[data-place-id]').html(
     companies_collection.unshift([t('helpers.select.prompt'), ''])
   ) %>'
 ).attr('disabled', false);
+$('.customer_jobs_place label').html(
+  '<%= j add_label('company', 'job') %>'
+);

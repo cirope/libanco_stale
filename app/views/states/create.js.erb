@@ -1,8 +1,6 @@
 <% if @state.persisted? %>
-  if ($('#modal form').length == 1) { // If is the only form (called from new entities for example
-    $('#modal').on('hidden.bs.modal', function(e) {
-      $('#modal').remove();
-    }).modal('hide');
+  if ($('#modal form').length == 1) {
+    $('#modal').modal('hide');
   } else {
     $('form.new_state').remove();
 

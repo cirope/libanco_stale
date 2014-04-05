@@ -6,3 +6,7 @@ jQuery ($) ->
 
   $(document).on 'hidden.bs.modal', '#modal', ->
     $('#modal').remove()
+
+  $(document).on 'shown.bs.modal', '#modal', ->
+    $(this).find('[autofocus]').focus()
+    $(this).find('[data-calculator-amount]').keyup()

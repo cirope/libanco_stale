@@ -1,4 +1,5 @@
-$('[data-place-type]').attr('value', 'Organization');
+$('.customer_jobs_place label a').remove()
+$('[data-place-type]').attr('value', 'Department');
 $('select[data-place-id]').html(
   '<%= j options_for_select([[t('helpers.select.prompt'), '']]).concat(
       option_groups_from_collection_for_select(

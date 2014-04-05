@@ -1,0 +1,15 @@
+jQuery ($) ->
+  $(document).on 'change', '[data-customer-place-url]', ->
+    url = $(this).data 'customerPlaceUrl'
+
+    if url
+      $.getScript url
+    else
+      $('[data-place-type]').attr('value', '')
+      $('[data-place-id]').html(
+        $("<option></option>")
+        .attr('value', '')
+        .text('<%= I18n.t('helpers.select.prompt') %>')
+        .attr('selected', true)
+      )
+      $('.customer_jobs_place label a').remove()

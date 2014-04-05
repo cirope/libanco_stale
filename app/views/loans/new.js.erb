@@ -3,9 +3,4 @@ if ($('#modal').length) {
 } else {
   $('body').append('<%= j render('shared/modal', title: @title, body: render('form')) %>');
 }
-
-$('#modal').on('shown.bs.modal', function() {
-  $(this).find('[autofocus]').focus();
-  $(this).find('[data-calculator-amount]').keyup();
-}).modal('show');
-
+$('#modal').modal('show');

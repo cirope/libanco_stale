@@ -73,6 +73,7 @@ es:
     new:
       title: 'Crear cliente'
       company: 'Agregar nueva empresa'
+      organization: 'Agregar nuevo ministerio'
       city: 'Agregar nueva ciudad'
     jobs:
       title: 'Lugar de trabajo'
