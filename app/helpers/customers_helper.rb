@@ -12,6 +12,12 @@ module CustomersHelper
     form.input :kind, collection: options, as: :radio_buttons
   end
 
+  def customer_place_type_field(form)
+    form.input :place_type, as: :hidden, input_html: {
+      value: customer_place_type(form), data: { place_type: true }
+    }
+  end
+
   def customer_place_field(form)
     collection = case form.object.kind
       when 'private'
@@ -45,6 +51,13 @@ module CustomersHelper
         when 'private' then companies_path
         when 'public'  then organizations_path
         else false
+      end
+    end
+
+    def customer_place_type(form)
+      case form.object.kind
+        when 'private' then Company
+        when 'public' then Department
       end
     end
 

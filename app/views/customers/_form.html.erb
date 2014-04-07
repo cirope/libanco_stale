@@ -14,7 +14,7 @@
       %>
       <%= f.simple_fields_for :jobs, current_job do |fj| %>
         <%= customer_kind_field fj %>
-        <%= fj.input :place_type, as: :hidden, input_html: { data: { place_type: true } } %>
+        <%= customer_place_type_field fj %>
         <%= customer_place_field fj %>
       <% end %>
       <h6>
