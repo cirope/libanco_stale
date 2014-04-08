@@ -3,13 +3,5 @@ class Company < ActiveRecord::Base
   include Auditable
   include Attributes::Strip
   include Phonable
-  include Companies::Validation
-
-  strip_fields :name
-
-  scope :ordered, -> { order("#{table_name}.name") }
-
-  def to_s
-    name
-  end
+  include Validations::Name
 end
