@@ -1,7 +1,7 @@
 customer_phone:
   phone: 261-3005467
-  phonable: private_customer
+  phonable: paul (Customer)
 
 company_phone:
   phone: 54-261-3556654
-  phonable: skanska
+  phonable: skanska (Company)

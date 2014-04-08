@@ -60,11 +60,13 @@ module LoansHelper
   def show_filter_column
     case params[:filter]
       when 'expired'
-        content_tag(:th, Loan.human_attribute_name(:delayed_at))
+        content_tag(:th, Loan.human_attribute_name('delayed_at'))
       when 'close_to_expire'
-        content_tag(:th, Loan.human_attribute_name(:progress))
+        content_tag(:th, Loan.human_attribute_name('progress'))
       when 'not_renewed'
-        content_tag(:th, Loan.human_attribute_name(:canceled_at))
+        content_tag(:th, Loan.human_attribute_name('canceled_at'))
+      else
+        content_tag(:th, Loan.human_attribute_name('status'))
     end
   end
 
@@ -76,6 +78,8 @@ module LoansHelper
         content_tag(:td, loan_progress_info(loan))
       when 'not_renewed'
         content_tag(:td, l(loan.canceled_at))
+      else
+        content_tag(:td, show_loan_status(loan))
     end
   end
 

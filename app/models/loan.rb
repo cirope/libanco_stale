@@ -9,6 +9,7 @@ class Loan < ActiveRecord::Base
   include Loans::Status
   include Loans::Rates
   include Loans::Jobs
+  include Loans::Searchable
 
   round_fields 2, :amount
 

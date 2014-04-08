@@ -6,11 +6,11 @@
 
     <div class="row">
       <div class="col-md-6">
-        <%= render 'loans/customer_info' %>
+        <%= render 'customer_info' %>
       </div>
       <div class="col-md-6">
         <p>
-          <strong><%= Loan.human_attribute_name :amount %></strong>:
+          <strong><%= Loan.human_attribute_name 'amount' %></strong>:
           <%= number_to_currency @loan.amount %>
         </p>
         <p>

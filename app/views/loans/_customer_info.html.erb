@@ -1,4 +1,8 @@
 <p>
+  <strong><%= Customer.human_attribute_name 'kind' %></strong>:
+  <%= t "customers.jobs.#{@loan.customer_current_job_kind}" %>
+</p>
+<p>
   <strong><%= Customer.model_name.human(count: 1) %></strong>:
   <%= link_to @loan.label, @loan.customer %>
 </p>
@@ -10,5 +14,8 @@
 </ul>
 <p>
   <strong><%= Customer.human_attribute_name 'address' %></strong>:
-  <%= @loan.address %>
+  <%= @loan.customer_address %>
+</p>
+<p>
+  <strong><%= Customer.human_attribute_name 'job' %></strong>:
 </p>

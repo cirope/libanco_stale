@@ -11,7 +11,7 @@ class LoansController < ApplicationController
 
   # GET /loans
   def index
-    @loans = @loans.page(params[:page])
+    @loans = @loans.present? ? @loans.page(params[:page]) : []
   end
 
   # GET /loans/1

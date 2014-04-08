@@ -1,0 +1,16 @@
+<ul class="list-group">
+  <li class="list-group-item">
+    <strong><%= Loan.model_name.human count: 0 %></strong>:
+    <%= @summary.count %>
+  </li>
+  <li class="list-group-item">
+    <strong><%= Loan.human_attribute_name 'amount' %></strong>:
+    <%= number_to_currency @summary.amount %>
+  </li>
+  <% @summary.taxes.each do |tn, tv| %>
+    <li class="list-group-item">
+      <strong><%= tn %></strong>:
+      <%= number_to_currency tv %>
+    </li>
+  <% end %>
+</ul>
