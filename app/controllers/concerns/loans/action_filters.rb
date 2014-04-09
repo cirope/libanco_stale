@@ -28,9 +28,9 @@ module Loans::ActionFilters
     end
 
     def loans_by_search
-      params[:start_date] ||= l(Date.today.beginning_of_week)
+      params[:start_date] ||= l(Date.today.beginning_of_month)
 
-      Loan.search(
+      Loan.loans_search(
         start_date: params[:start_date], end_date: params[:end_date], limit: request.xhr?
       )
     end

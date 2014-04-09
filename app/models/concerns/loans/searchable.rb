@@ -2,7 +2,7 @@ module Loans::Searchable
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def search start_date: nil, end_date: nil, limit: false
+    def loans_search start_date: nil, end_date: nil, limit: false
       parameters, conditions = [], {}
 
       if start_date.present?
