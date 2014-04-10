@@ -28,10 +28,10 @@ module Loans::ActionFilters
     end
 
     def loans_by_search
-      Loan.search(
-        start_date: Timeliness.parse(params[:start_date]),
-        end_date: Timeliness.parse(params[:end_date]),
-        limit: request.xhr?
-      )
+      start_date = params[:start_date] ? Timeliness.parse(params[:start_date])
+        : Date.today.beginning_of_month
+      end_date = Timeliness.parse(params[:end_date])
+
+      Loan.search start_date: start_date, end_date: end_date, limit: request.xhr?
     end
 end
