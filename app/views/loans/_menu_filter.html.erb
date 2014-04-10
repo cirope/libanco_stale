@@ -1,6 +1,6 @@
 <ul class="nav nav-pills nav-stacked">
-  <%= menu_filter_for %>
-  <%= menu_filter_for 'expired' %>
-  <%= menu_filter_for 'close_to_expire' %>
-  <%= menu_filter_for 'not_renewed' %>
+  <%= menu_filter_for start_date: l(Date.today.beginning_of_month) %>
+  <%= menu_filter_for filter: 'expired' %>
+  <%= menu_filter_for filter: 'close_to_expire' %>
+  <%= menu_filter_for filter: 'not_renewed' %>
 </ul>

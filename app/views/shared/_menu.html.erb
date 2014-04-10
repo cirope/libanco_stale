@@ -20,7 +20,7 @@
           <% else %>
             <%= menu_item_for Schedule, schedules_path %>
             <%= menu_item_for Customer, customers_path %>
-            <%= menu_item_for Loan, loans_path %>
+            <%= menu_item_for Loan, loans_path(start_date: l(Date.today.beginning_of_month)) %>
             <%= render 'shared/submenu/admin' %>
           <% end %>
         </ul>

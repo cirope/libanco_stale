@@ -3,11 +3,11 @@ module LoansHelper
     raw customer_text_label << ' ' << add_customer_link
   end
 
-  def menu_filter_for(filter = nil)
-    options = params[:filter] == filter ? { class: 'active' } : ''
+  def menu_filter_for(parameters)
+    options = params[:filter] == parameters[:filter] ? { class: 'active' } : ''
 
     content_tag :li, options do
-      link_to t("menu.loans.#{(filter || 'title')}"), loans_path(filter: filter)
+      link_to t("menu.loans.#{(parameters[:filter] || 'title')}"), loans_path(parameters)
     end
   end
 
