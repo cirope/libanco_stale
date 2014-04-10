@@ -3,7 +3,6 @@ module Loans::Payments
 
   included do
     has_many :payments, dependent: :destroy, counter_cache: ''
-    has_many :taxes, through: :payments
 
     before_create :build_payments, :assign_loan_attributes
   end
@@ -25,14 +24,15 @@ module Loans::Payments
         payments.build(
           number: number,
           payment: payment_amount,
-          expire_at: expiration_corrector(expiration)
+          expire_at: expiration_corrector(expiration),
+          created_at: created_at.to_s(:db)
         )
         expiration = expiration.next_month
       end
     end
 
     def first_expiration
-      today = (expire_at || Date.today)
+      today = (created_at || Date.today)
       months = (1..14).to_a.include?(today.mday) ? 1 : 2
 
       Date.new(today.year, today.mon, 10).next_month(months)

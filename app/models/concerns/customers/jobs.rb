@@ -6,7 +6,8 @@ module Customers::Jobs
 
     accepts_nested_attributes_for :jobs, allow_destroy: false
 
-    delegate :name, :kind, :phones, to: :current_job, prefix: true, allow_nil: true
+    delegate :name, :kind, :phones,
+      to: :current_job, prefix: true, allow_nil: true
   end
 
   def current_job

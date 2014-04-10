@@ -78,6 +78,7 @@ es:
         identification: 'DNI'
         kind: 'Perfil'
         lastname: 'Apellido'
+        member: 'Socio'
         name: 'Nombre'
         tax_id: 'CUIL/CUIT'
         city: 'Ciudad'
@@ -111,8 +112,6 @@ es:
         payment: 'Cuota'
         expire_at: 'Vencimiento'
         paid_at: 'Fecha de pago'
-        taxes: 'Adicionales'
-        total: 'Total'
       phone:
         phone: 'Teléfono'
       rate:

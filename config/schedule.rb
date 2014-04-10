@@ -8,6 +8,6 @@ every 1.day, at: '18:00' do
   rake 'reminders:send_summaries'
 end
 
-every 1.day, at: '00:01' do
-  rake 'payments:assign_taxes'
+every 1.month, at: 'start of the month at 00:01am'
+  rake 'customers:assign_taxes'
 end

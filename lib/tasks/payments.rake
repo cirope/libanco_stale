@@ -1,8 +1,8 @@
 namespace :payments do
-  desc 'Assign current taxes to payments'
+  desc 'Assign taxes to customers'
   task assign_taxes: :environment do
     Account.all.each do |account|
-      Payment.assign_taxes(account)
+      Customer.assign_taxes(account)
     end
   end
 end

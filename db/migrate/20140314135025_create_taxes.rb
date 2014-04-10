@@ -3,7 +3,7 @@ class CreateTaxes < ActiveRecord::Migration
     create_table :taxes do |t|
       t.decimal :value, null: false, precision: 15, scale: 2
       t.references :tax_setting, null: false, index: true
-      t.references :payment, null: false, index: true
+      t.references :customer, null: false, index: true
 
       t.timestamps
     end

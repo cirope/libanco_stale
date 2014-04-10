@@ -11,7 +11,7 @@ class TaxTest < ActiveSupport::TestCase
     assert @tax.invalid?
     assert_error @tax, :value, :blank
     assert_error @tax, :tax_setting, :blank
-    assert_error @tax, :payment, :blank
+    assert_error @tax, :customer, :blank
   end
 
   test 'attributes boundaries' do

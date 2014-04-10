@@ -12,6 +12,7 @@
       <%= f.association :city, collection: City.ordered, label: add_label('city'),
         prompt: true, input_html: { data: { update_after_city_change: true } }
       %>
+      <%= f.input :member, as: :radio_buttons %>
       <%= f.simple_fields_for :jobs, current_job do |fj| %>
         <%= customer_kind_field fj %>
         <%= customer_place_type_field fj %>

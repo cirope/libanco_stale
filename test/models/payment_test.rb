@@ -18,21 +18,4 @@ class PaymentTest < ActiveSupport::TestCase
 
     assert @payment.expired?
   end
-
-  test 'should remove taxes' do
-    assert_equal TaxSetting.count, @payment.taxes.count
-    @payment.update(paid_at: nil)
-
-    # because expire_at is in the future
-    assert_equal 0, @payment.taxes.count
-  end
-
-  test 'should assign taxes' do
-    payment = payments(:second_payment)
-    assert_equal 0, payment.taxes.count
-
-    assert_difference 'payment.taxes.count', TaxSetting.count do
-      payment.update(paid_at: 1.month.from_now)
-    end
-  end
 end

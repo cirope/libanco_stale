@@ -10,6 +10,14 @@
       </div>
       <div class="col-md-6">
         <p>
+          <strong><%= Customer.human_attribute_name 'member' %></strong>:
+          <%= t "customers.member.#{@loan.customer_member}" %>
+        </p>
+        <p>
+          <strong><%= Customer.human_attribute_name 'kind' %></strong>:
+          <%= t "customers.jobs.#{@loan.customer_current_job_kind}" %>
+        </p>
+        <p>
           <strong><%= Loan.human_attribute_name 'amount' %></strong>:
           <%= number_to_currency @loan.amount %>
         </p>

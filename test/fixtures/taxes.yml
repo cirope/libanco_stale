@@ -1,9 +1,9 @@
 first_tax:
   value: 40
   tax_setting: social_payment
-  payment: first_payment
+  customer: paul
 
 second_tax:
   value: 28
   tax_setting: insurance
-  payment: first_payment
+  customer: paul

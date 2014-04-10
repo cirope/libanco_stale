@@ -7,7 +7,7 @@ class Customer < ActiveRecord::Base
   include Customers::Jobs
   include Phonable
 
-  strip_fields :name, :lastname, :identification, :address
+  strip_fields :name, :lastname, :identification, :address, :email, :tax_id
 
   belongs_to :city
   has_many :loans, through: :jobs

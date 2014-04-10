@@ -12,7 +12,7 @@ class CustomerTest < ActiveSupport::TestCase
     assert_error @customer, :name, :blank
     assert_error @customer, :lastname, :blank
     assert_error @customer, :identification, :blank
-    assert_error @customer, :address, :blank
+    assert_error @customer, :member, :blank
     assert_error @customer, :city, :blank
   end
 

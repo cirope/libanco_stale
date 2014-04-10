@@ -12,16 +12,6 @@
   </td>
   <td>
     <span <%== 'class="text-danger"' if expired %>>
-      <%= link_to_show_taxes(payment) if payment.taxes.size > 0 %>
-    </span>
-  </td>
-  <td>
-    <span <%== 'class="text-danger"' if expired %>>
-      <%= number_to_currency(payment.payment + payments_taxes_total(payment)) %>
-    </span>
-  </td>
-  <td>
-    <span <%== 'class="text-danger"' if expired %>>
       <%= l payment.expire_at %>
     </span>
   </td>
