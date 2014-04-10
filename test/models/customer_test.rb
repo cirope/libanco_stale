@@ -12,7 +12,6 @@ class CustomerTest < ActiveSupport::TestCase
     assert_error @customer, :name, :blank
     assert_error @customer, :lastname, :blank
     assert_error @customer, :identification, :blank
-    assert_error @customer, :member, :blank
     assert_error @customer, :city, :blank
   end
 
@@ -32,5 +31,12 @@ class CustomerTest < ActiveSupport::TestCase
     assert_error @customer, :name, :too_long, count: 255
     assert_error @customer, :lastname, :too_long, count: 255
     assert_error @customer, :address, :too_long, count: 255
+  end
+
+  test 'attributes inclusion' do
+    @customer.member = nil
+
+    assert @customer.invalid?
+    assert_error @customer, :member, :inclusion
   end
 end

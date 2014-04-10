@@ -28,7 +28,5 @@ class ActionDispatch::IntegrationTest
     fill_in 'password', with: '123'
 
     click_button I18n.t('sessions.new.log_in')
-
-    assert page.has_css?('.alert.alert-info')
   end
 end
