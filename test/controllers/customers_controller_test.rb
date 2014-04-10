@@ -32,7 +32,6 @@ class CustomersControllerTest < ActionController::TestCase
   test 'should create private customer' do
     assert_difference ['Customer.count', 'Phone.count'] do
       post :create, customer: {
-        member: @customer.member,
         name: @customer.name,
         lastname: @customer.lastname,
         identification: '27988345',

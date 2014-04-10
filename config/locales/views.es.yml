@@ -72,9 +72,6 @@ es:
       new: 'Nuevo cliente'
       title: 'Listado de clientes'
       empty_html: 'No se encontraron clientes, puede buscar o crear uno con el botón <span class="label label-info">Nuevo cliente</span>'
-    member:
-      'true': 'Sí'
-      'false': 'No'
     new:
       title: 'Crear cliente'
       company: 'Agregar nueva empresa'

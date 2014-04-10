@@ -8,7 +8,5 @@ module Accounts::Relations
     has_many :tax_settings, dependent: :destroy
     has_many :rate_sets, dependent: :destroy
     has_many :companies, dependent: :destroy
-    has_many :loans
-    has_many :payments, through: :loans
   end
 end

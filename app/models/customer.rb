@@ -2,10 +2,11 @@ class Customer < ActiveRecord::Base
   include Accounts::Scoped
   include Auditable
   include Attributes::Strip
+  include Phonable
   include Customers::Validation
   include Customers::Searchable
   include Customers::Jobs
-  include Phonable
+  include Customers::Taxes
 
   strip_fields :name, :lastname, :identification, :address, :email, :tax_id
 

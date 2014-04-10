@@ -1,4 +1,4 @@
-namespace :payments do
+namespace :customers do
   desc 'Assign taxes to customers'
   task assign_taxes: :environment do
     Account.all.each do |account|

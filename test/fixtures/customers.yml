@@ -5,7 +5,6 @@ paul:
   tax_id: 20-33216329-3
   email: paul@skanska.com
   address: HUARPES 3072. B. LEDONE
-  member: true
   city: rivadavia
   account: cirope
 
@@ -16,7 +15,6 @@ simon:
   tax_id: 20-34655498-3
   email: simon@skanska.com
   address: B Tamarindo III Manz C Casa 14
-  member: true
   city: godoy_cruz
   account: cirope
 
@@ -27,6 +25,5 @@ john:
   tax_id: 20-27789654-7
   email: john@morgan.com
   address: Cnel Moldes 200
-  member: false
   city: godoy_cruz
   account: cirope

@@ -9,7 +9,6 @@
       <tr>
         <th><%= Customer.human_attribute_name 'name' %></th>
         <th><%= Customer.human_attribute_name 'identification' %></th>
-        <th><%= Customer.human_attribute_name 'member' %></th>
         <th class="hidden-xs"><%= Customer.human_attribute_name 'email' %></th>
       </tr>
     </thead>
@@ -19,7 +18,6 @@
         <tr>
           <td><%= link_to customer, customer %></td>
           <td><%= customer.identification %></td>
-          <td><%= t "customers.member.#{customer.member}" %></td>
           <td class="hidden-xs"><%= mail_to customer.email, customer.email %></td>
         </tr>
       <% end %>

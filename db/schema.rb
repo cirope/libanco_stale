@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 20140331205737) do
     t.string   "tax_id"
     t.string   "email"
     t.string   "address"
-    t.boolean  "member",                     null: false
     t.integer  "city_id",                    null: false
     t.integer  "account_id",                 null: false
     t.integer  "lock_version",   default: 0, null: false
@@ -70,7 +69,6 @@ ActiveRecord::Schema.define(version: 20140331205737) do
   add_index "customers", ["city_id"], name: "index_customers_on_city_id", using: :btree
   add_index "customers", ["identification"], name: "index_customers_on_identification", using: :btree
   add_index "customers", ["lastname"], name: "index_customers_on_lastname", using: :btree
-  add_index "customers", ["member"], name: "index_customers_on_member", using: :btree
   add_index "customers", ["name"], name: "index_customers_on_name", using: :btree
   add_index "customers", ["tax_id"], name: "index_customers_on_tax_id", using: :btree
 
