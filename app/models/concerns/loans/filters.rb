@@ -31,6 +31,10 @@ module Loans::Filters
       includes(:customer).where(status: 'history')
     end
 
+    def judicial
+      includes(:customer).where(status: 'judicial')
+    end
+
     def not_current
       includes(:customer).where.not(status: 'current')
     end

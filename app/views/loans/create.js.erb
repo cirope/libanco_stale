@@ -1,0 +1,5 @@
+<% if @loan.persisted? %>
+  Turbolinks.visit('<%= url_for([@customer, @loan]) %>');
+<% else %>
+  <%= render template: 'loans/new', formats: [:js] %>
+<% end %>
