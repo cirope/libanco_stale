@@ -1,10 +1,9 @@
 class PaymentsController < ApplicationController
+  include Authorization
+
   respond_to :html, :json, :js
 
-  before_action :authorize
-  before_action :set_loan
-  before_action :set_payment, only: [:edit, :update]
-  before_action :set_title
+  before_action :set_payment, :set_title
 
   # GET /payments/1/edit
   def edit
@@ -13,19 +12,13 @@ class PaymentsController < ApplicationController
   # PATCH/PUT /payments/1
   def update
     update_resource @payment, payment_params
-
-    # TODO fix
-    @loan.reload
+    @loan = @payment.loan
   end
 
   private
 
-    def set_loan
-      @loan = Loan.find(params[:loan_id])
-    end
-
     def set_payment
-      @payment = @loan.payments.find(params[:id])
+      @payment = Payment.find(params[:id])
     end
 
     def payment_params

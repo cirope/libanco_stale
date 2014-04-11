@@ -1,4 +1,6 @@
 class Payment < ActiveRecord::Base
+  include Accounts::Scoped
+  include Auditable
   include Payments::Validation
   include Payments::Calculations
   include Payments::LoanUpdate

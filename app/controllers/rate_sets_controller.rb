@@ -1,7 +1,8 @@
 class RateSetsController < ApplicationController
+  include Authorization
+
   respond_to :html, :json, :js
 
-  before_action :authorize
   before_action :set_rate_set, only: [:show, :edit, :update, :destroy, :simulator]
   before_action :set_title, except: [:destroy]
 

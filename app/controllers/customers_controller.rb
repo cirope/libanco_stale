@@ -1,7 +1,8 @@
 class CustomersController < ApplicationController
+  include Authorization
+
   respond_to :html, :json, :js
 
-  before_action :authorize
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
   before_action :set_title
 

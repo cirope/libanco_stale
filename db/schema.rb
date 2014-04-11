@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331205737) do
+ActiveRecord::Schema.define(version: 20140411153538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,15 +134,18 @@ ActiveRecord::Schema.define(version: 20140331205737) do
   add_index "organizations", ["name"], name: "index_organizations_on_name", using: :btree
 
   create_table "payments", force: true do |t|
-    t.integer  "number",                              null: false
-    t.decimal  "payment",    precision: 15, scale: 2, null: false
-    t.date     "expire_at",                           null: false
+    t.integer  "number",                                            null: false
+    t.decimal  "payment",      precision: 15, scale: 2,             null: false
+    t.date     "expire_at",                                         null: false
     t.datetime "paid_at"
-    t.integer  "loan_id",                             null: false
+    t.integer  "loan_id",                                           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
+    t.integer  "lock_version",                          default: 0, null: false
   end
 
+  add_index "payments", ["account_id"], name: "index_payments_on_account_id", using: :btree
   add_index "payments", ["expire_at"], name: "index_payments_on_expire_at", using: :btree
   add_index "payments", ["loan_id"], name: "index_payments_on_loan_id", using: :btree
   add_index "payments", ["number"], name: "index_payments_on_number", using: :btree

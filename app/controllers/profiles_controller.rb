@@ -1,7 +1,9 @@
 class ProfilesController < ApplicationController
-  respond_to :html, :json
+  include Authorization
 
-  before_action :authorize, :set_user, :set_title
+  before_action :set_user, :set_title
+
+  respond_to :html, :json
 
   def edit
   end

@@ -1,10 +1,10 @@
 class LoansController < ApplicationController
+  include Authorization
   include Loans::ActionFilters
   include Loans::CustomerScoped
 
   respond_to :html, :json, :js
 
-  before_action :authorize
   before_action :set_title
 
   # GET /loans
@@ -15,6 +15,7 @@ class LoansController < ApplicationController
   # GET /loans/1
   def show
     @loan = Loan.find(params[:id])
+    @customer = @loan.customer
   end
 
   # GET /loans/new

@@ -1,7 +1,8 @@
 class SchedulesController < ApplicationController
+  include Authorization
+
   respond_to :html, :json, :js
 
-  before_action :authorize
   before_action :set_schedulable, only: [:new, :create, :edit, :update]
   before_action :set_current_date, only: [:index, :new, :create]
   before_action :set_scheduled_month, only: [:index]

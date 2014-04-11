@@ -18,4 +18,11 @@ class PaymentTest < ActiveSupport::TestCase
 
     assert @payment.expired?
   end
+
+  test 'invalid date' do
+    @payment.paid_at = '1234abc'
+
+    assert @payment.invalid?
+    assert_error @payment, :paid_at, :invalid_date
+  end
 end

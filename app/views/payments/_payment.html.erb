@@ -17,6 +17,6 @@
   </td>
   <%= render 'payments/paid_at', payment: payment %>
   <td>
-    <%= link_to_edit edit_loan_payment_path(@loan, payment), data: { remote: true } %>
+    <%= link_to_edit [:edit, payment], data: { remote: true } %>
   </td>
 </tr>

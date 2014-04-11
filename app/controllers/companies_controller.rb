@@ -1,7 +1,8 @@
 class CompaniesController < ApplicationController
+  include Authorization
+
   respond_to :html, :json, :js
 
-  before_action :authorize
   before_action :set_company, only: [:show, :edit, :update, :destroy]
   before_action :set_title, except: [:destroy]
 

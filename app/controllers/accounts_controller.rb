@@ -1,7 +1,8 @@
 class AccountsController < ApplicationController
+  include Authorization
+
   respond_to :html, :json
 
-  before_action :authorize
   before_action :set_account, only: [:show, :edit, :update, :destroy]
   before_action :set_title, except: [:destroy]
 

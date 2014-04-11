@@ -1,7 +1,8 @@
 class TaxSettingsController < ApplicationController
+  include Authorization
+
   respond_to :html, :json
 
-  before_action :authorize
   before_action :set_tax_setting, only: [:show, :edit, :update, :destroy]
   before_action :set_title, except: [:destroy]
 

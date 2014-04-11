@@ -13,11 +13,6 @@ Finance::Application.routes.draw do
     get '/loans(/:filter)', to: 'loans#index', as: 'loans',
       constraints: { filter: 'expired|close_to_expire|not_renewed' }
 
-    resources :loans, only: [:show, :new, :create] do
-      resources :payments, only: [:edit, :update]
-      resources :schedules, only: [:new, :create, :edit, :update]
-    end
-
     # Profiles
     get 'profile', to: 'profiles#edit', as: 'profile'
     patch 'profile', to: 'profiles#update'
@@ -30,7 +25,10 @@ Finance::Application.routes.draw do
     resources :organizations
     resources :tax_settings
     resources :customers, except: [:destroy] do
-      resources :loans, only: [:new, :create, :show]
+      resources :loans, shallow: true do
+        resources :payments, only: [:edit, :update]
+        resources :schedules, only: [:new, :create, :edit, :update]
+      end
     end
     resources :rate_sets do
       get 'simulator', on: :member
