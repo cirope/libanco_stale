@@ -108,7 +108,7 @@ es:
       canceled: 'Cancelado'
       history: 'Cancelado'
       expired: 'Atrasado'
-      judicial: 'A. judicial'
+      judicial: 'En acción judicial'
 
   organizations:
     edit:
