@@ -25,7 +25,7 @@ class LoansTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'show loan info' do
+  test 'show and close loan info' do
     login
 
     visit loans_path
@@ -36,5 +36,11 @@ class LoansTest < ActionDispatch::IntegrationTest
     find("a[href='#{loans_path(loan)}']").click
 
     assert page.has_css?('.panel.panel-loan-info')
+
+    within '.panel.panel-loan-info' do
+      find("a[data-remove-target='[data-removeable=\"#{loan.id}\"]']").click
+    end
+
+    assert page.has_no_css?('.panel.panel-loan-info')
   end
 end

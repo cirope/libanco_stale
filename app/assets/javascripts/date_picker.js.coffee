@@ -1,4 +1,4 @@
 $(document).on 'focus', '[data-date-picker]:not(.hasDatepicker)', ->
   $(this).datepicker({
-     changeMonth: true, changeYear: true
+    changeMonth: true, changeYear: true
   })
