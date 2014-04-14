@@ -7,5 +7,5 @@ smtp:
   authentication: 'plain'
   enable_starttls_auto: true
 
-host: 'localhost:3000'
+host: 'lvh.me'
 email: 'noreply@change.me'
