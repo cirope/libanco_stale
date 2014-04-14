@@ -5,3 +5,4 @@ before_script:
   - 'cp config/application.travis.yml config/application.yml'
   - "psql -c 'create database libanco_test;' -U postgres"
   - 'bundle exec rake db:migrate'
+script: 'bundle exec rake test:all'
