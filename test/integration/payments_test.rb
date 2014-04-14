@@ -21,10 +21,11 @@ class PaymentsTest < ActionDispatch::IntegrationTest
 
     assert page.has_css?('#modal')
 
-    within 'div.ui-datepicker' do
+    within '.ui-datepicker' do
       find('td.ui-datepicker-today a').click
-      assert page.has_no_css?('.ui-datepicker')
     end
+
+    assert page.has_no_css?('.ui-datepicker')
 
     within '#modal' do
       find('.btn.btn-primary').click
