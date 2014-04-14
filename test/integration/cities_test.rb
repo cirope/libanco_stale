@@ -8,6 +8,8 @@ class CitiesTest < ActionDispatch::IntegrationTest
 
     find("a[href='#{new_state_path}']").click
 
+    assert page.has_css?('#modal')
+
     within '#modal form' do
       fill_in 'state_name', with: 'San Juan'
     end
