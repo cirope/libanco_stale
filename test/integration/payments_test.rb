@@ -6,7 +6,7 @@ class PaymentsTest < ActionDispatch::IntegrationTest
 
     loan = loans(:first_loan)
     payment = loan.payments.first
-    assert payment.update(paid_at: nil, expire_at: Date.yesterday.to_s(:db))
+    assert payment.update(paid_at: '', expire_at: Date.yesterday.to_s(:db))
 
     visit loans_path
 

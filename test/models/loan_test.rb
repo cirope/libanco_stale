@@ -41,7 +41,7 @@ class LoanTest < ActiveSupport::TestCase
     Account.current_id = accounts(:cirope).id
 
     assert_equal 'current', @loan.status
-    assert @loan.payments.first.update!(expire_at: 1.month.ago, paid_at: nil)
+    assert @loan.payments.first.update!(expire_at: 1.month.ago, paid_at: '')
 
     assert_equal 'expired', @loan.reload.status
   end
