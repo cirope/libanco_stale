@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     get 'profile', to: 'profiles#edit', as: 'profile'
     patch 'profile', to: 'profiles#update'
 
+    resources :loans, only: [] do
+      resources :schedules, only: [:new, :create, :edit, :update]
+    end
+
     # Resources
     resources :cities
     resources :states
@@ -27,7 +31,6 @@ Rails.application.routes.draw do
     resources :customers, except: [:destroy] do
       resources :loans, shallow: true do
         resources :payments, only: [:edit, :update]
-        resources :schedules, only: [:new, :create, :edit, :update]
       end
     end
     resources :rate_sets do
