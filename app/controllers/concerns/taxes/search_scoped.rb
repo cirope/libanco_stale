@@ -16,7 +16,8 @@ module Taxes::SearchScoped
     def set_taxes
       start_date = params[:start_date] ? Timeliness.parse(params[:start_date])
         : Date.today.beginning_of_month
-      end_date = Timeliness.parse(params[:end_date])
+      end_date = params[:end_date] ? Timeliness.parse(params[:end_date])
+        : Date.today.end_of_month
 
       @taxes =
         @tax_setting.taxes.search start_date: start_date, end_date: end_date, limit: request.xhr?
