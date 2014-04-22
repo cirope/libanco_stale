@@ -32,7 +32,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-sidekiq'
-  gem 'unicorn-rails', '1.1.0'
+  gem 'unicorn-rails'
 end
 
 group :doc do

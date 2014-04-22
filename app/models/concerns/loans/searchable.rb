@@ -6,18 +6,18 @@ module Loans::Searchable
       parameters, conditions = [], {}
 
       if start_date.present?
-        parameters << "#{table_name}.created_at::date >= :start_date"
-        conditions[:start_date] = start_date
+        parameters << "#{table_name}.created_at >= :start_date"
+        conditions[:start_date] = start_date.at_beginning_of_day
       end
 
       if end_date.present?
-        parameters << "#{table_name}.created_at::date <= :end_date"
-        conditions[:end_date] = end_date
+        parameters << "#{table_name}.created_at <= :end_date"
+        conditions[:end_date] = end_date.at_end_of_day
       end
 
       result = includes(:customer).where(parameters.join(' AND '), conditions).order(
-        "#{table_name}.created_at ASC"
-      )
+        "#{table_name}.created_at ASC, #{::Customer.table_name}.lastname ASC"
+      ).references(:customer)
 
       limit ? result.limit(10) : result
     end
