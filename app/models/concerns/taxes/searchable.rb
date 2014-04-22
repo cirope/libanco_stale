@@ -15,7 +15,7 @@ module Taxes::Searchable
         conditions[:end_date] = end_date
       end
 
-      result = where(parameters.join(' AND '), conditions).order(
+      result = includes(:customer).where(parameters.join(' AND '), conditions).order(
         "#{table_name}.expire_at ASC"
       )
 
