@@ -128,6 +128,10 @@ es:
         remind_me: 'Recordarme por correo 15 minutos antes'
       state:
         name: 'Nombre'
+      tax:
+        value: 'Valor'
+        expire_at: 'Vencimiento'
+        paid_at: 'Fecha de pago'
       tax_setting:
         name: 'Nombre'
         value: 'Valor'

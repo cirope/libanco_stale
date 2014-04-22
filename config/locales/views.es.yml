@@ -198,6 +198,11 @@ es:
       title: 'Mis datos'
       submit: 'Actualizar mis datos'
 
+  taxes:
+    index:
+      title: 'Listado de adicionales'
+      empty_html: 'No se encontraron adicionales en la fecha indicada.'
+
   tax_settings:
     edit:
       title: 'Editar adicional'

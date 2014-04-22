@@ -1,9 +1,15 @@
 first_tax:
   value: 40
+  expire_at: <%= 1.month.from_now.to_s(:db) %>
+  paid_at: <%= 1.month.from_now.to_s(:db) %>
   tax_setting: social_payment
   customer: paul
+  account: cirope
 
 second_tax:
   value: 28
+  expire_at: <%= 1.month.from_now.to_s(:db) %>
+  paid_at: <%= 1.month.from_now.to_s(:db) %>
   tax_setting: insurance
   customer: paul
+  account: cirope

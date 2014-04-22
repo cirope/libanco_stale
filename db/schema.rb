@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140411153538) do
+ActiveRecord::Schema.define(version: 20140421144928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,16 @@ ActiveRecord::Schema.define(version: 20140411153538) do
   add_index "organizations", ["account_id"], name: "index_organizations_on_account_id", using: :btree
   add_index "organizations", ["name"], name: "index_organizations_on_name", using: :btree
 
+  create_table "payment_taxes", force: true do |t|
+    t.integer  "payment_id", null: false
+    t.integer  "tax_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "payment_taxes", ["payment_id"], name: "index_payment_taxes_on_payment_id", using: :btree
+  add_index "payment_taxes", ["tax_id"], name: "index_payment_taxes_on_tax_id", using: :btree
+
   create_table "payments", force: true do |t|
     t.integer  "number",                                            null: false
     t.decimal  "payment",      precision: 15, scale: 2,             null: false
@@ -235,14 +245,20 @@ ActiveRecord::Schema.define(version: 20140411153538) do
   add_index "tax_settings", ["name"], name: "index_tax_settings_on_name", using: :btree
 
   create_table "taxes", force: true do |t|
-    t.decimal  "value",          precision: 15, scale: 2, null: false
-    t.integer  "tax_setting_id",                          null: false
-    t.integer  "customer_id",                             null: false
+    t.decimal  "value",          precision: 15, scale: 2,             null: false
+    t.integer  "tax_setting_id",                                      null: false
+    t.integer  "customer_id",                                         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "paid_at"
+    t.date     "expire_at",                                           null: false
+    t.integer  "account_id",                                          null: false
+    t.integer  "lock_version",                            default: 0, null: false
   end
 
+  add_index "taxes", ["account_id"], name: "index_taxes_on_account_id", using: :btree
   add_index "taxes", ["customer_id"], name: "index_taxes_on_customer_id", using: :btree
+  add_index "taxes", ["expire_at"], name: "index_taxes_on_expire_at", using: :btree
   add_index "taxes", ["tax_setting_id"], name: "index_taxes_on_tax_setting_id", using: :btree
 
   create_table "users", force: true do |t|

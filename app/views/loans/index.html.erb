@@ -5,7 +5,7 @@
     <%= render 'summary' if params[:filter].blank? %>
   </div>
   <div class="col-md-9">
-    <%= render 'search' if params[:filter].blank? %>
+    <%= render 'shared/search', url: loans_path if params[:filter].blank? %>
     <% if @loans.empty? %>
       <%= render 'shared/empty_index',
         message: t("loans.empty.#{(params[:filter] || 'search')}_html") %>

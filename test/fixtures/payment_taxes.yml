@@ -1,0 +1,3 @@
+first_payment_tax:
+  payment: first_payment
+  tax: first_tax

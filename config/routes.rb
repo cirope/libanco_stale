@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     resources :users
     resources :companies
     resources :organizations
-    resources :tax_settings
+    resources :tax_settings do
+      resources :taxes, only: [:index]
+    end
     resources :customers, except: [:destroy] do
       resources :loans, shallow: true do
         resources :payments, only: [:edit, :update]

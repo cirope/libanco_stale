@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render 'summary' %>
+  </div>
+  <div class="col-md-9">
+    <%= render 'shared/search', url: tax_setting_taxes_path %>
+    <% if @taxes.empty? %>
+      <%= render 'shared/empty_index', message: t('.empty_html') %>
+    <% else %>
+      <table class="table table-condensed table-striped">
+        <thead>
+          <tr>
+            <th><%= Customer.model_name.human count: 1 %></th>
+            <th><%= Tax.human_attribute_name 'expire_at' %></th>
+            <th><%= Tax.human_attribute_name 'paid_at' %></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @taxes.each do |tax| %>
+            <tr>
+              <td><%= tax.customer %></td>
+              <td><%= l tax.expire_at %></td>
+              <td><%= l tax.paid_at if tax.paid_at %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
