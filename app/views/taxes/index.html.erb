@@ -7,7 +7,7 @@
     <% if @taxes.empty? %>
       <%= render 'shared/empty_index', message: t('.empty_html') %>
     <% else %>
-      <table class="table table-condensed table-striped">
+      <table class="table table-condensed table-striped" data-endless-container="true">
         <thead>
           <tr>
             <th><%= Customer.model_name.human count: 1 %></th>
@@ -17,15 +17,13 @@
         </thead>
 
         <tbody>
-          <% @taxes.each do |tax| %>
-            <tr>
-              <td><%= tax.customer %></td>
-              <td><%= l tax.expire_at %></td>
-              <td><%= l tax.paid_at if tax.paid_at %></td>
-            </tr>
-          <% end %>
+          <%= render partial: 'tbody', collection: @taxes, as: :tax %>
         </tbody>
       </table>
+
+      <div class="pagination-container">
+        <%= will_paginate @taxes %>
+      </div>
     <% end %>
   </div>
 </div>
