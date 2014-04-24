@@ -2,3 +2,14 @@ Para el <%= l(@reminder.scheduled_at, format: :long) %>,
 ================================================================================
 
 <%= @reminder.description %>
+
+<% if @reminder.schedulable %>
+  <%= Customer.model_name.human(count: 1) %>: <%= @reminder.schedule.customer %>
+  <%= Phone.model_name.human(count: 1) %>: <%= @reminder.schedule.phones.first %>
+  <%= Customer.human_attribute_name :address %>: <%= @reminder.schedule.customer_address %>
+<% end %>
+
+Podés organizar tus eventos en Libanco desde
+<%= link_to 'acá', schedules_url(
+  subdomain: @reminder.account.subdomain, date: l(Date.today, format: :calendar)
+) %>

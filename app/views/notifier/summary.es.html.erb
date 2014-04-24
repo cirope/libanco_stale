@@ -9,15 +9,17 @@
       <div style="margin-left: 40px;">
         <div>
           <strong><%= Customer.model_name.human(count: 1) %>:</strong>
-          <span><%= schedule.label %></span>
+          <span><%= schedule.customer %></span>
         </div>
-        <div>
-          <strong><%= Phone.model_name.human(count: 1) %>:</strong>
-          <span><%= schedule.phones.first %></span>
-        </div>
+        <strong><%= Phone.model_name.human(count: 0) %>:</strong>
+        <ul>
+          <% schedule.phones.each do |phone| %>
+            <li><%= phone %></li>
+          <% end %>
+        </ul>
         <div>
           <strong><%= Customer.human_attribute_name :address %>:</strong>
-          <span><%= schedule.address %></span>
+          <span><%= schedule.customer_address %></span>
         </div>
       </div>
     <% end %>
@@ -26,5 +28,8 @@
 
 <hr />
 <p>
-  Podés <strong>organizar</strong> tus eventos en Libanco desde <%= link_to 'acá', schedules_url(date: Date.tomorrow.to_s(:db)) %>
+  Podés <strong>organizar</strong> tus eventos en Libanco desde
+  <%= link_to 'acá', schedules_url(
+    subdomain: @user.account.subdomain, date: l(Date.tomorrow, format: :calendar)
+  ) %>
 </p>
