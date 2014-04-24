@@ -146,6 +146,14 @@ es:
       title: 'Ver tasa'
     simulator: 'Para habilitar el simulador, primero seleccione una tasa.'
 
+  reports:
+    index:
+      title: 'Reportes'
+      empty_html: 'No se encontraron datos en la fecha indicada.'
+    summary:
+      total: 'Total'
+      amount: 'Monto'
+
   schedules:
     edit:
       title: 'Editar evento'

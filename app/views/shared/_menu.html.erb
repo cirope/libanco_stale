@@ -21,6 +21,7 @@
             <%= menu_item_for Schedule, schedules_path %>
             <%= menu_item_for Customer, customers_path %>
             <%= menu_item_for Loan, loans_path %>
+            <%= menu_item_controller_for ReportsController, reports_path(filter: 'payments') %>
             <%= render 'shared/submenu/admin' %>
           <% end %>
         </ul>

@@ -5,6 +5,10 @@ class PaymentsController < ApplicationController
 
   before_action :set_payment, :set_title
 
+  # GET /payments
+  def index
+  end
+
   # GET /payments/1/edit
   def edit
   end

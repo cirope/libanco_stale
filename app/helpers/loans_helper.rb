@@ -11,14 +11,6 @@ module LoansHelper
     end
   end
 
-  def start_date_value
-    if params[:start_date]
-      l(params[:start_date].to_date) if Timeliness.parse(params[:start_date])
-    else
-      l Date.today.beginning_of_month
-    end
-  end
-
   def link_to_new_loan_schedule(loan)
     link_to(
       content_tag(:span, nil, class: 'glyphicon glyphicon-time'),

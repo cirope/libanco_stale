@@ -1,4 +1,4 @@
-<%= form_tag loans_path, method: :get do %>
+<%= form_tag url, method: :get do %>
   <div class="row">
     <div class="col-md-1">
       <%= label_tag :start_date, t('navigation.start_date') %>
@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-4">
       <div class="form-group">
-        <%= text_field_tag :end_date, params[:end_date],
+        <%= text_field_tag :end_date, end_date_value,
           autocomplete: 'off', class: 'form-control', data: { date_picker: true } %>
       </div>
     </div>
