@@ -1,4 +1,4 @@
-module Searchable
+module Payments::Searchable
   extend ActiveSupport::Concern
 
   module ClassMethods
@@ -15,8 +15,8 @@ module Searchable
         conditions[:end_date] = end_date.at_end_of_day
       end
 
-      result = unscoped.includes(:customer).where(parameters.join(' AND '), conditions).order(
-        "#{table_name}.expire_at ASC, #{::Customer.table_name}.lastname"
+      result = unscoped.includes(:customer, :loan).where(parameters.join(' AND '), conditions).order(
+        "#{table_name}.expire_at ASC, #{::Customer.table_name}.lastname ASC, #{table_name}.payment ASC"
       ).references(:customer)
 
       limit ? result.limit(10) : result

@@ -1,5 +1,8 @@
 <tr>
   <td><%= link_to record.customer, customer_path(record.customer) %></td>
-  <td><%= l record.created_at.to_date %></td>
+  <td><%= number_to_currency record.loan.amount if record.loan %></td>
+  <td><%= show_current_payments(record) if record.loan %></td>
+  <td><%= number_to_currency record.amount %></td>
   <td><%= l record.expire_at %></td>
+  <td><%= l record.paid_at.to_date if record.paid_at %></td>
 </tr>

@@ -60,7 +60,8 @@
 <div class="footer">
   <div class="pull-right">
     <%= link_to_edit edit_customer_path(@customer) %> |
-    <%= link_to_index customers_path %>
+    <%= link_to_index customers_path %> |
+    <%= link_to t('navigation.back'), :back %>
   </div>
   <%= link_to(
     t('loans.new.title'), new_customer_loan_path(@customer),

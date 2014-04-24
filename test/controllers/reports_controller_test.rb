@@ -8,6 +8,6 @@ class ReportsControllerTest < ActionController::TestCase
   test 'should get index' do
     get :index
     assert_response :success
-    assert_not_nil assigns(:loans)
+    assert_not_nil assigns(:collection)
   end
 end

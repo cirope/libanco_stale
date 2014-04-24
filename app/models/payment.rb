@@ -1,10 +1,10 @@
 class Payment < ActiveRecord::Base
   include Accounts::Scoped
   include Auditable
-  include Searchable
   include Payments::Validation
   include Payments::Calculations
   include Payments::LoanUpdate
+  include Payments::Searchable
 
   default_scope -> { order("#{table_name}.number ASC") }
 
