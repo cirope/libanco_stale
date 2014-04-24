@@ -17,9 +17,9 @@
             <th><%= Customer.model_name.human(count: 1) %></th>
             <th><%= Loan.model_name.human(count: 1) %></th>
             <th><%= Payment.model_name.human(count: 1) %></th>
-            <th><%= Loan.human_attribute_name 'amount' %></th>
-            <th><%= @filter.human_attribute_name 'expire_at' %></th>
-            <th><%= @filter.human_attribute_name 'paid_at' %></th>
+            <th class="hidden-xs"><%= Loan.human_attribute_name 'amount' %></th>
+            <th class="hidden-xs"><%= @filter.human_attribute_name 'expire_at' %></th>
+            <th class="hidden-xs"><%= @filter.human_attribute_name 'paid_at' %></th>
           </tr>
         </thead>
 
