@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-4">
       <div class="form-group">
-        <%= text_field_tag :start_date, start_date_value,
+        <%= text_field_tag :start_date, default_date(params[:start_date] || Date.today.beginning_of_month),
           autocomplete: 'off', class: 'form-control', data: { date_picker: true } %>
       </div>
     </div>
@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-4">
       <div class="form-group">
-        <%= text_field_tag :end_date, end_date_value,
+        <%= text_field_tag :end_date, default_date(params[:end_date] || Date.today.end_of_month),
           autocomplete: 'off', class: 'form-control', data: { date_picker: true } %>
       </div>
     </div>
