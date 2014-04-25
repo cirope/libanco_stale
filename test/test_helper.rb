@@ -36,3 +36,4 @@ end
 # Custom extensions
 require_relative 'support/integration_test'
 require_relative 'support/shared_db_connection'
+require_relative 'support/loans_test_helper'

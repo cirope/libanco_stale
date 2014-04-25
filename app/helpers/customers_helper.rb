@@ -24,7 +24,7 @@ module CustomersHelper
         customer_place_select(form, add_label('company', 'job'), Company.ordered)
       when 'public'
         customer_place_select(form, Job.human_attribute_name('place'), Organization.ordered,
-          { as: :grouped_select, group_method: :departments }
+          { as: :grouped_select, group_method: :departments, label_method: :name, value_method: :id }
         )
       else
         customer_place_select(form, Job.human_attribute_name('place'), [])

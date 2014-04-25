@@ -40,7 +40,7 @@
     </p>
     <p>
       <strong><%= Customer.human_attribute_name 'job' %></strong>:
-      <%= @customer.current_job_name %>
+      <%= @customer.current_job.place %>
     </p>
     <strong><%= Phone.model_name.human(count: 0) %></strong>:
     <ul>

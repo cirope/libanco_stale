@@ -14,9 +14,7 @@ module Loans::ActionFilters
     end
 
     def set_summary
-      @summary = Summary.new(
-        @loans.size, @loans.sum('amount')
-      )
+      @summary = Summary.new @loans.size, @loans.sum('amount')
     end
 
     def loans_by_filter

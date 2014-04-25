@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class LoansControllerTest < ActionController::TestCase
+  include LoansTestHelper
 
   setup do
     @loan = loans(:first_loan)
@@ -9,10 +10,14 @@ class LoansControllerTest < ActionController::TestCase
   end
 
   test 'should get index' do
+    @loan.destroy
+    loans = create_loans 2.months.ago, 2.months.from_now
+
     get :index
     assert_response :success
-    assert_not_nil assigns(:loans)
-    assert_not_nil assigns(:summary)
+    assert_equal 5, loans.size
+    assert_equal assigns(:loans).size, assigns(:summary).count
+    assert_equal assigns(:loans).map(&:amount).sum, assigns(:summary).amount
   end
 
   test 'should get index with filter' do
