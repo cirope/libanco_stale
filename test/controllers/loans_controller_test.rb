@@ -12,6 +12,7 @@ class LoansControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:loans)
+    assert_not_nil assigns(:summary)
   end
 
   test 'should get index with filter' do

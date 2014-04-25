@@ -45,4 +45,35 @@ class LoanTest < ActiveSupport::TestCase
 
     assert_equal 'expired', @loan.reload.status
   end
+
+  test 'should search by dates' do
+    @loan.destroy
+
+    (5.months.ago.to_date..2.months.from_now.to_date).select { |d| d.day == 1 }.each do |date|
+      create_generic_loan date
+    end
+
+    loans = Loan.search start_date: 3.months.ago.beginning_of_month.to_date
+    assert_equal 6, loans.size
+
+    loans = Loan.search end_date: Date.today.end_of_month
+    assert_equal 5, loans.size
+
+    loans = Loan.search start_date: 2.months.ago.beginning_of_month.to_date,
+      end_date: 1.month.from_now.end_of_month.to_date
+    assert_equal 4, loans.size
+  end
+
+  private
+
+    def create_generic_loan(created_at = nil)
+      Loan.create!(
+        amount: 10000,
+        rate_id: rates(:rate_1),
+        rate_set_id: rate_sets(:private_rate_set),
+        job: jobs(:private),
+        user: users(:franco),
+        created_at: created_at
+      )
+    end
 end
