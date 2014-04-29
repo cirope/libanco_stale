@@ -10,6 +10,10 @@ class Department < ActiveRecord::Base
   belongs_to :organization
 
   def to_s
-    [name, organization.name].join(', ')
+    name
+  end
+
+  def label
+    [name, organization.to_s].join(', ')
   end
 end

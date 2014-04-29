@@ -15,4 +15,5 @@ module Validations::Name
   def to_s
     name
   end
+  alias_method :label, :to_s
 end

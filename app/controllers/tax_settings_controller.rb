@@ -54,6 +54,6 @@ class TaxSettingsController < ApplicationController
     end
 
     def tax_setting_params
-      params.require(:tax_setting).permit :name, :value
+      params.require(:tax_setting).permit :name, :value, :lock_version
     end
 end

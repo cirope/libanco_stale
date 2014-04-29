@@ -26,6 +26,6 @@ class PaymentsController < ApplicationController
     end
 
     def payment_params
-      params.require(:payment).permit :paid_at
+      params.require(:payment).permit :paid_at, :lock_version
     end
 end

@@ -54,6 +54,6 @@ class AccountsController < ApplicationController
     end
 
     def account_params
-      params.require(:account).permit :name, :subdomain
+      params.require(:account).permit :name, :subdomain, :lock_version
     end
 end
