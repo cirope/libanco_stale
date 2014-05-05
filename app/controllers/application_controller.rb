@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include ActionTitle
   include CurrentUser
   include UpdateResource
+  include CacheControl
 
   protect_from_forgery with: :exception
 
