@@ -7,7 +7,7 @@ class CustomersTest < ActionDispatch::IntegrationTest
     visit new_customer_path
 
     assert page.has_selector? 'select[data-place-id][disabled]'
-    choose I18n.t('customers.jobs.private')
+    select I18n.t('customers.jobs.private')
     assert page.has_no_selector?('select[data-place-id][disabled]')
 
     # Blank value in select with prompt leyend
@@ -21,7 +21,7 @@ class CustomersTest < ActionDispatch::IntegrationTest
     visit new_customer_path
 
     assert page.has_selector? 'select[data-place-id][disabled]'
-    choose I18n.t('customers.jobs.public')
+    select I18n.t('customers.jobs.public')
     assert page.has_no_selector?('select[data-place-id][disabled]')
 
     # Blank value in select with prompt leyend

@@ -29,6 +29,15 @@ es:
         notice: 'Ciudad actualizada correctamente'
         stale: 'No se pudo actualizar la ciudad, revise los datos e inténtelo nuevamente'
 
+    customers:
+      create:
+        notice: 'Cliente creado correctamente'
+      destroy:
+        notice: 'Cliente eliminado'
+      update:
+        notice: 'Cliente actualizado correctamente'
+        stale: 'No se pudo actualizar el cliente, revise los datos e inténtelo nuevamente'
+
     password_resets:
       update:
         notice: 'Contraseña cambiada correctamente'

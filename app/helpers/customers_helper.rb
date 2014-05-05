@@ -9,7 +9,8 @@ module CustomersHelper
        data: { customer_place_url: customer_place_url(kind) }]
     end
 
-    form.input :kind, collection: options, as: :radio_buttons
+    form.input :kind, collection: options, prompt: true,
+      input_html: { data: { select_place_url: true } }
   end
 
   def customer_place_type_field(form)

@@ -18,4 +18,11 @@ class PhoneTest < ActiveSupport::TestCase
     assert @phone.invalid?
     assert_error @phone, :phone, :too_long, count: 255
   end
+
+  test 'unique attributes' do
+    phone = @phone.dup
+
+    assert phone.invalid?
+    assert_error phone, :phone, :taken
+  end
 end

@@ -6,6 +6,6 @@ module Reminders::DestroyConstraints
   end
 
   def allow_destruction?
-    !self.scheduled
+    !scheduled
   end
 end

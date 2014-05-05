@@ -8,7 +8,7 @@ public:
   kind: public
   joining_at: <%= 1.year.ago %>
   customer: simon
-  place: social_security (Organization)
+  place: social_security (Department)
 
 retired:
   kind: retired
