@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class LoanTest < ActiveSupport::TestCase
+  include LoansTestHelper
+
   def setup
     @loan = loans(:first_loan)
   end
@@ -44,5 +46,21 @@ class LoanTest < ActiveSupport::TestCase
     assert @loan.payments.first.update!(expire_at: 1.month.ago, paid_at: '')
 
     assert_equal 'expired', @loan.reload.status
+  end
+
+  test 'should search by dates' do
+    @loan.destroy
+    loans = create_loans 5.months.ago, 2.months.from_now
+    assert 8, loans.size
+
+    loans = Loan.search start_date: 3.months.ago.beginning_of_month.to_date
+    assert_equal 6, loans.size
+
+    loans = Loan.search end_date: Date.today.end_of_month
+    assert_equal 6, loans.size
+
+    loans = Loan.search start_date: 2.months.ago.beginning_of_month.to_date,
+      end_date: 1.month.from_now.end_of_month.to_date
+    assert_equal 4, loans.size
   end
 end

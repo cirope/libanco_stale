@@ -1,6 +1,6 @@
 jQuery ($) ->
-  $(document).on 'change', '[data-customer-place-url]', ->
-    url = $(this).data 'customerPlaceUrl'
+  $(document).on 'change', '[data-select-place-url]', ->
+    url = $('[data-select-place-url] option:selected').data 'customerPlaceUrl'
 
     if url
       $.getScript url

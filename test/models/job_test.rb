@@ -18,4 +18,11 @@ class JobTest < ActiveSupport::TestCase
     assert @job.invalid?
     assert_error @job, :kind, :inclusion
   end
+
+  test 'invalid date' do
+    @job.joining_at = '1234abc'
+
+    assert @job.invalid?
+    assert_error @job, :joining_at, :invalid_date
+  end
 end

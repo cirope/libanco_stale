@@ -1,3 +1,32 @@
 <h2>Para el <%= l(@reminder.scheduled_at, format: :long) %>,</h2>
 
-<p><%= @reminder.description %></p>
+<p>
+  <%= @reminder.description %>
+  <% if @reminder.schedulable %>
+    <br />
+    <div style="margin-left: 40px;">
+      <div>
+        <strong><%= Customer.model_name.human(count: 1) %>:</strong>
+        <span><%= @reminder.schedule.customer %></span>
+      </div>
+      <strong><%= Phone.model_name.human(count: 0) %>:</strong>
+      <ul>
+        <% @reminder.schedule.phones.each do |phone| %>
+          <li><%= phone %></li>
+        <% end %>
+      </ul>
+      <div>
+        <strong><%= Customer.human_attribute_name :address %>:</strong>
+        <span><%= @reminder.schedule.customer_address %></span>
+      </div>
+    </div>
+  <% end %>
+</p>
+
+<hr />
+<p>
+  Podés <strong>organizar</strong> tus eventos en Libanco desde
+  <%= link_to 'acá', schedules_url(
+    subdomain: @reminder.account.subdomain, date: l(Date.today, format: :calendar)
+  ) %>
+</p>

@@ -4,7 +4,16 @@ module Organizations::Departments
   included do
     has_many :departments, dependent: :destroy
 
-    accepts_nested_attributes_for :departments,
-      allow_destroy: true, reject_if: :all_blank
+    before_validation :set_deparments
+
+    accepts_nested_attributes_for :departments, allow_destroy: true,
+      reject_if: :all_blank
   end
+
+  private
+
+    def set_deparments
+      departments.build if departments.empty? ||
+        departments.select(&:marked_for_destruction?).size == departments.size
+    end
 end

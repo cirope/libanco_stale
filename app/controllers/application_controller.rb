@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include ActionTitle
   include CurrentUser
   include UpdateResource
+  include CacheControl
 
   protect_from_forgery with: :exception
 
@@ -13,8 +14,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_account
 
   def authorize
-    plug_mini_profiler
-
     redirect_to login_url, alert: t('messages.not_authorized') unless current_user
   end
 
@@ -23,10 +22,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-    def plug_mini_profiler
-      Rack::MiniProfiler.authorize_request if Rails.env.development?
-    end
 
     def scope_current_account
       Account.current_id = current_account.try(:id)

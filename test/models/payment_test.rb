@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class PaymentTest < ActiveSupport::TestCase
+  include LoansTestHelper
+
   def setup
     @payment = payments(:first_payment)
   end

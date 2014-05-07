@@ -9,7 +9,8 @@
       <tr>
         <th><%= Customer.human_attribute_name 'name' %></th>
         <th><%= Customer.human_attribute_name 'identification' %></th>
-        <th class="hidden-xs"><%= Customer.human_attribute_name 'email' %></th>
+        <th><%= Customer.human_attribute_name 'kind' %></th>
+        <th class="hidden-xs"><%= Customer.human_attribute_name 'job' %></th>
       </tr>
     </thead>
 
@@ -18,7 +19,8 @@
         <tr>
           <td><%= link_to customer, customer %></td>
           <td><%= customer.identification %></td>
-          <td class="hidden-xs"><%= mail_to customer.email, customer.email %></td>
+          <td><%= t "customers.jobs.#{customer.current_job_kind}" %></td>
+          <td class="hidden-xs"><%= customer.current_job.label %></td>
         </tr>
       <% end %>
     </tbody>

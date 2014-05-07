@@ -12,4 +12,8 @@ class Department < ActiveRecord::Base
   def to_s
     name
   end
+
+  def label
+    [name, organization.to_s].join(', ')
+  end
 end

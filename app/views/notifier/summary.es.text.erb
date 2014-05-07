@@ -5,10 +5,13 @@ Hola <%= @user %>,
 <% @schedules.each do |schedule| %>
   <%= l(schedule.scheduled_at, format: :time) %> | <%= schedule.description %>
   <% if schedule.schedulable %>
-    <%= Customer.model_name.human(count: 1) %>: <%= schedule.label %>
+    <%= Customer.model_name.human(count: 1) %>: <%= schedule.customer %>
     <%= Schedule.human_attribute_name :phone %>: <%= schedule.phones.first %>
-    <%= Schedule.human_attribute_name :address %>: <%= schedule.address %>
+    <%= Schedule.human_attribute_name :address %>: <%= schedule.customer_address %>
   <% end %>
 <% end %>
 
-Podés organizar tus eventos en Libanco desde: <%= schedules_url(date: Date.tomorrow.to_s(:db)) %>
+Podés organizar tus eventos en Libanco desde
+<%= link_to 'acá', schedules_url(
+  subdomain: @user.account.subdomain, date: l(Date.tomorrow, format: :calendar)
+) %>

@@ -9,8 +9,4 @@ module Loans::Customer
     has_many :taxes, through: :customer
     has_many :phones, through: :customer
   end
-
-  def label
-    customer
-  end
 end

@@ -38,6 +38,7 @@ class OrganizationsController < ApplicationController
   # PATCH/PUT /organizations/1
   def update
     update_resource @organization, organization_params
+
     respond_with @organization
   end
 
@@ -54,7 +55,7 @@ class OrganizationsController < ApplicationController
     end
 
     def organization_params
-      params.require(:organization).permit :name,
+      params.require(:organization).permit :name, :lock_version,
         departments_attributes: [:id, :name, :_destroy]
     end
 end

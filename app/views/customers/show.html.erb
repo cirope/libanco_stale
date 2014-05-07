@@ -5,7 +5,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-4">
     <p>
       <strong><%= Customer.human_attribute_name 'identification' %></strong>:
       <%= @customer.identification %>
@@ -20,27 +20,33 @@
       <strong><%= Customer.human_attribute_name 'tax_id' %></strong>:
       <%= @customer.tax_id %>
     </p>
+  </div>
+  <div class="col-md-4">
+    <p>
+      <strong><%= Customer.human_attribute_name 'kind' %></strong>:
+      <%= t "customers.jobs.#{@customer.current_job_kind}" %>
+    </p>
     <p>
       <strong><%= Customer.human_attribute_name 'address' %></strong>:
       <%= @customer.address %>
-    </p>
-  </div>
-  <div class="col-md-6">
-    <p>
-      <strong><%= Customer.human_attribute_name 'email' %></strong>:
-      <%= mail_to @customer.email, @customer.email %>
     </p>
     <p>
       <strong><%= Customer.human_attribute_name 'city' %></strong>:
       <%= @customer.city %>
     </p>
     <p>
-      <strong><%= Customer.human_attribute_name 'kind' %></strong>:
-      <%= t "customers.jobs.#{@customer.current_job_kind}" %>
+      <strong><%= Customer.human_attribute_name 'email' %></strong>:
+      <%= mail_to @customer.email, @customer.email %>
     </p>
+  </div>
+  <div class="col-md-4">
     <p>
       <strong><%= Customer.human_attribute_name 'job' %></strong>:
-      <%= @customer.current_job_name %>
+      <%= @customer.current_job.label %>
+    </p>
+    <p>
+      <strong><%= Job.human_attribute_name 'joining_at' %></strong>:
+      <%= l @customer.current_job.joining_at if @customer.current_job.joining_at %>
     </p>
     <strong><%= Phone.model_name.human(count: 0) %></strong>:
     <ul>
@@ -60,7 +66,8 @@
 <div class="footer">
   <div class="pull-right">
     <%= link_to_edit edit_customer_path(@customer) %> |
-    <%= link_to_index customers_path %>
+    <%= link_to_index customers_path %> |
+    <%= link_to t('navigation.back'), :back %>
   </div>
   <%= link_to(
     t('loans.new.title'), new_customer_loan_path(@customer),

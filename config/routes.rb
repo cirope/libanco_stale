@@ -21,6 +21,10 @@ Rails.application.routes.draw do
       resources :schedules, only: [:new, :create, :edit, :update]
     end
 
+    get '/reports(/:filter)', to: 'reports#index', as: 'reports',
+      constraints: { filter: 'payments' }
+    get '/payments', to: 'payments#index', as: 'payments'
+
     # Resources
     resources :cities
     resources :states

@@ -4,6 +4,6 @@ module Jobs::Places
   included do
     belongs_to :place, polymorphic: true
 
-    delegate :name, :phones, to: :place, allow_nil: true
+    delegate :name, :phones, :label, to: :place, allow_nil: true
   end
 end
