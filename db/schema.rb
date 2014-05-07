@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140421144928) do
+ActiveRecord::Schema.define(version: 20140507123644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,23 +52,25 @@ ActiveRecord::Schema.define(version: 20140421144928) do
   add_index "companies", ["tax_id"], name: "index_companies_on_tax_id", using: :btree
 
   create_table "customers", force: true do |t|
-    t.string   "name",                       null: false
-    t.string   "lastname",                   null: false
-    t.string   "identification",             null: false
+    t.string   "name",                          null: false
+    t.string   "lastname",                      null: false
+    t.string   "identification",                null: false
     t.string   "tax_id"
     t.string   "email"
     t.string   "address"
-    t.integer  "city_id",                    null: false
-    t.integer  "account_id",                 null: false
-    t.integer  "lock_version",   default: 0, null: false
+    t.integer  "city_id",                       null: false
+    t.integer  "account_id",                    null: false
+    t.integer  "lock_version",   default: 0,    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "member",         default: true, null: false
   end
 
   add_index "customers", ["account_id"], name: "index_customers_on_account_id", using: :btree
   add_index "customers", ["city_id"], name: "index_customers_on_city_id", using: :btree
   add_index "customers", ["identification"], name: "index_customers_on_identification", using: :btree
   add_index "customers", ["lastname"], name: "index_customers_on_lastname", using: :btree
+  add_index "customers", ["member"], name: "index_customers_on_member", using: :btree
   add_index "customers", ["name"], name: "index_customers_on_name", using: :btree
   add_index "customers", ["tax_id"], name: "index_customers_on_tax_id", using: :btree
 
@@ -259,6 +261,7 @@ ActiveRecord::Schema.define(version: 20140421144928) do
   add_index "taxes", ["account_id"], name: "index_taxes_on_account_id", using: :btree
   add_index "taxes", ["customer_id"], name: "index_taxes_on_customer_id", using: :btree
   add_index "taxes", ["expire_at"], name: "index_taxes_on_expire_at", using: :btree
+  add_index "taxes", ["paid_at"], name: "index_taxes_on_paid_at", using: :btree
   add_index "taxes", ["tax_setting_id"], name: "index_taxes_on_tax_setting_id", using: :btree
 
   create_table "users", force: true do |t|
