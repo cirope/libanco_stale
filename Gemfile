@@ -12,7 +12,6 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'bcrypt'
 gem 'simple_form'
-gem 'magick_columns'
 gem 'irreverent'
 gem 'figaro'
 gem 'paper_trail'
@@ -21,6 +20,7 @@ gem 'sidekiq'
 gem 'newrelic_rpm'
 gem 'whenever', require: false
 gem 'will_paginate'
+gem 'searchlight'
 
 gem 'unicorn'
 

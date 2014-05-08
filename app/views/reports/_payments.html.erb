@@ -1,0 +1,18 @@
+<table class="table table-striped table-hover table-condensed"
+  data-endless-container="true">
+  <thead>
+    <tr>
+      <th><%= Customer.model_name.human(count: 1) %></th>
+      <th class="hidden-xs"><%= Loan.model_name.human(count: 1) %></th>
+      <th class="hidden-xs"><%= Payment.model_name.human(count: 1) %></th>
+      <th><%= Loan.human_attribute_name 'amount' %></th>
+      <th class="hidden-xs"><%= @collection.human_attribute_name 'expire_at' %></th>
+      <th><%= @collection.human_attribute_name 'paid_at' %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render partial: @report.partial.singularize,
+      collection: @collection, as: :record %>
+  </tbody>
+</table>

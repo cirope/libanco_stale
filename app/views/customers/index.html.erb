@@ -8,8 +8,9 @@
     <thead>
       <tr>
         <th><%= Customer.human_attribute_name 'name' %></th>
-        <th><%= Customer.human_attribute_name 'identification' %></th>
+        <th class="hidden-xs"><%= Customer.human_attribute_name 'identification' %></th>
         <th><%= Customer.human_attribute_name 'kind' %></th>
+        <th><%= Customer.human_attribute_name 'member' %></th>
         <th class="hidden-xs"><%= Customer.human_attribute_name 'job' %></th>
       </tr>
     </thead>
@@ -18,8 +19,9 @@
       <% @customers.each do |customer| %>
         <tr>
           <td><%= link_to customer, customer %></td>
-          <td><%= customer.identification %></td>
+          <td class="hidden-xs"><%= customer.identification %></td>
           <td><%= t "customers.jobs.#{customer.current_job_kind}" %></td>
+          <td><%= t "customers.member.#{customer.member ? '_yes' : '_no'}" %></td>
           <td class="hidden-xs"><%= customer.current_job.label %></td>
         </tr>
       <% end %>
@@ -29,4 +31,6 @@
 
 <hr />
 
-<%= link_to_new new_customer_path, class: 'btn btn-primary' %>
+<div class="footer">
+  <%= link_to_new new_customer_path, class: 'btn btn-primary' %>
+</div>

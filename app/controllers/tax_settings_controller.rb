@@ -8,7 +8,7 @@ class TaxSettingsController < ApplicationController
 
   # GET /tax_settings
   def index
-    @tax_settings = TaxSetting.all
+    @tax_settings = TaxSetting.ordered
     respond_with @tax_settings
   end
 

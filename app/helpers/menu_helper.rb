@@ -12,4 +12,15 @@ module MenuHelper
 
     content_tag(:li, link, (active ? { class: 'active' } : {}))
   end
+
+  def menu_filter_for filter = nil
+    options = params[:filter] == filter ? { class: 'active' } : {}
+
+    content_tag :li, options do
+      link_to(
+        t("menu.#{controller_name}.#{(filter || 'title')}"),
+        controller: controller_name, action: 'index', filter: filter
+      )
+    end
+  end
 end

@@ -1,5 +1,8 @@
 <ul class="nav nav-pills nav-stacked">
-  <li <%== 'class="active"' if @filter == Payment %>>
-    <%= link_to Payment.model_name.human(count: 0), reports_path(filter: 'payments') %>
-  </li>
+  <%= menu_filter_for 'payments' %>
+  <% TaxSetting.all.each do |tax_setting| %>
+    <li <%== 'class="active"' if @tax_setting == tax_setting %>>
+      <%= link_to tax_setting, tax_setting_reports_path(tax_setting) %>
+    </li>
+  <% end %>
 </ul>

@@ -1,7 +1,6 @@
-<p>
-  <strong><%= TaxSetting.human_attribute_name 'name' %></strong>:
-  <%= @tax_setting.name %>
-</p>
+<div class="page-header">
+  <h2><%= @tax_setting %></h2>
+</div>
 <p>
   <strong><%= TaxSetting.human_attribute_name 'value' %></strong>:
   <%= number_to_currency @tax_setting.value %>

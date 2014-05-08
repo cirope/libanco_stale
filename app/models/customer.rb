@@ -4,7 +4,6 @@ class Customer < ActiveRecord::Base
   include Attributes::Strip
   include Phonable
   include Customers::Validation
-  include Customers::Searchable
   include Customers::Jobs
   include Customers::Taxes
 
@@ -12,6 +11,10 @@ class Customer < ActiveRecord::Base
 
   belongs_to :city
   has_many :loans, through: :jobs
+
+  scope :ordered, -> {
+    order("#{table_name}.lastname ASC, #{table_name}.name ASC")
+  }
 
   def to_s
     [lastname, name].join(', ')

@@ -9,9 +9,12 @@ class Loan < ActiveRecord::Base
   include Loans::Status
   include Loans::Rates
   include Loans::Jobs
-  include Loans::Searchable
 
   round_fields 2, :amount
+
+  scope :search_order, -> {
+    order("#{table_name}.created_at ASC, #{table_name}.id ASC")
+  }
 
   belongs_to :user
   has_many :schedules, as: :schedulable, dependent: :destroy

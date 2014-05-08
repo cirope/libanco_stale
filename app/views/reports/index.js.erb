@@ -1,5 +1,5 @@
 $('[data-endless-container] > tbody').append(
-  '<%= j render partial: 'tbody', collection: @collection, as: :record %>'
+  '<%= j render partial: @report.partial.singularize, collection: @collection, as: :record %>'
 );
 <% if @collection.next_page %>
   $('.pagination-container').html('<%= j will_paginate(@collection) %>');

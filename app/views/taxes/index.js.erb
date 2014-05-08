@@ -1,8 +1,0 @@
-$('[data-endless-container] > tbody').append(
-  '<%= j render partial: 'tbody', collection: @taxes, as: :tax %>'
-);
-<% if @taxes.next_page %>
-  $('.pagination-container').html('<%= j will_paginate(@taxes) %>');
-<% else %>
-  $('.pagination-container').remove();
-<% end %>

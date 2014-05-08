@@ -6,6 +6,6 @@ class TaxSetting < ActiveRecord::Base
   has_many :taxes, dependent: :destroy
 
   def to_s
-    [name, value].join(': ')
+    name
   end
 end

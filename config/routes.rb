@@ -21,9 +21,8 @@ Rails.application.routes.draw do
       resources :schedules, only: [:new, :create, :edit, :update]
     end
 
-    get '/reports(/:filter)', to: 'reports#index', as: 'reports',
+    get '(/:filter)/reports', to: 'reports#index', as: 'reports',
       constraints: { filter: 'payments' }
-    get '/payments', to: 'payments#index', as: 'payments'
 
     # Resources
     resources :cities
@@ -32,8 +31,9 @@ Rails.application.routes.draw do
     resources :companies
     resources :organizations
     resources :tax_settings do
-      resources :taxes, only: [:index]
+      resources :reports, only: [:index]
     end
+    resources :payments, only: [:index]
     resources :customers, except: [:destroy] do
       resources :loans, shallow: true do
         resources :payments, only: [:edit, :update]

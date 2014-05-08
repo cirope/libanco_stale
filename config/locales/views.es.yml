@@ -8,6 +8,10 @@ es:
       expired: 'Atrasados'
       close_to_expire: 'A vencer'
       not_renewed: 'No renovados'
+    reports:
+      payments: 'Cuotas'
+      social_payments: 'Cuota Social'
+      insurance: 'Seguro'
 
   messages:
     confirmation: '¿Está seguro?'
@@ -84,6 +88,11 @@ es:
       retired: 'Jubilado'
     show:
       title: 'Ver cliente'
+    member:
+      _yes: 'Sí'
+      _no: 'No'
+      active: 'Socio'
+      inactive: 'Dado de baja'
 
   loans:
     edit:

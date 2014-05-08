@@ -1,7 +1,15 @@
 <%= render 'search' %>
 
 <div class="page-header">
-  <h2><%= @customer %></h2>
+  <h2>
+    <strong><%= @customer %></strong>
+    <small>
+      <span>|</span>
+      <%= t "customers.jobs.#{@customer.current_job_kind}" %>
+      <span>|</span>
+      <%= t "customers.member.#{@customer.member ? 'active': 'inactive'}" %>
+    </small>
+  </h2>
 </div>
 
 <div class="row">
@@ -22,10 +30,6 @@
     </p>
   </div>
   <div class="col-md-4">
-    <p>
-      <strong><%= Customer.human_attribute_name 'kind' %></strong>:
-      <%= t "customers.jobs.#{@customer.current_job_kind}" %>
-    </p>
     <p>
       <strong><%= Customer.human_attribute_name 'address' %></strong>:
       <%= @customer.address %>

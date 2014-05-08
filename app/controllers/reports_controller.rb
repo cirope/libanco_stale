@@ -4,9 +4,20 @@ class ReportsController < ApplicationController
 
   respond_to :html, :json, :js
 
-  before_action :set_title
+  before_action :set_report, :set_title
+
+  Report = Struct.new(:partial, :url)
 
   def index
-    @collection = @collection.present? ? @collection.page(params[:page]) : []
+    @collection = @collection.page params[:page]
   end
+
+  private
+    def set_report
+      @report = if @tax_setting
+        Report.new 'taxes', tax_setting_reports_path(@tax_setting)
+      else
+        Report.new 'payments', reports_path(filter: (params[:filter] || 'payments'))
+      end
+    end
 end

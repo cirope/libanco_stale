@@ -1,0 +1,6 @@
+<tr>
+  <td><%= link_to record.customer, customer_path(record.customer) %></td>
+  <td><%= number_to_currency record.amount %></td>
+  <td class="hidden-xs"><%= l record.expire_at %></td>
+  <td><%= l record.paid_at.to_date if record.paid_at %></td>
+</tr>
