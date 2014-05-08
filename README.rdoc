@@ -1,12 +1,12 @@
-= Finance
+= Libanco
 
-Finance application
+Libanco application
 
-=== Build Status {<img src="https://secure.travis-ci.org/cirope/finance.png"/>}[http://travis-ci.org/cirope/finance]
+=== Build Status {<img src="https://secure.travis-ci.org/cirope/libanco.png"/>}[http://travis-ci.org/cirope/libanco]
 
-=== Dependency Status {<img src="https://gemnasium.com/cirope/finance.png?travis"/>}[https://gemnasium.com/cirope/finance]
+=== Dependency Status {<img src="https://gemnasium.com/cirope/libanco.png?travis"/>}[https://gemnasium.com/cirope/libanco]
 
-=== Code Status {<img src="https://codeclimate.com/github/cirope/finance.png"/>}[https://codeclimate.com/github/cirope/finance]
+=== Code Status {<img src="https://codeclimate.com/github/cirope/libanco.png"/>}[https://codeclimate.com/github/cirope/libanco]
 
 == (The MIT License)
 
