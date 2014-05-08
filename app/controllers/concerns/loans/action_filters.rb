@@ -29,8 +29,9 @@ module Loans::ActionFilters
       options = {}
 
       options[:start_date] = params[:start_date] ? Timeliness.parse(params[:start_date])
-        : Date.today.beginning_of_month
-      options[:end_date] = Timeliness.parse(params[:end_date])
+        : Date.today.at_beginning_of_month
+      options[:end_date] = params[:end_date] ? Timeliness.parse(params[:end_date])
+        : Date.today.at_end_of_month
 
       LoanSearch.new(options).results
     end
