@@ -1,8 +1,14 @@
 class PaymentSearch < Searchlight::Search
 
-  search_on Payment.unscoped.includes(:customer, :loan).report_order
+  search_on -> { Payment.includes(:customer, :loan).report_order }.call
 
   searches :start_date, :end_date
+
+  def initialize options = {}
+    super
+
+    search
+  end
 
   def search_start_date
     search.where(
