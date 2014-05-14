@@ -7,7 +7,7 @@ Account.transaction do
   account.users.create!(
     name: 'Admin',
     lastname: 'Istrator',
-    email: 'admin@finance.com',
+    email: 'admin@libanco.com',
     password: '123',
     password_confirmation: '123'
   )

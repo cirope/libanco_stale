@@ -1,6 +1,6 @@
 set :application, 'libanco.com'
 set :user, 'deployer'
-set :repo_url, 'git://github.com/cirope/finance.git'
+set :repo_url, 'git://github.com/cirope/libanco.git'
 
 set :format, :pretty
 set :log_level, :info
