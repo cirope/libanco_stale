@@ -1,14 +1,8 @@
 class LoanSearch < Searchlight::Search
 
-  search_on -> { Loan.includes(:customer).search_order }.call
+  search_on Loan.unscoped.includes(:customer).search_order
 
   searches :start_date, :end_date
-
-  def initialize options = {}
-    super
-
-    search
-  end
 
   def search_start_date
     search.where(

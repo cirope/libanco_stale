@@ -1,14 +1,8 @@
 class CustomerSearch < Searchlight::Search
 
-  search_on -> { Customer.ordered }.call
+  search_on Customer.unscoped.ordered
 
   searches :query
-
-  def initialize options = {}
-    super
-
-    search
-  end
 
   def search_query
     search.where(

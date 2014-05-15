@@ -30,9 +30,9 @@ module Reports::SearchScoped
       options = {}
 
       options[:start_date] = params[:start_date] ? Timeliness.parse(params[:start_date])
-        : Date.today.beginning_of_month
+        : Date.today.at_beginning_of_month
       options[:end_date] = params[:end_date] ? Timeliness.parse(params[:end_date])
-        : Date.today.end_of_month
+        : Date.today.at_end_of_month
       options[:tax_setting_id] = @tax_setting.id if @tax_setting
 
       @collection = @search_model.new(options).results
