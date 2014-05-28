@@ -8,3 +8,16 @@
     <%= number_to_currency @summary.amount %>
   </li>
 </ul>
+
+<% if @summary.respond_to? :new_count %>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <strong><%= t 'reports.summary.new_total' %></strong>:
+      <%= @summary.new_count %>
+    </li>
+    <li class="list-group-item">
+      <strong><%= t 'reports.summary.amount' %></strong>:
+      <%= number_to_currency @summary.new_amount %>
+    </li>
+  </ul>
+<% end %>

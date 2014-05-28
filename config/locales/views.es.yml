@@ -162,6 +162,7 @@ es:
     summary:
       total: 'Total'
       amount: 'Monto'
+      new_total: 'Nuevos'
 
   schedules:
     edit:

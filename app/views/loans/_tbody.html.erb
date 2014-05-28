@@ -1,5 +1,5 @@
 <tr data-object-info="<%= loan.to_param %>">
-  <td><%= link_to loan.customer, loan_path(loan), data: { remote: true } %></td>
+  <td><%= show_customer_status loan  %></td>
   <td><%= number_to_currency loan.amount %></td>
   <td class="hidden-xs"><%= show_payments_count(loan) %></td>
   <td class="hidden-xs"><%= l loan.created_at.to_date %></td>

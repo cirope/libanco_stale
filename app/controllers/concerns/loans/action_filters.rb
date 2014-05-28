@@ -2,9 +2,9 @@ module Loans::ActionFilters
   extend ActiveSupport::Concern
 
   included do
-    Summary = Struct.new(:count, :amount)
+    Summary = Struct.new(:count, :amount, :new_count, :new_amount)
 
-    before_action :set_loans, :set_summary, only: [:index]
+    before_action :set_loans, :set_new_loans, :set_summary, only: [:index]
   end
 
   private
@@ -13,8 +13,13 @@ module Loans::ActionFilters
       @loans = params[:filter].present? ? loans_by_filter : loans_by_search
     end
 
+    def set_new_loans
+      @new_loans = @loans.select { |loan| !loan.customer.has_loan_active?(loan) }
+    end
+
     def set_summary
-      @summary = Summary.new @loans.size, @loans.sum('amount')
+      @summary = Summary.new @loans.size, @loans.sum('amount'),
+        @new_loans.size, @new_loans.map(&:amount).sum
     end
 
     def loans_by_filter

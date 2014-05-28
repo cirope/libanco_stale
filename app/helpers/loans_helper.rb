@@ -75,6 +75,13 @@ module LoansHelper
     end
   end
 
+  def show_customer_status loan
+    status_class = @new_loans.include?(loan) ? 'text-primary' : 'text-danger'
+
+    link_to loan.customer, loan_path(loan), data: { remote: true },
+      class: status_class
+  end
+
   private
 
     def customer_text_label
