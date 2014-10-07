@@ -11,9 +11,9 @@
  *= require_self
  *= require bootstrap
  *= require bootstrap-theme
- *= require jquery-ui-autocomplete
- *= require jquery-ui-datepicker
- *= require jquery-ui-timepicker
+ *= require jquery-ui/autocomplete
+ *= require jquery-ui/datepicker
+ *= require jquery-ui/timepicker
  *= require main
  *= require icons
  *= require forms
