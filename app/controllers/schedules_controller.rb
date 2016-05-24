@@ -15,7 +15,7 @@ class SchedulesController < ApplicationController
       @schedules = Schedule.find_by_day(@current_date)
       respond_with @schedules
     else
-      redirect_to schedules_url(date: l(Date.today, format: :calendar))
+      redirect_to "#{schedules_url}/#{l Date.today, format: :calendar}"
     end
   end
 
