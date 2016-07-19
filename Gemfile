@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.15'
+gem 'rails', '~> 4.2.7'
 
 gem 'pg'
 gem 'sass-rails'
@@ -12,10 +12,9 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'bcrypt'
 gem 'simple_form'
-gem 'irreverent'
 gem 'figaro'
 gem 'paper_trail'
-gem 'validates_timeliness', github: 'francocatena/validates_timeliness'
+gem 'validates_timeliness'
 gem 'sidekiq'
 gem 'newrelic_rpm'
 gem 'whenever', require: false
