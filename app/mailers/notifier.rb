@@ -1,7 +1,4 @@
-class Notifier < ActionMailer::Base
-  include MandrillHeaders
-
-  default from: "'#{I18n.t('app_name')}' <#{ENV['EMAIL_ADDRESS']}>"
+class Notifier < ApplicationMailer
 
   def remind(reminder)
     @reminder = reminder

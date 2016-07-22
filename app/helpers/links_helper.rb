@@ -27,7 +27,7 @@ module LinksHelper
 
   def link_to_remove_target(target)
     link_to '#', data: { remove_target: target } do
-      content_tag(:i, nil, class: 'fa-times')
+      content_tag(:i, nil, class: 'fa fa-times')
     end
   end
 

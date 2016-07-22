@@ -19,8 +19,15 @@ module Reminders::Delivery
         Schedule.unscoped do
           unless reminder.schedule.done
             reminder.update_column :scheduled, true
-
-            ReminderWorker.perform_at(reminder.remind_at, reminder.id)
+				
+						Schedule.unscoped do
+							Account.current_id = reminder.account.id
+						end   
+						
+						Reminder.transaction do
+							reminder.update_column :notified, true
+							Notifier.remind(reminder).deliver_later
+						end
           end
         end
       end
@@ -29,9 +36,17 @@ module Reminders::Delivery
     def send_summaries
       Schedule.unscoped do
         User.unscoped.find_each do |user|
-          SummaryWorker.perform_at(user.name, user.id) if user.schedules.for_tomorrow.count > 0
+				  user = User.find user_id
+
+          if user.schedules.for_tomorrow.count > 0
+            Account.current_id = user.account.id
+
+            Reminder.transaction do
+              Notifier.summary(user).deliver_later
+            end
+          end
         end
-      end
+			end
     end
   end
 end
