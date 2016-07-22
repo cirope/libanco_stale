@@ -7,7 +7,7 @@ class SummaryWorker
       Account.current_id = user.account.id
 
       Reminder.transaction do
-        Notifier.summary(user).deliver
+        Notifier.summary(user).deliver_later
       end
     end
   end

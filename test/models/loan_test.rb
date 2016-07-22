@@ -53,14 +53,7 @@ class LoanTest < ActiveSupport::TestCase
     loans = create_loans 5.months.ago, 2.months.from_now
     assert 8, loans.size
 
-    loans = LoanSearch.new(start_date: 3.months.ago.beginning_of_month.to_date).results
-    assert_equal 6, loans.size
-
-    loans = LoanSearch.new(end_date: Date.today.end_of_month).results
-    assert_equal 6, loans.size
-
-    loans = LoanSearch.new(start_date: 2.months.ago.beginning_of_month.to_date,
-      end_date: 1.month.from_now.end_of_month.to_date).results
+    loans = Loan.search(2.months.ago.beginning_of_month.to_date, 1.month.from_now.end_of_month.to_date)
     assert_equal 4, loans.size
   end
 end

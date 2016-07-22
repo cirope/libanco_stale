@@ -1,4 +1,4 @@
-calendar_setup = ->
+document.addEventListener 'turbolinks:load', ->
   if (calendar = $('[data-calendar]')).length > 0
     data = calendar.data('calendar')
     today = new Date(data.today)
@@ -17,6 +17,3 @@ calendar_setup = ->
         url = window.location.pathname
         date = $.datepicker.formatDate('yy/mm/dd', new Date(year, month-1, 1))
         Turbolinks.visit(url.replace(url.match(/\d{4}\/\d{2}\/\d{2}/), date))
-
-$(document).ready(calendar_setup)
-$(document).on('page:load', calendar_setup)

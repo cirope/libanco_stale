@@ -10,9 +10,7 @@ class SchedulesControllerTest < ActionController::TestCase
 
   test 'should get index' do
     get :index
-    assert_redirected_to schedule_url(
-      I18n.l(assigns(:current_date), format: :calendar)
-    )
+    assert_redirected_to "#{schedules_url}/#{I18n.l(assigns(:current_date), format: :calendar)}"
   end
 
   test 'should get index with date' do

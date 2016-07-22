@@ -30,10 +30,9 @@ class ActionController::TestCase
 end
 
 class ActionView::TestCase
-    include SimpleForm::ActionViewExtensions::FormHelper
+  include SimpleForm::ActionViewExtensions::FormHelper
 end
 
 # Custom extensions
-require_relative 'support/integration_test'
 require_relative 'support/shared_db_connection'
 require_relative 'support/loans_test_helper'

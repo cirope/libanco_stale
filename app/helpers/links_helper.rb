@@ -6,11 +6,11 @@ module LinksHelper
     options[:data][:method]  ||= :delete
     options[:data][:confirm] ||= t('messages.confirmation')
 
-    link_with_icon({ action: 'destroy', icon: 'glyphicon-trash' }, *(args << options))
+    link_with_icon({ action: 'destroy', icon: 'fa-trash-o' }, *(args << options))
   end
 
   def link_to_edit(*args)
-    link_with_icon({ action: 'edit', icon: 'glyphicon-pencil' }, *args)
+    link_with_icon({ action: 'edit', icon: 'fa-pencil' }, *args)
   end
 
   def link_to_index(*args)
@@ -22,27 +22,26 @@ module LinksHelper
   end
 
   def link_to_show(*args)
-    link_with_icon({ action: 'show', icon: 'glyphicon-search' }, *args)
+    link_with_icon({ action: 'show', icon: 'fa-info-circle' }, *args)
   end
 
   def link_to_remove_target(target)
     link_to '#', data: { remove_target: target } do
-      content_tag(:span, nil, class: 'icon glyphicon glyphicon-remove text-muted')
+      content_tag(:i, nil, class: 'fa-times')
     end
   end
 
   private
 
-  def link_with_icon(options = {}, *args)
-    arg_options = args.extract_options!
+    def link_with_icon(options = {}, *args)
+      arg_options = args.extract_options!
 
-    arg_options.reverse_merge!(
-      title: t("navigation.#{options.fetch(:action)}"),
-      class: 'icon'
-    )
+      arg_options.reverse_merge!(
+        title: t("navigation.#{options.fetch(:action)}")
+      )
 
-    link_to *args, arg_options do
-      content_tag(:span, nil, class: "glyphicon #{options.fetch(:icon)}")
+      link_to *args, arg_options do
+        content_tag(:i, nil, class: "fa #{options.fetch(:icon)}")
+      end
     end
-  end
 end

@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //
-//= require jquery
+//= require jquery2
 //= require jquery_ujs
 //= require jquery-ui/autocomplete
 //= require jquery-ui/datepicker
@@ -19,24 +19,15 @@
 //= require jquery-ui/timepicker
 //= require jquery-ui/timepicker-es
 //= require turbolinks
-//= require turbolinks_events
-//= require bootstrap
-//= require password_resets
+//= require bootstrap-sprockets
 //= require effect_helper
 //= require dynamic_form
 //= require autocomplete
-//= require ajax
 //= require calendar-setup
 //= require calendar-time-setup
 //= require date_picker
-//= require endless_pagination
 //= require calculator
 //= require common
 //= require modal_fix
-//= require profiles
-//= require accounts
-//= require cities
-//= require states
-//= require users
 //= require loans
 //= require customers

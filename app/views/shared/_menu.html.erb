@@ -1,11 +1,9 @@
 <header class="navbar navbar-default navbar-fixed-top" role="banner">
-  <div class="container">
+  <div class="container-fluid">
     <div class="navbar-header">
       <% if current_user %>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+          <%= fa_icon 'bars' %>
         </button>
       <% end %>
 
@@ -18,10 +16,10 @@
           <% if admin_subdomain? %>
             <%= menu_item_for Account, accounts_path %>
           <% else %>
-            <%= menu_item_for Schedule, schedules_path %>
-            <%= menu_item_for Customer, customers_path %>
-            <%= menu_item_for Loan, loans_path %>
-            <%= menu_item_controller_for ReportsController, reports_path(filter: 'payments') %>
+            <%= menu_item_for Schedule, schedules_path, 'calendar' %>
+            <%= menu_item_for Customer, customers_path, 'male' %>
+            <%= menu_item_for Loan, loans_path, 'file-text' %>
+            <%= menu_item_controller_for ReportsController, reports_path(filter: 'payments'), 'bar-chart' %>
             <%= render 'shared/submenu/admin' %>
           <% end %>
         </ul>

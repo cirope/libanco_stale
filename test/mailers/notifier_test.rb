@@ -16,7 +16,7 @@ class NotifierTest < ActionMailer::TestCase
     assert_match @reminder.description, mail.html_part.body.decoded
 
     assert_emails 1 do
-      mail.deliver
+      mail.deliver_later
     end
   end
 
@@ -32,7 +32,7 @@ class NotifierTest < ActionMailer::TestCase
     assert_match schedule.description, mail.html_part.body.decoded
 
     assert_emails 1 do
-      mail.deliver
+      mail.deliver_later
     end
   end
 end

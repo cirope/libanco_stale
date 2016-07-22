@@ -1,5 +1,7 @@
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t 'menu.admin' %> <b class="caret"></b></a>
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <%= fa_icon('gears', text: t('menu.admin')) %> <b class="caret"></b>
+  </a>
   <ul class="dropdown-menu">
     <%= menu_item_for User, users_path %>
     <%= menu_item_for State, states_path %>

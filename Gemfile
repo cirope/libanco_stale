@@ -6,9 +6,12 @@ gem 'pg'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
+gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'turbolinks'
+gem 'responders'
+gem 'sprockets', '3.6.3'
 gem 'jbuilder'
 gem 'bcrypt'
 gem 'simple_form'
@@ -18,8 +21,8 @@ gem 'validates_timeliness'
 gem 'sidekiq'
 gem 'newrelic_rpm'
 gem 'whenever', require: false
-gem 'will_paginate'
-gem 'searchlight'
+gem 'kaminari'
+gem 'font-awesome-rails'
 
 gem 'unicorn'
 
@@ -35,9 +38,4 @@ end
 
 group :doc do
   gem 'sdoc', require: false
-end
-
-group :test do
-  gem 'capybara'
-  gem 'poltergeist'
 end

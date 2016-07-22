@@ -9,7 +9,7 @@ class ReminderWorker
 
     Reminder.transaction do
       reminder.update_column :notified, true
-      Notifier.remind(reminder).deliver
+      Notifier.remind(reminder).deliver_later
     end
   end
 end

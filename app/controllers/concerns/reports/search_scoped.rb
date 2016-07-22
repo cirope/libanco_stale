@@ -4,7 +4,7 @@ module Reports::SearchScoped
   included do
     Summary = Struct.new(:count, :amount)
 
-    before_action :set_tax_setting, :set_search_model, :set_collection, :set_summary
+    before_action :set_tax_setting, :set_collection, :set_summary
   end
 
   private
@@ -15,27 +15,17 @@ module Reports::SearchScoped
       end
     end
 
-    def set_search_model
-      @search_model = if @tax_setting
-        TaxSearch
-      else
-        case params[:filter]
-          when 'payments' then PaymentSearch
-          else PaymentSearch
-        end
-      end
-    end
-
     def set_collection
-      options = {}
-
-      options[:start_date] = params[:start_date] ? Timeliness.parse(params[:start_date])
+      start_date = params[:start_date] ? Timeliness.parse(params[:start_date])
         : Date.today.at_beginning_of_month
-      options[:end_date] = params[:end_date] ? Timeliness.parse(params[:end_date])
+      end_date = params[:end_date] ? Timeliness.parse(params[:end_date])
         : Date.today.at_end_of_month
-      options[:tax_setting_id] = @tax_setting.id if @tax_setting
 
-      @collection = @search_model.new(options).results
+      @collection = if @tax_setting
+        Tax.search(start_date, end_date, @tax_setting.id)
+      else
+        Payment.search(start_date, end_date)
+      end
     end
 
     def set_summary

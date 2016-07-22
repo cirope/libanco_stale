@@ -38,23 +38,19 @@ class SchedulesController < ApplicationController
     @schedule = current_user.schedules.new schedule_params
     @schedule.schedulable = @schedulable
 
-    respond_to do |format|
-      if @schedule.save
-        format.js { redirect_via_turbolinks_to :back }
-      else
-        format.js { render 'new' }
-      end
+    if @schedule.save
+      redirect_to :back, turbolinks: true
+    else
+      render 'new'
     end
   end
 
   # PATCH/PUT /schedules/1
   def update
-    respond_to do |format|
-      if update_resource(@schedule, schedule_params)
-        format.js { redirect_via_turbolinks_to :back }
-      else
-        format.js { render 'edit' }
-      end
+    if update_resource(@schedule, schedule_params)
+      redirect_to :back, turbolinks: true
+    else
+      render 'edit'
     end
   end
 

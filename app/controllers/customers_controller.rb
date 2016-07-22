@@ -9,7 +9,7 @@ class CustomersController < ApplicationController
   # GET /customers
   def index
     @customers = params[:q].present? ?
-      CustomerSearch.new(query: params[:q]).results.page(params[:page]) : []
+      Customer.search(params[:q]).page(params[:page]) : Customer.none
 
     redirect_to customer_url(@customers.first) if @customers.size == 1
   end

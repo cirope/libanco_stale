@@ -12,9 +12,7 @@
     <% else %>
       <%= render @report.partial %>
 
-      <div class="pagination-container">
-        <%= will_paginate @collection %>
-      </div>
+      <%= paginate @collection %>
     <% end %>
   </div>
 </div>
