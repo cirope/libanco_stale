@@ -1,6 +1,3 @@
-<%= render 'search' %>
-
-<br />
 <% if @customers.empty? %>
   <%= render 'shared/empty_index', message: t('.empty_html') %>
 <% else %>
@@ -31,7 +28,5 @@
 
 <hr />
 
-<div class="footer">
-  <%= paginate @customers %>
-  <%= link_to_new new_customer_path, class: 'btn btn-primary' %>
-</div>
+<%= paginate @customers %>
+<%= link_to_new new_customer_path, class: 'btn btn-primary' %>

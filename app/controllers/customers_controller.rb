@@ -4,11 +4,12 @@ class CustomersController < ApplicationController
   respond_to :html, :json, :js
 
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_search_path, only: [:index, :show, :new, :edit]
   before_action :set_title
 
   # GET /customers
   def index
-    @customers = params[:q].present? ? Customer.search(params[:q]) : Customer.all
+    @customers = params[:q].present? ? Customer.search(params[:q]).ordered : Customer.ordered
     @customers = @customers.page params[:page]
 
     redirect_to customer_url(@customers.first) if @customers.size == 1
@@ -47,6 +48,10 @@ class CustomersController < ApplicationController
 
     def set_customer
       @customer = Customer.find(params[:id])
+    end
+
+    def set_search_path
+      @search_path = customers_url
     end
 
     def customer_params

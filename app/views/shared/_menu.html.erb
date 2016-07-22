@@ -23,7 +23,9 @@
             <%= render 'shared/submenu/admin' %>
           <% end %>
         </ul>
-
+        <% if @search_path %>
+          <%= render 'shared/menu_search' %>
+        <% end %>
         <%= render 'shared/user_actions' %>
       </nav>
     <% end %>

@@ -120,6 +120,10 @@ GEM
       activesupport (>= 3.0, < 6.0)
       request_store (~> 1.1)
     pg (0.18.4)
+    pg_search (1.0.6)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     pkg-config (1.1.7)
     rack (1.6.4)
     rack-protection (1.5.3)
@@ -234,6 +238,7 @@ DEPENDENCIES
   newrelic_rpm
   paper_trail
   pg
+  pg_search
   rails (~> 4.2.7)
   responders
   sass-rails
