@@ -84,6 +84,6 @@ after_fork do |server, worker|
   # between any number of forked children (assuming your kernel
   # correctly implements pread()/pwrite() system calls)
   Sidekiq.configure_client do |config|
-    config.redis = { url: 'redis://localhost:6379/10', size: 1, namespace: 'libanco' }
+    config.redis = { url: 'redis://localhost:6379/1', size: 1 }
   end
 end
