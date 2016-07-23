@@ -6,7 +6,7 @@ class Customer < ActiveRecord::Base
   include Customers::Jobs
   include Customers::Scopes
   include Customers::Taxes
-  include PgSearch
+  include SearchCop
 
   strip_fields :name, :lastname, :identification, :address, :email, :tax_id
 
@@ -14,9 +14,9 @@ class Customer < ActiveRecord::Base
   belongs_to :nacionality
   has_many :loans, through: :jobs
 
-	pg_search_scope :search, against: [
-  	:name, :lastname, :identification
-  ], using: { tsearch: { prefix: true } }, ignoring: :accents
+  search_scope :search do
+    attributes :name, :lastname, :identification
+  end
 
   def to_s
     [lastname, name].join(', ')

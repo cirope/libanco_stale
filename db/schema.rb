@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723151616) do
+ActiveRecord::Schema.define(version: 20160723170944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20160723151616) do
   add_index "jobs", ["customer_id"], name: "index_jobs_on_customer_id", using: :btree
   add_index "jobs", ["joining_at"], name: "index_jobs_on_joining_at", using: :btree
   add_index "jobs", ["kind"], name: "index_jobs_on_kind", using: :btree
+  add_index "jobs", ["place_id", "place_type"], name: "index_jobs_on_place_id_and_place_type", using: :btree
   add_index "jobs", ["place_type", "place_id"], name: "index_jobs_on_place_type_and_place_id", using: :btree
 
   create_table "loans", force: :cascade do |t|
@@ -179,6 +180,7 @@ ActiveRecord::Schema.define(version: 20160723151616) do
     t.datetime "updated_at"
   end
 
+  add_index "phones", ["phonable_id", "phonable_type"], name: "index_phones_on_phonable_id_and_phonable_type", using: :btree
   add_index "phones", ["phonable_type", "phonable_id"], name: "index_phones_on_phonable_type_and_phonable_id", using: :btree
 
   create_table "rate_sets", force: :cascade do |t|
@@ -223,6 +225,7 @@ ActiveRecord::Schema.define(version: 20160723151616) do
     t.datetime "updated_at"
   end
 
+  add_index "schedules", ["schedulable_id", "schedulable_type"], name: "index_schedules_on_schedulable_id_and_schedulable_type", using: :btree
   add_index "schedules", ["schedulable_type", "schedulable_id"], name: "index_schedules_on_schedulable_type_and_schedulable_id", using: :btree
   add_index "schedules", ["scheduled_at"], name: "index_schedules_on_scheduled_at", using: :btree
   add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
@@ -288,6 +291,7 @@ ActiveRecord::Schema.define(version: 20160723151616) do
   end
 
   add_index "versions", ["account_id"], name: "index_versions_on_account_id", using: :btree
+  add_index "versions", ["item_id", "item_type"], name: "index_versions_on_item_id_and_item_type", using: :btree
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
 end

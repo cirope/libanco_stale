@@ -23,7 +23,7 @@ gem 'newrelic_rpm'
 gem 'whenever', require: false
 gem 'kaminari'
 gem 'font-awesome-rails'
-gem 'pg_search'
+gem 'search_cop'
 gem 'apartment'
 
 gem 'unicorn'

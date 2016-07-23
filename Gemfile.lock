@@ -123,11 +123,8 @@ GEM
       activesupport (>= 3.0, < 6.0)
       request_store (~> 1.1)
     pg (0.18.4)
-    pg_search (1.0.6)
-      activerecord (>= 3.1)
-      activesupport (>= 3.1)
-      arel
     pkg-config (1.1.7)
+    polyglot (0.3.5)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -175,6 +172,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    search_cop (1.0.6)
+      treetop
     sidekiq (4.1.4)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -202,6 +201,8 @@ GEM
     thread_safe (0.3.5)
     tilt (2.0.5)
     timeliness (0.3.8)
+    treetop (1.6.8)
+      polyglot (~> 0.3)
     turbolinks (5.0.0)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
@@ -242,11 +243,11 @@ DEPENDENCIES
   newrelic_rpm
   paper_trail
   pg
-  pg_search
   rails (~> 4.2.7)
   responders
   sass-rails
   sdoc
+  search_cop
   sidekiq
   simple_form
   spring
