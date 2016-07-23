@@ -7,11 +7,9 @@ class StateTest < ActiveSupport::TestCase
 
   test 'blank attributes' do
     @state.name = ''
-    @state.account = nil
 
     assert @state.invalid?
     assert_error @state, :name, :blank
-    assert_error @state, :account, :blank
   end
 
   test 'unique attributes' do

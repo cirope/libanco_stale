@@ -3,7 +3,6 @@ class Account < ActiveRecord::Base
   include Attributes::Downcase
   include Auditable
   include Accounts::Overrides
-  include Accounts::Relations
   include Accounts::Tenant
   include Accounts::Validation
 

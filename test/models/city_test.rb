@@ -9,13 +9,11 @@ class CityTest < ActiveSupport::TestCase
     @city.name = ''
     @city.zip_code = ''
     @city.state_id = nil
-    @city.account = nil
 
     assert @city.invalid?
     assert_error @city, :name, :blank
     assert_error @city, :zip_code, :blank
     assert_error @city, :state_id, :blank
-    assert_error @city, :account, :blank
   end
 
   test 'unique attributes' do

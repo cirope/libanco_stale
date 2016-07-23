@@ -120,11 +120,9 @@ class ScheduleTest < ActiveSupport::TestCase
       )
     }
 
-    Account.current_id = nil
-
-    #assert_emails 1 do
-    #  Reminder.send_summaries
-    #end
+    assert_emails 1 do
+      Reminder.send_summaries
+    end
   end
 
   test 'move schedules' do
