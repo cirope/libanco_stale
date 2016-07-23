@@ -20,10 +20,6 @@ module Reminders::Delivery
           unless reminder.schedule.done
             reminder.update_column :scheduled, true
 				
-						Schedule.unscoped do
-							Account.current_id = reminder.account.id
-						end   
-						
 						Reminder.transaction do
 							reminder.update_column :notified, true
 							Notifier.remind(reminder).deliver_later
@@ -39,8 +35,6 @@ module Reminders::Delivery
 				  user = User.find user_id
 
           if user.schedules.for_tomorrow.count > 0
-            Account.current_id = user.account.id
-
             Reminder.transaction do
               Notifier.summary(user).deliver_later
             end

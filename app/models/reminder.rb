@@ -11,5 +11,4 @@ class Reminder < ActiveRecord::Base
 
   belongs_to :schedule
   has_one :user, through: :schedule
-  has_one :account, through: :schedule
 end

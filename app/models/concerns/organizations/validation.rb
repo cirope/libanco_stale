@@ -3,7 +3,7 @@ module Organizations::Validation
 
   included do
     validates :name,
-      uniqueness: { case_sensitive: false, scope: :account_id },
+      uniqueness: { case_sensitive: false },
       length: { maximum: 255 },
       presence: true
   end

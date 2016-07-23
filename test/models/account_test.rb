@@ -52,22 +52,4 @@ class AccountTest < ActiveSupport::TestCase
     assert @account.invalid?
     assert_error @account, :subdomain, :exclusion
   end
-
-  test 'current' do
-    Account.current_id = @account.id
-
-    assert_equal @account.id, Account.current_id
-
-    Thread.new { assert_nil Account.current_id }
-  end
-
-  test 'by subdomain scope' do
-    found = Account.by_subdomain @account.subdomain
-
-    assert_equal @account, found
-    assert_nil Account.by_subdomain(RESERVED_SUBDOMAINS.first)
-    assert_raises ActiveRecord::RecordNotFound do
-      Account.by_subdomain 'wrong'
-    end
-  end
 end

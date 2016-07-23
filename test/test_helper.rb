@@ -10,10 +10,6 @@ class ActiveSupport::TestCase
 
   fixtures :all
 
-  setup do
-    Account.current_id = accounts(:cirope).id
-  end
-
   def assert_error model, attribute, type, options = {}
     assert model.errors[attribute].include?(
       model.errors.generate_message(attribute, type, options)
@@ -23,7 +19,6 @@ end
 
 class ActionController::TestCase
   def login user: users(:franco), account: accounts(:cirope)
-    Account.current_id = account.id
     @request.host = "#{account.subdomain}.lvh.me"
     cookies.encrypted[:auth_token] = user.auth_token
   end
