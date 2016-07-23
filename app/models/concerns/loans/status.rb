@@ -4,7 +4,7 @@ module Loans::Status
   included do
     STATUS = ['current', 'canceled', 'history', 'expired', 'judicial']
 
-    after_create :update_status
+    #after_create :update_status
   end
 
   private

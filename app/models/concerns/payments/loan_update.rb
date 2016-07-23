@@ -2,7 +2,7 @@ module Payments::LoanUpdate
   extend ActiveSupport::Concern
 
   included do
-    before_save :update_loan_status, if: :persisted?
+    #before_save :update_loan_status, if: :persisted?
   end
 
   private

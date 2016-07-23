@@ -4,6 +4,7 @@ class Account < ActiveRecord::Base
   include Auditable
   include Accounts::Overrides
   include Accounts::Relations
+  include Accounts::Tenant
   include Accounts::Validation
 
   strip_fields :name, :subdomain

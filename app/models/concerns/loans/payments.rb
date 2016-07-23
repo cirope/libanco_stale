@@ -4,7 +4,7 @@ module Loans::Payments
   included do
     has_many :payments, dependent: :destroy, counter_cache: ''
 
-    before_create :build_payments, :assign_loan_attributes
+    #before_create :build_payments, :assign_loan_attributes
   end
 
   def paid_payments_count
