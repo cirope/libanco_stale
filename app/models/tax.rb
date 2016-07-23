@@ -1,5 +1,4 @@
 class Tax < ActiveRecord::Base
-  include Accounts::Scoped
   include Auditable
   include Taxes::Validation
   include Taxes::Relations

@@ -1,5 +1,4 @@
 class State < ActiveRecord::Base
-  include Accounts::Scoped
   include Attributes::Strip
   include Auditable
   include States::Scopes

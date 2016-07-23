@@ -5,4 +5,3 @@ first_loan:
   expire_at: <%= 1.year.from_now %>
   job: private
   user: franco
-  account: cirope

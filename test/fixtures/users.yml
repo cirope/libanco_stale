@@ -6,7 +6,6 @@ franco:
   auth_token: <%= SecureRandom.urlsafe_base64 %>
   password_reset_token: <%= SecureRandom.urlsafe_base64 %>
   password_reset_sent_at: <%= Time.zone.now %>
-  account: cirope
 
 john:
   name: John
@@ -16,4 +15,3 @@ john:
   auth_token: <%= SecureRandom.urlsafe_base64 %>
   password_reset_token: <%= SecureRandom.urlsafe_base64 %>
   password_reset_sent_at: <%= Time.zone.now %>
-  account: cirope

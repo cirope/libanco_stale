@@ -6,12 +6,8 @@ module Customers::Taxes
   end
 
   module ClassMethods
-    def assign_taxes(account)
-      Account.current_id = account.id
-
-      account.customers.each do |customer|
-        customer.update_taxes
-      end
+    def assign_taxes
+      Customer.each { |customer| customer.update_taxes }
     end
   end
 

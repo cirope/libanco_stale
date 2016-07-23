@@ -26,6 +26,5 @@
 
 <hr />
 
-<div class="footer">
-  <%= link_to_new new_company_path, class: 'btn btn-primary' %>
-</div>
+<%= paginate @companies %>
+<%= link_to_new new_company_path, class: 'btn btn-primary' %>

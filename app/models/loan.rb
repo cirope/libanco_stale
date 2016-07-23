@@ -1,5 +1,4 @@
 class Loan < ActiveRecord::Base
-  include Accounts::Scoped
   include Auditable
   include Attributes::Round
   include Loans::Validation

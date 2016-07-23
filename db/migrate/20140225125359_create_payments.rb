@@ -15,6 +15,5 @@ class CreatePayments < ActiveRecord::Migration
     add_index :payments, :number
     add_index :payments, :expire_at
     add_index :payments, :paid_at
-    add_index :payments, :account_id
   end
 end

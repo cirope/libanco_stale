@@ -8,7 +8,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies
   def index
-    @companies = Company.ordered
+    @companies = Company.ordered.page params[:page]
     respond_with @companies
   end
 

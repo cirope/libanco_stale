@@ -4,4 +4,3 @@ first_schedule:
   done: false
   user: franco
   schedulable: first_loan
-  account: cirope

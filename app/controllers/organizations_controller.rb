@@ -8,7 +8,7 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations
   def index
-    @organizations = Organization.ordered
+    @organizations = Organization.ordered.page params[:page]
     respond_with @organizations
   end
 

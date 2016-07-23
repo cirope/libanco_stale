@@ -1,7 +1,5 @@
 private_rate_set:
   name: Private
-  account: cirope
 
 public_rate_set:
   name: Public
-  account: cirope

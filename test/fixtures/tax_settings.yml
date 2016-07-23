@@ -1,9 +1,7 @@
 social_payment:
   name: Social Payment
   value: 40
-  account: cirope
 
 insurance:
   name: Insurance
   value: 18
-  account: cirope

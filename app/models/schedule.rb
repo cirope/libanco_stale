@@ -1,5 +1,4 @@
 class Schedule < ActiveRecord::Base
-  include Accounts::Scoped
   include Auditable
   include Attributes::Strip
   include Schedules::Validation

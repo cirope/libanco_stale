@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  include Accounts::Scoped
   include Attributes::Strip
   include Attributes::Downcase
   include Auditable

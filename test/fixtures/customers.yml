@@ -14,7 +14,6 @@ paul:
   monthly_income: 10000
   nacionality: default
   city: rivadavia
-  account: cirope
 
 simon:
   name: Simon
@@ -32,7 +31,6 @@ simon:
   monthly_income: 10000
   nacionality: default
   city: godoy_cruz
-  account: cirope
 
 john:
   name: John
@@ -50,4 +48,3 @@ john:
   monthly_income: 10000
   nacionality: default
   city: godoy_cruz
-  account: cirope

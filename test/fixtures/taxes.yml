@@ -4,7 +4,6 @@ first_tax:
   paid_at: <%= 1.month.from_now.to_s(:db) %>
   tax_setting: social_payment
   customer: paul
-  account: cirope
 
 second_tax:
   value: 28
@@ -12,4 +11,3 @@ second_tax:
   paid_at: <%= 1.month.from_now.to_s(:db) %>
   tax_setting: insurance
   customer: paul
-  account: cirope

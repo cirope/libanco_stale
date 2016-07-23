@@ -1,7 +1,8 @@
 class TaxSetting < ActiveRecord::Base
-  include Accounts::Scoped
   include Auditable
   include TaxSettings::Validation
+
+  scope :ordered, -> { order("#{table_name}.name") } 
 
   has_many :taxes, dependent: :destroy
 

@@ -1,8 +1,9 @@
 class City < ActiveRecord::Base
-  include Accounts::Scoped
   include Attributes::Strip
   include Auditable
   include Cities::Validation
+
+  scope :ordered, -> { order("#{table_name}.name") } 
 
   strip_fields :name, :zip_code
 
