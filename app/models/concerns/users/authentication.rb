@@ -4,7 +4,7 @@ module Users::Authentication
   included do
     has_secure_password
 
-    #before_create { generate_token :auth_token }
+    before_create { generate_token :auth_token }
   end
 
   def is_admin?

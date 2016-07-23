@@ -2,8 +2,8 @@ module Accounts::Tenant
   extend ActiveSupport::Concern
 
   included do
-    #after_create :create_tenant, :create_defaults
-    #after_destroy :destroy_tenant
+    after_create :create_tenant, :create_defaults
+    after_destroy :destroy_tenant
   end
 
   private

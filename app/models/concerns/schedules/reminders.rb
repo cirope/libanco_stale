@@ -4,8 +4,8 @@ module Schedules::Reminders
   included do
     attr_accessor :remind_me
 
-    #before_save :build_reminder
-    #after_update :update_reminder
+    before_save :build_reminder
+    after_update :update_reminder
   end
 
   def remind_me_default_value
