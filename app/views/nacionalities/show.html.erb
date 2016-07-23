@@ -1,0 +1,9 @@
+<h2><%= @nacionality %></h2>
+
+<p>
+  <strong><%= Nacionality.human_attribute_name 'name' %></strong>:
+  <%= @nacionality.name %>
+</p>
+
+<%= link_to_edit edit_nacionality_path(@nacionality) %> |
+<%= link_to_index nacionalities_path %>

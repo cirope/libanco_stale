@@ -93,6 +93,16 @@ es:
       _no: 'No'
       active: 'Socio'
       inactive: 'Dado de baja'
+    marital_statuses:
+      married: 'Casado'
+      single: 'Soltero'
+      divorced: 'Divorciado'
+      widowed: 'Viudo'
+    education_levels:
+      primary: 'Primario'
+      secondary: 'Secundario'
+      tertiary: 'Terciario'
+      academic: 'Universitario'
 
   loans:
     edit:
@@ -118,6 +128,16 @@ es:
       history: 'Cancelado'
       expired: 'Atrasado'
       judicial: 'En acción judicial'
+
+  nacionalities:
+    edit:
+      title: 'Editar nacionalidad'
+    index:
+      new: 'Nueva nacionalidad'
+      title: 'Listado de nacionalidades'
+      empty_html: 'No hay nacionalidades, puede crear una con el botón <span class="label label-info">Nueva nacionalidad</span>'
+    new:
+      title: 'Crear nacionalidad'
 
   organizations:
     edit:

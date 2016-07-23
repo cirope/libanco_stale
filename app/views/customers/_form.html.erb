@@ -1,37 +1,97 @@
 <%= simple_form_for @customer do |f| %>
-  <div class="form-inputs row">
-    <div class="col-md-6">
-      <%= f.input :name, input_html: { autofocus: true } %>
-      <%= f.input :lastname %>
-      <%= f.input :identification %>
-      <%= f.input :tax_id %>
-      <%= f.input :email %>
-      <%= f.input :address %>
-    </div>
-    <div class="col-md-6">
-      <%= f.association :city, collection: City.ordered, label: add_label('city'),
-        prompt: true, input_html: { data: { update_after_city_change: true } }
-      %>
-      <%= f.input :member, label: false, inline_label: true, required: true %>
-      <%= f.simple_fields_for :jobs, current_job do |fj| %>
-        <%= customer_kind_field fj %>
-        <%= customer_place_type_field fj %>
-        <%= customer_place_field fj %>
-        <%= fj.input :joining_at, as: :date_picker %>
-      <% end %>
-      <h6>
-        <strong><%= Phone.model_name.human(count: 0) %></strong>
-      </h6>
-      <%= render('phones/form', f: f) %>
-      <%= f.input :lock_version, as: :hidden %>
+  <div class="form-inputs">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <%= fa_icon 'male', text: Customer.model_name.human(count: 1) %>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.input :name, input_html: { autofocus: true } %>
+              </div>
+              <div class="col-md-6">
+                <%= f.input :lastname %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.input :identification %>
+              </div>
+              <div class="col-md-6">
+                <%= f.input :tax_id %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.input :email %>
+              </div>
+              <div class="col-md-6">
+                <%= f.input :address %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.association :nacionality, prompt: true %>
+              </div>
+              <div class="col-md-6">
+                <%= f.input :birthdate, as: :date_picker %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.input :marital_status, collection: marital_statuses, prompt: true %>
+              </div>
+              <div class="col-md-6">
+                <%= f.input :spouse_name %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.input :education_level, collection: education_levels, prompt: true %>
+              </div>
+              <div class="col-md-6">
+                <%= f.input :profession %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.input :work_address %>
+              </div>
+              <div class="col-md-6">
+                <%= f.input :monthly_income %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <%= f.association :city, collection: City.ordered, label: add_label('city'),
+              prompt: true, input_html: { data: { update_after_city_change: true } }
+            %>
+            <%= f.input :member, label: false, inline_label: true, required: true %>
+            <%= f.simple_fields_for :jobs, current_job do |fj| %>
+              <%= customer_kind_field fj %>
+              <%= customer_place_type_field fj %>
+              <%= customer_place_field fj %>
+              <%= fj.input :joining_at, as: :date_picker %>
+            <% end %>
+            <h6>
+              <strong><%= Phone.model_name.human(count: 0) %></strong>
+            </h6>
+            <%= render('phones/form', f: f) %>
+            <%= f.input :lock_version, as: :hidden %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <hr />
 
-  <div class="footer form-actions">
+  <div class="form-actions">
+    <%= submit_button f %>
     <div class="pull-right"><%= yield :form_actions %></div>
-    <%= f.button :submit, class: 'btn-primary',
-      data: { disable_with: t('navigation.processing') } %>
   </div>
 <% end %>

@@ -12,6 +12,7 @@ class Customer < ActiveRecord::Base
   strip_fields :name, :lastname, :identification, :address, :email, :tax_id
 
   belongs_to :city
+  belongs_to :nacionality
   has_many :loans, through: :jobs
 
 	pg_search_scope :search, against: [

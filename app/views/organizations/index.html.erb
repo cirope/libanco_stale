@@ -1,7 +1,7 @@
 <% if @organizations.empty? %>
   <%= render 'shared/empty_index', message: t('.empty_html') %>
 <% else %>
-  <table class="table table-condensed table-striped table-hover">
+  <table class="table table-condensed table-striped">
     <thead>
       <tr>
         <th><%= Organization.human_attribute_name 'name' %></th>

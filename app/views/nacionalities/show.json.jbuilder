@@ -1,0 +1,1 @@
+json.partial! "nacionalities/nacionality", nacionality: @nacionality

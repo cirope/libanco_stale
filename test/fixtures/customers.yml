@@ -5,6 +5,14 @@ paul:
   tax_id: 20-33216329-3
   email: paul@skanska.com
   address: HUARPES 3072. B. LEDONE
+  marital_status: single
+  spouse_name: Spouse Name
+  education_level: primary
+  birthdate: <%= 1.year.ago %>
+  profession: Profession
+  work_address: Work Address
+  monthly_income: 10000
+  nacionality: default
   city: rivadavia
   account: cirope
 
@@ -15,6 +23,14 @@ simon:
   tax_id: 20-34655498-3
   email: simon@skanska.com
   address: B Tamarindo III Manz C Casa 14
+  marital_status: single
+  spouse_name: Spouse Name
+  education_level: primary
+  birthdate: <%= 1.year.ago %>
+  profession: Profession
+  work_address: Work Address
+  monthly_income: 10000
+  nacionality: default
   city: godoy_cruz
   account: cirope
 
@@ -25,5 +41,13 @@ john:
   tax_id: 20-27789654-7
   email: john@morgan.com
   address: Cnel Moldes 200
+  marital_status: single
+  spouse_name: Spouse Name
+  education_level: primary
+  birthdate: <%= 1.year.ago %>
+  profession: Profession
+  work_address: Work Address
+  monthly_income: 10000
+  nacionality: default
   city: godoy_cruz
   account: cirope

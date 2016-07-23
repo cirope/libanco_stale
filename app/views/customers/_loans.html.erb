@@ -1,7 +1,7 @@
 <% if loans.blank? %>
   <%= render 'shared/empty_index', message: t('loans.empty.index_html') %>
 <% else %>
-  <table class="table table-condensed table-striped table-hover">
+  <table class="table table-condensed table-hover">
     <thead>
       <tr>
         <th><%= Loan.human_attribute_name 'amount' %></th>

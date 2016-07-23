@@ -1,0 +1,23 @@
+<%= simple_form_for @nacionality do |f| %>
+  <div class="form-inputs row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <%= Nacionality.model_name.human count: 1 %>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <%= f.input :name, autofocus: true %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="form-actions">
+    <%= submit_button f %>
+    <div class="pull-right"><%= yield :form_actions %></div>
+  </div>
+<% end %>

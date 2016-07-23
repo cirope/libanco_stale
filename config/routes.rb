@@ -24,8 +24,8 @@ Rails.application.routes.draw do
     get '(/:filter)/reports', to: 'reports#index', as: 'reports',
       constraints: { filter: 'payments' }
 
-    # Resources
     resources :cities
+    resources :nacionalities, except: [:show, :destroy]
     resources :states
     resources :users
     resources :companies

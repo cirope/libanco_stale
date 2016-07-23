@@ -26,6 +26,9 @@ es:
       loan:
         one: 'Préstamo'
         other: 'Préstamos'
+      nacionality:
+        one: 'Nacionalidad'
+        other: 'Nacionalidades'
       organization:
         one: 'Ministerio o Secretaría'
         other: 'Ministerios o Secretarías'
@@ -74,15 +77,23 @@ es:
         address: 'Dirección'
       customer:
         address: 'Dirección'
+        birthdate: 'Fecha de nacimiento'
+        education_level: 'Nivel de estudio'
         email: 'Correo electrónico'
         identification: 'DNI'
         kind: 'Perfil'
         lastname: 'Apellido'
+        marital_status: 'Estado civil'
         member: 'Socio'
+        monthly_income: 'Ingreso mensual aprox.'
+        nacionality: 'Nacionalidad'
         name: 'Nombre'
+        profession: 'Profesión'
+        spouse_name: 'Nombre del cónyuge'
         tax_id: 'CUIL/CUIT'
         city: 'Ciudad'
         job: 'Lugar de trabajo'
+        work_address: 'Domicilio laboral'
       department:
         name: 'Repartición'
       job:
@@ -105,6 +116,8 @@ es:
         status: 'Estado'
         rate_set_id: 'Tasa'
         rate_id: 'Cuotas'
+      nacionality:
+        name: 'Nombre'
       organization:
         name: 'Ministerio o Secretaría'
       payment:

@@ -36,6 +36,14 @@ module CustomersHelper
     raw text_label(custom_label || model) << ' ' << add_link(model)
   end
 
+  def marital_statuses
+    Customer::MARITAL_STATUSES.map { |ms| [t("customers.marital_statuses.#{ms}"), ms] }
+  end
+
+  def education_levels
+    Customer::EDUCATION_LEVELS.map { |el| [t("customers.education_levels.#{el}"), el] }
+  end
+
   private
 
     def customer_place_select(form, label_place, collection = [], options = {})

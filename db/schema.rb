@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722194459) do
+ActiveRecord::Schema.define(version: 20160723003743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,18 +53,26 @@ ActiveRecord::Schema.define(version: 20160722194459) do
   add_index "companies", ["tax_id"], name: "index_companies_on_tax_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
-    t.string   "name",           limit: 255,                null: false
-    t.string   "lastname",       limit: 255,                null: false
-    t.string   "identification", limit: 255,                null: false
-    t.string   "tax_id",         limit: 255
-    t.string   "email",          limit: 255
-    t.string   "address",        limit: 255
-    t.integer  "city_id",                                   null: false
-    t.integer  "account_id",                                null: false
-    t.integer  "lock_version",               default: 0,    null: false
+    t.string   "name",            limit: 255,                                         null: false
+    t.string   "lastname",        limit: 255,                                         null: false
+    t.string   "identification",  limit: 255,                                         null: false
+    t.string   "tax_id",          limit: 255
+    t.string   "email",           limit: 255
+    t.string   "address",         limit: 255
+    t.integer  "city_id",                                                             null: false
+    t.integer  "account_id",                                                          null: false
+    t.integer  "lock_version",                                         default: 0,    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "member",                     default: true, null: false
+    t.boolean  "member",                                               default: true, null: false
+    t.string   "marital_status"
+    t.string   "spouse_name"
+    t.string   "education_level"
+    t.date     "birthdate"
+    t.string   "profession"
+    t.string   "work_address"
+    t.decimal  "monthly_income",              precision: 10, scale: 2
+    t.integer  "nacionality_id"
   end
 
   add_index "customers", ["account_id"], name: "index_customers_on_account_id", using: :btree
@@ -72,6 +80,7 @@ ActiveRecord::Schema.define(version: 20160722194459) do
   add_index "customers", ["identification"], name: "index_customers_on_identification", using: :btree
   add_index "customers", ["lastname"], name: "index_customers_on_lastname", using: :btree
   add_index "customers", ["member"], name: "index_customers_on_member", using: :btree
+  add_index "customers", ["nacionality_id"], name: "index_customers_on_nacionality_id", using: :btree
   add_index "customers", ["name"], name: "index_customers_on_name", using: :btree
   add_index "customers", ["tax_id"], name: "index_customers_on_tax_id", using: :btree
 
@@ -124,6 +133,14 @@ ActiveRecord::Schema.define(version: 20160722194459) do
   add_index "loans", ["progress"], name: "index_loans_on_progress", using: :btree
   add_index "loans", ["status"], name: "index_loans_on_status", using: :btree
   add_index "loans", ["user_id"], name: "index_loans_on_user_id", using: :btree
+
+  create_table "nacionalities", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "nacionalities", ["name"], name: "index_nacionalities_on_name", unique: true, using: :btree
 
   create_table "organizations", force: :cascade do |t|
     t.string   "name",         limit: 255,             null: false

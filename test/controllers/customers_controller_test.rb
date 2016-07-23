@@ -39,6 +39,14 @@ class CustomersControllerTest < ActionController::TestCase
         email: 'paul@skanska.com',
         address: @customer.address,
         city_id: @customer.city.id,
+        marital_status: @customer.marital_status,
+        spouse_name: @customer.spouse_name,
+        education_level: @customer.education_level,
+        birthdate: @customer.birthdate,
+        profession: @customer.profession,
+        work_address: @customer.work_address,
+        monthly_income: @customer.monthly_income,
+        nacionality_id: @customer.nacionality_id,
         phones_attributes: [
           { phone: '261-4286544' }
         ]

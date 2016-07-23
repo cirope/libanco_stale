@@ -1,7 +1,7 @@
 <% unless @rate_set %>
   <%= render 'shared/empty_index', message: t('rate_sets.simulator') %>
 <% else %>
-  <table class="table table-condensed table-hover table-bordered table-striped payments-data"
+  <table class="table table-condensed table-bordered table-striped payments-data"
     data-payments-data="<%= render_rates_as_json %>">
     <thead>
       <tr>

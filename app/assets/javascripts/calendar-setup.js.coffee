@@ -6,6 +6,8 @@ document.addEventListener 'turbolinks:load', ->
     calendar.datepicker
       dateFormat: 'yy/mm/dd'
       defaultDate: data.default_date
+      changeMonth: true
+      changeYear: true
       beforeShowDay: (date) ->
         has_event = $.inArray($.datepicker.formatDate('yy/mm/dd', date), data.scheduled_days) isnt -1
         can_read = if (date >= today or has_event) then true else false
