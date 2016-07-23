@@ -1,5 +1,4 @@
 class Customer < ActiveRecord::Base
-  include Accounts::Scoped
   include Auditable
   include Attributes::Strip
   include Phonable

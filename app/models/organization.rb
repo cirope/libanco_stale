@@ -1,5 +1,4 @@
 class Organization < ActiveRecord::Base
-  include Accounts::Scoped
   include Auditable
   include Attributes::Strip
   include Organizations::Departments

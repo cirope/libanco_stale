@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = scope.find_by email: params[:email]
+    user = User.find_by email: params[:email]
 
     if user && user.authenticate(params[:password])
       store_auth_token user
@@ -23,10 +23,6 @@ class SessionsController < ApplicationController
   end
 
   private
-
-    def scope
-      current_account ? User : User.unscoped
-    end
 
     def default_url
       customers_url subdomain: current_user.account_subdomain

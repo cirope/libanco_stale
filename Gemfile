@@ -24,6 +24,7 @@ gem 'whenever', require: false
 gem 'kaminari'
 gem 'font-awesome-rails'
 gem 'pg_search'
+gem 'apartment'
 
 gem 'unicorn'
 
