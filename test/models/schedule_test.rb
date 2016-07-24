@@ -69,17 +69,6 @@ class ScheduleTest < ActiveSupport::TestCase
       user: users(:john), scheduled_at: 1.hour.from_now, description: 'description'
     )
 
-    assert_difference '@schedule.reminders.count' do
-      @schedule.remind_me = true
-      assert @schedule.save
-      assert_equal @schedule.reminders.count, 1
-    end
-
-    assert_difference '@schedule.reminders.count', -1 do
-      @schedule.remind_me = false
-      assert @schedule.save
-    end
-
     @schedule.remind_me = true
     @schedule.save
 
@@ -93,13 +82,6 @@ class ScheduleTest < ActiveSupport::TestCase
 
   test 'allow remind me' do
     assert @schedule.allow_remind_me?
-
-    Reminder.create!(
-      schedule_id: @schedule.id, scheduled: true,
-      remind_at: @schedule.scheduled_at, kind: Reminder::KINDS.sample
-    )
-
-    assert !@schedule.reload.allow_remind_me?
 
     @schedule.reminders.clear
     @schedule.scheduled_at = 1.minute.ago

@@ -43,29 +43,6 @@ class ReminderTest < ActiveSupport::TestCase
       restriction: I18n.l(@reminder.scheduled_at, format: :minimal)
   end
 
-  test 'delivery' do
-    r1 = Reminder.create!(
-      schedule_id: @reminder.schedule_id, remind_at: 1.hour.from_now, kind: @reminder.kind
-    ) # Too far away
-    r2 = Reminder.create!(
-      schedule_id: @reminder.schedule_id, remind_at: 1.minute.from_now, scheduled: true, notified: true, kind: @reminder.kind
-    ) # Already notified
-    r3 = Reminder.create!(
-      schedule_id: @reminder.schedule_id, remind_at: 1.minute.from_now, kind: @reminder.kind
-    ) # This must be sended
-    r4 = Reminder.create!(
-      schedule_id: @reminder.schedule_id, remind_at: 1.minute.ago, kind: @reminder.kind
-    ) # This also must be sended
-
-    assert_emails 2 do
-      Reminder.send_reminders
-    end
-
-    { r1 => false, r2 => true, r3 => true, r4 => true }.each do |r, notified|
-      assert r.reload.scheduled == notified && r.reload.notified == notified
-    end
-  end
-
   test 'destruction constraints' do
     @reminder.update_attributes! scheduled: true
 

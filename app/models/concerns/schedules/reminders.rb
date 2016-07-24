@@ -2,8 +2,6 @@ module Schedules::Reminders
   extend ActiveSupport::Concern
 
   included do
-    attr_accessor :remind_me
-
     before_save :build_reminder
     after_update :update_reminder
   end
@@ -26,18 +24,18 @@ module Schedules::Reminders
 
     def build_reminder
       if build_reminder?
-        reminders.build(remind_at: scheduled_at - delay, kind: 'email')
+        reminders.create(remind_at: scheduled_at - delay, kind: 'email')
       elsif remove_reminder?
         reminders.clear
       end
     end
 
     def build_reminder?
-      (remind_me == '1' || remind_me == true) && reminders.empty?
+      remind_me && reminders.blank?
     end
 
     def remove_reminder?
-      remind_me == '0' || remind_me == false
+      !remind_me
     end
 
     def update_reminder

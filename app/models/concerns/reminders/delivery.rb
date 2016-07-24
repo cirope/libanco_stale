@@ -15,32 +15,26 @@ module Reminders::Delivery
 
   module ClassMethods
     def send_reminders
-      unscoped.upcoming.find_each do |reminder|
-        Schedule.unscoped do
-          unless reminder.schedule.done
-            reminder.update_column :scheduled, true
-				
-						Reminder.transaction do
-							reminder.update_column :notified, true
-							Notifier.remind(reminder).deliver_later
-						end
+      upcoming.find_each do |reminder|
+        if !reminder.schedule.done
+          reminder.update_column :scheduled, true
+      
+          Reminder.transaction do
+            reminder.update_column :notified, true
+            Notifier.remind(reminder).deliver_later
           end
         end
       end
     end
 
     def send_summaries
-      Schedule.unscoped do
-        User.unscoped.find_each do |user|
-				  user = User.find user_id
-
-          if user.schedules.for_tomorrow.count > 0
-            Reminder.transaction do
-              Notifier.summary(user).deliver_later
-            end
+      User.all.find_each do |user|
+        if user.schedules.for_tomorrow.count > 0
+          Reminder.transaction do
+            Notifier.summary(user).deliver_later
           end
         end
-			end
+      end
     end
   end
 end

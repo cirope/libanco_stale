@@ -44,12 +44,4 @@ class AccountsControllerTest < ActionController::TestCase
     patch :update, id: @account, account: { name: 'New name' }
     assert_redirected_to account_url(assigns(:account))
   end
-
-  test 'should destroy account' do
-    assert_difference('Account.count', -1) do
-      delete :destroy, id: @account
-    end
-
-    assert_redirected_to accounts_path
-  end
 end

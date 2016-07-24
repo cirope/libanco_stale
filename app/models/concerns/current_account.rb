@@ -3,7 +3,7 @@ module CurrentAccount
 
   included do
     belongs_to :account
-    before_validation :set_account
+    before_validation :set_account, on: :create
 
     validates :account, presence: true
   end

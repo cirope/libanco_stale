@@ -5,18 +5,6 @@ class UserTest < ActiveSupport::TestCase
     @user = users :franco
   end
 
-  test 'should generate token on create' do
-    @user = User.create!(
-      name: @user.name,
-      lastname: @user.lastname,
-      email: 'new@user.com',
-      password: '123',
-      password_confirmation: '123'
-    )
-
-    assert @user.reload.auth_token.present?
-  end
-
   test 'blank attributes' do
     @user.name = ''
     @user.lastname = ''

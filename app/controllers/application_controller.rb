@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to login_url, alert: t('messages.not_authorized') unless current_user
   end
+
+  def current_account
+    @current_account ||= Account.find_by(subdomain: Apartment::Tenant.current)
+  end
+  helper_method :current_account
 end

@@ -1,11 +1,17 @@
 namespace :reminders do
   desc 'Send email reminders'
   task send: :environment do
-    ::Reminder.send_reminders
+    Account.all.each do |account|
+      Apartment::Tenant.switch! account.subdomain
+      ::Reminder.send_reminders
+    end
   end
 
   desc 'Send email summaries'
   task send_summaries: :environment do
-    ::Reminder.send_summaries
+    Account.all.each do |account|
+      Apartment::Tenant.switch! account.subdomain
+      ::Reminder.send_summaries
+    end
   end
 end

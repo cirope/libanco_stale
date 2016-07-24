@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723235521) do
+ActiveRecord::Schema.define(version: 20160724005017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -225,6 +225,7 @@ ActiveRecord::Schema.define(version: 20160723235521) do
     t.integer  "lock_version",     default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "remind_me",        default: false, null: false
   end
 
   add_index "schedules", ["schedulable_id", "schedulable_type"], name: "index_schedules_on_schedulable_id_and_schedulable_type", using: :btree

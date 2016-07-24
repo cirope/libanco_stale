@@ -25,8 +25,6 @@ class LoanTest < ActiveSupport::TestCase
   end
 
   test 'should set history status to loan when create a new' do
-    Account.current_id = accounts(:cirope).id
-
     customer = @loan.customer
     assert @loan.update_column(:status, 'canceled')
 
@@ -40,8 +38,6 @@ class LoanTest < ActiveSupport::TestCase
   end
 
   test 'should set expired status to loan' do
-    Account.current_id = accounts(:cirope).id
-
     assert_equal 'current', @loan.status
     assert @loan.payments.first.update!(expire_at: 1.month.ago, paid_at: '')
 

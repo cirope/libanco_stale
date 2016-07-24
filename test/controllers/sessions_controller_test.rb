@@ -24,15 +24,6 @@ class SessionsControllerTest < ActionController::TestCase
     assert_nil current_user
   end
 
-  test 'should not create a new session with wrong account' do
-    @request.host = "#{accounts(:iso).subdomain}.lvh.me"
-
-    post :create, { email: @user.email, password: '123' }
-
-    assert_response :success
-    assert_nil current_user
-  end
-
   test 'should get destroy' do
     cookies.encrypted[:auth_token] = @user.auth_token
 
