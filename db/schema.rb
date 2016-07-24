@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723170944) do
+ActiveRecord::Schema.define(version: 20160723235521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -209,8 +209,10 @@ ActiveRecord::Schema.define(version: 20160723170944) do
     t.integer  "lock_version", default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
 
+  add_index "reminders", ["account_id"], name: "index_reminders_on_account_id", using: :btree
   add_index "reminders", ["schedule_id"], name: "index_reminders_on_schedule_id", using: :btree
 
   create_table "schedules", force: :cascade do |t|
@@ -274,8 +276,10 @@ ActiveRecord::Schema.define(version: 20160723170944) do
     t.integer  "lock_version",           default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
 
+  add_index "users", ["account_id"], name: "index_users_on_account_id", using: :btree
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["password_reset_token"], name: "index_users_on_password_reset_token", unique: true, using: :btree

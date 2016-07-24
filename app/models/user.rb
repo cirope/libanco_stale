@@ -3,8 +3,9 @@ class User < ActiveRecord::Base
   include Attributes::Downcase
   include Auditable
   include Users::Authentication
-  include Users::Overrides
+  include CurrentAccount
   include Users::PasswordReset
+  include Users::Relations
   include Users::Scopes
   include Users::Validation
 
@@ -13,6 +14,7 @@ class User < ActiveRecord::Base
   strip_fields :name, :lastname, :email
   downcase_fields :email
 
-  has_many :loans, dependent: :destroy
-  has_many :schedules, dependent: :destroy
+  def to_s
+    [name, lastname].join(' ')
+  end
 end

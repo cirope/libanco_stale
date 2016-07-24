@@ -4,3 +4,4 @@ reminder:
   notified: false
   scheduled: false
   schedule: first_schedule
+  account: cirope
