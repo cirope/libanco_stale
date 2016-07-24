@@ -8,5 +8,6 @@ jQuery ($) ->
   $(document).on 'hidden.bs.modal', '#modal', ->
     $('#modal').remove()
 
-  $(document).on 'click keypress', '[data-remove-target]', ->
-    $($(this).data('removeTarget')).remove()
+  $(document).on 'click keypress', '[data-removeable]', ->
+    $('[data-removeable]').remove()
+    return false

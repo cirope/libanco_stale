@@ -24,7 +24,7 @@ module Schedules::Reminders
 
     def build_reminder
       if build_reminder?
-        reminders.create(remind_at: scheduled_at - delay, kind: 'email')
+        reminders.build(remind_at: scheduled_at - delay, kind: 'email')
       elsif remove_reminder?
         reminders.clear
       end

@@ -7,10 +7,9 @@
   <div class="col-md-9">
     <%= render 'shared/search', url: loans_path if params[:filter].blank? %>
     <% if @loans.empty? %>
-      <%= render 'shared/empty_index',
-        message: t("loans.empty.#{(params[:filter] || 'search')}_html") %>
+      <%= render 'shared/empty_index', message: t("loans.empty.#{(params[:filter] || 'search')}_html") %>
     <% else %>
-      <table class="table table-striped table-condensed" data-endless-container="true">
+      <table class="table table-striped table-condensed">
         <thead>
           <tr>
             <th><%= Customer.model_name.human(count: 0) %></th>

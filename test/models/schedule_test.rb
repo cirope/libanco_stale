@@ -92,21 +92,6 @@ class ScheduleTest < ActiveSupport::TestCase
     assert @schedule.allow_remind_me?
   end
 
-  test 'delivery summaries' do
-    user = users(:john)
-    attributes = { description: 'description' }
-
-    3.times {
-      Schedule.create!(
-        user_id: user.id, scheduled_at: 1.hour.from_now, description: 'description'
-      )
-    }
-
-    assert_emails 1 do
-      Reminder.send_summaries
-    end
-  end
-
   test 'move schedules' do
     date = 5.days.from_now
     @schedule.move(date)

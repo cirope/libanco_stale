@@ -25,8 +25,8 @@ module LinksHelper
     link_with_icon({ action: 'show', icon: 'fa-info-circle' }, *args)
   end
 
-  def link_to_remove_target(target)
-    link_to '#', data: { remove_target: target } do
+  def link_to_remove_target data
+    link_to '#', data: data do
       content_tag(:i, nil, class: 'fa fa-times')
     end
   end
